@@ -2,6 +2,7 @@
 \usepackage{amsthm}
 \usepackage{fullpage}
 \usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{times}
 \usepackage{graphicx}
@@ -10,7 +11,7 @@
 \vfuzz=2pt
 
 % some "funny lines" referred to later:
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{thm}{Theorem}[subsection]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
@@ -18,6 +19,7 @@
 \theoremstyle{definition}
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
 
 
 \def\BB{\mathcal{B}}
@@ -28,6 +30,7 @@
 \def\QQ{\mathbb{Q}}
 \def\RR{\mathbb{R}}
 \def\FF{\mathbb{F}}
+\def\im{\mbox{im}}
 \def\Tr{\mbox{Tr}}
 \def\sgn{\mbox{sgn}}
 \def\nm{\mbox{N}}
@@ -35,6 +38,10 @@
 \def\Hom{\mbox{Hom}}
 \def\Aut{\mbox{Aut}}
 \def\Inn{\mbox{Inn}}
+\def\aa{\alpha}
+\def\bb{\beta}
+\def\aaa{\mathfrak{a}}
+\def\bbb{\mathfrak{b}}
 
 
 
@@ -43,6 +50,7 @@
 \title{MATH 8510 Galois Theory}
 % or if you want, simply \title{Title of the article}
 \author{LU Junyu}
+\date{\vspace{-5ex}}
 %\email{luj9@myumanitoba.ca}
 
 % \begin{abstract}
@@ -51,8 +59,7 @@
 
 \maketitle
 
-\section*{Week 1}
-\label{Week 1}
+\section{Introduction}
 \subsection{Warm up}
 
 Let's agree on some facts and conventions from elementary abstract algebra, in particular those with polynomial rings before we dig into Galois theory.
@@ -63,7 +70,9 @@ A ring is always commutative with multiplicative identity 1 unless otherwise sta
 
 \smallskip
 
-Let $F$ be a field. A polynomial ring $F[X]$ with an indeterminate $X$ is an $F$-vector space with basis $1,X,X^2,...,X^n,...$ with the multiplication $$(\sum_i a_iX^i)(\sum_j b_j X^j) =  \sum_k (\sum_{i+j=k}a_ib_j)X^k,$$ where $X^0$ is defined to be 1. Alternatively, we can identify $R[X]$ with $$R^{(\NN)}=\{(a_i): a_i\in R, a_i=0 \mbox{ for all but finitely many }i\in\NN\}$$ in an obvious way. But usually, we want to say $R$ embeds into $R[X]$ although the most formal way is to identify $R$ with a subring of $R[X]$. The degree function has the following properties:
+Let $F$ be a field. A polynomial ring $F[X]$ with an indeterminate $X$ is an $F$-vector space with basis $1,X,X^2,\cdots,X^n,\cdots,$ with the multiplication $$(\sum_i a_iX^i)(\sum_j b_j X^j) =  \sum_k (\sum_{i+j=k}a_ib_j)X^k,$$ where $X^0$ is defined to be 1. Alternatively, we can identify $R[X]$ with $$R^{(\NN)}=\{(a_i)_{i\in\NN}: a_i\in R, a_i=0 \mbox{ for all but finitely many }i\in\NN\}$$ in an obvious way. But usually, we want to say $R$ embeds into $R[X]$ although the most formal way is to identify $R$ with a subring of $R[X]$.  We will also use notations like $F[x], k[x]$ and $k[X]$ for polynomial rings as long as there is no confusion.
+
+The degree function has the following properties:
 \begin{enumerate}
     \item $\deg(f+g) \leq \max(\deg f,\deg g),$
     \item $\deg(fg)=\deg f+\deg g.$
@@ -84,7 +93,7 @@ Hence or otherwise, $\ZZ[X]$ is not a PID. Indeed, $\langle 2, X\rangle$ is an e
 \smallskip
 
 \begin{defn}
-    If $f(X)\in F[X]$ where $F$ is a field, then a \textbf{root} of $f$ in $F$ is an element $\alpha\in F$ such that $f(\alpha)=0$.
+    If $f(X)\in F[X]$ where $F$ is a field, then a \emph{root} of $f$ in $F$ is an element $\alpha\in F$ such that $f(\alpha)=0$.
 \end{defn}
 
 Given a polynomial $f[X]\in F[X]$ and any $u\in F$, the division algorithm give us: $$f(X)= q(X)(X-u)+f(u).$$
@@ -96,7 +105,7 @@ And lying in the center of proving that every finite subgroup of $F^\times$ is c
 \end{thm}
 
 \begin{defn}
-    Let $F$ be a field. A nonzero polynomial $p(X) \in F[X]$ is said to be \textbf{irreducible} over $F$ (or \textbf{irreducible} in $F[X]$) if $\deg p \geq 1$ and there is no factorization $p=fg$ in $F[X]$ with $\deg f < \deg p$ and $\deg g < \deg p$.
+    Let $F$ be a field. A nonzero polynomial $p(X) \in F[X]$ is said to be \emph{irreducible} over $F$ (or \emph{irreducible} in $F[X]$) if $\deg p \geq 1$ and there is no factorization $p=fg$ in $F[X]$ with $\deg f < \deg p$ and $\deg g < \deg p$.
 \end{defn}
 
 A quadratic or cubic polynomial is irreducible in $F[X]$ if and only if it has no root in $F$.
@@ -106,9 +115,9 @@ A quadratic or cubic polynomial is irreducible in $F[X]$ if and only if it has n
 \end{thm}
 
 \begin{thm}[Eisenstein's Criterion]
-    Let $f(X) = a_0+a_1X+...+a_nX^n\in \ZZ[X]$ be a polynomial over integers with $a_n\not= 0$. Suppose that there exists a prime $p$ such that \begin{enumerate}
+    Let $f(X) = a_0+a_1X+\cdots+a_nX^n\in \ZZ[X]$ be a polynomial over integers with $a_n\not= 0$. Suppose that there exists a prime $p$ such that \begin{enumerate}
         \item  $p\nmid a_n$, 
-        \item  $p\mid a_i$  for  $i=0,1,...,n-1$,
+        \item  $p\mid a_i$  for  $i=0,1,\cdots,n-1$,
         \item  $p^2\nmid a_0$.
     \end{enumerate}
     Then $f(X)$ is irreducible over $\ZZ[X]$.
@@ -120,18 +129,6 @@ A typical application of Eisenstein's Criterion is to prove the irreducibility o
     Let $F$ be a field and $f(x)$ a polynomial in $F[X]$. Then $(f(X))$ is a prime ideal in $F[X]$ if and only if $f(X)$ is irreducible. Equivalently, $f$ is irreducible if and only if $K[X]/(f)$ is a field.
 \end{thm}
 
-Making use of above results, we finally reach the very last theorem which functions as a cornerstone in many arguments.
-
-\begin{thm}
-    Let $k$ be a field and $f[X]$ a monic irreducible polynomial in $k[X]$ of degree $d$. Let $K=k[X]/I$, where $I=(f)$, and $\beta = X+I\in K$. Then:
-    \begin{enumerate}
-        \item $K$ is a field and $k'=\{a+I: a\in k\}$ is a subfield of $K$ isomorphic to $k$,
-        \item $\beta$ is a root of $g$ in $K$,
-        \item if $g(X)\in k[X]$ and $\beta$ is a root of $g$ in $K$, then $f\mid g$ in $k[X]$,
-        \item $f$ is the unique monic irreducible polynomial in $k[X]$ having $\beta$ as a root,
-        \item $1,\beta,\beta^2,...,\beta^{d-1}$ forms a basis of $K$ as a vector space over $k$ and so $\dim_k(K)=d$.
-    \end{enumerate}
-\end{thm}
 
 \subsection{Extensions of fields}
 
@@ -139,6 +136,102 @@ Most of this course will involve studying fields relative to certain subfield wh
 
 We will make a lot of use of the observation that if $E/F$ is an extension
 of fields, then we may view $E$ as a vector space over $F$.
+
+\begin{defn}
+    Let $E/F$ be an extension of fields. We say that $E$ is a \emph{finite extension} of $F$ if $E$ is finite-dimensional as a vector space over $F$. In this case we denote the dimension by $[E:F]$. We say that $E$ is an \emph{infinite extension} of $F$ if $E$ is infinite-dimensional as a vector space over $F$, and we write $[E:F] = 1$.
+\end{defn}
+
+\begin{example}
+    $\{1,i\}$ is a basis for $\CC$ as a vector space over $\RR$. So $\CC$ is a finite extension of $\RR$ and $[\CC:\RR]=2$. 
+\end{example}
+
+\begin{example}
+    It is widely known that $\sqrt{2}\notin\QQ$. Thus $1,\sqrt{2}$ are linearly independent over $\QQ$. On the other hand $(\sqrt{2})^2\in \QQ$ and then any polynomial in $\sqrt{2}$ with rational coefficients is just a $\QQ$-linear combinations of $1$ and $\sqrt{2}$. Since $$\frac{1}{a+b\sqrt{2}} = \frac{a}{a^2-2b^2} +\frac{-b}{a^2-2b^2}\sqrt{2},$$ every rational function of $\sqrt{2}$ can be written as a $\QQ$-linear combinations of $1$ and $\sqrt{2}$. It follows immediately that $\QQ(\sqrt{2})=\QQ[\sqrt{2}]$ and $[\QQ{\sqrt{2}}:\QQ]=2$.  
+\end{example}
+
+\begin{example}
+    We can show $[\CC(x):\CC]=\infty$ by arguing $\{1,x,x^2,\cdots\}$ is a linear independent set.
+\end{example}
+
+\begin{example}
+    To show $[\RR:\QQ]=\infty$, we make use of the unique factorization theorem of integers and argue that $\{\ln(p): p \mbox{ is a prime}\}$ is a linearly independent set.
+\end{example}
+
+\begin{prop}
+    Let $K\subseteq F\subseteq E$ be fields. Then $E/K$ is a finite extensions if and only if both $F/K$ and $E/F$  are, and when this is the case, we have $$[E:K]=[E:F][F:K].$$
+\end{prop}
+
+
+\begin{proof}[Sketch of proof]
+    If $\{a_i\}$ and $\{b_j\}$ are bases for $E/F$ and $F/K$ respectively, then $\{a_ib_j\}$ is a basis for $E/K$.
+\end{proof}
+
+\begin{defn}
+    Let $E/F$ be a field extension. An element $\aa\in E$ is \emph{algebraic} over $F$ if there is a non-zero polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$. Otherwise we say that $\aa$ is \emph{transcendental} over $F$. The extension $E/F$ is \emph{algebraic} if every element of $E$ is algebraic over $F$, and is \emph{transcendental} otherwise.
+\end{defn}
+
+\begin{example}
+    Both $\sqrt{2}$ and $i$ are algebraic over $\QQ$ as they are roots of $x^2-2$ and $x^2+1$.  But $\pi$ and $e$ are transcendental. As you can see, it's much easier to show that something is algebraic over a subfield than to show that it isn't (since to show that it is, one simply needs to exhibit a non-trivial
+    polynomial relation). This shows that $\RR/\QQ$ is a transcendental extension, but some more work is required to show that $\QQ(\sqrt{2})$ is algebraic, namely, we need to make sure that the smallest
+    field containing $\QQ$ and $\sqrt{2}$ doesn't somehow contain transcendental elements over $\QQ$.
+\end{example}
+
+
+\begin{thm}\label{minimal}
+    Let $E/F$ be a finite extension of fields. Then every element of $E$ is algebraic over $F$. Specifically, for every element $\aa\in E$ there is a unique non-zero monic irreducible polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$, and $f(x)$ divides every polynomial $g(x) \in F[x]$ with $g(\aa) = 0$. Moreover, this polynomial satisfies $deg(f) \leq [E : F]$.
+\end{thm}
+
+\begin{proof}
+    Suppose that $E/F$ is a finite extension and $\aa\in E$. Consider the elements $$1,\aa,\aa^2,\cdots,\aa^{[E:F]}\in E.$$
+    Since there are $[E:F]+1$ elements, they must be linearly dependent over $F$. Hence we can find $c_i\in F$ such that $$c_o\cdot 1+c_1\aa+\cdots+c_{[E:F]}\aa^{[E:F]} =0.$$  In other words, $\aa$ is a root of the (non-zero) polynomial $$g(x)=\sum_{i=0}^{[E:F]}c_i x^i \in F[x].$$ And the degree of $g$ is at most $[E:F]$.
+
+    Now consider the evaluation map $$\varphi: F[x]\to E, f(x)\mapsto f(\aa),$$ where one may consider it as the restriction of $e_\aa: E[x]\to E$. Then $\ker(\varphi)$ is non-empty since $g$ lies in it and then $\ker(\varphi)=(f(x))$ for some monic $f(x)\in F[x]$ since $F[x]$ is a PID. Any polynomial $g(x)\in F[x]$ with a root $\aa$ belongs to the kernal and hense is divisible by $f(x)$. Clearly, $\deg f$ is no bigger than $\deg g$ and then no bigger than $[E:F]$. Since $E$ is a field as well, $\im(\varphi)$ is a domain. So the kernel is a prime ideal and therefore $f$ is irreducible.
+\end{proof}
+
+\begin{defn}
+    The polynomial $f$ constructed in Theorem \ref{minimal} is called the \emph{minimal polynomial} of $\aa$ over $F$.
+\end{defn}
+
+In other words, in a finite extension, every element is the root of some polynomial over the smaller field. The next theorem is a partial converse to this, and we will use it often.
+
+\begin{thm}
+    Let $k$ be a field and $f[x]$ a monic irreducible polynomial in $k[x]$ of degree $d$. Let $K=k[x]/I$, where $I=(f)$, and $\beta = x+I\in K$. Then:
+    \begin{enumerate}
+        \item $K$ is a field and $k'=\{a+I: a\in k\}$ is a subfield of $K$ isomorphic to $k$,
+        \item $\beta$ is a root of $f$ in $K$,
+        \item if $g(x)\in k[x]$ and $\beta$ is a root of $g$ in $K$, then $f\mid g$ in $k[x]$,
+        \item $f$ is the unique monic irreducible polynomial in $k[x]$ having $\beta$ as a root,
+        \item $1,\beta,\beta^2,\cdots,\beta^{d-1}$ form a basis of $K$ as a vector space over $k$ and so $\dim_k(K)=d$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    With the knowledge form the warm-up part, we can prove this theorem easily.
+    \begin{enumerate}
+        \item  $I$ is a prime ideal hence maximal since $F[x]$ is a PID. So the quotient ring $K=k[x]/I$ is a field. Every field homomorphism is injective and so $k$ embeds into $K$ with its image $k'$.
+        \item Let $f(x)= a_0+a_1x+\cdots+a_{d-1}x^{d-1}+x^d,$ where $a_i\in k$ for all $i$. In $K=k[x]/I$, we have \begin{align*}
+            p(\bb) &= (a_0+I)+(a_1+I)\bb+\cdots+(1+I)\bb^d \\
+            &= (a_0+I)+(a_1+I)(x+I)+\cdots+(1+I)(x+I)^d \\
+            &= (a_0+I)+(a_1x+I)+\cdots+(x^d +I)\\
+            &= a_0+a_x+\cdots+a_{d-1}x^{d-1}+x^d +I \\
+            &= f(x)+I = 0+I.
+        \end{align*} So $\beta$ is a root of $p$.
+        \item If $f\nmid g$ in $k[x]$, then their $\gcd$ is 1 since $f$ is irreducible. Therefore, we can find polynomials $s,t$ in $k[x]$ such that $1=sf+gt$. Treating them as polynomials in $K[x]$ and evaluating at $\beta$, we get $1=0$, a contradiction.
+        \item Let $g$ be a monic irreducible polynomial in $k[x]$having $\bb$ as a root. Then by part (3) we have $f\mid g$. Since $g$ is irreducible, we have $g=ch$ for some constant $c$. But both $f,g$ are monic, we have $c=1$ and $f=g$.
+        \item Every element of $K$has the form $g+I$, where $g(x)\in k[x]$. By the division algorithm, we have $g=qf+r$ with either $r=0$ or $\deg(r)<\deg(f)$. Then $g+I=r+I$ since $g-r=qf\in I$. By the calculation similar in part (2), it follows that $r+I = b_0+b_1\bb+\cdots+ b_{d-1} \bb^{d-1}$ if we express $r(x)= b_0+b_1 x+\cdots+b_{d-1}x^{d-1}.$   
+        
+        If $\{1,\beta,\beta^2,\cdots,\beta^{d-1}\}$ is not linearly independent, then we can find coefficients $c_i\in k$ not all zero such that $$c_0+c_1\bb+\cdots+c_{d-1}\bb^{d-1}=0.$$ Define $g(x)\in k[x]$ by $f(x)=\sum_{i=0}^{d-1}c_ix^i$. Then $g(\bb)=0$ and $\deg(g)\leq d-1 <\deg(f)=d$. By part (3) says $\deg(f)\leq \deg(g)$ since $f\mid g$. We reach a contradiction.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    The polynomial $x^2+1\in \RR[x]$ is irreducible so $K=\RR[x]/(x^2+1)$ is a finite extension of $\RR$ with degree 2. If $\bb$ is a root of $x^2+1$ in $K$, then $\bb^2=-1$. Moreover, every element of $K$ has a unique expression $a+b\bb,$ where $a,b\in \RR$.
+\end{example}
+
+\section{Splitting fields and algebraic closure}
+
+\subsection{Automorphisms}
+
 
 
 % \newpage

@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 \usepackage{amsthm}
 \usepackage{fullpage}
 \usepackage{amsfonts}
@@ -11,7 +11,7 @@
 \vfuzz=2pt
 
 % some "funny lines" referred to later:
-\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
@@ -58,9 +58,9 @@
 % \end{abstract}
 
 \maketitle
-
-\section{Introduction}
-\subsection{Warm up}
+\chapter*{Week 1}
+\setcounter{chapter}{1}
+\section{Warm up}
 
 Let's agree on some facts and conventions from elementary abstract algebra, in particular those with polynomial rings before we dig into Galois theory.
 
@@ -129,8 +129,7 @@ A typical application of Eisenstein's Criterion is to prove the irreducibility o
     Let $F$ be a field and $f(x)$ a polynomial in $F[X]$. Then $(f(X))$ is a prime ideal in $F[X]$ if and only if $f(X)$ is irreducible. Equivalently, $f$ is irreducible if and only if $K[X]/(f)$ is a field.
 \end{thm}
 
-
-\subsection{Extensions of fields}
+\section{Extensions of fields}
 
 Most of this course will involve studying fields relative to certain subfield which we feel we understand better. For example, if $\alpha\in\CC$ is the root of some polynomial with coefficients in $\QQ$, we might wish to study $\QQ(\alpha)$, the smallest subfield of $\CC$ containing $\alpha$ and all of $\QQ$. Certainly, if we want to understand how "complicated" the number $\alpha$ is, it makes sense to consider how "complicated" the field $\QQ(\alpha)$ is as an extension of $\QQ$. If $F \subset E$ are fields, we will denote denote the extension by $E/F$ (this just means that $F$ is a subfield of $E$, and that we're considering $E$ relative to $F$, in particular, $E/F$ is not a quotient or anything too formal). Note that often we will consider $E$ to be an extension of $F$ even if $F\nsubseteq E$, as long as there is an obvious embedding of $F$ into $E$ (an embedding is a homomorphism with is injective). 
 
@@ -240,9 +239,69 @@ In other words, in a finite extension, every element is the root of some polynom
     And hence all roots of $f$ lies in $\QQ[\bb]$.
 \end{example}
 
-\section{Splitting fields and algebraic closure}
+\section{Automorphisms}
+When one is first introduced to the complex numbers, it is usually as a superset of the reals. We're introduced to $\CC$ as a vector space over $\RR$ with basis $\{1,i\}$ which happens to also admit the structure of a field. One function which helps with the very basic study of $\CC$ from this perspective is the complex conjugation: $$\overline{x+yi}=x-yi$$ for $x,y\in \RR$. The important properties of this function are that it is an automorphism of $\CC$ and that it fixes real numbers (and only real numbers. We would like to identify functions of this form for arbitrary field extensions.
 
-\subsection{Automorphisms}
+\begin{defn}
+    Let $F$ be a field, and let $X \subset F$ be a subset. Then $\varphi: F \to F$ is an automorphism if it is a bijection and a homomorphism, namely, $\varphi(x+y)=\varphi(x)+\varphi(y)$ and $\varphi(xy)=\varphi(x)\varphi(y)$. We denote the group of automorphisms of $F$ by $\Aut(F)$. We say that $\varphi\in \Aut(F)$ fixes $X$ if $\varphi(x) = x$ for all $x \in X$, and we denote the set of automorphisms of $F$ fixing $X$ by $\Aut(F/X)$.
+\end{defn}
+
+It's worth noting that this definition of fixing a set is what might more
+rightly be referred to as fixing $X$ pointwise. It is sometimes useful to consider functions which fix X setwise, meaning that $\varphi(x) \in X$ for all $x \in X$. Unless otherwise stated, "fix" means "fix pointwise".
+Note that, in the lemma below, we make no special assumptions about
+the nature of $X \subset F$.
+
+\begin{prop}
+    For any field $F$, and any set $X \subset F$, the set $\Aut(F/X)$ is a group under composition.
+\end{prop}
+
+\begin{proof}
+    Just straightforward verifications.
+\end{proof}
+
+\begin{example}
+    Consider $\Aut(\CC/\RR)$. Every element of $\CC$ can be written as $x+yi$ with $x,y\in\RR$. For any $\sigma\in \Aut(\CC/\RR)$, we must have $\sigma(x+yi)=x+y\sigma(i)$. Furthermore, we also have $$-1=\sigma(-1)=\sigma(i^2)=\sigma(i)^2,$$ and hence $\sigma(i)=\pm i$. So $\Aut(\CC/\RR)$ contains exactly two elements: the trivial one and the complex conjugation. It is clear that $\Aut(\CC/\RR)$ is group --- we need to check the complex conjugation is an automorphism of $\CC$ and twice the complex conjugation is just the identity map.
+\end{example}
+
+This example gives us a feeling about how $\Aut(E/F)$ will be for a field extension $E/F$. In general, if $E/F$ is a finite extension with $[E : F] = n$, then we can choose a basis $\aa_1,\cdots,\aa_n\in E$ for $E/F$. Any element of $E$ can be written uniquely in the form $$c_1\aa_1+\cdots+c_n\aa_n,$$ with $c_i\in F$. If $\sigma\in\Aut(E/F)$, then we have $$\sigma(c_1\aa_1+\cdots+c_n\aa_n)=c_1\sigma(\aa_1)+\cdots+c_n\sigma(\aa_n).$$  In other words, the automorphism $\sigma$ is entirely defined by the $n$ values $\sigma(\aa_1),\cdots,\sigma(\aa_n)$. Moreover, if $f_i(x) \in F[x]$ is the minimal polynomial for $\aa_i$, then $$f_i(\sigma(\aa_i)) = \sigma(f_i(\aa_i)) = \sigma(0) = 0.$$
+So $\sigma(\aa_i)$ is one of the (finitely many) roots of $f_i$ in $E$. So there are only finitely many possible values for $\sigma(\aa_i)$, for each $i$. We won't count how many automorphisms the can be (this will become easier later), but we've just made the following useful observation:
+
+\begin{thm}
+    Let $E/F$ be a finite extension of fields. Then $\Aut(E/F)$ is a finite group. Moreover, if we have $E = F(\aa)$ for some $\aa \in E$, then $\Aut(E/F)$ naturally embeds into the group of permutations of the roots of the minimal polynomial of $\aa$ over $F$.
+\end{thm}
+
+Note that $E/F$ does not need to be a finite extension for us to define $\Aut(E/F)$ (indeed, $F$ need not even be a field).
+Unfortunately, there are interesting extensions $E/F$ for which the group $\Aut(E/F)$ is not interesting.
+
+\begin{example}
+    Let $\aa$ be the real cube root of $2$, and let $E = \QQ(\aa)$. Then $[E:\QQ] = 3$ (since the minimal polynomial of $\aa$, which is $f(x) = x^3 - 2$, is irreducible over $\QQ$). Now suppose that $\sigma \in \Aut(E/Q)$. We've seen that $\sigma$ is entirely determined by $\sigma(\aa)$. But $E \subset \RR$, and $\sigma(\aa)$ has to satisfy $$\sigma(\aa)^3 = \sigma(\aa^3) = 2.$$
+    In particular, $\sigma(\aa)$ is a real cube root of $2$, and so the only possibility is $\sigma(\aa) = \aa$. In other words, the only element of $\Aut(E/Q)$ is the trivial element $\sigma(x) = x$ for all $x \in E$.
+\end{example}
+
+This example is somewhat unsatisfying. One of the important properties of the group $\Aut(\CC/\RR)$ is that the non-trivial element fixes exactly $\RR$. In the example above, the (trivial) group $\Aut(E/\QQ)$ isn't going to be of much use in studying the field $E$. In some sense, the problem is that $E$ contains only one cube root of 2, but we expect there to be 3 distinct cube roots of 2; we'll explore this more when we define what it means for an extension to be Galois.
+
+\begin{example}
+    We can show $\Aut(\RR/\QQ)$ is also trivial. Let $\sigma\in \Aut(\RR/\QQ)$. From the observation that $$\sigma(a^2)=\sigma(a)^2 > 0,$$ we see $\sigma$ must take positive to positive and hence order-preserving. And then it must be continuous (by more detailed arguments) but any continuous map on $\RR$ which is the identity on $\QQ$ is the identity map (again you may fill the details if you want).
+\end{example}
+
+\noindent Our next example says something about finite fields. We do a quick catch-up here.
+
+
+We denote the finite field of order $p$, where $p$ is a prime, by $\FF_p=\{0,1,\cdots,p-1\}$. If $F$ be a finite field with $q$ elements and suppose that $F \subset K$ where $K$ is also a finite field. Then $K$ has $q^n$ elements where $n = [K:F]$ from the knowledge on finite field extensions. Hence a finite field is isomorphic to $\FF_{p^n}$ where $p$ is its characteristic and $n\in \NN$ --- we will show any two fields have the same number of elements are isomorphic.
+
+Since $\FF_{p^n}^\times$ is cyclic of order $p^n-1$, we have $a^{p^n} = a$ for all $a\in \FF_{p^n}$. The polynomial $x^{p^n}-x$ has at most $\deg =  p^n$ roots and we conclude $$x^{p^n}-x = \prod_{a\in \FF_{p^n}} (x-a) \in \FF_{p^n}[x].$$ As we will see later, $\FF_{p^n}$ is the splitting field of $x^{p^n}-x\in \FF[x].$
+
+\begin{example}
+    Let $p$ be a prime, and consider the extension $\FF_{p^n}/\FF_p$. We define a function $\sigma: \FF_{p^n} \to \FF_{p^n}$ by $\sigma(x) = x^p$. By the binomial theorem, and the fact that p divides the binomial coefficient $\binom{p}{j}$for any $1 \leq j \leq p-1$, we have $$\sigma(x + y) = (x + y)^p = x^p + y^p + p\cdot \mbox{(something)} = \sigma(x) + \sigma(y).$$
+    And of course $\sigma(xy) = \sigma(x)\sigma(y)$. So $\sigma$ is a homomorphism. We wish to show that $\sigma$ is an automorphism of $\FF_{p^n}$. Since $\FF_{p^n}$ is finite, we simply need to show that $\sigma$ is either surjective or injective. We'll show that it's injective. To see this, suppose to the contrary that there's some non-zero $x \in \FF_{p^n}$ with $\sigma(x) = 0$. Since the group of non-zero elements $\FF_{p^n}$ is cyclic, say, generated by $\gamma$. If $x =\gamma^j$, then $$x^{p^n} = (\gamma^j)^{p^n} = (\gamma^{p^n})^j = \gamma^j = x.$$
+    On the other hand,  $$x^{p^n}= \sigma^{(n)}(x) = \sigma^{n-1}(\sigma(x)) = \sigma^{(n-1)}(0) = 0,$$ where $\sigma^{(n)}$ means compose $\sigma$ with itself $n$ times. We reach a contradiction.
+    Also, note that $\sigma$ fixes $\FF_p$, so really $\sigma \in \Aut(\FF_{p^n}/\FF_p)$. It's possible to show that $\sigma$ generates this group (laster).
+\end{example}
+
+\chapter*{Week 2}
+\setcounter{chapter}{2}
+
+
 
 
 

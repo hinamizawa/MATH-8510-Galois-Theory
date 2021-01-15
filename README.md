@@ -1,7 +1,7 @@
 # MATH-8510-Galois-Theory
 
-The notes is a mixture from various sourses. They are 
+These notes are a mixture from various sources. They are 
 
-[1] ‪James Milne, Field and Galois Theory.
-[2] Patrick Ingram, Lecture Notes.
-[3] Joseph Rotman,Advanced Modern Algebra.
+* ‪James Milne, Field and Galois Theory.
+* Patrick Ingram, Lecture Notes.
+* Joseph Rotman, Advanced Modern Algebra.

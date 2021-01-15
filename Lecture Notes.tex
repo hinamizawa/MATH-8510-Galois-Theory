@@ -157,14 +157,17 @@ of fields, then we may view $E$ as a vector space over $F$.
     To show $[\RR:\QQ]=\infty$, we make use of the unique factorization theorem of integers and argue that $\{\ln(p): p \mbox{ is a prime}\}$ is a linearly independent set.
 \end{example}
 
-\begin{prop}
+\begin{thm}
     Let $K\subseteq F\subseteq E$ be fields. Then $E/K$ is a finite extensions if and only if both $F/K$ and $E/F$  are, and when this is the case, we have $$[E:K]=[E:F][F:K].$$
-\end{prop}
-
+\end{thm}
 
 \begin{proof}[Sketch of proof]
     If $\{a_i\}$ and $\{b_j\}$ are bases for $E/F$ and $F/K$ respectively, then $\{a_ib_j\}$ is a basis for $E/K$.
 \end{proof}
+
+\begin{example}
+    Consider field extensions $\QQ\subset E= \QQ[\sqrt{2}]\subset F=\QQ[\sqrt{2},\sqrt{3}]$. We already know $[E:\QQ]=2$ and since $\sqrt{3}\notin E$ and it is a $x^2-3\in E[x]$, we also have $[F:E]=[E[\sqrt{3}:E]=2$. And then $[\QQ[\sqrt{2},\sqrt{3}]:\QQ]=4$.
+\end{example}
 
 \begin{defn}
     Let $E/F$ be a field extension. An element $\aa\in E$ is \emph{algebraic} over $F$ if there is a non-zero polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$. Otherwise we say that $\aa$ is \emph{transcendental} over $F$. The extension $E/F$ is \emph{algebraic} if every element of $E$ is algebraic over $F$, and is \emph{transcendental} otherwise.
@@ -178,15 +181,17 @@ of fields, then we may view $E$ as a vector space over $F$.
 
 
 \begin{thm}\label{minimal}
-    Let $E/F$ be a finite extension of fields. Then every element of $E$ is algebraic over $F$. Specifically, for every element $\aa\in E$ there is a unique non-zero monic irreducible polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$, and $f(x)$ divides every polynomial $g(x) \in F[x]$ with $g(\aa) = 0$. Moreover, this polynomial satisfies $deg(f) \leq [E : F]$.
+    Let $E/F$ be a finite extension of fields. Then every element of $E$ is algebraic over $F$. Specifically, for every element $\aa\in E$ there is a unique non-zero monic irreducible polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$, and $f(x)$ divides every polynomial $g(x) \in F[x]$ with $g(\aa) = 0$. And this polynomial satisfies $deg(f) \leq [E : F]$. Moreover, if $I=(f)$, then $F[x]/I \cong k(\aa)$; indeed, there exists an isomorphism $\phi: F[x]/I \to k(\aa)$ with $\phi(x+I)=\alpha$ and $\phi(a+I)=a$ for all $a\in F$.
 \end{thm}
 
 \begin{proof}
     Suppose that $E/F$ is a finite extension and $\aa\in E$. Consider the elements $$1,\aa,\aa^2,\cdots,\aa^{[E:F]}\in E.$$
     Since there are $[E:F]+1$ elements, they must be linearly dependent over $F$. Hence we can find $c_i\in F$ such that $$c_o\cdot 1+c_1\aa+\cdots+c_{[E:F]}\aa^{[E:F]} =0.$$  In other words, $\aa$ is a root of the (non-zero) polynomial $$g(x)=\sum_{i=0}^{[E:F]}c_i x^i \in F[x].$$ And the degree of $g$ is at most $[E:F]$.
 
-    Now consider the evaluation map $$\varphi: F[x]\to E, f(x)\mapsto f(\aa),$$ where one may consider it as the restriction of $e_\aa: E[x]\to E$. Then $\ker(\varphi)$ is non-empty since $g$ lies in it and then $\ker(\varphi)=(f(x))$ for some monic $f(x)\in F[x]$ since $F[x]$ is a PID. Any polynomial $g(x)\in F[x]$ with a root $\aa$ belongs to the kernal and hense is divisible by $f(x)$. Clearly, $\deg f$ is no bigger than $\deg g$ and then no bigger than $[E:F]$. Since $E$ is a field as well, $\im(\varphi)$ is a domain. So the kernel is a prime ideal and therefore $f$ is irreducible.
+    Now consider the evaluation map $$\varphi: F[x]\to E, f(x)\mapsto f(\aa),$$ where one may consider it as the restriction of $e_\aa: E[x]\to E$. Then $\ker(\varphi)$ is non-empty since $g$ lies in it and then $\ker(\varphi)=(f(x))$ for some monic $f(x)\in F[x]$ since $F[x]$ is a PID. Any polynomial $g(x)\in F[x]$ with a root $\aa$ belongs to the kernal and hense is divisible by $f(x)$. Clearly, $\deg f$ is no bigger than $\deg g$ and then no bigger than $[E:F]$. Since $E$ is a field as well, $\im(\varphi)$ is a domain. So the kernel is a prime (hence maximal) ideal and therefore $f$ is irreducible and $\im(\varphi)$ is a field containing $\QQ$ and $\aa$ indeed. $\phi$ is the canonical isomorphism  induced by $\varphi$. 
 \end{proof}
+
+Hence, we have $F[\aa]=F(\aa)$ when $\aa$ is algebraic.
 
 \begin{defn}
     The polynomial $f$ constructed in Theorem \ref{minimal} is called the \emph{minimal polynomial} of $\aa$ over $F$.
@@ -213,7 +218,7 @@ In other words, in a finite extension, every element is the root of some polynom
             p(\bb) &= (a_0+I)+(a_1+I)\bb+\cdots+(1+I)\bb^d \\
             &= (a_0+I)+(a_1+I)(x+I)+\cdots+(1+I)(x+I)^d \\
             &= (a_0+I)+(a_1x+I)+\cdots+(x^d +I)\\
-            &= a_0+a_x+\cdots+a_{d-1}x^{d-1}+x^d +I \\
+            &= a_0+a_1x+\cdots+a_{d-1}x^{d-1}+x^d +I \\
             &= f(x)+I = 0+I.
         \end{align*} So $\beta$ is a root of $p$.
         \item If $f\nmid g$ in $k[x]$, then their $\gcd$ is 1 since $f$ is irreducible. Therefore, we can find polynomials $s,t$ in $k[x]$ such that $1=sf+gt$. Treating them as polynomials in $K[x]$ and evaluating at $\beta$, we get $1=0$, a contradiction.
@@ -226,6 +231,13 @@ In other words, in a finite extension, every element is the root of some polynom
 
 \begin{example}
     The polynomial $x^2+1\in \RR[x]$ is irreducible so $K=\RR[x]/(x^2+1)$ is a finite extension of $\RR$ with degree 2. If $\bb$ is a root of $x^2+1$ in $K$, then $\bb^2=-1$. Moreover, every element of $K$ has a unique expression $a+b\bb,$ where $a,b\in \RR$.
+\end{example}
+
+\begin{example}
+    Let $f(x)= x^4-10x^2+1\in \QQ[X]$. This is an irreducible polynomial: it has no rational roots (if $r/s$ in lowest form was one, then $r\mid 1$ and $r\mid 1$; the only possible rational root was $r/s =\pm 1/1=\pm 1$) and a direct factorization $f(x)=(x^2+ax+b)(x^2-ax+c)$ is also impossible. (One can show, however, $f$ is reducible in $\FF_p[x]$ for any prime $p$.) The roots of $f$ are $$\sqrt{2}+\sqrt{3}, -\sqrt{2}-\sqrt{3}, \sqrt{2}-\sqrt{3}, -\sqrt{2}+\sqrt{3}.$$
+    Let $\bb$ be one of the roots. Consider the field extensions $\QQ\subset\QQ[\bb]\subset \QQ[\sqrt{2},\sqrt{3}]$. We already know from pervious example $$[\QQ[\sqrt{2},\sqrt{3}]:\QQ]=4=[\QQ[\sqrt{2},\sqrt{3}]:\QQ[\bb]][\QQ[\bb]:\QQ].$$ But $\bb$ is a root of irreducible polynomial of degree 4 and therefore $$[\QQ[\bb]:\QQ]=4.$$
+    We see that $[\QQ[\sqrt{2},\sqrt{3}]:\QQ[\bb]]=1$ and then $$\QQ[\sqrt{2},\sqrt{3}]=\QQ[\bb].$$ 
+    And hence all roots of $f$ lies in $\QQ[\bb]$.
 \end{example}
 
 \section{Splitting fields and algebraic closure}

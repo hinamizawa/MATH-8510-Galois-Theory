@@ -1,9 +1,12 @@
-\documentclass[12pt,reqno]{amsart}
+\documentclass[12pt]{article}
+\usepackage{amsthm}
 \usepackage{fullpage}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{times}
 \usepackage{graphicx}
+\usepackage{extsizes}
+\usepackage[margin=1in,footskip=0.25in]{geometry}
 \vfuzz=2pt
 
 % some "funny lines" referred to later:
@@ -48,10 +51,11 @@
 
 \maketitle
 
-\section{Week 1}
+\section*{Week 1}
 \label{Week 1}
+\subsection{Warm up}
 
-\noindent Let's agree on some facts and conventions from elementary abstract algebra, in particular those with polynomial rings before we dig into Galois theory.
+Let's agree on some facts and conventions from elementary abstract algebra, in particular those with polynomial rings before we dig into Galois theory.
 
 \smallskip
 
@@ -59,7 +63,7 @@ A ring is always commutative with multiplicative identity 1 unless otherwise sta
 
 \smallskip
 
-Let $F$ be a field. A polynomial ring $F[X]$ with an indeterminate $X$ is an $F$-vector space with basis $1,X,X^2,...,X^n,...$ with the multiplication $$(\sum_i a_iX^i)(\sum_j b_j X^j) =  \sum_k (\sum_{i+j=k}a_ib_j)X_k,$$ where $X^0$ is defined to be 1. Alternatively, we can identify $R[X]$ with $$R^{(\NN)}=\{(a_i): a_i\in R, a_i=0 \mbox{ for all but finitely many }i\in\NN\}$$ in an obvious way. But usually, we want to say $R$ embeds into $R[X]$ although the most formal way is to identify $R$ with a subring of $R[X]$. The degree function has the following properties:
+Let $F$ be a field. A polynomial ring $F[X]$ with an indeterminate $X$ is an $F$-vector space with basis $1,X,X^2,...,X^n,...$ with the multiplication $$(\sum_i a_iX^i)(\sum_j b_j X^j) =  \sum_k (\sum_{i+j=k}a_ib_j)X^k,$$ where $X^0$ is defined to be 1. Alternatively, we can identify $R[X]$ with $$R^{(\NN)}=\{(a_i): a_i\in R, a_i=0 \mbox{ for all but finitely many }i\in\NN\}$$ in an obvious way. But usually, we want to say $R$ embeds into $R[X]$ although the most formal way is to identify $R$ with a subring of $R[X]$. The degree function has the following properties:
 \begin{enumerate}
     \item $\deg(f+g) \leq \max(\deg f,\deg g),$
     \item $\deg(fg)=\deg f+\deg g.$
@@ -85,7 +89,7 @@ Hence or otherwise, $\ZZ[X]$ is not a PID. Indeed, $\langle 2, X\rangle$ is an e
 
 Given a polynomial $f[X]\in F[X]$ and any $u\in F$, the division algorithm give us: $$f(X)= q(X)(X-u)+f(u).$$
 
-And lying in the center of proving that every finite subgroup of $F^\times$ is cyclic is the following theorem.
+And lying in the center of proving that every finite subgroup of $F^\times$ is cyclic is counting the roots of polynomial $X^n-1$.
 
 \begin{thm}
     Let $F$ be a field and $f[X]\in F[X]$ a polynomial of degree $n$. Then $f$ has at most $n$ roots.
@@ -101,7 +105,7 @@ A quadratic or cubic polynomial is irreducible in $F[X]$ if and only if it has n
     A polynomial $f(X)\in \ZZ[X]$ is irreducible if and only if it is irreducible over $\QQ[X]$.
 \end{thm}
 
-\begin{thm}[Eisenstein Criterion]
+\begin{thm}[Eisenstein's Criterion]
     Let $f(X) = a_0+a_1X+...+a_nX^n\in \ZZ[X]$ be a polynomial over integers with $a_n\not= 0$. Suppose that there exists a prime $p$ such that \begin{enumerate}
         \item  $p\nmid a_n$, 
         \item  $p\mid a_i$  for  $i=0,1,...,n-1$,
@@ -110,8 +114,10 @@ A quadratic or cubic polynomial is irreducible in $F[X]$ if and only if it has n
     Then $f(X)$ is irreducible over $\ZZ[X]$.
 \end{thm}
 
+A typical application of Eisenstein's Criterion is to prove the irreducibility of the $p$-th cyclotomic polynomial $\Phi_p(X) = \frac{X^p-1}{X-1}$, where $p$ is a prime. The idea is to apply the criterion to $\Phi(X+1)$.
+
 \begin{thm}
-    Let $F$ be a field. Then $(f(X))$ is a prime ideal in $F[X]$ if and only if $f(X)$ is irreducible. Equivalently, $f$ is irreducible if and only if $K[X]/(f)$ is a field.
+    Let $F$ be a field and $f(x)$ a polynomial in $F[X]$. Then $(f(X))$ is a prime ideal in $F[X]$ if and only if $f(X)$ is irreducible. Equivalently, $f$ is irreducible if and only if $K[X]/(f)$ is a field.
 \end{thm}
 
 Making use of above results, we finally reach the very last theorem which functions as a cornerstone in many arguments.
@@ -127,10 +133,12 @@ Making use of above results, we finally reach the very last theorem which functi
     \end{enumerate}
 \end{thm}
 
+\subsection{Extensions of fields}
 
-\noindent\dotfill
+Most of this course will involve studying fields relative to certain subfield which we feel we understand better. For example, if $\alpha\in\CC$ is the root of some polynomial with coefficients in $\QQ$, we might wish to study $\QQ(\alpha)$, the smallest subfield of $\CC$ containing $\alpha$ and all of $\QQ$. Certainly, if we want to understand how "complicated" the number $\alpha$ is, it makes sense to consider how "complicated" the field $\QQ(\alpha)$ is as an extension of $\QQ$. If $F \subset E$ are fields, we will denote denote the extension by $E/F$ (this just means that $F$ is a subfield of $E$, and that we're considering $E$ relative to $F$, in particular, $E/F$ is not a quotient or anything too formal). Note that often we will consider $E$ to be an extension of $F$ even if $F\nsubseteq E$, as long as there is an obvious embedding of $F$ into $E$ (an embedding is a homomorphism with is injective). 
 
-
+We will make a lot of use of the observation that if $E/F$ is an extension
+of fields, then we may view $E$ as a vector space over $F$.
 
 
 % \newpage

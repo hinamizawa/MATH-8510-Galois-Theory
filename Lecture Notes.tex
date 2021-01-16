@@ -145,7 +145,7 @@ of fields, then we may view $E$ as a vector space over $F$.
 \end{example}
 
 \begin{example}
-    It is widely known that $\sqrt{2}\notin\QQ$. Thus $1,\sqrt{2}$ are linearly independent over $\QQ$. On the other hand $(\sqrt{2})^2\in \QQ$ and then any polynomial in $\sqrt{2}$ with rational coefficients is just a $\QQ$-linear combinations of $1$ and $\sqrt{2}$. Since $$\frac{1}{a+b\sqrt{2}} = \frac{a}{a^2-2b^2} +\frac{-b}{a^2-2b^2}\sqrt{2},$$ every rational function of $\sqrt{2}$ can be written as a $\QQ$-linear combinations of $1$ and $\sqrt{2}$. It follows immediately that $\QQ(\sqrt{2})=\QQ[\sqrt{2}]$ and $[\QQ{\sqrt{2}}:\QQ]=2$.  
+    It is widely known that $\sqrt{2}\notin\QQ$. Thus $1,\sqrt{2}$ are linearly independent over $\QQ$. On the other hand $(\sqrt{2})^2\in \QQ$ and then any polynomial in $\sqrt{2}$ with rational coefficients is just a $\QQ$-linear combinations of $1$ and $\sqrt{2}$. Since $$\frac{1}{a+b\sqrt{2}} = \frac{a}{a^2-2b^2} +\frac{-b}{a^2-2b^2}\sqrt{2},$$ every rational function of $\sqrt{2}$ can be written as a $\QQ$-linear combinations of $1$ and $\sqrt{2}$. It follows immediately that $\QQ(\sqrt{2})=\QQ[\sqrt{2}]$ and $[\QQ[\sqrt{2}]:\QQ]=2$.  
 \end{example}
 
 \begin{example}
@@ -304,6 +304,27 @@ Since $\FF_{p^n}^\times$ is cyclic of order $p^n-1$, we have $a^{p^n} = a$ for a
 
 \chapter*{Week 2}
 \setcounter{chapter}{2}
+\section{Separable extensions}
+Let $f(x)\in F[x]$ be (monic) irreducible and $(E=F[\aa],\aa)$ its stem field (or $E$ a field containing all the roots). From what we learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots --- the roots are separable.
+
+\begin{defn}
+    Let $k$ be a field. A nonzero polynomial $f(x) \in k[x]$ is called \emph{separable} if it has no repeated roots (in any extension field). 
+\end{defn}
+
+Recall that the derivative of a polynomial $f(x)=\sum a_i x^i$ is defined to be $f'(x) = \sum ia_ix^{i-1}$. When $f$ has coefficients in $\RR$, this agrees with the definition in calculus. The usual rules for differentiating sums and products still hold, but note that in characteristic $p$ the derivative of $x^p$ is zero.
+
+\begin{thm}
+    Let $K$ be a field. A nonzero polynomial in $K[X]$ is separable if and only if it is relatively
+    prime to its derivative in $K[X]$.
+\end{thm}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{defn}
+    A field $F$ is said to be \emph{perfect} if every irreducible polynomial in $F[x]$ is separable.
+\end{defn}
 
 
 

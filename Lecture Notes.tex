@@ -429,15 +429,14 @@ The next theorem gives a complete description of field extensions which admit a 
 element.
 
 \begin{thm}[Steinitz]\label{ste}
-    Let $E/F$ be a finite extension of fields. Then $E = F(\aa)$ for some $\aa in E$ if and only if there exist only finitely many distinct intermediate fields $F \subset K \subset E$.
+    Let $E/F$ be a finite extension of fields. Then $E = F(\aa)$ for some $\aa \in E$ if and only if there exist only finitely many distinct intermediate fields $F \subset K \subset E$.
 \end{thm}
 
 \begin{proof}
-    We have seen that the primitive element property trivially holds in all
-finite fields, and the property of there only being finitely many intermediate fields does as well. We will suppose, then, that $F$ is infinite.
-   Suppose that there are only finitely many intermediate fields. We will show that $E = F(\aa)$ for some $\aa$, and just as in the proof of Theorem \ref{primitive} (which is very similar) we are free to suppose that $E = F(\bb,\gamma$). Consider the fields $F(\bb + a\gamma)$, for $a \in F$. Since all of these fields lie between $F$ and $E$, there must be distinct $a1_ \not= a_2 \in F$ with $F(\bb + a_1 \gamma) = F(\bb + a_2\gamma)$. Now, since $\bb + a_1 \gamma$ and $\bb + a_2 \gamma$ are both in this field, so is $(a_2 - a_1)\gamma$, and hence $\gamma$ (since $a_2 - a_1 \not= 0$). It follows $\beta = (\beta+a_1\gamma) -a_1\gamma$ is in $F(\beta +a_1)\gamma$ as well. Thus $E = F(\bb,\gamma) = F(\bb + a_1\gamma)$, and we are done.
+    We have seen that the primitive element property trivially holds in all finite fields, and the property of there only being finitely many intermediate fields does as well. We will suppose, then, that $F$ is infinite.
+    Suppose that there are only finitely many intermediate fields. We will show that $E = F(\aa)$ for some $\aa$, and just as in the proof of Theorem \ref{primitive} (which is very similar) we are free to suppose that $E = F(\bb,\gamma$). Consider the fields $F(\bb + a\gamma)$, for $a \in F$. Since all of these fields lie between $F$ and $E$, there must be distinct $a1_ \not= a_2 \in F$ with $F(\bb + a_1 \gamma) = F(\bb + a_2\gamma)$. Now, since $\bb + a_1 \gamma$ and $\bb + a_2 \gamma$ are both in this field, so is $(a_2 - a_1)\gamma$, and hence $\gamma$ (since $a_2 - a_1 \not= 0$). It follows $\beta = (\beta+a_1\gamma) -a_1\gamma$ is in $F(\beta +a_1)\gamma$ as well. Thus $E = F(\bb,\gamma) = F(\bb + a_1\gamma)$, and we are done.
 
-   For another direction, suppose that $E = F(\aa)$. For each intermediate field $F \subset K \subset E$, we take $f_K(x) \in K[x] \subset E[x]$ to be the minimal polynomial of $\aa$ over $K$. By unique factorization in $E[x]$, each $f_K(x)$ must be a (monic) divisor of $f_F(x)$ (where $f_F(x)$ is considered as a polynomial in $E[x]$), and there are only finitely many of these. It suffices to show, then, that this function $K \to f_K(x)$ is one-to-one. Let $F(f_K)$ be the field generated over $F$ by the coefficients of $f_K(x)$. Then certainly $F(f_K) \subset K$. On the other hand, $f_K(x)$ is an irreducible monic polynomial with coefficients in $F(f_K)$, which vanishes at $\aa$, and so $\aa$ has degree $\deg(f_K)$ over $F(f_K)$. It follows from the fact that
+    For another direction, suppose that $E = F(\aa)$. For each intermediate field $F \subset K \subset E$, we take $f_K(x) \in K[x] \subset E[x]$ to be the minimal polynomial of $\aa$ over $K$. By unique factorization in $E[x]$, each $f_K(x)$ must be a (monic) divisor of $f_F(x)$ (where $f_F(x)$ is considered as a polynomial in $E[x]$), and there are only finitely many of these. It suffices to show, then, that this function $K \to f_K(x)$ is one-to-one. Let $F(f_K)$ be the field generated over $F$ by the coefficients of $f_K(x)$. Then certainly $F(f_K) \subset K$. On the other hand, $f_K(x)$ is an irreducible monic polynomial with coefficients in $F(f_K)$, which vanishes at $\aa$, and so $\aa$ has degree $\deg(f_K)$ over $F(f_K)$. It follows from the fact that
    $$[F(\aa):F(f_K)] = [F(\aa):K][K:F(f_K)]$$ that $[K : F(f_K)] = 1$. In other words, $K = F(f_K)$, showing that the map is injective. It follows at once that there are only finitely many subfields $F \subset K \subset E$.    
 \end{proof}
 
@@ -445,7 +444,44 @@ finite fields, and the property of there only being finitely many intermediate f
     Patrick Ingram refers Theorem \ref{ste} as the primitive element theorem. But Rotman labels it after Steinitz. And many textbooks (Rotman included) refers Theorem \ref{primitive} as the primitive element theorem instead. We follow Rotman's conventions.
 \end{remark}
 
+\section{Algebraic closure}
 
+Although we can get by with constructing fields like $\QQ(i)$ as quotients:
+$$Q(i) \cong \QQ[x]/(x^2 + 1),$$
+it is often useful to think of all of the possible algebraic extensions as being subfields of one large (infinite) extension.
+
+\begin{defn}
+    A field $F$ is said to be \emph{algebraically closed} if every non-constant polynomial $f(x) \in F[x]$ has a root in $F$ or, equivalently, if every polynomial in $F[x]$ factors as a product of linear terms.
+\end{defn}
+
+\begin{thm}\label{ac}
+    Let $F$ be a field. Then there exists a field $\overline{F}\supset F$ which is algebraically closed and algebraic over $F$. This field is unique up to isomorphism.
+\end{thm}
+
+We will not try to prove Theorem \ref{ac} but give a direction here. As you can guess, Zorn's lemma is inevitable in such king proof. The problem is how to apply it.
+
+One can imagine looking at the "set" of all algebraic extensions of $F$. This collection of fields is partially ordered under inclusion, and linearly ordered chains in the collection have least upper bounds (their union). If this were a set of fields, then it would follow form Zorn's Lemma that there is a maximal element, call it $\overline{F}$. This would be an algebraic extension of $F$: it would have no proper algebraic extension, and hence it would have to be algebraically closed. This is the algebraic closure of $F$. The problem with this argument is that the collection of algebraic extensions of $F$ is too large to be a set, and hence one cannot apply Zorn's Lemma.
+
+Instead, let's do this. Let $P$ be the set of all non-constant monic polynomials in $F[X]$ and let $A = F[t_f]_{f\in P}$ be the polynomial ring over $K$ generated by a set of indeterminates indexed by $P$. This is a \emph{huge} ring. For each $f \in F[X]$ and $a \in A$, $f(a)$ is an element of $A$. Let $I$ be the ideal in $A$ generated by the elements $f(t_f)$ as $f$ runs over $P$. The first step is to show $I$ is proper and hence contained in a maximal ideal $\mathfrak{m}$. The next step is then to show $A/\mathfrak{m}$ is algebraically closed. The last step is to show the algebraic closure is unique up to isomorphism.
+
+\begin{thm}
+    Let $F$ be a field, $\overline{F}$ its algebraic closure, and let $F \subset E \subset F$ be a finite separable extension of $F$. Then there are precisely $[E:F]$ distinct embeddings $E\to \overline{F}$ which fix $F$.
+\end{thm}
+
+\begin{proof}
+    By the primitive element theorem, we may suppose that $E = F(\aa)$, and let $f(x) \in F[x]$ be the minimal polynomial of $\aa$. For each root $\aa' \in \overline{F}$, we have an isomorphism $$E = F(\aa) \cong F(x)/(f(x)) \cong F(\aa') \subset F.$$
+    This gives us $\deg(f) = [E:F]$ embeddings of $E$ into $\overline{F}$, which must be distinct, since they send $\aa$ to the $\deg(f)$ distinct roots of $f$ (hidden here is the fact that $E/F$ is separable). 
+    On the other hand, any embedding $F(\aa) \to F$ which fixes $F$ is determined entirely by the value at $\aa$ (which must be a root of the same minimal polynomials in $F[x]$ as $\aa$), and so these are the only possible embeddings of $E \to F$.
+\end{proof}
+
+\begin{cor}
+    Let E=F be a finite separable extension. Then
+     $$|\Aut(E=F)| \leq [E:F].$$
+\end{cor}
+
+\begin{proof}
+    Each distinct automorphism $\sigma\in\Aut(E/F)$ gives a distinct embedding $\sigma : E \to E \subset \overline{F},$ which fixes $F$.
+\end{proof}
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99

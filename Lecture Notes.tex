@@ -15,8 +15,7 @@
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
-{ \theoremstyle{remark}\newtheorem*{remark}{Remark} }
-\theoremstyle{definition}
+{\theoremstyle{remark}\newtheorem*{remark}{Remark}}
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{example}[thm]{Example}
@@ -198,7 +197,7 @@ Hence, we have $F[\aa]=F(\aa)$ when $\aa$ is algebraic.
 
 In other words, in a finite extension, every element is the root of some polynomial over the smaller field. The next theorem is a partial converse to this, and we will use it often.
 
-\begin{thm}
+\begin{thm}\label{stem}
     Let $k$ be a field and $f[x]$ a monic irreducible polynomial in $k[x]$ of degree $d$. Let $K=k[x]/I$, where $I=(f)$, and $\beta = x+I\in K$. Then:
     \begin{enumerate}
         \item $K$ is a field and $k'=\{a+I: a\in k\}$ is a subfield of $K$ isomorphic to $k$,
@@ -222,7 +221,7 @@ In other words, in a finite extension, every element is the root of some polynom
         \end{align*} So $\beta$ is a root of $p$.
         \item If $f\nmid g$ in $k[x]$, then their $\gcd$ is 1 since $f$ is irreducible. Therefore, we can find polynomials $s,t$ in $k[x]$ such that $1=sf+gt$. Treating them as polynomials in $K[x]$ and evaluating at $\beta$, we get $1=0$, a contradiction.
         \item Let $g$ be a monic irreducible polynomial in $k[x]$having $\bb$ as a root. Then by part (3) we have $f\mid g$. Since $g$ is irreducible, we have $g=ch$ for some constant $c$. But both $f,g$ are monic, we have $c=1$ and $f=g$.
-        \item Every element of $K$has the form $g+I$, where $g(x)\in k[x]$. By the division algorithm, we have $g=qf+r$ with either $r=0$ or $\deg(r)<\deg(f)$. Then $g+I=r+I$ since $g-r=qf\in I$. By the calculation similar in part (2), it follows that $r+I = b_0+b_1\bb+\cdots+ b_{d-1} \bb^{d-1}$ if we express $r(x)= b_0+b_1 x+\cdots+b_{d-1}x^{d-1}.$   
+        \item Every element of $K$ has the form $g+I$, where $g(x)\in k[x]$. By the division algorithm, we have $g=qf+r$ with either $r=0$ or $\deg(r)<\deg(f)$. Then $g+I=r+I$ since $g-r=qf\in I$. By the calculation similar in part (2), it follows that $r+I = b_0+b_1\bb+\cdots+ b_{d-1} \bb^{d-1}$ if we express $r(x)= b_0+b_1 x+\cdots+b_{d-1}x^{d-1}.$   
         
         If $\{1,\beta,\beta^2,\cdots,\beta^{d-1}\}$ is not linearly independent, then we can find coefficients $c_i\in k$ not all zero such that $$c_0+c_1\bb+\cdots+c_{d-1}\bb^{d-1}=0.$$ Define $g(x)\in k[x]$ by $f(x)=\sum_{i=0}^{d-1}c_ix^i$. Then $g(\bb)=0$ and $\deg(g)\leq d-1 <\deg(f)=d$. By part (3) says $\deg(f)\leq \deg(g)$ since $f\mid g$. We reach a contradiction.
     \end{enumerate}
@@ -305,7 +304,7 @@ Since $\FF_{p^n}^\times$ is cyclic of order $p^n-1$, we have $a^{p^n} = a$ for a
 \chapter*{Week 2}
 \setcounter{chapter}{2}
 \section{Separable extensions}
-Let $f(x)\in F[x]$ be (monic) irreducible and $(E=F[\aa],\aa)$ its stem field (or $E$ a field containing all the roots). From what we learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots --- the roots are separable.
+Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem field (or $E$ a field containing all the roots). From what we have learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots are separable.
 
 \begin{defn}
     Let $k$ be a field. A nonzero polynomial $f(x) \in k[x]$ is called \emph{separable} if it has no repeated roots (in any extension field). 
@@ -313,18 +312,42 @@ Let $f(x)\in F[x]$ be (monic) irreducible and $(E=F[\aa],\aa)$ its stem field (o
 
 Recall that the derivative of a polynomial $f(x)=\sum a_i x^i$ is defined to be $f'(x) = \sum ia_ix^{i-1}$. When $f$ has coefficients in $\RR$, this agrees with the definition in calculus. The usual rules for differentiating sums and products still hold, but note that in characteristic $p$ the derivative of $x^p$ is zero.
 
-\begin{thm}
-    Let $K$ be a field. A nonzero polynomial in $K[X]$ is separable if and only if it is relatively
-    prime to its derivative in $K[X]$.
+\begin{thm}\label{sep}
+    Let $K$ be a field. An irreducible $f$ polynomial in $K[X]$ is separable if and only if $\gcd(f,f')=1$ in $K[X]$.
 \end{thm}
 
 \begin{proof}
-    
+    Let $f(X)$ be an irreducible polynomial in $K[X]$. Suppose $f(X)$ is separable, and let $\aa$ be a root of $f(X)$ (in some extension of $K$. Then $f(X) = (X -\aa)h(X)$ for some $h(x)\not=0$. Since $f'(\aa)=h(\aa)\not=0$, $f'$ is non-zero and $\deg(f')<\deg(f)$. It follows from the irreducibility of $f$ immediately that $\gcd(f,f')=1$.
+
+    Now suppose $f(X)$ is not separable and $\aa$ is a repeated root (in an extension field). Then we can write $f(X)=(X-\aa)^2g(X)$ (in some extension field), where $g(x)$ is non-zero, and then  $f'(X)= (X-\aa)^2g'(X)+2(X-\aa)g(x)$. It follows that $f'$ is non-zero as well and $f'(\aa)=0$. By Theorem \ref{minimal}, both $f,f'$ are divisible by the minimal polynomial of $\aa$ in $K[X]$ and then $\gcd(f,f')\not=1$.
 \end{proof}
 
 \begin{defn}
     A field $F$ is said to be \emph{perfect} if every irreducible polynomial in $F[x]$ is separable.
 \end{defn}
+
+Fortunately, almost all the fields we have good feelings at are perfect. 
+
+\begin{thm}
+    A field $F$ is perfect if and only if either $F$ has characteristic $0$, or $F$ has characteristic $p$ and the function $\sigma(x): F\to F, x\mapsto X$ is an isomorphism. (And then in particular, any finite field is perfect.)
+\end{thm}
+
+\begin{proof}
+    Suppose that $F$ has characteristic 0. Let $f$ be an irreducible polynomial. Then $\deg(f')=\deg(f)-1\not=0$ and it follows from the irreducibility of $f$ that $\gcd(f,f')=1$. Therefore, $f$ is separable by Theorem \ref{sep}.  
+
+    Now consider the case when the characteristic of $F$ is a prime $p$. We already see $\sigma$ is a field homomorphism last week. Since field homomorphisms are injective, we only need to consider the surjectivity  of $\sigma$.
+
+    Suppose that $\sigma$ is not surjective and $a\in F$ is not in the image. Then the polynomial $f(x)=x^p-a$ has no roots in $F$. 
+    
+    Claim: $f(x)$ is irreducible.
+
+    Proof of claim: By Theorem \ref{stem}, let $E/F$ be a finite extension containing a root $\bb$ of $f$ and so that $$f(x)=x^p-a=x^p-\bb^p=(x-\bb)^p \in E[x].$$
+    Thus if $f$ factors non-trivially in $F[x]$, then a factor of $f$ looks like $(x-\bb)^j \in F[x]$ for some $1\leq j<p$. The coefficient of $x^{j-1}$ in $(x-\bb)^j$ is $-j\bb$. Since $j\not=0$ in $F$, we conclude $\bb$ lies in $F$ and reach a contradiction. 
+
+    Notice that $f'(x)=px^{p-1} = 0$ in $F[x]$. So every root of $f$ is a multiple root. We have shown $f$ is irreducible and inseparable and then $F$ is not perfect.
+    
+    For another direction, suppose that $\sigma$ is surjective and that $f\in F[x]$ is irreducible and inseparable. Similarly to the argument in Theorem \ref{sep}, we get $f$ divides $f'$. If $f'$ was not the zero polynomial, then $\deg(f')< \deg(f)$, which is impossible given $f\mid f'$. Let $f(x)=\sum_{i=0}^d a_ix^i$ then we get $$0=f'(x)=\sum_{i=1}^dia_ix^{i-1}\in F[x].$$  Therefore, $ia_i=0$ for each $i$, which says $a_i=0$ or $i=0$ in $F$. In other words, $a_i=0$ unless $p|i$ and then we can write $$f(x)= \sum_{i=0}^m a_{ip}x^{ip}.$$ But $\sigma$ is surjective, then $a_ip =  (\aa^i)^p$ for some $\aa_i\in F$ for each $i$ and $$f(x) =  \sum_{i=0}^m (\aa_i)^p x^{ip} = (\sum_{i=1}^m \aa_ix^i)^p.$$ This polynomial is definitely reducible and we reach a contradiction.
+\end{proof}
 
 
 

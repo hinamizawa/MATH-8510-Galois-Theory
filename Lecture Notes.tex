@@ -350,8 +350,19 @@ Fortunately, almost all the fields we have good feelings at are perfect.
 \end{proof}
 
 
+This theorem says that fields of characteristic 0 and finite fields are perfect. There is actually a  more elementary proof when $F=\FF_p$.
 
+\begin{thm}
+    Let $f(x)\in \FF_p[X]$ be irreducible and of degree $n$. Then $f$ is irreducibility and $f$ divides $X^{p^n}-X$. (Hence or otherwise, $X^{p^n} -X$ has a factorization $X^{p^n}-X =  \prod_{d\mid n}\prod_{f_d} f_d$, where $f_d$ runs over all irreducible polynomials of degree $d$.)
+\end{thm}
 
+\begin{proof}[Sketch of proof]
+    Assume $f(X)\not= X$ and the image of $X$ is $x\in \FF_p[X]/(f) = E$. Then $[E:\FF_p] =  n$ and $|E|=p^n$. We then know $E^\times$ is cyclic of order $p^n-1$ and then $x^{p^n-1} = 1$ and $x^{p^n} = x$. So $X^{p^n}-X$ has a root $x$ and then $f\mid X^{p^n}-X$ by Theorem \ref{minimal}. Moreover, $X^{p^n}-X$ has no repeated roots --- its has at most $p^n$ roots and they are all of $E$.
+\end{proof}
+
+\begin{defn}
+    Let $E/F$ be an algebraic extension of fields, and let $\aa \in E$ be algebraic over $F$. We say that $\aa$ is \emph{separable} over $F$ if the minimal polynomial of $\aa$ over $F$ is separable. We say that $E/F$ is \emph{separable} if every element of $E$ is separable over $F$.
+\end{defn}
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99

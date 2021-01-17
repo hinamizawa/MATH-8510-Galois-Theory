@@ -380,48 +380,72 @@ A lot of results about field theory that are valid in characteristic 0 carry ove
 
 It is clear that extensions of fields of characteristic 0 have characteristic 0, and that finite extensions of finite fields are finite, so this theorem is only non-trivial if $F$ is infinite, but has a positive characteristic.
 
-A possible term paper may discuss inseparable extensions, those field extensions over the function fields.
-
 \begin{thm}\label{sep2}
     Let $L/K$ be a finite extension and say $L = K(\aa_1,\cdots,\aa_n)$. Then $L/K$ is separable if and only if each $\aa_i$ is separable over K.
 \end{thm}
 
-Let's postpone the proof till next section. The usefulness of this theorem is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of L is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
+Let's postpone the proof till we introduce Galois group. The usefulness of this theorem is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of L is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
 
 \begin{example}
     $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is separable. 
 \end{example}
 
+A possible term paper may discuss (purely) inseparable extensions, those field extensions over the function fields.
 
 \section{The primitive element theorem}
+
+In this section we prove a result which is not entirely necessary for the discourse, but simplifies the proofs of several other theorems.
 
 \begin{defn}
     A field extension $E/F$ is \emph{primitive} if there is an element $\aa\in E$ such that $E=F(\aa)$.
 \end{defn}
 
 \begin{example}
-    We already see $\QQ(\sqrt{2},\sqrt{3})=\QQ(\sqrt{2}+\sqrt{3})$, so $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is primitive.
+    We already show $\QQ(\sqrt{2},\sqrt{3})=\QQ(\sqrt{2}+\sqrt{3})$, so $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is primitive.
 \end{example}
 
-\begin{lem}
-    Let $L/K$ be a finite extension of fields with $[L:K] = n$ and $\sigma: K \to F$ be a field embedding.
-    \begin{enumerate}
-        \item The number of extensions of $\sigma$ to an embedding $L \to F$ is at most $n$.
-        \item If $L/K$ is separable then then there is a field $F'\supset F$ such that the number of extensions of $\sigma$ to an embedding $L\to F'$ is equal to $n$.
-    \end{enumerate}
-\end{lem}
-
-\begin{proof}
-    
-\end{proof}
-
-\begin{proof}[Proof of Theorem \ref{sep2}]
-    
-\end{proof}
-
-\begin{thm}[Primitive Element Theorem]
+\begin{thm}[Primitive Element Theorem]\label{primitive}
     Let $E/F$ be a finite, separable extension of fields. Then $E/F$ is a primitive extension,
 \end{thm}
+
+\begin{proof}
+    We will first note that the theorem is trivial if $F$ is a finite field, since in this case $E$ is also finite, and $E^\times$ is a cyclic group. Any generator $\aa$ will clearly satisfy $E = F(\aa)$.
+
+    We also note that it suffices to prove the theorem in the case $E = F(\aa,\bb)$, since the general case follows by induction ($E$ will always have some finite basis over $F$). So we'll suppose that $F$ is infinite and that $E=F(\aa,\bb)$ for some $\aa,\bb\in E$.
+    Let $\aa=\aa_1,\aa_2,\cdots,\aa_n$ be the roots of the minimal polynomial $f(x)$ of $\aa$ over $F$, and $\bb=\bb_1,\bb_2,\cdots,\bb_m$ the roots of the minimal polynomial $h(x)$ of $\bb$ over $F$. All the roots are distinct since $E$ is separable. Since $F$ is infinite, we may choose some $a \in F$ such that $$a\not= \frac{\aa_i-\aa}{\bb-\bb_j}$$ for any $i$ and any $j \not= 1$. Let $\gamma = \aa+a\bb$
+
+    Claim: $F(\aa,\bb)=F(\gamma)$.
+
+    The theorem follows from the claim (and induction) immediately.
+
+    Proof of Claim: Note that since $\gamma = \aa+a\bb$, we have $F(\aa,\bb)=F(\gamma,\beta)$. It is enough to show $\beta$ is in $F(\gamma)$.Let $g(x) = f(\gamma - ax) \in F(\gamma)[x]$. Note that 
+    $$g(\beta) =f(\gamma - a \beta) = f((\aa+a\bb)-a\bb) = f(\aa) = 0.$$
+    On the other hand, we cannot have $g(\beta_j)=0$ for $j \not=1$, as $f(\gamma - a\beta_j)=0$ would imply $\gamma-a\beta_j=\aa_i$ for some $i$. Substituting $\gamma= \aa+a\bb$ inside, we reach at
+     $$a(\bb-\bb_j)=\aa_i-\aa.$$
+    This contradicts to our initial assumption about $a$. Thus $\gcd(g(x), h(x))\in F(\gamma)[x]$ has exactly one root, namely $x =\beta$. And since $h(x)$ has no repeated root, neither does $\gcd(g(x), h(x))$. It follows that $\gcd(g(x), h(x)) \in F(\gamma)[x]$ is a linear polynomial vanishing at $\beta$, and in fact $\beta \in F(\gamma)$. (A hidden fact here is that if $E/F$ is a field extension and $g(x),f(x)$ are in $F[x]$, then $\gcd_{F[x]}(g,f) = \gcd_{E[x]}(g,f)$. A simple explanation is that $\gcd(g,f)$ can be computed with the Euclidean algorithm, which operates on the coefficients of $g$ and $g$ and so never leaves $F$.)
+\end{proof}
+
+The next theorem gives a complete description of field extensions which admit a primitive
+element.
+
+\begin{thm}[Steinitz]\label{ste}
+    Let $E/F$ be a finite extension of fields. Then $E = F(\aa)$ for some $\aa in E$ if and only if there exist only finitely many distinct intermediate fields $F \subset K \subset E$.
+\end{thm}
+
+\begin{proof}
+    We have seen that the primitive element property trivially holds in all
+finite fields, and the property of there only being finitely many intermediate fields does as well. We will suppose, then, that $F$ is infinite.
+   Suppose that there are only finitely many intermediate fields. We will show that $E = F(\aa)$ for some $\aa$, and just as in the proof of Theorem \ref{primitive} (which is very similar) we are free to suppose that $E = F(\bb,\gamma$). Consider the fields $F(\bb + a\gamma)$, for $a \in F$. Since all of these fields lie between $F$ and $E$, there must be distinct $a1_ \not= a_2 \in F$ with $F(\bb + a_1 \gamma) = F(\bb + a_2\gamma)$. Now, since $\bb + a_1 \gamma$ and $\bb + a_2 \gamma$ are both in this field, so is $(a_2 - a_1)\gamma$, and hence $\gamma$ (since $a_2 - a_1 \not= 0$). It follows $\beta = (\beta+a_1\gamma) -a_1\gamma$ is in $F(\beta +a_1)\gamma$ as well. Thus $E = F(\bb,\gamma) = F(\bb + a_1\gamma)$, and we are done.
+
+   For another direction, suppose that $E = F(\aa)$. For each intermediate field $F \subset K \subset E$, we take $f_K(x) \in K[x] \subset E[x]$ to be the minimal polynomial of $\aa$ over $K$. By unique factorization in $E[x]$, each $f_K(x)$ must be a (monic) divisor of $f_F(x)$ (where $f_F(x)$ is considered as a polynomial in $E[x]$), and there are only finitely many of these. It suffices to show, then, that this function $K \to f_K(x)$ is one-to-one. Let $F(f_K)$ be the field generated over $F$ by the coefficients of $f_K(x)$. Then certainly $F(f_K) \subset K$. On the other hand, $f_K(x)$ is an irreducible monic polynomial with coefficients in $F(f_K)$, which vanishes at $\aa$, and so $\aa$ has degree $\deg(f_K)$ over $F(f_K)$. It follows from the fact that
+   $$[F(\aa):F(f_K)] = [F(\aa):K][K:F(f_K)]$$ that $[K : F(f_K)] = 1$. In other words, $K = F(f_K)$, showing that the map is injective. It follows at once that there are only finitely many subfields $F \subset K \subset E$.    
+\end{proof}
+
+\begin{remark}
+    Patrick Ingram refers Theorem \ref{ste} as the primitive element theorem. But Rotman labels it after Steinitz. And many textbooks (Rotman included) refers Theorem \ref{primitive} as the primitive element theorem instead. We follow Rotman's conventions.
+\end{remark}
+
+
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99

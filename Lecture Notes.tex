@@ -350,7 +350,7 @@ Fortunately, almost all the fields we have good feelings at are perfect.
 \end{proof}
 
 
-This theorem says that fields of characteristic 0 and finite fields are perfect. There is actually a  more elementary proof when $F=\FF_p$.
+This theorem says that fields of characteristic 0 and finite fields are perfect. One has to work fairly hard to come up with an example of an inseparable extension. But these do come up naturally in algebraic geometry over fields of positive characteristic. Moreover, there is actually a  more elementary proof when $F=\FF_p$.
 
 \begin{thm}
     Let $f(x)\in \FF_p[X]$ be irreducible and of degree $n$. Then $f$ is irreducibility and $f$ divides $X^{p^n}-X$. (Hence or otherwise, $X^{p^n} -X$ has a factorization $X^{p^n}-X =  \prod_{d\mid n}\prod_{f_d} f_d$, where $f_d$ runs over all irreducible polynomials of degree $d$.)
@@ -360,9 +360,27 @@ This theorem says that fields of characteristic 0 and finite fields are perfect.
     Assume $f(X)\not= X$ and the image of $X$ is $x\in \FF_p[X]/(f) = E$. Then $[E:\FF_p] =  n$ and $|E|=p^n$. We then know $E^\times$ is cyclic of order $p^n-1$ and then $x^{p^n-1} = 1$ and $x^{p^n} = x$. So $X^{p^n}-X$ has a root $x$ and then $f\mid X^{p^n}-X$ by Theorem \ref{minimal}. Moreover, $X^{p^n}-X$ has no repeated roots --- its has at most $p^n$ roots and they are all of $E$.
 \end{proof}
 
+
+A lot of results about field theory that are valid in characteristic 0 carry over to perfect fields in characteristic $p$ (but not everything), and the reader should be attentive to this point when reading texts which try to make life easy by always assuming fields have characteristic 0. You should always check if the theorems (and even proofs) go through to general perfect fields. 
+
 \begin{defn}
     Let $E/F$ be an algebraic extension of fields, and let $\aa \in E$ be algebraic over $F$. We say that $\aa$ is \emph{separable} over $F$ if the minimal polynomial of $\aa$ over $F$ is separable. We say that $E/F$ is \emph{separable} if every element of $E$ is separable over $F$.
 \end{defn}
+
+
+\begin{thm}
+    A field $K$ is perfect if and only if every finite extension of $K$ is a separable extension.
+\end{thm}
+
+\begin{proof}
+    Suppose $K$ is perfect: every irreducible in $K[X]$ is separable. If $L/K$ is a finite extension then the minimal polynomial in $K[X]$ of every element (which is algebraic) of $L$ is irreducible and therefore separable, so $L/K$ is a separable extension.
+
+    Now suppose every finite extension of $K$ is a separable extension. To show $K$ is perfect, let $f(X) \in K[X]$ be irreducible. Consider the stem field $L = K(\aa)$ from Theorem \ref{stem}, where $f(\aa) = 0$. This field is a finite extension of $K$, so a separable extension by hypothesis, so $\aa$ is separable over $K$. Since $f(X)$ is the minimal polynomial of $\aa$ in $K[X]$, it is a separable polynomial.
+\end{proof}
+
+It is clear that extensions of fields of characteristic 0 have characteristic 0, and that finite extensions of finite fields are finite, so this theorem is only non-trivial if $F$ is infinite, but has a positive characteristic.
+
+A possible term paper may discuss inseparable extensions, those field extensions over the function fields.
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99

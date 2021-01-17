@@ -179,7 +179,7 @@ of fields, then we may view $E$ as a vector space over $F$.
 
 
 \begin{thm}\label{minimal}
-    Let $E/F$ be a finite extension of fields. Then every element of $E$ is algebraic over $F$. Specifically, for every element $\aa\in E$ there is a unique non-zero monic irreducible polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$, and $f(x)$ divides every polynomial $g(x) \in F[x]$ with $g(\aa) = 0$. And this polynomial satisfies $deg(f) \leq [E : F]$. Moreover, if $I=(f)$, then $F[x]/I \cong k(\aa)$; indeed, there exists an isomorphism $\phi: F[x]/I \to k(\aa)$ with $\phi(x+I)=\alpha$ and $\phi(a+I)=a$ for all $a\in F$.
+    Let $E/F$ be a finite extension of fields. Then every element of $E$ is algebraic over $F$. Specifically, for every element $\aa\in E$ there is a unique non-zero monic irreducible polynomial $f(x) \in F[x]$ such that $f(\aa) = 0$, and $f(x)$ divides every polynomial $g(x) \in F[x]$ with $g(\aa) = 0$. And this polynomial satisfies $deg(f) \leq [E:F]$. Moreover, if $I=(f)$, then $F[x]/I \cong k(\aa)$; indeed, there exists an isomorphism $\phi: F[x]/I \to k(\aa)$ with $\phi(x+I)=\alpha$ and $\phi(a+I)=a$ for all $a\in F$.
 \end{thm}
 
 \begin{proof}
@@ -266,7 +266,7 @@ the nature of $X \subset F$.
     Consider $\Aut(\CC/\RR)$. Every element of $\CC$ can be written as $x+yi$ with $x,y\in\RR$. For any $\sigma\in \Aut(\CC/\RR)$, we must have $\sigma(x+yi)=x+y\sigma(i)$. Furthermore, we also have $$-1=\sigma(-1)=\sigma(i^2)=\sigma(i)^2,$$ and hence $\sigma(i)=\pm i$. So $\Aut(\CC/\RR)$ contains exactly two elements: the trivial one and the complex conjugation. It is clear that $\Aut(\CC/\RR)$ is group --- we need to check the complex conjugation is an automorphism of $\CC$ and twice the complex conjugation is just the identity map.
 \end{example}
 
-This example gives us a feeling about how $\Aut(E/F)$ will be for a field extension $E/F$. In general, if $E/F$ is a finite extension with $[E : F] = n$, then we can choose a basis $\aa_1,\cdots,\aa_n\in E$ for $E/F$. Any element of $E$ can be written uniquely in the form $$c_1\aa_1+\cdots+c_n\aa_n,$$ with $c_i\in F$. If $\sigma\in\Aut(E/F)$, then we have $$\sigma(c_1\aa_1+\cdots+c_n\aa_n)=c_1\sigma(\aa_1)+\cdots+c_n\sigma(\aa_n).$$  In other words, the automorphism $\sigma$ is entirely defined by the $n$ values $\sigma(\aa_1),\cdots,\sigma(\aa_n)$. Moreover, if $f_i(x) \in F[x]$ is the minimal polynomial for $\aa_i$, then $$f_i(\sigma(\aa_i)) = \sigma(f_i(\aa_i)) = \sigma(0) = 0.$$
+This example gives us a feeling about how $\Aut(E/F)$ will be for a field extension $E/F$. In general, if $E/F$ is a finite extension with $[E:F] = n$, then we can choose a basis $\aa_1,\cdots,\aa_n\in E$ for $E/F$. Any element of $E$ can be written uniquely in the form $$c_1\aa_1+\cdots+c_n\aa_n,$$ with $c_i\in F$. If $\sigma\in\Aut(E/F)$, then we have $$\sigma(c_1\aa_1+\cdots+c_n\aa_n)=c_1\sigma(\aa_1)+\cdots+c_n\sigma(\aa_n).$$  In other words, the automorphism $\sigma$ is entirely defined by the $n$ values $\sigma(\aa_1),\cdots,\sigma(\aa_n)$. Moreover, if $f_i(x) \in F[x]$ is the minimal polynomial for $\aa_i$, then $$f_i(\sigma(\aa_i)) = \sigma(f_i(\aa_i)) = \sigma(0) = 0.$$
 So $\sigma(\aa_i)$ is one of the (finitely many) roots of $f_i$ in $E$. So there are only finitely many possible values for $\sigma(\aa_i)$, for each $i$. We won't count how many automorphisms the can be (this will become easier later), but we've just made the following useful observation:
 
 \begin{thm}
@@ -381,6 +381,47 @@ A lot of results about field theory that are valid in characteristic 0 carry ove
 It is clear that extensions of fields of characteristic 0 have characteristic 0, and that finite extensions of finite fields are finite, so this theorem is only non-trivial if $F$ is infinite, but has a positive characteristic.
 
 A possible term paper may discuss inseparable extensions, those field extensions over the function fields.
+
+\begin{thm}\label{sep2}
+    Let $L/K$ be a finite extension and say $L = K(\aa_1,\cdots,\aa_n)$. Then $L/K$ is separable if and only if each $\aa_i$ is separable over K.
+\end{thm}
+
+Let's postpone the proof till next section. The usefulness of this theorem is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of L is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
+
+\begin{example}
+    $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is separable. 
+\end{example}
+
+
+\section{The primitive element theorem}
+
+\begin{defn}
+    A field extension $E/F$ is \emph{primitive} if there is an element $\aa\in E$ such that $E=F(\aa)$.
+\end{defn}
+
+\begin{example}
+    We already see $\QQ(\sqrt{2},\sqrt{3})=\QQ(\sqrt{2}+\sqrt{3})$, so $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is primitive.
+\end{example}
+
+\begin{lem}
+    Let $L/K$ be a finite extension of fields with $[L:K] = n$ and $\sigma: K \to F$ be a field embedding.
+    \begin{enumerate}
+        \item The number of extensions of $\sigma$ to an embedding $L \to F$ is at most $n$.
+        \item If $L/K$ is separable then then there is a field $F'\supset F$ such that the number of extensions of $\sigma$ to an embedding $L\to F'$ is equal to $n$.
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{sep2}]
+    
+\end{proof}
+
+\begin{thm}[Primitive Element Theorem]
+    Let $E/F$ be a finite, separable extension of fields. Then $E/F$ is a primitive extension,
+\end{thm}
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99

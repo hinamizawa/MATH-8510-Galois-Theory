@@ -13,7 +13,7 @@
 % some "funny lines" referred to later:
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
-\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 {\theoremstyle{remark}\newtheorem*{remark}{Remark}}
 \theoremstyle{definition}
@@ -384,7 +384,7 @@ It is clear that extensions of fields of characteristic 0 have characteristic 0,
     Let $L/K$ be a finite extension and say $L = K(\aa_1,\cdots,\aa_n)$. Then $L/K$ is separable if and only if each $\aa_i$ is separable over K.
 \end{thm}
 
-Let's postpone the proof till we introduce Galois group. The usefulness of this theorem is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of L is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
+Let's postpone the proof till we introduce Galois group. The usefulness of this theorem is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of $L$ is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
 
 \begin{example}
     $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is separable. 
@@ -458,7 +458,7 @@ it is often useful to think of all of the possible algebraic extensions as being
     Let $F$ be a field. Then there exists a field $\overline{F}\supset F$ which is algebraically closed and algebraic over $F$. This field is unique up to isomorphism.
 \end{thm}
 
-We will not try to prove Theorem \ref{ac} but give a direction here. As you can guess, Zorn's lemma is inevitable in such king proof. The problem is how to apply it.
+We will not try to prove Theorem \ref{ac} but give a direction here. As you might guess, Zorn's lemma is inevitable in such kind proof. The problem is how to apply it.
 
 One can imagine looking at the "set" of all algebraic extensions of $F$. This collection of fields is partially ordered under inclusion, and linearly ordered chains in the collection have least upper bounds (their union). If this were a set of fields, then it would follow form Zorn's Lemma that there is a maximal element, call it $\overline{F}$. This would be an algebraic extension of $F$: it would have no proper algebraic extension, and hence it would have to be algebraically closed. This is the algebraic closure of $F$. The problem with this argument is that the collection of algebraic extensions of $F$ is too large to be a set, and hence one cannot apply Zorn's Lemma.
 
@@ -481,6 +481,70 @@ Instead, let's do this. Let $P$ be the set of all non-constant monic polynomials
 
 \begin{proof}
     Each distinct automorphism $\sigma\in\Aut(E/F)$ gives a distinct embedding $\sigma : E \to E \subset \overline{F},$ which fixes $F$.
+\end{proof}
+
+
+\chapter*{Week 3}
+\setcounter{chapter}{3}
+\section{Splitting fields}
+
+\begin{defn}
+    A \emph{splitting field} of the polynomial $f(x)\in F[x]$ is a field extension $E/F$ such that $f(x)$ factors into linear terms in $E[x]$, namely, $$f(x)=(x-\aa_1)\cdots(x-\aa_n),$$
+    and such that $E=F(\aa_1,\cdots,\aa_n)$. 
+\end{defn}
+
+This is, the splitting field is the smallest field (unique up to isomorphism) extension containing all the roots of $f(x)$. If $f$ is irreducible and separable, the all linear terms above are distinct. This may not be true if $f$ is inseparable.
+
+\begin{example}
+    Let $f(x)=x^3-2\in\QQ[Z]$. $\QQ(\sqrt[3]{2})$ is not the splitting field of $f$, since it does not contain all the root. The splitting field is $E=\QQ(\sqrt[3]{2},\omega\sqrt[3]{2},\omega^2\sqrt[3]{2},)$ where $\omega$ is a third of unity, in other words, $1,\omega,\omega^2$ are roots of $x^3-1$. Note that we also have $E=\QQ(\omega,\sqrt[3]{2})$. The symbol $\sqrt[3]{2}$ is ambiguous, but we can either take the real cube root, or simply note that any choice defines the same field (only now that we've thrown in $\omega$).
+\end{example}
+
+The following theorem, which is perhaps surprising, says that the splitting field of a polynomial contains a splitting field for the minimal polynomial of any element of that field.
+
+\begin{thm}\label{normal}
+    Let $E/F$ be a finite extension of fields. The following are equivalent:
+    \begin{enumerate}
+        \item $E$ is the splitting field of some polynomial over $F$;
+        \item every irreducible polynomial $g(x)\in F[x]$ with a root in $E$ factors completely over $E$;
+        \item any embedding $\sigma: E\to \overline{F}$ fixing $F$ is an automorphism of $E$, namely, $\im(\sigma)=E$.
+    \end{enumerate}
+\end{thm}
+
+We need a technical lemma to prove Theorem \ref{normal}.
+
+\begin{lemma}\label{nlam}
+    Let $E/F$ be a finite extension. Suppose that $F'\subset E$ is a field and that there is a embedding $\psi: F'\to\overline{F}$ fixing $F$, Then $\psi$ can be extended to an embedding $\phi: E\to\overline{F}$ in the sense that $\phi|_{F'}=\psi$.
+\end{lemma}
+
+\begin{proof}
+    We proceed by induction on $[E:F']$. If $[E:F']=1$, then $E=F'$ and we are done. 
+    
+    Suppose that $[E:F]>1$ and that the statement is true for fields $F\subset F''\subset E$ with $[E:F'']<[E:F']$. Since $E\not=F'$, there is an element $\bb\in E\setminus F'$ which, necessarily, is algebraic over $F'$. Now we have been given an embedding $\psi: F'\to\overline{F}$ which fixes $F$. For a polynomial $g(x)\in F'[x]$, we let $g^\psi(x)\in \overline{F}$ be the polynomial obtained by applying $\psi$ to each coefficient. Then clearly $g(x) \to g^\psi(x)$ is an isomorphism from $F'[x]$ to $K[x]$, where $K \subset F$ is the image of $F'$ under $\psi$. Now, if $g^\psi(\bb') = 0$, it follows easily that
+    $$F'(\bb)\cong F'[x]/(g)\cong K[x]/(g^\psi) \cong K(\bb').$$
+    This gives an embedding of  $\psi': F'(\bb) \to F$ which extends $\psi$. Since $[E:F'(\bb)] < [E : F']$ (because $[F'(\bb) : F0] > 1$), we may apply the induction hypothesis to  $\psi': F'(\bb) \to E$, and conclude that it extends to an embedding $E \to \overline(F)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{normal}] We show that $$(3)\Longrightarrow(2)\Longrightarrow (1)\Longrightarrow (3).$$
+    
+    (2) $\Longrightarrow$ (1): For a primitive extension $E=F(\alpha)$, $E$ is the splitting field of the minimal polynomial of $\alpha$ over $F$. If $E=F(\aa_1,\cdots,\aa_n)$, the $E$ is the splitting field of the products of the minimal polynomials of $\aa_i$ over $F$ for $i=1,\cdots,n$.
+
+    (3) $\Longrightarrow$ (2): Let $g(x)\in F[x]$ be an irreducibility polynomial with a root $\bb\in E$. For each root $\beta'\in \overline{F}$, we obtain an embedding: $F(\beta) \to \overline{F}$ with $\phi(\bb)=\bb'$. (Indeed, both $F(\bb), F(\bb')$ are isomorphic to $F[x]/(g)$ by Theorem \ref{minimal}.) By Lemma \ref{nlam}, we can extend to an embedding $\sigma: E\to \overline{F}$ (fixing $F$). The image of $\sigma$ is $E$ by assumption. In other words, $\bb'=\phi(\bb)$ is in $E$. As $\bb'$ runs over all possible roots, $E$ contains all the roots of $g$ and so $g$ factors completely in $E[x]$.
+
+    (1) $\Longrightarrow$ (3): Let $E$ be the splitting field of $f(x)\in F[x]$ and $\sigma: E\to\overline{F}$ an embedding fixing $F$. We know that $\sigma$ permutes the roots of $f(x)$ in $\overline{F}$, so the image of $\sigma$ contains all the roots of $f$. But $E$ is exactly generated by the roots of $f$, so the $\im(\sigma)$ is as well. It follows that $\sigma(E)=E$.
+\end{proof}
+
+\begin{defn}
+    A finite extension $E/F$ is \emph{normal} if it satisfies any of the equivalent condition in Theorem \ref{normal}.
+\end{defn}
+
+There is an alternate characterization of normal extensions in the separable case:
+
+\begin{thm}
+    Let $E/F$ be a finite separable extension. The $E/F$ is normal if and only if $$|\Aut(E/F)|=[E:F].$$
+\end{thm}
+
+\begin{proof}
+    
 \end{proof}
 
 % \newpage

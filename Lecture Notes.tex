@@ -247,7 +247,7 @@ In other words, in a finite extension, every element is the root of some polynom
 \end{proof}
 
 \begin{remark}
-    The pair $(K,\bb)$ is called the \emph{stem field} in Milner.
+    The pair $(K,\bb)$ is called the \emph{stem field} (of $f$) in Milner.
 \end{remark}
 
 \begin{example}
@@ -323,7 +323,7 @@ Since $\FF_{p^n}^\times$ is cyclic of order $p^n-1$, we have $a^{p^n} = a$ for a
 \chapter*{Week 2}
 \setcounter{chapter}{2}
 \section{Separable extensions}
-Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem field (or $E$ a field containing all the roots). From what we have learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots are separable.
+Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem field (or $E$ a possibly larger field containing all the roots). From what we have learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots are separable.
 
 \begin{defn}
     Let $k$ be a field. A nonzero polynomial $f(x) \in k[x]$ is called \emph{separable} if it has no repeated roots (in any extension field). 
@@ -372,7 +372,7 @@ Fortunately, almost all the fields we have good feelings at are perfect.
 This theorem says that fields of characteristic 0 and finite fields are perfect. One has to work fairly hard to come up with an example of an inseparable extension. But these do come up naturally in algebraic geometry over fields of positive characteristic. Moreover, there is actually a  more elementary proof when $F=\FF_p$.
 
 \begin{thm}
-    Let $f(x)\in \FF_p[X]$ be irreducible and of degree $n$. Then $f$ is irreducibility and $f$ divides $X^{p^n}-X$. (Hence or otherwise, $X^{p^n} -X$ has a factorization $X^{p^n}-X =  \prod_{d\mid n}\prod_{f_d} f_d$, where $f_d$ runs over all irreducible polynomials of degree $d$.)
+    Let $f(x)\in \FF_p[X]$ be irreducible and of degree $n$. Then $f$ is separable and $f$ divides $X^{p^n}-X$. (Hence or otherwise, $X^{p^n} -X$ has a factorization $X^{p^n}-X =  \prod_{d\mid n}\prod_{f_d} f_d$, where $f_d$ runs over all irreducible polynomials of degree $d$.)
 \end{thm}
 
 \begin{proof}[Sketch of proof]
@@ -453,7 +453,7 @@ element.
 
 \begin{proof}
     We have seen that the primitive element property trivially holds in all finite fields, and the property of there only being finitely many intermediate fields does as well. We will suppose, then, that $F$ is infinite.
-    Suppose that there are only finitely many intermediate fields. We will show that $E = F(\aa)$ for some $\aa$, and just as in the proof of Theorem \ref{primitive} (which is very similar) we are free to suppose that $E = F(\bb,\gamma$). Consider the fields $F(\bb + a\gamma)$, for $a \in F$. Since all of these fields lie between $F$ and $E$, there must be distinct $a1_ \not= a_2 \in F$ with $F(\bb + a_1 \gamma) = F(\bb + a_2\gamma)$. Now, since $\bb + a_1 \gamma$ and $\bb + a_2 \gamma$ are both in this field, so is $(a_2 - a_1)\gamma$, and hence $\gamma$ (since $a_2 - a_1 \not= 0$). It follows $\beta = (\beta+a_1\gamma) -a_1\gamma$ is in $F(\beta +a_1)\gamma$ as well. Thus $E = F(\bb,\gamma) = F(\bb + a_1\gamma)$, and we are done.
+    Suppose that there are only finitely many intermediate fields. We will show that $E = F(\aa)$ for some $\aa$, and just as in the proof of Theorem \ref{primitive} (which is very similar) we are free to suppose that $E = F(\bb,\gamma$). Consider the fields $F(\bb + a\gamma)$, for $a \in F$. Since all of these fields lie between $F$ and $E$, there must be distinct $a_1 \not= a_2 \in F$ with $F(\bb + a_1 \gamma) = F(\bb + a_2\gamma)$. Now, since $\bb + a_1 \gamma$ and $\bb + a_2 \gamma$ are both in this field, so is $(a_2 - a_1)\gamma$, and hence $\gamma$ (since $a_2 - a_1 \not= 0$). It follows $\beta = (\beta+a_1\gamma) -a_1\gamma$ is in $F(\beta +a_1)\gamma$ as well. Thus $E = F(\bb,\gamma) = F(\bb + a_1\gamma)$, and we are done.
 
     For another direction, suppose that $E = F(\aa)$. For each intermediate field $F \subset K \subset E$, we take $f_K(x) \in K[x] \subset E[x]$ to be the minimal polynomial of $\aa$ over $K$. By unique factorization in $E[x]$, each $f_K(x)$ must be a (monic) divisor of $f_F(x)$ (where $f_F(x)$ is considered as a polynomial in $E[x]$), and there are only finitely many of these. It suffices to show, then, that this function $K \to f_K(x)$ is one-to-one. Let $F(f_K)$ be the field generated over $F$ by the coefficients of $f_K(x)$. Then certainly $F(f_K) \subset K$. On the other hand, $f_K(x)$ is an irreducible monic polynomial with coefficients in $F(f_K)$, which vanishes at $\aa$, and so $\aa$ has degree $\deg(f_K)$ over $F(f_K)$. It follows from the fact that
    $$[F(\aa):F(f_K)] = [F(\aa):K][K:F(f_K)]$$ that $[K : F(f_K)] = 1$. In other words, $K = F(f_K)$, showing that the map is injective. It follows at once that there are only finitely many subfields $F \subset K \subset E$.    
@@ -493,9 +493,9 @@ Instead, let's do this. Let $P$ be the set of all non-constant monic polynomials
     On the other hand, any embedding $F(\aa) \to F$ which fixes $F$ is determined entirely by the value at $\aa$ (which must be a root of the same minimal polynomials in $F[x]$ as $\aa$), and so these are the only possible embeddings of $E \to F$.
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor1}
     Let E=F be a finite separable extension. Then
-     $$|\Aut(E=F)| \leq [E:F].$$
+     $$|\Aut(E/F)| \leq [E:F].$$
 \end{cor}
 
 \begin{proof}
@@ -540,7 +540,7 @@ We need a technical lemma to prove Theorem \ref{normal}.
     
     Suppose that $[E:F]>1$ and that the statement is true for fields $F\subset F''\subset E$ with $[E:F'']<[E:F']$. Since $E\not=F'$, there is an element $\bb\in E\setminus F'$ which, necessarily, is algebraic over $F'$. Now we have been given an embedding $\psi: F'\to\overline{F}$ which fixes $F$. For a polynomial $g(x)\in F'[x]$, we let $g^\psi(x)\in \overline{F}$ be the polynomial obtained by applying $\psi$ to each coefficient. Then clearly $g(x) \to g^\psi(x)$ is an isomorphism from $F'[x]$ to $K[x]$, where $K \subset F$ is the image of $F'$ under $\psi$. Now, if $g^\psi(\bb') = 0$, it follows easily that
     $$F'(\bb)\cong F'[x]/(g)\cong K[x]/(g^\psi) \cong K(\bb').$$
-    This gives an embedding of  $\psi': F'(\bb) \to F$ which extends $\psi$. Since $[E:F'(\bb)] < [E : F']$ (because $[F'(\bb) : F0] > 1$), we may apply the induction hypothesis to  $\psi': F'(\bb) \to E$, and conclude that it extends to an embedding $E \to \overline(F)$.
+    This gives an embedding of  $\psi': F'(\bb) \to F$ which extends $\psi$. Since $[E:F'(\bb)] < [E : F']$ (because $[F'(\bb) : F0] > 1$), we may apply the induction hypothesis to  $\psi': F'(\bb) \to E$, and conclude that it extends to an embedding $E \to \overline{F}$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{normal}] We show that $$(3)\Longrightarrow(2)\Longrightarrow (1)\Longrightarrow (3).$$
@@ -553,7 +553,7 @@ We need a technical lemma to prove Theorem \ref{normal}.
 \end{proof}
 
 \begin{defn}
-    A finite extension $E/F$ is \emph{normal} if it satisfies any of the equivalent condition in Theorem \ref{normal}.
+    A finite extension $E/F$ is \emph{normal} if it satisfies any of the equivalent conditions in Theorem \ref{normal}.
 \end{defn}
 
 There is an alternate characterization of normal extensions in the separable case:
@@ -563,7 +563,9 @@ There is an alternate characterization of normal extensions in the separable cas
 \end{thm}
 
 \begin{proof}
+    Suppose that $E/F$ is normal. We know that $\Aut(E/F) \leq [E:F]$ by Corollary \ref{cor1}, since each element of $\Aut(E/F)$ defines an embedding $E \to \overline{F}$ fixing $F$. On the other hand, each such embedding is an automorphism of $E$ by the above theorem, and there are $[E:F]$ of these. That implies $[E : F] \leq \Aut(E/F)$.
     
+    On the other hand, if $\Aut(E/F) = [E:F]$, then each of the $[E:F]$ embeddings must give rise to an automorphism, since $\Aut(E/F)$ is just the number of these embeddings under which the image of $E$ is $E$. So $\Aut(E/F) = [E:F]$ implies $E/F$ is a normal extension.
 \end{proof}
 
 % \newpage

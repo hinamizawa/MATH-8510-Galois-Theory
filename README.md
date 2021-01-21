@@ -7,4 +7,4 @@ These notes are a mixture from various sources. They are
 * ‪James Milne, Field and Galois Theory.
 * Joseph Rotman, Advanced Modern Algebra.
 
-For the first several weeks, we follow exactly Patrick's notes with some additional materials from here and there. Then we move on to Milne. We will not discuss discrete valuation rings.
+For the first several weeks, we follow exactly Ingram's notes with some additional materials from here and there. Then we move on to Milne. We will not discuss discrete valuation rings.

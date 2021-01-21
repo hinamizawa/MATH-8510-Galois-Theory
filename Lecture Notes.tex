@@ -867,6 +867,26 @@ So, in total, we've proven the following theorem.
     Let $E/F$ be a Galois extension. Then the function $H \mapsto E^H$ from subgroups of $\Gal(E/F)$ to intermediate fields of $E/F$ is an inclusion-reversing bijection, and the inverse is given by $K \mapsto \Gal(E/K)$. Moreover, $H \trianglelefteq \Gal(E/F)$ if and only if $K = E^H$ is a Galois extension of $F$, in which case $$\Gal(E/F)/\Gal(E/K) \cong \Gal(K/F).$$
 \end{thm}
 
+\begin{example}
+    In the example $E=\QQ(\sqrt{2},\sqrt{3})$, as an extension of $\QQ$, the Galois group is $C_2\times C_2$. Three non-trivial proper subgroups are all normal. The corresponding intermediate fields are all Galois extensions of $\QQ$.
+\end{example}
+
+\begin{example}
+    Let $E/\QQ$ be the splitting field of $x^3 - 2$, so that $E = \QQ(\aa; \omega)$, where $\aa^3 = 2$ (it does not matter, but we can specify $\aa\in \RR$), and $\omega$ is a primitive cube root of unity. As a splitting field over a perfect field, this is automatically a Galois extension, and since $[E :\QQ] = 6$, we see that the Galois automorphisms are exactly the functions $\sigma_{a,b}$ defined by $$\sigma_{a,b}(\aa)=\omega^a \aa, \sigma_{a,b}(\omega)=\omega^{2^b}.$$
+    Note that $\omega^3=1$ and $\omega^{2^2}=\omega$, we can take $a\in\ZZ/3\ZZ$ and $b\in\ZZ/2\ZZ$. And then we can compute the group operation explicitly: $$\sigma_{c,d}\circ\sigma_{a,b}(\omega)=\sigma_{c,d}(\omega^{2^b}) = (\sigma^{2^d})^{2^b} = \sigma^{2^{b+d}}$$
+    and $$\sigma_{c,d}\circ\sigma_{a,b}(\aa)= \sigma_{c,d}(\omega^a \aa) = (\omega^{2^d})^a \omega^c\aa.$$
+    In other words, $$\sigma_{c,d}\circ\sigma_{a,b}=\sigma_{c+2^da,b+d}.$$
+    This gives an explicit isomorphism between $\Gal(E/\QQ)$ and a certain semidirect product of $\ZZ/3\ZZ$ with $\ZZ/2\ZZ$. Indeed, since the group is not abelian, we have $\Gal(E/\QQ)\cong S_3$.
+    
+    Now the subgroups of $\Gal(E/F)$ (other than the group itself, and the trivial subgroup) have order either 2 or 3, and so must be cyclic. We simply need to identify the elements of $\Gal(E/F)$ of order 2 or 3. One checks that $\sigma_{a,0}\circ\sigma{b,0} = \sigma_{a+b,0}$, and so the elements $\sigma_{1,0}$ and $\sigma_{2,0}$ generate the same subgroup of order 3. Also note that $\sigma_{0,1}^2 = \sigma_{1,1}^2 = \sigma_{2,1}^2 = id$, so the remaining three elements of this group of order 6 each have order 2. Now, $E^{\langle \sigma_{1,0}\rangle} \subset E$ should satisfy $[E : E^{\langle \sigma_{1,0}\rangle}] = 3$. Note that $\sigma_{1,0}(\omega) = \omega$, and $[E : \QQ(\omega)] = 3$, so we must have $E^{\langle \sigma_{1,0}\rangle} = \QQ(\omega)$. Similarly, $[E : E^{\langle \sigma_{0,1}\rangle}] = 2$, and $\sigma_{0,1}(\aa) = \aa$, so we must have $E^{\langle \sigma_{0,1}\rangle} = \QQ(\aa)$. Finally, a bit of trial-and-error shows that $\sigma_{1,1}(\omega^2\aa) = \omega^2\aa$, and $\sigma_{2,1}(\omega\aa) = \omega\aa$, and so comparing degrees gives $E^{\langle \sigma_{1,1}\rangle} = \QQ(\omega^2\aa)$ and $E^{\langle \sigma_{2,1}\rangle} = \QQ(\omega\aa)$.
+
+    The one thing that remains is to decide which of these is a Galois extension of $\QQ$. Let's cheat here: the only non-trivial proper normal subgroup of $S_3$ is $A_3$, so as we already see that $\QQ(\omega)$ (being quadratic) is, while the other three are not.
+\end{example}
+
+\chapter*{Week 4}
+\setcounter{chapter}{4}
+
+
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99
 

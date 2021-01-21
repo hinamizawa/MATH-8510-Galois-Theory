@@ -789,7 +789,7 @@ needed.
 Artin's Theorem has an immediate, and very useful, corollary:
 
 
-\begin{cor}
+\begin{cor}\label{artincor}
     If $E/F$ is a finite Galois extension, then $E^{\Gal(E/F)} = F$.
 \end{cor}
 
@@ -806,6 +806,66 @@ Artin's Theorem has an immediate, and very useful, corollary:
 
 \section{The fundamental theorem}
 
+
+The original aim was to understand finite field extensions $E/F$ using the group $\Aut(E/F)$. In general, it's possible that $E/F$ is non-trivial, but $\Aut(E/F)$ is trivial, which means in general it's unlikely that $\Aut(E/F)$ will shed a lot of light on the structure of $E/F$. In the case where $E/F$ is Galois, though, we know that $\Aut(E/F)$ is as large as it possibly could be, and hence gives as much information as possible. One might expect, than, that Galois extensions are the ones for which $\Aut(E/F)$ gives as much information as possible. The purpose of this section is to show that $\Gal(E/F)$ gives a great deal of information about the intermediate fields. Artin's Theorem raises a natural question: Given a finite Galois extension $E/F$, for any subgroup $H \subset  \Gal(E/F)$, the field $E^H$ is a subfield of $E$, and $E/E^H$ is a Galois extension; what is the exact relation between $H$ and $E^H$?
+
+
+For one thing, if $H \subset  \Gal(E/F)$, then $F \subset  E^H \subset  E$, and $E/E^H$ is a Galois extension of degree $|H|$. All of this follows from Artin's Theorem. Perhaps surprisingly, it turns out that this function is both injective and surjective (onto the collection of intermediate fields between $E$ and $F$). This is, essentially, the fundamental theorem of Galois Theory. We will prove this theorem as a sequence of lemmas, and then state the complete result at the end of the section.
+
+
+\begin{lemma}
+    Let $E/F$ be a finite Galois extension. Then the function $H \mapsto E^H$, defined on subgroups of $\Gal(E/F)$, is inclusion-reversing.
+\end{lemma}
+
+\begin{proof}
+    We want to show that if $H_1 \subset H_2$ are two subgroups of $E$, then $E^{H_1}\supseteq E^{H_2}$. Suppose that $\aa\in E^{H_2}$. Then for every $\sigma\in H_2$, we have $\sigma(\aa) = \aa$. But $H_1 \subset  H_2$, so $\sigma(\aa) = \aa$ for every $\sigma\in H_1$. This shows that $\aa\in E^{H_1}$. Since $\aa\in E^{H_2}$ was arbitrary, we have $E^{H_1}\supseteq E^{H_2}$.
+\end{proof}
+
+\begin{lemma}
+    Let $E/F$ be a finite Galois extension. Then the function $H \mapsto E^H$ is a bijection between subgroups of $\Gal(E/F)$ and intermediate fields $F \subset  K \subset  E$.
+\end{lemma}
+
+\begin{proof}
+    We will prove this by exhibiting an inverse for the function $H \mapsto E^H$. We claim that the inverse function is $K \mapsto \Gal(E/K)$. One side of this is Artin's Theorem, which shows that $E/E^H$ is a Galois extension, and $\Gal(E/E^H) = H$. On the other hand, if $F \subset  K \subset  E$, then $E/K$ is a finite, separable extension (separability follows from the fact that the minimal polynomial of any element of $E$ over $K$ divides the minimal polynomial over $F$, which will have no repeated roots). The extension $E/K$ also has to be normal, because if $E$ is the splitting field of $f(x)\in F[x]$ over $F$, then $E$ is also the splitting field of $f(x)$ over $K$. So $E/K$ is a Galois extension whenever $F \subset  K \subset  E$. It follows from Corollary \ref{artincor} that $E^{\Gal(E/K)} = K$. Thus we've shown that the maps $H \mapsto E^H$ and $K \mapsto \Gal(E/K)$ are inverses. They are, then, both bijections.
+\end{proof}
+
+
+It is always true, when $E/F$ is a finite Galois extension, and $F \subset  K \subset  E$, that $E/K$ is a Galois extension, as noted in the proof above. It is \emph{not} typically true that $K/F$ is also a Galois extension. A lemma below tells us precisely when this happens, but first we'll see a simple example of the bijection above.
+
+\begin{example}
+    Let $E = \QQ(\sqrt{2},\sqrt{3})$. Then $E$ is the splitting field over $\QQ$ of the polynomial $(x^2- 2)(x^2 - 3)$, and hence is a Galois extension. As we've seen before, $[\QQ(\sqrt{2})] = 2$. This confirms the plausible statement that $[E : \QQ] = 4$. So there are four automorphisms of $E$ fixing $\QQ$, and they are defined by what they do to $\sqrt{2}$ and $\sqrt{3}$. If $\sigma\in \Gal(E/\QQ)$, then $\sigma(\sqrt{2})=\pm \sqrt{2}$ and $\sigma(\sqrt{3})=\pm \sqrt{3}$. So we see precisely what the four automorphisms are. Indeed, $\Gal(E/\QQ) \cong \ZZ/2\ZZ \times \ZZ/2\ZZ$, by the isomorphism $(a, b) \mapsto \sigma_{a,b}$ defined by $$\sigma_{a,b}(\sqrt{2})=(-1)^a \sqrt{2}\mbox{ and }\sigma_{a,b}(\sqrt{3})=(-1)^b \sqrt{3}.$$
+
+    The group $\Gal(E/\QQ)$ has three distinct subgroups:
+    $$H_1=\{id, \sigma_{1,0}\}, H_2=\{id,\sigma_{0,1}\}, H_3=\{id, \sigma_{1,1}\}.$$ 
+    We see that each of the fields $E^{H_1}, E^{H_2}, E^{H_3}$ are degree 2 extensions of $\QQ$. Since $\sigma_{1,0}(\sqrt{3})=\sqrt{3}, \sigma_{0,1}(\sqrt{2})=\sqrt{2}$ and $\sigma_{1,1}(\sqrt{6})=\sqrt{6}$, we see that $$E^{H_1} = \QQ(\sqrt{3}), E^{H_2}=\QQ(\sqrt{2}), E^{H_3}=\QQ(\sqrt{6}).$$
+    By the lemmas above, these three fields (along with $F$ and $E$) are the only intermediate fields between $F$ and $E$.
+\end{example}
+
+We now return to the question of when an intermediate field is a Galois
+extension of $F$.
+
+\begin{lemma}
+    Let $E/F$ be a finite Galois extension, and let $F \subset  K \subset  E$. Then $K/F$ is a Galois extension if and only if $\Gal(E/K) \subset  \Gal(E/F)$ is a normal subgroup. Furthermore, in the case that $K/F$ is a Galois extension, we have $$\Gal(K/F)\cong \Gal(E/F)/\Gal(E/K).$$
+\end{lemma}
+
+Before beginning the proof, we note that since $E/F$ is separable, it is automatic that $K/F$ is separable. Thus the lemma says that $K/F$ is normal if and only if $\Gal(E/K) \subset  \Gal(E/F)$ is normal.
+
+\begin{proof}
+    First we suppose that $K/F$ is a Galois (indeed, normal) extension of $E$, and define a homomorphism $\Gal(E/F) \to  \Gal(K/F)$. Let $\sigma\in \Gal(E/F)$, and let $\aa\in K$ have minimal polynomial $f(x)\in F[x]$ over $F$.
+
+    Since $f(\sigma(\bb)) = \sigma(f(\bb))$ for all $\bb\in E$, we see that $\sigma(\aa)$ must be a root of $f(x)$. But $f(x)$ is an irreducible polynomial over $F$ with a root in $K$ and so, by the definition of a normal extension, all of the roots of $f(x)$ are in $K$. Thus $\sigma(\aa)\in K$. So $\sigma|_K$, the restriction of $\sigma$ to $K$, is an injective homomorphism whose image is contained in $K$. But it must also be a surjective map, since $\sigma^{-1}|_K$ has the same property. Thus $\sigma|_K$ is an automorphism of $K$ for any $\sigma\in \Gal(E/F)$, and clearly this automorphism of $K$ fixes $F$. This shows that $\sigma \mapsto \sigma|_K$ is a well-defined map $\Gal(E/F) \to  \Gal(K/F)$. It is easy to check that $(\sigma \circ \tau )|_K = \sigma|_K \circ \tau|_K$, so this map is a homomorphism. It also must be surjective, since any automorphism $\tau\in \Gal(K/F)$ is an embedding $K \to  F$ fixing $F$, which extends to an embedding $E \to  F$ fixing $F$ by Lemma \ref{nlam}, and this extension will be an element of $\Gal(E/F)$ by Theorem \ref{normal}. Thus we have a surjective homomorphism $\phi: \Gal(E/F) \to  \Gal(K/F)$, and by the first isomorphism theorem,
+    $$ \Gal(E/F)/\ker(\phi)\cong \Gal(K/F).$$
+
+    It remains to show that $\ker(\phi) = \Gal(E/K)$, which will also show that the latter subgroup is normal. But $\sigma\in \ker(\phi)$ if and only if $\sigma|_K$ is trivial, which happens if and only if $\sigma(x) = x$ for all $x\in K$. Thus $\sigma\in \ker(\phi)$ if and only if $\sigma\in \Gal(E/K)$. This completes one direction of the proof, and shows that in this case $\Gal(K/F)$ is the expected quotient.
+
+    The other direction, that $\Gal(E/K)$ being a normal subgroup of $\Gal(E/F)$ is sufficient for $K/F$ to be a normal extension, is left as an exercise.
+\end{proof}
+
+So, in total, we've proven the following theorem.
+
+\begin{thm}[The fundamental theorem of Galois Theory]\label{galois}
+    Let $E/F$ be a Galois extension. Then the function $H \mapsto E^H$ from subgroups of $\Gal(E/F)$ to intermediate fields of $E/F$ is an inclusion-reversing bijection, and the inverse is given by $K \mapsto \Gal(E/K)$. Moreover, $H \trianglelefteq \Gal(E/F)$ if and only if $K = E^H$ is a Galois extension of $F$, in which case $$\Gal(E/F)/\Gal(E/K) \cong \Gal(K/F).$$
+\end{thm}
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99

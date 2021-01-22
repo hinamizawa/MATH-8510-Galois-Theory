@@ -59,6 +59,9 @@
 % \end{abstract}
 
 \maketitle
+
+\tableofcontents
+
 \chapter*{Week 1}
 \setcounter{chapter}{1}
 \section{Review on polynomial rings}
@@ -977,7 +980,44 @@ Perhaps the most amazing fact about cyclotomic extensions is that, at least over
     Let $E/\QQ$ be a finite Galois extension such that $\Gal(E/\QQ)$ is abelian. Then there is a root of unity $\zeta$ such that $E \subset \QQ(\zeta)$.
 \end{thm}
 
-We shall prove this theorem when having time. But let's push on at this stage.
+This theorem is one of the earliest known results in class field theory. We shall prove it. But the proof requires sophisticated tools like ramification theory and so let's push on at this stage.
+
+\section{Cubic extensions}
+
+We've seen that, at least if $\char(F) \not= 2$, every extension of degree 2 is Galois. We know that this is not true for extensions of degree 3, since $\QQ(\sqrt[3]{2})/\QQ$ is not a Galois extension. Rather than address the problem of which degree-three extensions of a field are Galois, we'll instead ask what the splitting field of a cubic polynomial looks like (which ultimately answers the other question).
+
+
+Let $F$ be a field with $\char(F) \not= 2$ or 3, let $f(x) = x^3 + ax + b$ be an irreducible cubic polynomial. Note we can always complete the cube to write $f(x)$ in this way by replacing $x$ with $x-p/3$ and we do need $\char(F)\not=3$. Let $f(\aa) = 0$. If $E/F$ is the splitting field of $f(x)$ over $F$, then since $f(x)$ has a linear factor over $F(\aa)$, we have $[E : F(\aa)] \leq 2$, and so $[E : F] = 3$ or 6. $f(x)$ factors into three linear terms or a product of a linear term and a quadratic in $F(\aa)[x]$. Since $\char(F) \not= 2$, the quadratic is separable and so is $f(x)$. Note that $\Gal(E/F)$ is a subgroup of $S_3$, the symmetric group on the three roots of $f(x)$, and so the question of whether or not $E = F(\aa)$ comes down to whether or not $\Gal(E/F)$ contains an element of order 2; if it does, it is the full group $S_3$, and if it doesn't it's the alternating group $A_3$.
+
+
+Let $f(x) = (x - \aa_1)(x - \aa_2)(x - \aa_3)$ in $E[x]$, and let
+$$\delta = (\aa_1 - \aa_2)(\aa_2 - \aa_3)(\aa_1 - \aa_3).$$
+
+Then clearly $\sigma(\delta) = \pm\delta$ for each $\sigma \in \Gal(E/F)$. It is easy to check that an arbitrary transposition of two elements in $\{\aa_1, \aa_2, \aa_3\}$ changes the sign of $\delta$, and so for $\sigma \in \Gal(E/F) \subset S_3$ a permutation of the $\aa_i$, we have
+$$\sigma(\delta) = (-1)^{\sgn(\sigma)} \delta.$$
+
+In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\sigma\in \Gal(E/F)$, and so $\delta\in F$. If $\Gal(E/F) = S_3$, then $\Gal(E/F)$ contains an odd element which doesn't fix $\delta$, and hence $\delta \notin F$. But $\delta^2\in F$, since $\sigma(\delta^2) = (\pm\delta)^2 =\delta^2$ for all $\sigma\in \Gal(E/F)$. Note that, in the case that $\Gal(E/F) = S_3$, so that $\delta \notin F$, there must be a quadratic extension of $F$ corresponding to the subgroup $A_3 \subset \Gal(E/F)$. But clearly $\delta\in E$, and $\delta^2\in F$, so $F(\delta)$ is precisely this quadratic extension. A simple calculation shows that $$\Delta =\delta^2 =  -(4a^2+27b^2).$$
+
+\begin{thm}
+    Let $F$ be a field with $\char(F) \not= 2$ or 3, let $f(x) = x^3+ax+b\in F[x]$  be irreducible, let $E$ be the splitting field of $f(x)$ over $F$. Then if $\Delta = -(4a^2+27b^2)$ is the square of an element in $F$, then $\Gal(E/F) \cong A_3$. Otherwise, if $\Delta$ is not a square, then $\Gal(E/F) \cong S_3$.
+\end{thm}
+
+\begin{example}
+    We can check that $x^3 - x - 1$ has no roots in $\QQ$, and hence (being cubic) is irreducible. We can also calculate the discriminant:
+    $$\Delta(x^3 - x - 1) = -(4(-1)3 + 27(-1)2) = -23.$$
+    This is not a square in $\QQ$, and so if $E$ is the splitting field of $x^3 - x - 1$, we have $\Gal(E/\QQ) \cong S_3$. The unique quadratic extension corresponding to $A_3 \subset S_3$ is $\QQ(\sqrt{-23})$.
+\end{example}
+
+\begin{example}
+    We can check that $x^3 - 3x + 1$ is irreducible over Q, and
+    $$\Delta(x^3 - 3x + 1) = 9^2.$$
+    Thus if $\aa_3 - 2\aa + 1 = 0$, the extension $\QQ(\aa)=\QQ$ is Galois.
+\end{example}
+
+\begin{example}
+    The polynomial $x^3 -x-1$ has no roots in $\FF_{73}$, and so (being cubic) is irreducible. We know that $\Delta(x^3 - x - 1) = -23$, but
+    $$142 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) = A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E = \FF_{73^3}$.
+\end{example}
 
 
 % \newpage

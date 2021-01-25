@@ -462,7 +462,7 @@ To prove the (non)uniqueness of a algebraic closure needs more work.
 \end{proof}
 
 \begin{lemma}\label{ac6}
-    Let $k$ be a field and let $K/k$ be an algebraic closure. If $F/k$ is an algebraic extension, then there is an injective $k$-map $\psi: F \to k$. In particular, every $k$-map $F\to K$ extends to a $k$-map $K\to K$.
+    Let $k$ be a field and let $K/k$ be an algebraic closure. If $F/k$ is an algebraic extension, then there is an injective $k$-map $\psi: F \to k$. In particular, every $k$-map $F\to K$ extends to a $k$-map $K\to K$, which is an isomorphism indeed.
 \end{lemma}
 
 If $F$ is countably generated over $k$, namely, $F=k[\aa_1,...,\aa_n]$, then we can extend the inclusion $\iota: k\to K$ to $k[\aa_1]$, then to $k[\aa_1,\aa_2]$, and so on. 
@@ -476,7 +476,6 @@ If $F$ is countably generated over $k$, namely, $F=k[\aa_1,...,\aa_n]$, then we 
     By Zorn's Lemma, there exists a maximal element $(E_0, f_0)$ in $X$. We claim that $E_0 = F$, and this will complete the proof (take $\psi  = f_0)$. If $E_0 \subsetneq F$, then there is $a \in F$ with $a \notin E_0$. Since $F/k$ is algebraic, we have $F/E_0$ algebraic, and there is an irreducible $p(x) \in E_0[x]$ having a as a root. Since $K/k$ is algebraic and $K$ is algebraically closed, we have a factorization in $K[x]$: $$f_0^*(p(x)) = \prod_{i=1}^n(x-b_i),$$ where $f_0^*: E_0[x] \to K[x]$ is the map $$f^*_0 : e_0 + \cdots + e^nx^n \mapsto f_0(e_0) +\cdots + f_0(e^n)x^n.$$ If all the $bi$ lie in $f_0(E_0) \subset K$, then $f^{-1}_0 (b_i) \in E_0 \subset  F$ for some $i$, and there is a factorization of $p(x)$ in $F[x]$, namely, $p(x) =\prod_{i=1}^n[x - f^{-1}_0 (b_i)]$. But $a \notin E_0$ implies $a \not= f^{-1}_0 (b_i)$ for any $i$. Thus, $x - a$ is another factor of $p(x)$ in $F[x]$, contrary to unique factorization. We conclude that there is some $b_i \notin f_0(E_0)$. By Theorem \ref{minimal}, we may define $f_1 : E_0(a) \to K$ by $$c_0 + c_1a + c_2a^2 +\cdots \mapsto f_0(c_0) + f_0(c_1)b_i + f_0(c_2)b^2_i+\cdots .$$ A straightforward check shows that $f_1$ is a (well-defined) $k$-map extending $f_0$. Hence, $(E_0, f_0) \prec (E_0(a), f_1)$, contradicting the maximality of $(E_0, f_0)$. 
 
     For the "in particular" part, notice $K/F$ is also algebraic and $K$ is a algebraic closure of $F$ as well. By previous lemma, such a $k$-map is an automorphism.
-
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{ac} part (2)]
@@ -729,8 +728,7 @@ element.
     Each distinct automorphism $\sigma\in\Aut(E/F)$ gives a distinct embedding $\sigma : E \to E \subset \overline{F},$ which fixes $F$.
 \end{proof}
 
-
-\section{Inseparability}
+\section{Separable degree}
 
 We will now proceed with a slightly more detailed examination of extensions which are not separable.
 
@@ -738,7 +736,7 @@ We will now proceed with a slightly more detailed examination of extensions whic
     Let $E/F$ be a finite extension of fields, and let $\overline{F}$ be an algebraic closure of $F$ (and fix an embedding $\iota: F\hookrightarrow\overline{F}$). We define the separable degree of $E$ over $F$, denoted $[E : F]_s$, to be the number of distinct embeddings $$\sigma: E\to \overline{F},$$ which fix $F$ pointwise (indeed, $\sigma|_F=\iota$).
 \end{defn}
 
-\begin{lemma}
+\begin{lemma}\label{seplem1}
     Let $K \subset L = K(\aa)$ be a primitive algebraic field extension with minimal polynomial $f \in K[X]$ of $\aa$ over $K$.
     \begin{enumerate}
         \item The separable degree $[L : K]_s$ equals the number of different zeros of $f$ in an algebraic closure of $K$.
@@ -785,6 +783,36 @@ Put all the knowledge together, we get the following statement:
     \end{enumerate}
 \end{cor}
 
+\begin{thm}
+    For a finite field extension $K \subset L$ the following conditions are equivalent: \begin{enumerate}
+        \item $L/K$ is separable.
+        \item There exist elements $a_1, \cdots, a_n \in L$ that are separable over $K$ and satisfy $$L = K(a_1, \cdots, a_n).$$
+        \item $[L : K]_s = [L : K]$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    The implication from (1) to (2) is trivial. If $a \in L$ is separable over $K$, then the same is true over every intermediate field of $L/K$. Therefore, using the multiplicative formulas, the implication from (2) to (3) can be reduced to the case of a simple field extension. However, that case was already dealt with in Lemma \ref{seplem1}.
+
+    It remains to show that (3) implies (1). Consider an element $a \in L$ with its minimal polynomial $f \in K[X]$ over $K$. To show that $a$ is separable over $K$, which amounts to showing that f admits only simple zeros, we are reduced to the case $\char(K) = p > 0$. Then, by above  corollary, there is a integer $r$ such that every root of $f$ has multiplicity $r$ and  
+    $$[K(a):K] = p^r[K(a):K]_s.$$
+    Using the multiplicative formulas in conjunction with the estimate between the degree and the separable degree, we obtain
+    $$[L:K]=[L:K(a)][K(a),K] \geq [L:K(a)]_s p^r [K(a):K]_s= p^r[L:K]_s.$$
+    Now, if $[L : K]_s = [L : K]$, we must have $r = 0$. Then all zeros of $f$ are simple and $a$ is separable over $K$, which shows that (3) implies condition (1).
+\end{proof}
+
+\begin{cor}
+    Let $K \subset L \subset M$ be algebraic field extensions. Then $M/K$ is separable if and only if $M/L$ and $L/K$ are separable. 
+\end{cor}
+
+\begin{cor}
+    LeT $K/F$ be a finite algebraic extension. If $K=F(\aa_1,\cdots,\aa_n)$ and each $\aa_i$ is separable, then $K/F$ is separable 
+\end{cor}
+
+The usefulness of this corollary is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of $L$ is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
+
+
+We will investigate more about inseparable extensions later after introducing Galois extensions.
 
 \chapter*{Week 4}
 \setcounter{chapter}{4}

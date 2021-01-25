@@ -5,10 +5,10 @@
 \contentsline {section}{\numberline {2.5}Splitting fields}{15}{}%
 \contentsline {section}{\numberline {3.6}Separable extensions}{18}{}%
 \contentsline {section}{\numberline {3.7}The primitive element theorem}{20}{}%
-\contentsline {section}{\numberline {3.8}Inseparability}{22}{}%
-\contentsline {section}{\numberline {4.9}Normal extensions}{24}{}%
-\contentsline {section}{\numberline {4.10}Galois extensions}{25}{}%
-\contentsline {section}{\numberline {4.11}The fundamental theorem}{28}{}%
-\contentsline {section}{\numberline {5.12}Cyclotomic extensions}{32}{}%
-\contentsline {section}{\numberline {5.13}Cubic extensions}{35}{}%
-\contentsline {section}{\numberline {5.14}Kummer extensions}{36}{}%
+\contentsline {section}{\numberline {3.8}Separable degree}{22}{}%
+\contentsline {section}{\numberline {4.9}Normal extensions}{25}{}%
+\contentsline {section}{\numberline {4.10}Galois extensions}{26}{}%
+\contentsline {section}{\numberline {4.11}The fundamental theorem}{29}{}%
+\contentsline {section}{\numberline {5.12}Cyclotomic extensions}{33}{}%
+\contentsline {section}{\numberline {5.13}Cubic extensions}{36}{}%
+\contentsline {section}{\numberline {5.14}Kummer extensions}{37}{}%

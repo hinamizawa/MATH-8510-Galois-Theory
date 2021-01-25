@@ -43,7 +43,7 @@
 \def\mm{\mathfrak{m}}
 \def\Gal{\text{Gal}}
 \def\char{\text{char}}
-
+\def\irr{\text{irr}}
 
 
 \begin{document}
@@ -373,12 +373,10 @@ $$\QQ(i) \cong \QQ[x]/(x^2 + 1),$$
 it is often useful to think of all of the possible algebraic extensions as being subfields of one large (infinite) extension.
 
 \begin{defn}
-    A field $F$ is said to be \emph{algebraically closed} if every non-constant polynomial $f(x) \in F[x]$ has a root in $F$ or, equivalently, if every polynomial in $F[x]$ factors as a product of linear terms.
+    A field $F$ is said to be \emph{algebraically closed} if every non-constant polynomial $f(x) \in F[x]$ has a root in $F$ or, equivalently, if every polynomial in $F[x]$ factors as a product of linear terms. An \emph{algebraic closure} of a field $k$ is an algebraic extension $\overline{k}$ of $k$ that is algebraically closed.
 \end{defn}
 
 The Fundamental Theorem of Algebra says that $\CC$ is algebraically closed; moreover, $\CC$ is an algebraic closure of $\RR$. One may have seen a proof of Fundamental Theorem using fundamental group, but the simplest proof of the Fundamental Theorem is probably that using Liouville's Theorem in complex variables: every bounded entire function is constant.
-
-There are two main results here. First, every field has an algebraic closure; second, any two algebraic closures of a field are isomorphic.
 
 \begin{thm}\label{ac}
     Let $F$ be a field. Then \begin{enumerate}
@@ -473,7 +471,7 @@ To prove the (non)uniqueness of a algebraic closure needs more work.
 
     It is easy to see that an upper bound of a chain $$S = {(E_j, f_j) : j\ \in J}$$ is given by $(\cup E_j,\cup f_j)$. That $E_j$ is an intermediate field is, by now, a routine argument. We can take the union of the graphs of the $f_j$, but here is a more down-to-earth description of $\varphi =\cup f_j$: if $u \in \cup E_j$, then $u \in E_{j_0}$ for some $j_0$, and $\varphi(u)= fj_0 (u)$. Note that $\varphi$ is well-defined: if $u \in E_{j_1}$, we may assume, for notation, that $E_{j_0} \subset  E_{j_1}$, and then $f_{j_1} (u) = f_{j_0} (u)$ because $f_{j_1}$ extends $f_{j_0}$. Observe that $\varphi$ is a $k$-map because all the $f_j$ are.
     
-    By Zorn's Lemma, there exists a maximal element $(E_0, f_0)$ in $X$. We claim that $E_0 = F$, and this will complete the proof (take $\psi  = f_0)$. If $E_0 \subsetneq F$, then there is $a \in F$ with $a \notin E_0$. Since $F/k$ is algebraic, we have $F/E_0$ algebraic, and there is an irreducible $p(x) \in E_0[x]$ having a as a root. Since $K/k$ is algebraic and $K$ is algebraically closed, we have a factorization in $K[x]$: $$f_0^*(p(x)) = \prod_{i=1}^n(x-b_i),$$ where $f_0^*: E_0[x] \to K[x]$ is the map $$f^*_0 : e_0 + \cdots + e^nx^n \mapsto f_0(e_0) +\cdots + f_0(e^n)x^n.$$ If all the $bi$ lie in $f_0(E_0) \subset K$, then $f^{-1}_0 (b_i) \in E_0 \subset  F$ for some $i$, and there is a factorization of $p(x)$ in $F[x]$, namely, $p(x) =\prod_{i=1}^n[x - f^{-1}_0 (b_i)]$. But $a \notin E_0$ implies $a \not= f^{-1}_0 (b_i)$ for any $i$. Thus, $x - a$ is another factor of $p(x)$ in $F[x]$, contrary to unique factorization. We conclude that there is some $b_i \notin f_0(E0)$. By Theorem \ref{minimal}, we may define $f_1 : E_0(a) \to K$ by $$c_0 + c_1a + c_2a^2 +\cdots \mapsto f_0(c_0) + f_0(c_1)b_i + f_0(c_2)b^2_i+\cdots .$$ A straightforward check shows that $f_1$ is a (well-defined) $k$-map extending $f_0$. Hence, $(E_0, f_0) \prec (E_0(a), f_1)$, contradicting the maximality of $(E_0, f_0)$. This completes the proof.
+    By Zorn's Lemma, there exists a maximal element $(E_0, f_0)$ in $X$. We claim that $E_0 = F$, and this will complete the proof (take $\psi  = f_0)$. If $E_0 \subsetneq F$, then there is $a \in F$ with $a \notin E_0$. Since $F/k$ is algebraic, we have $F/E_0$ algebraic, and there is an irreducible $p(x) \in E_0[x]$ having a as a root. Since $K/k$ is algebraic and $K$ is algebraically closed, we have a factorization in $K[x]$: $$f_0^*(p(x)) = \prod_{i=1}^n(x-b_i),$$ where $f_0^*: E_0[x] \to K[x]$ is the map $$f^*_0 : e_0 + \cdots + e^nx^n \mapsto f_0(e_0) +\cdots + f_0(e^n)x^n.$$ If all the $bi$ lie in $f_0(E_0) \subset K$, then $f^{-1}_0 (b_i) \in E_0 \subset  F$ for some $i$, and there is a factorization of $p(x)$ in $F[x]$, namely, $p(x) =\prod_{i=1}^n[x - f^{-1}_0 (b_i)]$. But $a \notin E_0$ implies $a \not= f^{-1}_0 (b_i)$ for any $i$. Thus, $x - a$ is another factor of $p(x)$ in $F[x]$, contrary to unique factorization. We conclude that there is some $b_i \notin f_0(E_0)$. By Theorem \ref{minimal}, we may define $f_1 : E_0(a) \to K$ by $$c_0 + c_1a + c_2a^2 +\cdots \mapsto f_0(c_0) + f_0(c_1)b_i + f_0(c_2)b^2_i+\cdots .$$ A straightforward check shows that $f_1$ is a (well-defined) $k$-map extending $f_0$. Hence, $(E_0, f_0) \prec (E_0(a), f_1)$, contradicting the maximality of $(E_0, f_0)$. This completes the proof.
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{ac} part (2)]
@@ -481,6 +479,111 @@ To prove the (non)uniqueness of a algebraic closure needs more work.
 \end{proof}
 
 It is now permissible to speak of \emph{the} algebraic closure of a field.
+
+\section{Splitting fields}
+
+Most of the cases, the algebraic closure $\overline{k}$ of $k$ is too big. We may want to a smaller but still big enough field extension $E/k$.
+
+\begin{defn}
+    A \emph{splitting field} of a non-constant polynomial $f(x)\in F[x]$ is a field extension $E/F$ such that $f(x)$ factors into linear terms in $E[x]$, namely, $$f(x)=c(x-\aa_1)\cdots(x-\aa_n),$$
+    and such that $E=F(\aa_1,\cdots,\aa_n)$. 
+\end{defn}
+
+This is, the splitting field is the smallest field (unique up to isomorphism) extension containing all the roots of $f(x)$. If $f$ is irreducible and separable, the all linear terms above are distinct. This may not be true if $f$ is inseparable.
+
+\begin{example}
+    Let $f(x)=x^3-2\in\QQ[Z]$. $\QQ(\sqrt[3]{2})$ is not the splitting field of $f$, since it does not contain all the root. The splitting field is $E=\QQ(\sqrt[3]{2},\omega\sqrt[3]{2},\omega^2\sqrt[3]{2},)$ where $\omega$ is a third of unity, in other words, $1,\omega,\omega^2$ are roots of $x^3-1$. Note that we also have $E=\QQ(\omega,\sqrt[3]{2})$. The symbol $\sqrt[3]{2}$ is ambiguous, but we can either take the real cube root, or simply note that any choice defines the same field (only now that we've thrown in $\omega$).
+\end{example}
+
+\begin{thm}[Kronecker]
+    If $k$ is a field and $f(x)\in k[x]$ a non-constant polynomial, there exists an extension field $K/k$ with $f$ a product of linear polynomials in $K[x]$.
+\end{thm}
+
+\begin{proof}
+    The proof is induction on $\deg(f)$. If $\deg(f)=1$, then $f$ is linear and we can choose $K=k$. If $\deg(f) > 1$, write $f=pg$, where $p,q\in k[x]$ and $p$ irreducible. Now Theorem \ref{stem} provides a field $F$ containing $k$ and a root $z$ of $p$. Hence, in $F[x]$, there is $h(x)$ with $p(x)=(x-z)h(x)$ and so $f(x)=(x-z)h(x)g(x)$. By induction, there is a field $K$ containing $F$ so that $hg$, and hence $f$, is a product of linear factors in $K[x]$. 
+\end{proof}
+
+\begin{cor}
+    If $k$ is a field and $f(x)\in k[x]$ a non-constant polynomial, then a splitting field of $f$ over $k$ exists.
+\end{cor}
+
+Let's see an example but with some definitions first.
+
+\begin{defn}
+    If $n \geq  1$ is a positive integer, then an $n$-th \emph{root of unity} in a field $k$ is an element $\zeta \in  k$ with $\zeta^n = 1$.
+\end{defn}
+
+
+The (complex) numbers $e^{\frac{2\pi i k}{n}} = \cos(2\pi k/n) + i \sin(2\pi k/n)$ for some $k$ with $0 \leq  k \leq  n- 1$ are \emph{all} the complex $n$-th roots of unity (in $\CC$). Just as there are two square roots of a number $a$, namely, $\sqrt{a}$ and $-\sqrt{a}$, there are $n$ different $n$-th roots of $a$, namely, $e^{\frac{2\pi i k}{n}}\sqrt[n]{a}$  for $k = 0, 1,\cdots , n - 1$. (We can assume $\sqrt[n]{a}$ to be the real root if one wants.) Every $n$-th root of unity is, of course, a root of the polynomial $x^n- 1$. Therefore, \begin{equation}\label{cycoeq1}
+    x^n - 1 = \prod_{\zeta^n=1}(x -\zeta).
+\end{equation}
+
+
+\begin{defn}
+    If $\zeta$ is an $n$-th root of unity and $n$ is the smallest positive integer for which $\zeta^n = 1$, we say that $\zeta$ is a \emph{primitive} $n$-th root of unity.
+\end{defn}
+
+For example, $i$ is an 8-th root of unity (for $i^8 = 1$), but not a primitive 8-th root of unity; $i$ is a primitive 4-th root of unity.
+
+\begin{example}
+    Let $f(x)=x^n-1 \in k[x]$ for some field $k$ and $E/k$ a splitting field. The set of all $n$-th roots of unity is a cyclic group and a primitive $n$-th root $\omega$ generates it. It follows that $E=k(\omega)$ is a splitting field of $f$. 
+\end{example}
+
+We say "a" splitting field instead of "the" splitting field because it is not obvious whether any two splitting fields of $f$ over $k$ are isomorphic (they are). Analysis of this technical point will not only prove uniqueness of splitting fields, it will enable us to prove that any two finite fields with the same number of elements are isomorphic.
+
+\begin{thm}\label{kummer1}
+    Let $p$ be a prime and $k$ a field. If $f(x)=x^p-c\in k[x]$ and $\aa$ is a $p$-th root of $c$ (in some splitting field), then either $f$ is irreducible in $k[x]$ or $c$ has a $p$th root in $k$. In either case, if $k$ contains the $p$-th root of unity, then $k(\aa)$ is a splitting field of $f$.
+\end{thm}
+
+\begin{proof}
+    By Kronecker's Theorem, there exists an extension field $K/k$ that contains all the roots of $f$, namely, $K$ contains all the $p$-th root of $c$. If $\aa^p=c$, then every such root has the form $\zeta\aa$, where $\zeta$ is a $p$-th root of unity.
+
+    If $f$ is not irreducible in $k[x]$, then there is a factorization $f = gh$ in $k[x]$, where $g(x), h(x)$ are non-constant polynomials with $d = \deg(g) < \deg(f) = p$. Now the constant term $b$ of $g$ is, up to sign, the product of some of the roots of $f$: $$\pm b = \aa^d\zeta,$$ where $\zeta$, which is a product of d $p$-th roots of unity, is itself a $p$-th root of unity. It follows that $$(\pm b)^p = (\aa^d\zeta)^p = \aa^{dp} = c^d.$$
+    But $p$ being prime and $d < p$ force $\gcd(d, p) = 1$; hence, there are integers $s$ and $t$ with $1 = sd + tp$. Therefore, $$c = c^{sd+tp} = c^{sd}c^{tp} = (\pm b)^{ps}c^{tp} = [(\pm b)^sc^t]^p,$$ and $c$ has a $p$-th root in $k$.
+
+    We now assume that $k$ contains the set $\Omega$ of all the $p$-th roots of unity. If $\aa  \in  K$ is a $p$-th root of $c$, then $f(x) =\prod_{\omega\in \Omega}(x- \omega\aa )$ shows that $f$ splits over $K$ and that $k(\aa)$ is a splitting field of $f$ over $k$. 
+\end{proof}
+
+We are going to solve the isomorphism problem for finite fields. Observe that If $\varphi : F \to F'$ is a homomorphism, then
+$$\varphi_*:F[x]\to F'[x], a_0+\cdots+a_nx^n\mapsto \varphi(a_0)+\cdots+\varphi(a_n)x^n $$  
+is a ring homomorphism. If $\varphi : F \to F'$ is an isomorphism, then $\varphi_*$ is also an isomorphism, and for any $f \in F[x]$, it sends the ideal $\langle f\rangle$ to the ideal $\langle \varphi_*(f)\rangle$.
+
+\begin{lemma}
+    Let $\varphi : F \to F'$ be an isomorphism between two fields, and $f \in F[x]$ be irreducible in $F[x]$. If $\aa$ is a root of $f$ in some extension of $F$, and $\bb$ is a root of $\varphi_*(f)$ in some extension of $F'$, then there is an isomorphism $\phi : F(\aa) \to F'(\bb)$ such that $\phi(\aa) = \bb$, and $\phi|_F= \varphi$.
+\end{lemma}
+
+\begin{proof}
+    Because $f$ is irreducible in $F[x]$, $\varphi(f)$ is irreducible in $F'[x]$. Because $\varphi_*$ the ideal $\langle f\rangle$ to the ideal $\langle \varphi_*(f)\rangle$, the map $F[x] \to F'[x]/\varphi_*(f)\rangle$ will have kernel equal to $\langle f\rangle$, so we have an isomorphism $$F(\aa)\to F[x]/\langle f\rangle \to F'[x]/\langle \varphi_*(f)\rangle \to F'(\bb).$$
+\end{proof}
+
+\begin{thm}
+    Let $\varphi : F \to F'$ be an isomorphism, and $f$ be a non-constant polynomial in $F[x]$. If $E$ is a splitting field for $f$ in $F$, and $E'$ is a splitting field for $\varphi_*(f)$ in $F'$, then there is an isomorphism $\phi : E \to E'$ such that $\phi|_F= \varphi$.
+\end{thm}
+
+\begin{proof}
+    Let $p$ be an irreducible factor of $f$ of degree $\geq$ 2. Let $\aa_1 \in E$ be a root of p and $\bb_1 \in E'$ be root of $\varphi_*(p)$. By the previous lemma, there is an isomorphism $F(\aa_1) \to F'(\bb_1)$ that restricts to $\varphi$ on $F$. If we repeat this process (until f no longer has any irreducible factors of degree $\geq 2$, then we have a isomorphism $F(\aa_1,\cdots, \aa_k) \to F'(\bb_1,\cdots, \bb_k)$ that restricts to $\varphi$ on $F$. Because $f$ splits in $F(\aa_1,\cdots, \aa_k)$, and $\varphi(f)$ splits in $F'(\bb_1,\cdots, \bb_k)$, it follows that $E = F(\aa_1,\cdots, \aa_k)$ and $E' = F'(\bb_1,\cdots, \bb_k)$, which completes the proof.
+\end{proof}
+
+Let's end this section with two theorems from Week 1 which makes more sense now. 
+
+\begin{thm}[Galois]
+    If $p$ is prime and $n$ is a positive integer, then there exists a field having exactly $p^n$ elements.
+\end{thm}
+
+\begin{proof}
+    Look at a splitting field of $g(x)=x^{p^n}-1\in \FF_p[x]$. The roots of $g(x)$ are all distinct and forms a subfield of the splitting field by checking addition and multiplication.  
+\end{proof}
+
+\begin{thm}[Moore]
+    Any two finite fields having exactly $p^n$ elements are isomorphic.
+\end{thm}
+
+\begin{proof}
+    They are all the splitting fields of $g(x)=x^{p^n}-1\in \FF_p[x]$, and hence isomorphic.
+\end{proof}
+
+\chapter*{Week 3}
+\setcounter{chapter}{3}
 
 \section{Separable extensions}
 Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem field (or $E$ a possibly larger field containing all the roots). From what we have learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots are separable.
@@ -549,18 +652,6 @@ A lot of results about field theory that are valid in characteristic 0 carry ove
 \end{proof}
 
 It is clear that extensions of fields of characteristic 0 have characteristic 0, and that finite extensions of finite fields are finite, so this theorem is only non-trivial if $F$ is infinite, but has a positive characteristic.
-
-\begin{thm}\label{sep2}
-    Let $L/K$ be a finite extension and say $L = K(\aa_1,\cdots,\aa_n)$. Then $L/K$ is separable if and only if each $\aa_i$ is separable over K.
-\end{thm}
-
-Let's postpone the proof till we introduce Galois group. The usefulness of this theorem is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of $L$ is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
-
-\begin{example}
-    $\QQ(\sqrt{2},\sqrt{3})/\QQ$ is separable. 
-\end{example}
-
-A possible term paper may discuss (purely) inseparable extensions, those field extensions over the function fields.
 
 \section{The primitive element theorem}
 
@@ -633,20 +724,12 @@ element.
     Each distinct automorphism $\sigma\in\Aut(E/F)$ gives a distinct embedding $\sigma : E \to E \subset \overline{F},$ which fixes $F$.
 \end{proof}
 
-\chapter*{Week 3}
-\setcounter{chapter}{3}
-\section{Splitting fields}
+We shall reprove some statements above from the view of counting embeddings.
 
-\begin{defn}
-    A \emph{splitting field} of the polynomial $f(x)\in F[x]$ is a field extension $E/F$ such that $f(x)$ factors into linear terms in $E[x]$, namely, $$f(x)=(x-\aa_1)\cdots(x-\aa_n),$$
-    and such that $E=F(\aa_1,\cdots,\aa_n)$. 
-\end{defn}
+\chapter*{Week 4}
+\setcounter{chapter}{4}
 
-This is, the splitting field is the smallest field (unique up to isomorphism) extension containing all the roots of $f(x)$. If $f$ is irreducible and separable, the all linear terms above are distinct. This may not be true if $f$ is inseparable.
-
-\begin{example}
-    Let $f(x)=x^3-2\in\QQ[Z]$. $\QQ(\sqrt[3]{2})$ is not the splitting field of $f$, since it does not contain all the root. The splitting field is $E=\QQ(\sqrt[3]{2},\omega\sqrt[3]{2},\omega^2\sqrt[3]{2},)$ where $\omega$ is a third of unity, in other words, $1,\omega,\omega^2$ are roots of $x^3-1$. Note that we also have $E=\QQ(\omega,\sqrt[3]{2})$. The symbol $\sqrt[3]{2}$ is ambiguous, but we can either take the real cube root, or simply note that any choice defines the same field (only now that we've thrown in $\omega$).
-\end{example}
+\section{Normal extensions}
 
 The following theorem, which is perhaps surprising, says that the splitting field of a polynomial contains a splitting field for the minimal polynomial of any element of that field.
 
@@ -767,7 +850,7 @@ needed.
     
     We claim that, in fact, $E = F(\aa)$.
 
-    If not, then there is some $\bb \in E\setminus F(\aa)$, and so $F(\aa,\bb)$ is a proper extension of $F(\aa)$. Now, $F(\aa,\bb)/F$ is a finite, separable extension of fields, and so by Theorem \label{primitive}, there is a $\gamma \in F(\aa,\bb)$ with $F(\aa,\bb) = F(\gamma)$. But since $\bb \notin F(\aa)$, we have $\gamma\in E$ and
+    If not, then there is some $\bb \in E\setminus F(\aa)$, and so $F(\aa,\bb)$ is a proper extension of $F(\aa)$. Now, $F(\aa,\bb)/F$ is a finite, separable extension of fields, and so by Theorem \ref{primitive}, there is a $\gamma \in F(\aa,\bb)$ with $F(\aa,\bb) = F(\gamma)$. But since $\bb \notin F(\aa)$, we have $\gamma\in E$ and
     $$[F(\gamma) : F] = [F(\aa,\bb) : F(\aa)][F(\aa) : F] > [F(\aa) : F] = n.$$
     This is impossible by the hypotheses of the theorem, and so we must have had $E = F(\aa)$.
 \end{proof}
@@ -883,26 +966,13 @@ So, in total, we've proven the following theorem.
     The one thing that remains is to decide which of these is a Galois extension of $\QQ$. Let's cheat here: the only non-trivial proper normal subgroup of $S_3$ is $A_3$, so as we already see that $\QQ(\omega)$ (being quadratic) is, while the other three are not.
 \end{example}
 
-\chapter*{Week 4}
-\setcounter{chapter}{4}
+\chapter*{Week 5}
+\setcounter{chapter}{5}
 
 We have already seen one broad class of Galois extensions, namely the quadratic extensions (of a field of characteristic other than 2). In this part of the notes, we'll see some more families of examples.
 
 \section{Cyclotomic extensions}
-Cyclotomic extensions are extensions generated by roots of unity. Let's start with some definitions.
-
-\begin{defn}
-    If $n \geq  1$ is a positive integer, then an $n$-th \emph{root of unity} in a field $k$ is an element $\zeta \in  k$ with $\zeta^n = 1$.
-\end{defn}
-
-
-The (complex) numbers $e^{\frac{2\pi i k}{n}} = \cos(2\pi k/n) + i \sin(2\pi k/n)$ for some $k$ with $0 \leq  k \leq  n- 1$ are \emph{all} the complex $n$-th roots of unity (in $\CC$). Just as there are two square roots of a number $a$, namely, $\sqrt{a}$ and $-\sqrt{a}$, there are $n$ different $n$-th roots of $a$, namely, $e^{\frac{2\pi i k}{n}}\frac[n]{a}$  for $k = 0, 1,\cdots , n - 1$. (We can assume $\frac[n]{a}$ to be the real root if one wants.) Every $n$-th root of unity is, of course, a root of the polynomial $x^n- 1$. Therefore, $$x^n - 1 = \prod_{\zeta^n=1}(x -\zeta).$$
-
-\begin{defn}
-    If $\zeta$ is an $n$-th root of unity and $n$ is the smallest positive integer for which $\zeta^n = 1$, we say that $\zeta$ is a \emph{primitive} $n$-th root of unity.
-\end{defn}
-
-For example, $i$ is an 8-th root of unity (for $i^8 = 1$), but not a primitive 8-th root of unity; $i$ is a primitive 4-th root of unity.
+Cyclotomic extensions are extensions generated by roots of unity. Recall that we have Equation \ref{cycoeq1}.
 
 \begin{defn}
     If $d$ is a positive integer, then the $d$-th cyclotomic polynomial is defined by $$\Phi_d(x) =\prod (x - \zeta),$$ where $\zeta$ ranges over all the primitive $d$-th roots of unity.
@@ -1014,15 +1084,14 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
 
 \begin{example}
     The polynomial $x^3 -x-1$ has no roots in $\FF_{73}$, and so (being cubic) is irreducible. We know that $\Delta(x^3 - x - 1) = -23$, but
-    $$142 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) = A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E = \FF_{73^3}$.
+    $$14^2 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) = A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E = \FF_{73^3}$.
 \end{example}
+
+\section{Kummer extensions}
 
 
 % \newpage
 % \begin{thebibliography}{99} % don't worry about the 99
-
-% % \bibitem{ExamplePaper}
-% % E.~Edelman, ``The probability that a random real Gaussian matrix has $k$ real eigenvalues, related distributions, and the circular law'', {\em J.~Multivariate~Anal.} {\bf 60} (1997), no.~2, 202--232.
 
 % % \bibitem{ExampleBook}
 % % H.~L.~Montgomery and R.~C.~Vaughan, {\em Multiplicative Number Theory I: Classical Theory}, Cambridge University Press (2007).

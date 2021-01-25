@@ -2,10 +2,12 @@
 \contentsline {section}{\numberline {1.2}Extensions of fields}{3}{}%
 \contentsline {section}{\numberline {1.3}Automorphisms}{7}{}%
 \contentsline {section}{\numberline {2.4}Algebraic closure}{11}{}%
-\contentsline {section}{\numberline {2.5}Separable extensions}{14}{}%
-\contentsline {section}{\numberline {2.6}The primitive element theorem}{17}{}%
-\contentsline {section}{\numberline {3.7}Splitting fields}{20}{}%
-\contentsline {section}{\numberline {3.8}Galois extensions}{22}{}%
-\contentsline {section}{\numberline {3.9}The fundamental theorem}{25}{}%
-\contentsline {section}{\numberline {4.10}Cyclotomic extensions}{29}{}%
-\contentsline {section}{\numberline {4.11}Cubic extensions}{32}{}%
+\contentsline {section}{\numberline {2.5}Splitting fields}{14}{}%
+\contentsline {section}{\numberline {3.6}Separable extensions}{18}{}%
+\contentsline {section}{\numberline {3.7}The primitive element theorem}{20}{}%
+\contentsline {section}{\numberline {4.8}Normal extensions}{23}{}%
+\contentsline {section}{\numberline {4.9}Galois extensions}{24}{}%
+\contentsline {section}{\numberline {4.10}The fundamental theorem}{28}{}%
+\contentsline {section}{\numberline {5.11}Cyclotomic extensions}{31}{}%
+\contentsline {section}{\numberline {5.12}Cubic extensions}{34}{}%
+\contentsline {section}{\numberline {5.13}Kummer extensions}{35}{}%

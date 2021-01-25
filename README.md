@@ -2,6 +2,7 @@
 
 These notes are a mixture from various sources. They are 
 
+* Siegfried Bosch, Algebra: From the Viewpoint of Galois Theory. 
 * Keith Conrad, https://kconrad.math.uconn.edu/blurbs/.
 * Patrick Ingram, Lecture Notes.
 * ‪James Milne, Field and Galois Theory.

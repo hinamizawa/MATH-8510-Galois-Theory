@@ -548,7 +548,7 @@ We are going to solve the isomorphism problem for finite fields. Observe that If
 $$\varphi_*:F[x]\to F'[x], a_0+\cdots+a_nx^n\mapsto \varphi(a_0)+\cdots+\varphi(a_n)x^n $$  
 is a ring homomorphism. If $\varphi : F \to F'$ is an isomorphism, then $\varphi_*$ is also an isomorphism, and for any $f \in F[x]$, it sends the ideal $\langle f\rangle$ to the ideal $\langle \varphi_*(f)\rangle$.
 
-\begin{lemma}
+\begin{lemma}\label{splitlemma1}
     Let $\varphi : F \to F'$ be an isomorphism between two fields, and $f \in F[x]$ be irreducible in $F[x]$. If $\aa$ is a root of $f$ in some extension of $F$, and $\bb$ is a root of $\varphi_*(f)$ in some extension of $F'$, then there is an isomorphism $\phi : F(\aa) \to F'(\bb)$ such that $\phi(\aa) = \bb$, and $\phi|_F= \varphi$.
 \end{lemma}
 
@@ -595,13 +595,13 @@ Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem fi
 Recall that the derivative of a polynomial $f(x)=\sum a_i x^i$ is defined to be $f'(x) = \sum ia_ix^{i-1}$. When $f$ has coefficients in $\RR$, this agrees with the definition in calculus. The usual rules for differentiating sums and products still hold, but note that in characteristic $p$ the derivative of $x^p$ is zero.
 
 \begin{thm}\label{sep}
-    Let $K$ be a field and $f(x)\in K[X]$ irreducible. Then $f$ is separable if and only if $\gcd(f,f')=1$ in $K[X]$. In particular, if $\char(K)=0$, then $f$ has no repeated root; if $\char(K)=p>0$, then $f$ has a multiple root if and only if $f'(x)=0$.
+    Let $K$ be a field and $f(x)\in K[X]$ irreducible. Then $f$ is separable if and only if $\gcd(f,f')=1$ in $K[X]$. In particular, if $\char(K)=0$, then $f$ has no repeated root; if $\char(K)=p>0$, then $f$ has a multiple root if and only if $f'(x)=0$ if and only if $f(X)=g(X^{p^r})$ for some $g(X)\in K[X]$.
 \end{thm}
 
 \begin{proof}
     Let $f(X)$ be an irreducible polynomial in $K[X]$. Suppose $f(X)$ is separable, and let $\aa$ be a root of $f(X)$ (in some extension of $K$. Then $f(X) = (X -\aa)h(X)$ for some $h(x)\not=0$. Since $f'(\aa)=h(\aa)\not=0$, $f'$ is non-zero and $\deg(f')<\deg(f)$. It follows from the irreducibility of $f$ immediately that $\gcd(f,f')=1$.
 
-    Now suppose $f(X)$ is not separable and $\aa$ is a repeated root (in an extension field). Then we can write $f(X)=(X-\aa)^2g(X)$ (in some extension field), where $g(x)$ is non-zero, and then  $f'(X)= (X-\aa)^2g'(X)+2(X-\aa)g(x)$. It follows that $f'(\aa)=0$. By Theorem \ref{minimal}, both $f,f'$ are divisible by the minimal polynomial of $\aa$ in $K[X]$ and then $\gcd(f,f')\not=1$.
+    Now suppose $f(X)$ is not separable and $\aa$ is a repeated root (in an extension field). Then we can write $f(X)=(X-\aa)^2g(X)$ (in some extension field), where $g(x)$ is non-zero, and then  $f'(X)= (X-\aa)^2g'(X)+2(X-\aa)g(x)$. It follows that $f'(\aa)=0$. By Theorem \ref{minimal}, both $f,f'$ are divisible by the minimal polynomial of $\aa$ in $K[X]$ and then $\gcd(f,f')\not=1$. But if this is the case, then $f$ is the minimal polynomial and then $f\mid f'$. The only possibility is that $f'(X)=0$. But $f'=0$ happens $f(X)=g(X^{p^r})$ for some $g(X)\in K[X]$. 
 \end{proof}
 
 \begin{defn}
@@ -628,7 +628,7 @@ Fortunately, almost all the fields we have good feelings at are perfect, for exa
 
     Notice that $f'(x)=px^{p-1} = 0$ in $F[x]$ and then $\gcd(f,f')=f\not=1$ and $f$ is inseparable. We have shown $f$ is irreducible and inseparable and then $F$ is not perfect.
     
-    For another direction, suppose that $\sigma$ is surjective and that $f\in F[x]$ is irreducible and inseparable. Similarly to the argument in Theorem \ref{sep}, we get $f$ divides $f'$. If $f'$ was not the zero polynomial, then $\deg(f')< \deg(f)$, which is impossible given $f\mid f'$. Let $f(x)=\sum_{i=0}^d a_ix^i$ then we get $$0=f'(x)=\sum_{i=1}^dia_ix^{i-1}\in F[x].$$  Therefore, $ia_i=0$ for each $i$, which says $a_i=0$ or $i=0$ in $F$. In other words, $a_i=0$ unless $p|i$ and then we can write $$f(x)= \sum_{i=0}^m a_{ip}x^{ip}.$$ But $\sigma$ is surjective, then $a_ip =  (\aa^i)^p$ for some $\aa_i\in F$ for each $i$ and $$f(x) =  \sum_{i=0}^m (\aa_i)^p x^{ip} = (\sum_{i=1}^m \aa_ix^i)^p.$$ This polynomial is definitely reducible and we reach a contradiction.
+    For another direction, suppose that $\sigma$ is surjective and that $f\in F[x]$ is irreducible and inseparable. Similarly to the argument in Theorem \ref{sep}, we get $f$ divides $f'$. If $f'$ was not the zero polynomial, then $\deg(f')< \deg(f)$, which is impossible given $f\mid f'$. Let $f(x)=\sum_{i=0}^d a_ix^i$ then we get $$0=f'(x)=\sum_{i=1}^dia_ix^{i-1}\in F[x].$$  Therefore, $ia_i=0$ for each $i$, which says $a_i=0$ or $i=0$ in $F$. In other words, $a_i=0$ unless $p|i$ and then we can write $$f(x)= \sum_{i=0}^m a_{ip}x^{ip}.$$ But $\sigma$ is surjective, then $a_{ip} =  (\aa^i)^p$ for some $\aa_i\in F$ for each $i$ and $$f(x) =  \sum_{i=0}^m (\aa_i)^p x^{ip} = (\sum_{i=1}^m \aa_ix^i)^p.$$ This polynomial is definitely reducible and we reach a contradiction.
 \end{proof}
 
 
@@ -724,7 +724,62 @@ element.
     Each distinct automorphism $\sigma\in\Aut(E/F)$ gives a distinct embedding $\sigma : E \to E \subset \overline{F},$ which fixes $F$.
 \end{proof}
 
-We shall reprove some statements above from the view of counting embeddings.
+
+\section{Inseparability}
+
+We will now proceed with a slightly more detailed examination of extensions which are not separable.
+
+\begin{defn}
+    Let $E/F$ be a finite extension of fields, and let $\overline{F}$ be an algebraic closure of $F$ (and fix an embedding $\iota: F\hookrightarrow\overline{F}$). We define the separable degree of $E$ over $F$, denoted $[E : F]_s$, to be the number of distinct embeddings $$\sigma: E\to \overline{F},$$ which fix $F$ pointwise (indeed, $\sigma|_F=\iota$).
+\end{defn}
+
+\begin{lemma}
+    Let $K \subset L = K(\aa)$ be a primitive algebraic field extension with minimal polynomial $f \in K[X]$ of $\aa$ over $K$.
+    \begin{enumerate}
+        \item The separable degree $[L : K]_s$ equals the number of different zeros of $f$ in an algebraic closure of $K$.
+        \item The element $\aa$ is separable over $K$ if and only if $[L : K] = [L : K]_s$.
+        \item Assume $\char(K) = p >$ 0 and let $p^r$ be the multiplicity of the zero $\aa$ of $f$. Then $[L:K] =  p^r [L:K]_s$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    Parts of the proof have appeared discretely many times.
+    \begin{enumerate}
+        \item This is just a reformulation of Lemma \ref{splitlemma1}.
+        \item $f$ have at most $\deg(f)=[L:K]$ roots and each distinct root gives a distinct embedding $K\to \overline{L}$. There are $[L : K]_s=[L : K]$ such embeddings hence all the roots are distinct.
+        \item If a root of $f$ has multiplicity $p^r$, then $f(X)=g(X^p)$ for some $g(X)\in K[X]$. Hence there are $\deg(f)/p^r$ distinct roots and so is the number of separation degree. In other words, $[L:K] =  p^r [L:K]_s$.
+    \end{enumerate}
+\end{proof}
+
+\begin{thm}
+    Let $K \subset L \subset M$ be algebraic field extensions. Then
+    $$[M : K]_s = [M : L]_s [L : K]_s.$$
+\end{thm}
+
+\begin{proof}
+    Fix an algebraic closure $\overline{K}$ of $K$. Then $K \subset L \subset M \subset \overline{K}$, and we may view $K$ also as an algebraic closure of $M$ and of $L$. Furthermore, let
+    $$\Hom_K(L,\overline{K}) = \{\sigma_i: i \in I\}, \Hom_L(M,\overline{K}) = \{\tau_j: j \in J\},$$ where in each case, the $\sigma_i$ as well as the $\tau_j$ are distinct. Now extend the $K$-homomorphisms $\sigma_i : L \to \overline{K}$ via Lemma \ref{ac6} to $K$-automorphisms $\overline{\sigma_i}: \overline{K} \to \overline{K}$. 
+    The desired multiplicative formula will then be a consequence of the following two assertions:
+    \begin{enumerate}
+        \item The maps $\overline{\sigma_i} \circ \tau_j : M \to \overline{K}, i \in I, j \in J$, are distinct.
+        \item $\Hom_K(M,\overline{K}) = \{\overline{\sigma_i} \circ \tau_j ; i \in I, j \in J\}.$
+    \end{enumerate}
+    
+    To verify assertion (1), consider an equation of type $\overline{\sigma_i} \circ \tau_j = \overline{\sigma_{i'}} \circ \tau_{j'}$. Since $\tau_j$ and $\tau_{j'}$ restrict to the identity on $L$, we can conclude that $\overline{\sigma_i} = \overline{\sigma_{i'}}$ and hence $i = i'$. The latter implies $\tau_j = \tau_{j'}$, and thus $j = j'$. It follows that the maps specified in (1) are distinct.
+    
+    Since they are  $K$-homomorphisms, it remains to show for (2) that every $K$-homomorphism $\tau : M \to \overline{K}$ is as specified in (1). For $\tau \in \Hom_K(M,\overline{K})$ we have $\tau|_L \in \Hom_L(M,\overline{K})$. Hence, there exists an index $i \in I$ such that $\tau|_L = \sigma_i$. Then we obtain $\overline{\sigma_i}^{-1}\circ\tau \in \Hom_L(M,\overline{K})$. Therefore, $\tau=\overline{\sigma_i}\circ \tau_j$ and (2) is clear.
+\end{proof}
+
+Put all the knowledge together, we get the following statement:
+
+\begin{cor}
+    Let $K \subset L$ be a finite field extension.
+    \begin{enumerate}
+        \item If $\char(K) = 0$, then $[L : K] = [L : K]_s$.
+        \item If $\char(K) = p > 0$, then $[L : K] = p^r[L : K]_s$ for some integer $r$. In particular, if $\char(K)\nmid [L:K]$, then $[L : K]_s = [L : K]$.
+    \end{enumerate}
+\end{cor}
+
 
 \chapter*{Week 4}
 \setcounter{chapter}{4}
@@ -780,12 +835,6 @@ There is an alternate characterization of normal extensions in the separable cas
     
     On the other hand, suppose $\Aut(E/F) = [E:F]$. By Theorem \ref{acc} there are precisely $[E:F]$ distinct embeddings $E\to \overline{F}$ fixing $F$ since $E/F$ is finite and separable. But $\Aut(E/F) = [E:F]$, so each embedding must give rise to an automorphism $E\to E$, since $\Aut(E/F)$ is just the number of these embeddings under which the image of $E$ is $E$. So $\Aut(E/F) = [E:F]$ implies $E/F$ is a normal extension.
 \end{proof}
-
-\begin{remark}
-    In general, if $E = F(\aa)$ is a finite extension, and $\aa' \in \overline{f}$ is another root of the minimal polynomial of $\aa$, then we've seen that there is a unique embedding $\sigma : E \to \overline{F}$ fixing $F$ such that $\sigma(\aa) = \aa'$. If $\aa' \in E$, then this function must be an automorphism of $E$. This is because the image of $E$ under $\aa$ is $F(\aa')$, a field satisfying both $F \subset F(\aa') \subset E$ (because $\aa' \in E$), as well as $[F(\aa'):F] = [E:F]$ (because $\aa$ and $\aa'$ have the same minimal polynomial over $F$). The only option is that $F(\aa') = E$.
-    
-    In other words, there are $[E : F]$ roots of the minimal polynomial of $\aa$ over $F$, say $\aa_1,\cdots, \aa_{[E:F]}$, and the embedding $E\to\overline{F}$ defined by $\sigma(\aa) =\aa_i$ turns out to describe an element of $\Aut(E/F)$ if and only if $\aa_i \in E$.
-\end{remark}
 
 \section{Galois extensions}
 
@@ -1088,6 +1137,17 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
 \end{example}
 
 \section{Kummer extensions}
+Another relatively common type of field extension is an extension by an $n$-th root. It is much easier to study these fields if we start with the assumption that the ground field contains the $n$-th roots of unity. Of course we must be careful, since a field obtained by adjoining the sixth root of a perfect square is really just a cubic extension. Recall Theorem \ref{kummer1}, let's study its Galois group. 
+
+\begin{thm}
+    Let $F$ be a field of characteristic not dividing $n$, containing a primitive $n$-th root of unity, and let $E$ be the splitting field of $x^n-c\in F[x]$. In other words $E =F(\aa)$, where $\aa^n=c \in F$ and $\aa\in E$. Then $E/F$ is Galois and and $\Gal(E/F) \cong \ZZ/r\ZZ$.
+\end{thm}
+
+\begin{proof}
+    We already showed that $E/F$ is normal in Theorem \ref{kummer1}. Now, since $\char(F) \nmid n$, we also have $\char(F) \nmid r$, and so $E/F$ is separable hence Galois.
+
+    Note any $\sigma\in \Gal(E/F)$ is entirely determined by what it does to $\aa^{1/n}$ and $\sigma(\aa)$ must be $\zeta^a\aa$. We get an bijection, indeed, an isomorphism between $\Gal(E/F)$ and $\ZZ/r\ZZ$
+\end{proof}
 
 
 % \newpage

@@ -461,7 +461,7 @@ To prove the (non)uniqueness of a algebraic closure needs more work.
    Since $\varphi$ is a ring homomorphism between fields, $\varphi$ is injective. To see that $\varphi$ is surjective, let $a \in K$. Since $K/k$ is algebraic, there is an irreducible polynomial $p(x) \in k[x]$ having $a$ as a root. The $k$-map $\varphi$ permutes the set $A$ of all those roots of $p(x)$ that lie in $K$. Therefore, $a \in \varphi(A) \subset  \im(\varphi)$, since $A$ is finite.
 \end{proof}
 
-\begin{lemma}\label{ac6}
+\begin{lemma}\label{extensionlemma}
     Let $k$ be a field and let $K/k$ be an algebraic closure. If $F/k$ is an algebraic extension, then there is an injective $k$-map $\psi: F \to K$. In particular, every $k$-map $F\to K$ extends to a $k$-map $K\to K$, which is an isomorphism indeed.
 \end{lemma}
 
@@ -479,7 +479,7 @@ If $F$ is countably generated over $k$, namely, $F=k[\aa_1,...,\aa_n]$, then we 
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{ac} part (2)]
-    Let $K$ and $L$ be two algebraic closures of a field $k$. By Lemma \ref{ac6}, there are injective $k$-maps $\psi : K \to L$ and $\theta : L \to K$. By Lemma \ref{ac5}, both composites $\theta \psi : K \to K$ and $\psi \theta : L \to L$ are automorphisms. It follows that $\psi$ (and $\theta$) is a $k$-isomorphism.
+    Let $K$ and $L$ be two algebraic closures of a field $k$. By Lemma \ref{extensionlemma}, there are injective $k$-maps $\psi : K \to L$ and $\theta : L \to K$. By Lemma \ref{ac5}, both composites $\theta \psi : K \to K$ and $\psi \theta : L \to L$ are automorphisms. It follows that $\psi$ (and $\theta$) is a $k$-isomorphism.
 \end{proof}
 
 It is now permissible to speak of \emph{the} algebraic closure of a field.
@@ -586,6 +586,44 @@ Let's end this section with two theorems from Week 1 which makes more sense now.
     They are all the splitting fields of $g(x)=x^{p^n}-1\in \FF_p[x]$, and hence isomorphic.
 \end{proof}
 
+The following theorem, which is perhaps surprising, says that the splitting field of a polynomial contains a splitting field for the minimal polynomial of any element of that field.
+
+\begin{thm}\label{normal}
+    Let $E/F$ be a finite extension of fields. The following are equivalent:
+    \begin{enumerate}
+        \item $E$ is the splitting field of some polynomial over $F$;
+        \item every irreducible polynomial $g(x)\in F[x]$ with a root in $E$ factors completely over $E$;
+        \item any embedding $\sigma: E\to \overline{E}$ fixing $F$ is an automorphism of $E$, namely, $\im(\sigma)=E$.
+    \end{enumerate}
+\end{thm}
+
+\begin{defn}
+    A finite extension $E/F$ is \emph{normal} if it satisfies any of the equivalent conditions in Theorem \ref{normal}.
+\end{defn}
+
+We need a technical lemma to prove Theorem \ref{normal}.
+
+% \begin{lemma}\label{nlam}
+%     Let $E/F$ be a finite extension. Suppose that $F'\subset E$ is a field and that there is a embedding $\psi: F'\to\overline{E}$ fixing $F$, Then $\psi$ can be extended to an embedding $\phi: E\to\overline{E}$ in the sense that $\phi|_{F'}=\psi$.
+% \end{lemma}
+
+% \begin{proof}
+%     We proceed by induction on $[E:F']$. If $[E:F']=1$, then $E=F'$ and we are done. 
+    
+%     Suppose that $[E:F]>1$ and that the statement is true for fields $F\subset F''\subset E$ with $[E:F'']<[E:F']$. Since $E\not=F'$, there is an element $\bb\in E\setminus F'$ which, necessarily, is algebraic over $F'$. Now we have been given an embedding $\psi: F'\to\overline{F}$ which fixes $F$. For a polynomial $g(x)\in F'[x]$, we let $g^\psi(x)\in \overline{F}$ be the polynomial obtained by applying $\psi$ to each coefficient. Then clearly $g(x) \to g^\psi(x)$ is an isomorphism from $F'[x]$ to $K[x]$, where $K \subset F$ is the image of $F'$ under $\psi$. Now, if $g^\psi(\bb') = 0$, it follows easily that
+%     $$F'(\bb)\cong F'[x]/(g)\cong K[x]/(g^\psi) \cong K(\bb').$$
+%     This gives an embedding of  $\psi': F'(\bb) \to F$ which extends $\psi$. Since $[E:F'(\bb)] < [E : F']$ (because $[F'(\bb) : F0] > 1$), we may apply the induction hypothesis to  $\psi': F'(\bb) \to E$, and conclude that it extends to an embedding $E \to \overline{F}$.
+% \end{proof}
+
+\begin{proof}[Proof of Theorem \ref{normal}] We show that $$(3)\Longrightarrow(2)\Longrightarrow (1)\Longrightarrow (3).$$
+    
+    (2) $\Longrightarrow$ (1): For a primitive extension $E=F(\alpha)$, $E$ is the splitting field of the minimal polynomial of $\alpha$ over $F$. If $E=F(\aa_1,\cdots,\aa_n)$, the $E$ is the splitting field of the products of the minimal polynomials of $\aa_i$ over $F$ for $i=1,\cdots,n$.
+
+    (3) $\Longrightarrow$ (2): Let $g(x)\in F[x]$ be an irreducibility polynomial with a root $\bb\in E$. For each root $\beta'\in \overline{E}$, we obtain an embedding: $F(\beta) \to \overline{E}$ with $\phi(\bb)=\bb'$. By Lemma \ref{extensionlemma}, we can extend to an embedding $\sigma: E\to \overline{E}$ (fixing $F$). The image of $\sigma$ is $E$ by assumption. In other words, $\bb'=\phi(\bb)$ is in $E$. As $\bb'$ runs over all possible roots, $E$ contains all the roots of $g$ and so $g$ factors completely in $E[x]$.
+
+    (1) $\Longrightarrow$ (3): Let $E$ be the splitting field of $f(x)\in F[x]$ and $\sigma: E\to\overline{E}$ an embedding fixing $F$. We know that $\sigma$ permutes the roots of $f(x)$ in $\overline{E}$, so the image of $\sigma$ contains all the roots of $f$. But $E$ is exactly generated by the roots of $f$, so the $\im(\sigma)$ is as well. It follows that $\sigma(E)=E$.
+\end{proof}
+
 \chapter*{Week 3}
 \setcounter{chapter}{3}
 
@@ -634,7 +672,6 @@ Fortunately, almost all the fields we have good feelings at are perfect, for exa
     
     For another direction, suppose that $\sigma$ is surjective and that $f\in F[x]$ is irreducible and inseparable. Similarly to the argument in Theorem \ref{sep}, we get $f$ divides $f'$. If $f'$ was not the zero polynomial, then $\deg(f')< \deg(f)$, which is impossible given $f\mid f'$. Let $f(x)=\sum_{i=0}^d a_ix^i$ then we get $$0=f'(x)=\sum_{i=1}^dia_ix^{i-1}\in F[x].$$  Therefore, $ia_i=0$ for each $i$, which says $a_i=0$ or $i=0$ in $F$. In other words, $a_i=0$ unless $p|i$ and then we can write $$f(x)= \sum_{i=0}^m a_{ip}x^{ip}.$$ But $\sigma$ is surjective, then $a_{ip} =  (\aa^i)^p$ for some $\aa_i\in F$ for each $i$ and $$f(x) =  \sum_{i=0}^m (\aa_i)^p x^{ip} = (\sum_{i=1}^m \aa_ix^i)^p.$$ This polynomial is definitely reducible and we reach a contradiction.
 \end{proof}
-
 
 This theorem says that fields of characteristic 0 and finite fields are perfect. One has to work fairly hard to come up with an example of an inseparable extension. But these do come up naturally in algebraic geometry over fields of positive characteristic.
 
@@ -761,7 +798,7 @@ We will now proceed with a slightly more detailed examination of extensions whic
 
 \begin{proof}
     Fix an algebraic closure $\overline{K}$ of $K$. Then $K \subset L \subset M \subset \overline{K}$, and we may view $K$ also as an algebraic closure of $M$ and of $L$. Furthermore, let
-    $$\Hom_K(L,\overline{K}) = \{\sigma_i: i \in I\}, \Hom_L(M,\overline{K}) = \{\tau_j: j \in J\},$$ where in each case, the $\sigma_i$ as well as the $\tau_j$ are distinct. Now extend the $K$-homomorphisms $\sigma_i : L \to \overline{K}$ via Lemma \ref{ac6} to $K$-automorphisms $\overline{\sigma_i}: \overline{K} \to \overline{K}$. 
+    $$\Hom_K(L,\overline{K}) = \{\sigma_i: i \in I\}, \Hom_L(M,\overline{K}) = \{\tau_j: j \in J\},$$ where in each case, the $\sigma_i$ as well as the $\tau_j$ are distinct. Now extend the $K$-homomorphisms $\sigma_i : L \to \overline{K}$ via Lemma \ref{extensionlemma} to $K$-automorphisms $\overline{\sigma_i}: \overline{K} \to \overline{K}$. 
     The desired multiplicative formula will then be a consequence of the following two assertions:
     \begin{enumerate}
         \item The maps $\overline{\sigma_i} \circ \tau_j : M \to \overline{K}, i \in I, j \in J$, are distinct.
@@ -806,7 +843,7 @@ Put all the knowledge together, we get the following statement:
 \end{cor}
 
 \begin{cor}
-    LeT $K/F$ be a finite algebraic extension. If $K=F(\aa_1,\cdots,\aa_n)$ and each $\aa_i$ is separable, then $K/F$ is separable 
+    Let $K/F$ be a finite algebraic extension. If $K=F(\aa_1,\cdots,\aa_n)$ and each $\aa_i$ is separable, then $K/F$ is separable. 
 \end{cor}
 
 The usefulness of this corollary is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of $L$ is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
@@ -817,45 +854,7 @@ We will investigate more about inseparable extensions later after introducing Ga
 \chapter*{Week 4}
 \setcounter{chapter}{4}
 
-\section{Normal extensions}
-
-The following theorem, which is perhaps surprising, says that the splitting field of a polynomial contains a splitting field for the minimal polynomial of any element of that field.
-
-\begin{thm}\label{normal}
-    Let $E/F$ be a finite extension of fields. The following are equivalent:
-    \begin{enumerate}
-        \item $E$ is the splitting field of some polynomial over $F$;
-        \item every irreducible polynomial $g(x)\in F[x]$ with a root in $E$ factors completely over $E$;
-        \item any embedding $\sigma: E\to \overline{F}$ fixing $F$ is an automorphism of $E$, namely, $\im(\sigma)=E$.
-    \end{enumerate}
-\end{thm}
-
-We need a technical lemma to prove Theorem \ref{normal}.
-
-\begin{lemma}\label{nlam}
-    Let $E/F$ be a finite extension. Suppose that $F'\subset E$ is a field and that there is a embedding $\psi: F'\to\overline{F}$ fixing $F$, Then $\psi$ can be extended to an embedding $\phi: E\to\overline{F}$ in the sense that $\phi|_{F'}=\psi$.
-\end{lemma}
-
-\begin{proof}
-    We proceed by induction on $[E:F']$. If $[E:F']=1$, then $E=F'$ and we are done. 
-    
-    Suppose that $[E:F]>1$ and that the statement is true for fields $F\subset F''\subset E$ with $[E:F'']<[E:F']$. Since $E\not=F'$, there is an element $\bb\in E\setminus F'$ which, necessarily, is algebraic over $F'$. Now we have been given an embedding $\psi: F'\to\overline{F}$ which fixes $F$. For a polynomial $g(x)\in F'[x]$, we let $g^\psi(x)\in \overline{F}$ be the polynomial obtained by applying $\psi$ to each coefficient. Then clearly $g(x) \to g^\psi(x)$ is an isomorphism from $F'[x]$ to $K[x]$, where $K \subset F$ is the image of $F'$ under $\psi$. Now, if $g^\psi(\bb') = 0$, it follows easily that
-    $$F'(\bb)\cong F'[x]/(g)\cong K[x]/(g^\psi) \cong K(\bb').$$
-    This gives an embedding of  $\psi': F'(\bb) \to F$ which extends $\psi$. Since $[E:F'(\bb)] < [E : F']$ (because $[F'(\bb) : F0] > 1$), we may apply the induction hypothesis to  $\psi': F'(\bb) \to E$, and conclude that it extends to an embedding $E \to \overline{F}$.
-\end{proof}
-
-\begin{proof}[Proof of Theorem \ref{normal}] We show that $$(3)\Longrightarrow(2)\Longrightarrow (1)\Longrightarrow (3).$$
-    
-    (2) $\Longrightarrow$ (1): For a primitive extension $E=F(\alpha)$, $E$ is the splitting field of the minimal polynomial of $\alpha$ over $F$. If $E=F(\aa_1,\cdots,\aa_n)$, the $E$ is the splitting field of the products of the minimal polynomials of $\aa_i$ over $F$ for $i=1,\cdots,n$.
-
-    (3) $\Longrightarrow$ (2): Let $g(x)\in F[x]$ be an irreducibility polynomial with a root $\bb\in E$. For each root $\beta'\in \overline{F}$, we obtain an embedding: $F(\beta) \to \overline{F}$ with $\phi(\bb)=\bb'$. (Indeed, both $F(\bb), F(\bb')$ are isomorphic to $F[x]/(g)$ by Theorem \ref{minimal}.) By Lemma \ref{nlam}, we can extend to an embedding $\sigma: E\to \overline{F}$ (fixing $F$). The image of $\sigma$ is $E$ by assumption. In other words, $\bb'=\phi(\bb)$ is in $E$. As $\bb'$ runs over all possible roots, $E$ contains all the roots of $g$ and so $g$ factors completely in $E[x]$.
-
-    (1) $\Longrightarrow$ (3): Let $E$ be the splitting field of $f(x)\in F[x]$ and $\sigma: E\to\overline{F}$ an embedding fixing $F$. We know that $\sigma$ permutes the roots of $f(x)$ in $\overline{F}$, so the image of $\sigma$ contains all the roots of $f$. But $E$ is exactly generated by the roots of $f$, so the $\im(\sigma)$ is as well. It follows that $\sigma(E)=E$.
-\end{proof}
-
-\begin{defn}
-    A finite extension $E/F$ is \emph{normal} if it satisfies any of the equivalent conditions in Theorem \ref{normal}.
-\end{defn}
+\section{Galois extensions}
 
 There is an alternate characterization of normal extensions in the separable case:
 
@@ -869,7 +868,7 @@ There is an alternate characterization of normal extensions in the separable cas
     On the other hand, suppose $\Aut(E/F) = [E:F]$. By Theorem \ref{acc} there are precisely $[E:F]$ distinct embeddings $E\to \overline{F}$ fixing $F$ since $E/F$ is finite and separable. But $\Aut(E/F) = [E:F]$, so each embedding must give rise to an automorphism $E\to E$, since $\Aut(E/F)$ is just the number of these embeddings under which the image of $E$ is $E$. So $\Aut(E/F) = [E:F]$ implies $E/F$ is a normal extension.
 \end{proof}
 
-\section{Galois extensions}
+Indeed, the equality $|\Aut(E/F)|=[E:F]$ is all we want.
 
 \begin{defn}
     Let $E/F$ be a finite field extension. $E/F$ is a \emph{Galois extension} if $E/F$ is separable and normal. The \emph{Galois group} of the extension is simply $\Gal(E/F)=\Aut(E/F)$.
@@ -1018,7 +1017,7 @@ Before beginning the proof, we note that since $E/F$ is separable, it is automat
 \begin{proof}
     First we suppose that $K/F$ is a Galois (indeed, normal) extension of $E$, and define a homomorphism $\Gal(E/F) \to  \Gal(K/F)$. Let $\sigma\in \Gal(E/F)$, and let $\aa\in K$ have minimal polynomial $f(x)\in F[x]$ over $F$.
 
-    Since $f(\sigma(\bb)) = \sigma(f(\bb))$ for all $\bb\in E$, we see that $\sigma(\aa)$ must be a root of $f(x)$. But $f(x)$ is an irreducible polynomial over $F$ with a root in $K$ and so, by the definition of a normal extension, all of the roots of $f(x)$ are in $K$. Thus $\sigma(\aa)\in K$. So $\sigma|_K$, the restriction of $\sigma$ to $K$, is an injective homomorphism whose image is contained in $K$. But it must also be a surjective map, since $\sigma^{-1}|_K$ has the same property. Thus $\sigma|_K$ is an automorphism of $K$ for any $\sigma\in \Gal(E/F)$, and clearly this automorphism of $K$ fixes $F$. This shows that $\sigma \mapsto \sigma|_K$ is a well-defined map $\Gal(E/F) \to  \Gal(K/F)$. It is easy to check that $(\sigma \circ \tau )|_K = \sigma|_K \circ \tau|_K$, so this map is a homomorphism. It also must be surjective, since any automorphism $\tau\in \Gal(K/F)$ is an embedding $K \to  F$ fixing $F$, which extends to an embedding $E \to  F$ fixing $F$ by Lemma \ref{nlam}, and this extension will be an element of $\Gal(E/F)$ by Theorem \ref{normal}. Thus we have a surjective homomorphism $\phi: \Gal(E/F) \to  \Gal(K/F)$, and by the first isomorphism theorem,
+    Since $f(\sigma(\bb)) = \sigma(f(\bb))$ for all $\bb\in E$, we see that $\sigma(\aa)$ must be a root of $f(x)$. But $f(x)$ is an irreducible polynomial over $F$ with a root in $K$ and so, by the definition of a normal extension, all of the roots of $f(x)$ are in $K$. Thus $\sigma(\aa)\in K$. So $\sigma|_K$, the restriction of $\sigma$ to $K$, is an injective homomorphism whose image is contained in $K$. But it must also be a surjective map, since $\sigma^{-1}|_K$ has the same property. Thus $\sigma|_K$ is an automorphism of $K$ for any $\sigma\in \Gal(E/F)$, and clearly this automorphism of $K$ fixes $F$. This shows that $\sigma \mapsto \sigma|_K$ is a well-defined map $\Gal(E/F) \to  \Gal(K/F)$. It is easy to check that $(\sigma \circ \tau )|_K = \sigma|_K \circ \tau|_K$, so this map is a homomorphism. It also must be surjective, since any automorphism $\tau\in \Gal(K/F)$ is an embedding $K \to  F$ fixing $F$, which extends to an embedding $E \to  F$ fixing $F$ by Lemma \ref{extensionlemma}, and this extension will be an element of $\Gal(E/F)$ by Theorem \ref{normal}. Thus we have a surjective homomorphism $\phi: \Gal(E/F) \to  \Gal(K/F)$, and by the first isomorphism theorem,
     $$ \Gal(E/F)/\ker(\phi)\cong \Gal(K/F).$$
 
     It remains to show that $\ker(\phi) = \Gal(E/K)$, which will also show that the latter subgroup is normal. But $\sigma\in \ker(\phi)$ if and only if $\sigma|_K$ is trivial, which happens if and only if $\sigma(x) = x$ for all $x\in K$. Thus $\sigma\in \ker(\phi)$ if and only if $\sigma\in \Gal(E/K)$. This completes one direction of the proof, and shows that in this case $\Gal(K/F)$ is the expected quotient.
@@ -1168,6 +1167,11 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
     The polynomial $x^3 -x-1$ has no roots in $\FF_{73}$, and so (being cubic) is irreducible. We know that $\Delta(x^3 - x - 1) = -23$, but
     $$14^2 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) = A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E = \FF_{73^3}$.
 \end{example}
+
+\section{Inseparable extensions}
+
+\chapter*{Week 6}
+\setcounter{chapter}{6}
 
 \section{Kummer extensions}
 Another relatively common type of field extension is an extension by an $n$-th root. It is much easier to study these fields if we start with the assumption that the ground field contains the $n$-th roots of unity. Of course we must be careful, since a field obtained by adjoining the sixth root of a perfect square is really just a cubic extension. Recall Theorem \ref{kummer1}, let's study its Galois group. 

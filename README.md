@@ -8,4 +8,4 @@ These notes are a mixture from various sources. They are
 * ‪James Milne, Field and Galois Theory.
 * Joseph Rotman, Advanced Modern Algebra.
 
-We aim to cover everything from Ingram's notes, but the part discrete valuation rings, with some additional materials from here and there. We will go to infinite Galois extension if all goes smoothly. Unfortunately, we will not discuss &#233;tale algebra.
+We aim to cover everything from Ingram's notes but the very last parts about discrete valuation rings, with some additional materials from here and there. We will go to infinite Galois extension if all goes smoothly. Unfortunately, we will not discuss &#233;tale algebra.

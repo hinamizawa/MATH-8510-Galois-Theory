@@ -1115,6 +1115,14 @@ So, in total, we've proven the following theorem.
     Let $E/F$ be a Galois extension. Then the function $H \mapsto E^H$ from subgroups of $\Gal(E/F)$ to intermediate fields of $E/F$ is an inclusion-reversing bijection, and the inverse is given by $K \mapsto \Gal(E/K)$. Moreover, $H \trianglelefteq \Gal(E/F)$ if and only if $K = E^H$ is a Galois extension of $F$, in which case $$\Gal(E/F)/\Gal(E/K) \cong \Gal(K/F).$$
 \end{thm}
 
+\begin{cor}
+    Every finite separable field extension $L/K$ admits only finitely many intermediate fields.
+\end{cor}
+
+\begin{proof}
+    Pass to the normal closure $L'/K$. Then it is Galois and hence admits only finitely many intermediate fields. 
+\end{proof}
+
 \begin{example}
     In the example $E=\QQ(\sqrt{2},\sqrt{3})$, as an extension of $\QQ$, the Galois group is $C_2\times C_2$. Three non-trivial proper subgroups are all normal. The corresponding intermediate fields are all Galois extensions of $\QQ$.
 \end{example}
@@ -1252,23 +1260,55 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
     $$14^2 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) = A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E = \FF_{73^3}$.
 \end{example}
 
-\section{Inseparable extensions}
+\section{Galois group of an equation}
 
 \chapter*{Week 6}
 \setcounter{chapter}{6}
 
-\section{Kummer extensions}
-Another relatively common type of field extension is an extension by an $n$-th root. It is much easier to study these fields if we start with the assumption that the ground field contains the $n$-th roots of unity. Of course we must be careful, since a field obtained by adjoining the sixth root of a perfect square is really just a cubic extension. Recall Theorem \ref{kummer1}, let's study its Galois group. 
+% \section{Kummer extensions}
+% Another relatively common type of field extension is an extension by an $n$-th root. It is much easier to study these fields if we start with the assumption that the ground field contains the $n$-th roots of unity. Of course we must be careful, since a field obtained by adjoining the sixth root of a perfect square is really just a cubic extension. Recall Theorem \ref{kummer1}, let's study its Galois group. 
 
-\begin{thm}
-    Let $F$ be a field of characteristic not dividing $n$, containing a primitive $n$-th root of unity, and let $E$ be the splitting field of $x^n-c\in F[x]$. In other words $E =F(\aa)$, where $\aa^n=c \in F$ and $\aa\in E$. Then $E/F$ is Galois and and $\Gal(E/F) \cong \ZZ/r\ZZ$.
-\end{thm}
+% \begin{thm}
+%     Let $F$ be a field of characteristic not dividing $n$, containing a primitive $n$-th root of unity, and let $E$ be the splitting field of $x^n-c\in F[x]$. In other words $E =F(\aa)$, where $\aa^n=c \in F$ and $\aa\in E$. Then $E/F$ is Galois and and $\Gal(E/F) \cong \ZZ/r\ZZ$.
+% \end{thm}
 
-\begin{proof}
-    We already showed that $E/F$ is normal in Theorem \ref{kummer1}. Now, since $\char(F) \nmid n$, we also have $\char(F) \nmid r$, and so $E/F$ is separable hence Galois.
+% \begin{proof}
+%     We already showed that $E/F$ is normal in Theorem \ref{kummer1}. Now, since $\char(F) \nmid n$, we also have $\char(F) \nmid r$, and so $E/F$ is separable hence Galois.
 
-    Note any $\sigma\in \Gal(E/F)$ is entirely determined by what it does to $\aa^{1/n}$ and $\sigma(\aa)$ must be $\zeta^a\aa$. We get an bijection, indeed, an isomorphism between $\Gal(E/F)$ and $\ZZ/r\ZZ$
-\end{proof}
+%     Note any $\sigma\in \Gal(E/F)$ is entirely determined by what it does to $\aa^{1/n}$ and $\sigma(\aa)$ must be $\zeta^a\aa$. We get an bijection, indeed, an isomorphism between $\Gal(E/F)$ and $\ZZ/r\ZZ$
+% \end{proof}
+
+\section{Norm and trace}
+
+\section{Hilbert 90 and Noether's Lemma}
+
+
+\chapter*{Week 7}
+\setcounter{chapter}{7}
+
+\section{Kummer Theory}
+
+\section{Solvable groups}
+
+\chapter*{Week 8}
+\setcounter{chapter}{8}
+
+\section{Solvability by radicals}
+
+\section{The transcendence of $\pi$ and $e$}
+
+\chapter*{Week 9}
+\setcounter{chapter}{9}
+
+\section{Profinite groups}
+
+\section{Infinite Galois extensions}
+
+
+\chapter*{Week 10}
+\setcounter{chapter}{10}
+
+\section{Transcendental extensions}
 
 
 % \newpage

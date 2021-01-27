@@ -6,9 +6,10 @@
 \contentsline {section}{\numberline {3.6}Separable extensions}{19}{}%
 \contentsline {section}{\numberline {3.7}The primitive element theorem}{21}{}%
 \contentsline {section}{\numberline {3.8}Separable degree}{23}{}%
-\contentsline {section}{\numberline {4.9}Galois extensions}{26}{}%
-\contentsline {section}{\numberline {4.10}The fundamental theorem}{29}{}%
-\contentsline {section}{\numberline {5.11}Cyclotomic extensions}{33}{}%
-\contentsline {section}{\numberline {5.12}Cubic extensions}{36}{}%
-\contentsline {section}{\numberline {5.13}Inseparable extensions}{37}{}%
-\contentsline {section}{\numberline {6.14}Kummer extensions}{38}{}%
+\contentsline {section}{\numberline {3.9}Inseparable extensions}{25}{}%
+\contentsline {section}{\numberline {4.10}Galois extensions}{28}{}%
+\contentsline {section}{\numberline {4.11}The fundamental theorem}{31}{}%
+\contentsline {section}{\numberline {5.12}Cyclotomic extensions}{35}{}%
+\contentsline {section}{\numberline {5.13}Cubic extensions}{38}{}%
+\contentsline {section}{\numberline {5.14}Inseparable extensions}{39}{}%
+\contentsline {section}{\numberline {6.15}Kummer extensions}{40}{}%

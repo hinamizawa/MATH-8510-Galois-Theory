@@ -848,8 +848,69 @@ Put all the knowledge together, we get the following statement:
 
 The usefulness of this corollary is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of $L$ is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
 
+\section{Inseparable extensions}
 
-We will investigate more about inseparable extensions later after introducing Galois extensions.
+A field of characteristic 0 is perfect. We assume in this section that the characteristic of a field is $p$.
+
+\begin{defn}
+    A non-constant polynomial $f\in F[x]$ is \emph{purely inseparable} if it admits precisely one root with multiplicity.
+\end{defn}
+
+If $f$ is irreducible and purely inseparable, then $f(x)=(x-\aa)^{p^n} = x^{p^n}-c$. 
+
+\begin{defn}
+    Let $L/K$ be an algebraic field extension. An element $\aa\in L$ is \emph{purely inseparable} over $K$ if $\aa$ is a zero of a purely inseparable polynomial, namely, the minim polynomial $\irr(\aa,K)$ is of the form $x^{p^n}-c$ from some integer $n$ and $c\in K$. $L$ is \emph{purely inseparable} over $K$ if every element in $L\setminus K$ is purely inseparable.
+\end{defn}
+
+It follows immediately that purely inseparable field extensions are normal.
+
+\begin{thm}
+    For a finite algebraic extension $L/K$, the following conditions are equivalent: \begin{enumerate}
+        \item $L$ is purely inseparable over $K$;
+        \item There are elements $a_1,\cdots,a_n\in L$ such that $L=K(a_1,\cdots,a_n)$ and each $a_i$ is purely inseparable over $K$;
+        \item $[L:K]_s=1$;
+        \item For every element $a\in L\setminus K$, there is an integer $n$ such that $a^{p^n}\in K$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof} 
+    We will show $(1)\Longrightarrow (2) \Longrightarrow (3) \Longrightarrow (4) \Longrightarrow (1)$.
+
+
+    (1) $\Longrightarrow$ (2) is clear.
+
+
+    (2) $\Longrightarrow$ (3):  It is enough to show $[K(a_i):K]_s=1$ for all $i$, because any $K$-map $L\to \overline{K}$ is uniquely determined by the image of the elements $\aa_i$. On the other hand, the minimal polynomial of $a_i$ admits only a single root in $\overline{K}$ and only one $K$-map $L\to \overline{K}$. Hence $[K(a_i):K]_s=1$ and so $[L:K]_s=1$.
+    
+    
+    (3) $\Longrightarrow$ (4): For any $a\in L\setminus K$, we have $$[L:K(a)]_s [K(a):K]_s = [L:K]_s.$$ So $[K(a):K]_s=1$. So the minimal polynomial of $a$ admits only one (repeated) root which is of the form $x^{p^n}-c$. Hence $a^{p^n}\in K$.
+
+
+    (4) $\Longrightarrow$ (1):  For any $a\in L\setminus K$, we have $a^{p^n}=c\in K$. Hence $\irr(a,K)$ divides $x^{p^n}-c$ which has only one (repeated) root. So is $\irr(a,K)$ and then $a$ is purely inseparable over $K$.
+\end{proof}
+
+\begin{example}
+    Consider the field extension $\FF_p/\FF_p(t^n)$. $x^p-t^p\in \FF_p(t^n)[x]$ is irreducible (by Eisenstein's Criterion) and purely inseparable over $\FF_p(t)$. It is indeed a purely inseparable extension by above theorem. 
+\end{example}
+
+We finish this section by showing that every algebraic field extension can be decomposed into a separable extension, followed by a purely inseparable extension. 
+
+\begin{thm}
+    Let $L/K$ be an algebraic field extension. Then there exists a unique intermediate field $$K_s=\{a\in L:a \mbox{ separable over} K\}$$ of $L/K$ such that $L/K_s$ is purely inseparable and $K_s/K$ is separable. The field $K_s$ is called the separable closure of $K$ in $L$. We also have  $[L : K]_s = [K_s : K]$. If $L/K$ is normal, the extension $K_s/K$ is normal, too.
+\end{thm}
+
+\begin{proof}
+    We first note that $K_s$ is a field. Indeed, for $a, b\in K_s$, that $K(a, b)$ is a separable extension of $K$, so that $K(a, b) \subset K_s$. Therefore, $K_s$ is the biggest separable extension of $K$ that is contained in $L$.
+    
+    Now consider an element $a\in L$ and let $f\in K_s[X]$ be the minimal polynomial of $a$ over $K_s$. Then, there exists a separable polynomial $g\in K_s[X]$ such that $f(x) = g(x^{p^r})$ for some integer $r$. Moreover, $g$ is irreducible, since $f$ is irreducible. It follows that $g$ is the minimal polynomial of $c = a^{p^r}$ over $K_s$ and that $c$ is separable over $K_s$ hence separable over $K$. However, then we must have $c\in K_s$ and therefore $g(x) = x - c$, as well as $f(x) = x^{p^r} - c$. Thus, $a$ is purely inseparable over $K_s$, and the same is true for $L$ over $K_s$.
+
+
+    Since $L/K_s$ is purely inseparable and $K_s/K$ is separable, we get the stated relation on degrees $$[L:K]_s=[L:K_s]_s[K_s:K]_s=[K_s:K].$$
+    To justify the uniqueness of $K_s$, consider an intermediate field $K'$ of $L/K$ such that $L/K'$ is purely inseparable and $K'/K$ is separable. Then we have $K' \subset K_s$ by the definition of $K_s$, and the extension $K_s/K'$ is separable. On the other hand, the latter extension is purely inseparable, since $L/K'$ is purely inseparable.This shows that $K_s/K'$ is trivial and hence that $K_s$ is unique, as claimed.
+
+
+    It remains to show that $K_s/K$ is normal if the same is true for $L/K$. To do this, consider a $K$-homomorphism $\sigma : K_s\to \overline{L}$ into an algebraic closure of $L$. Since we can view $\overline{L}$ as an algebraic closure of $K$ as well, we can extend $\sigma$ due to Lemma \ref{extensionlemma} to a $K$-homomorphism $\sigma' : L\to \overline{L}$. Now, assuming $L/K$ to be normal, $\sigma'$ restricts to a $K$-automorphism of $L$. Furthermore, the uniqueness of $K_s$ implies that $\sigma$ restricts to a $K$-automorphism of $K_s$, and it follows that $K_s/K$ is normal.
+\end{proof}
 
 \chapter*{Week 4}
 \setcounter{chapter}{4}

@@ -544,13 +544,13 @@ We say "a" splitting field instead of "the" splitting field because it is not ob
 \begin{proof}
     By Kronecker's Theorem, there exists an extension field $K/k$ that contains all the roots of $f$, namely, $K$ contains all the $p$-th root of $c$. If $\aa^p=c$, then every such root has the form $\zeta\aa$, where $\zeta$ is a $p$-th root of unity.
 
-    If $f$ is not irreducible in $k[x]$, then there is a factorization $f = gh$ in $k[x]$, where $g(x), h(x)$ are non-constant polynomials with $d = \deg(g) < \deg(f) = p$. Now the constant term $b$ of $g$ is, up to sign, the product of some of the roots of $f$: $$\pm b = \aa^d \zeta^d = \aa^d\zeta',$$ where $\zeta'$, which is a product of $d$ cpoies $p$-th roots of unity, is itself a $p$-th root of unity. It follows that $$(\pm b)^p = (\aa^d\zeta')^p = \aa^{dp} = c^d.$$
+    If $f$ is not irreducible in $k[x]$, then there is a factorization $f = gh$ in $k[x]$, where $g(x), h(x)$ are non-constant polynomials with $d = \deg(g) < \deg(f) = p$. Now the constant term $b$ of $g$ is, up to sign, the product of some of the roots of $f$: $$\pm b = \aa^d\zeta',$$ where $\zeta'$, which is a product of $p$-th roots of unity, is itself a $p$-th root of unity. It follows that $$(\pm b)^p = (\aa^d\zeta')^p = \aa^{dp} = c^d.$$
     But $p$ being prime and $d < p$ force $\gcd(d, p) = 1$; hence, there are integers $s$ and $t$ with $1 = sd + tp$. Therefore, $$c = c^{sd+tp} = c^{sd}c^{tp} = (\pm b)^{ps}c^{tp} = [(\pm b)^sc^t]^p,$$ and $c$ has a $p$-th root in $k$.
 
     We now assume that $k$ contains the set $\Omega$ of all the $p$-th roots of unity. If $\aa  \in  K$ is a $p$-th root of $c$, then $f(x) =\prod_{\omega\in \Omega}(x- \omega\aa )$ shows that $f$ splits over $K$ and that $k(\aa)$ is a splitting field of $f$ over $k$. 
 \end{proof}
 
-We are going to solve the isomorphism problem for finite fields. Observe that if $\varphi : F \to F'$ is a homomorphism, then
+Observe that if $\varphi : F \to F'$ is a homomorphism, then
 $$\varphi_*:F[x]\to F'[x], a_0+\cdots+a_nx^n\mapsto \varphi(a_0)+\cdots+\varphi(a_n)x^n $$  
 is a ring homomorphism. If $\varphi : F \to F'$ is an isomorphism, then $\varphi_*$ is also an isomorphism, and for any $f \in F[x]$, it sends the ideal $\langle f\rangle$ to the ideal $\langle \varphi_*(f)\rangle$.
 
@@ -567,7 +567,7 @@ is a ring homomorphism. If $\varphi : F \to F'$ is an isomorphism, then $\varphi
 \end{thm}
 
 \begin{proof}
-    Let $p$ be an irreducible factor of $f$ of degree $\geq$ 2. Let $\aa_1 \in E$ be a root of p and $\bb_1 \in E'$ be root of $\varphi_*(p)$. By the previous lemma, there is an isomorphism $F(\aa_1) \to F'(\bb_1)$ that restricts to $\varphi$ on $F$. If we repeat this process (until f no longer has any irreducible factors of degree $\geq 2$, then we have a isomorphism $F(\aa_1,\cdots, \aa_k) \cong F'(\bb_1,\cdots, \bb_k)$ that restricts to $\varphi$ on $F$. Because $f$ splits in $F(\aa_1,\cdots, \aa_k)$, and $\varphi(f)$ splits in $F'(\bb_1,\cdots, \bb_k)$, it follows that $E = F(\aa_1,\cdots, \aa_k)$ and $E' = F'(\bb_1,\cdots, \bb_k)$, which completes the proof.
+    Let $p$ be an irreducible factor of $f$ of degree $\geq$ 2. Let $\aa_1 \in E$ be a root of $p$ and $\bb_1 \in E'$ be root of $\varphi_*(p)$. By the previous lemma, there is an isomorphism $F(\aa_1) \to F'(\bb_1)$ that restricts to $\varphi$ on $F$. If we repeat this process (until $f$ no longer has any irreducible factors of degree $\geq 2$), then we have a isomorphism $F(\aa_1,\cdots, \aa_k) \cong F'(\bb_1,\cdots, \bb_k)$ that restricts to $\varphi$ on $F$. Because $f$ splits in $F(\aa_1,\cdots, \aa_k)$, and $\varphi(f)$ splits in $F'(\bb_1,\cdots, \bb_k)$, it follows that $E = F(\aa_1,\cdots, \aa_k)$ and $E' = F'(\bb_1,\cdots, \bb_k)$, which completes the proof.
 \end{proof}
 
 The following theorem, which is perhaps surprising, says that the splitting field of a polynomial contains a splitting field for the minimal polynomial of any element of that field.
@@ -639,7 +639,7 @@ The following theorem, which is perhaps surprising, says that the splitting fiel
 \setcounter{chapter}{3}
 
 \section{Separable extensions}
-Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem field (or $E$ a possibly larger field containing all the roots). From what we have learnt from last week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots are separable.
+Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem field (or $E$ a possibly larger field containing all the roots). From what we have learnt from the first week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots are separable.
 
 \begin{defn}
     Let $k$ be a field. A nonzero polynomial $f(x) \in k[x]$ is called \emph{separable} if it has no repeated roots (in any extension field). 
@@ -648,31 +648,28 @@ Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\aa],\aa)$ its stem fi
 Recall that the derivative of a polynomial $f(x)=\sum a_i x^i$ is defined to be $f'(x) = \sum ia_ix^{i-1}$. When $f$ has coefficients in $\RR$, this agrees with the definition in calculus. The usual rules for differentiating sums and products still hold, but note that in characteristic $p$ the derivative of $x^p$ is zero.
 
 \begin{thm}\label{sep}
-    Let $K$ be a field and $f(x)\in K[X]$ irreducible. Then $f$ is separable if and only if $\gcd(f,f')=1$ in $K[X]$. In particular, if $\char(K)=0$, then $f$ has no repeated root; if $\char(K)=p>0$, then $f$ has a multiple root if and only if $f'(x)=0$ if and only if $f(X)=g(X^{p^r})$ for some $g(X)\in K[X]$.
+    Let $K$ be a field and $f(X)\in K[X]$ a non-constant polynomial. Then $f$ is separable if and only if $\gcd(f,f')=1$ in $K[X]$. In particular, when $f$ is irreducible, then
+    \begin{enumerate}
+        \item  if $\char(K)=0$, then $f$ is separable;
+        \item  if $\char(K)=p>0$, then $f$ has a multiple root if and only if $f'(X)=0$ if and only if $f(X)=g(X^{p^r})$ for some $g(X)\in K[X]$ where the integer $r$ can be chosen to be maximal such that every zero of $f$ has multiplicity $p$.
+    \end{enumerate}
 \end{thm}
 
 \begin{proof}
-    Let $f(X)$ be an irreducible polynomial in $K[X]$. Suppose $f(X)$ is separable, and let $\aa$ be a root of $f(X)$ (in some extension of $K$. Then $f(X) = (X -\aa)h(X)$ for some $h(x)\not=0$. Since $f'(\aa)=h(\aa)\not=0$, $f'$ is non-zero and $\deg(f')<\deg(f)$. It follows from the irreducibility of $f$ immediately that $\gcd(f,f')=1$.
+    Let $f(X)$ be a non-constant polynomial in $K[X]$. Suppose $f(X)$ is separable, and let $\aa$ be a root of $f(X)$ (in some extension of $K$. Then $f(X) = (X -\aa)h(X)$ for some $h(x)\not=0$. Since $f'(\aa)=h(\aa)\not=0$, $f$ and $f'$ cannot have any common roots as $\aa$ runs all possible roots of $f$. Hence $\gcd(f,f')=1$. 
 
-    Now suppose $f(X)$ is not separable and $\aa$ is a repeated root (in an extension field). Then we can write $f(X)=(X-\aa)^2g(X)$ (in some extension field), where $g(x)$ is non-zero, and then  $f'(X)= (X-\aa)^2g'(X)+2(X-\aa)g(x)$. It follows that $f'(\aa)=0$. By Theorem \ref{minimal}, both $f,f'$ are divisible by the minimal polynomial of $\aa$ in $K[X]$ and then $\gcd(f,f')\not=1$. But if this is the case, then $f$ is the minimal polynomial and then $f\mid f'$. The only possibility is that $f'(X)=0$. But $f'=0$ happens $f(X)=g(X^{p^r})$ for some $g(X)\in K[X]$. 
-\end{proof}
+    Now suppose $f(X)$ is not separable and $\aa$ is a repeated root (in an extension field). Then we can write $f(X)=(X-\aa)^2g(X)$, where $g(x)$ is non-zero, and then  $f'(X)= (X-\aa)^2g'(X)+2(X-\aa)g(x)$. It follows that $f'(\aa)=0$. By Theorem \ref{minimal}, both $f,f'$ are divisible by the minimal polynomial of $\aa$ in $K[X]$ and then $\gcd(f,f')\not=1$.
+    
+    \smallskip
 
-Now the discussion on finite fields in Week 1 makes more sense now.
-
-\begin{thm}[Galois]
-    If $p$ is prime and $n$ is a positive integer, then there exists a field having exactly $p^n$ elements.
-\end{thm}
-
-\begin{proof}
-    Look at a splitting field of $g(x)=x^{p^n}-x\in \FF_p[x]$. The roots of $g(x)$ are all distinct and forms a subfield of the splitting field by checking addition and multiplication.  
-\end{proof}
-
-\begin{thm}[Moore]
-    Any two finite fields having exactly $p^n$ elements are isomorphic.
-\end{thm}
-
-\begin{proof}
-    They are all the splitting fields of $g(x)=x^{p^n}-x\in \FF_p[x]$, and hence isomorphic.
+    Let's discuss the in "particular part". Assume $f$ is irreducible.
+    \begin{enumerate}
+        \item Note $\deg(f')=\deg(f)-1\not=0$. Then by the irreducibility of $f$, it follows immediately that $\gcd(f,f')=0$. Hence $f$ is irreducible.
+        \item Suppose $f$ is not separable. Since $\gcd(f,f')\not=1$ and $f$ is irreducible, the only possibility is $f'=0$. Take $$f(X)=\sum_{i=0}^n a_i X^i \mbox{ and then } f'(X)=\sum_{i=1}^n ia_i X^{i-1}.$$ The coefficients of $f'$ must vanish, namely, $ia_i =  0$, but then either $a_i=0$ or $i$ is a multiple of $p$. We conclude that $f(X)=g(X^p)$ for some $g(X)\in K[X]$. 
+        
+        Now assume $f(X)=g(X^{p^r})$ where $r$ is chosen to be maximal. Then $g'\not=0$, otherwise, we can repeat above reasoning for $g$. Since $f$ is irreducible, so is $g$. And therefore $\gcd(g,g')=0$ and then $g$ is separable. We can say $$g(X)=\prod_{i=1}^n (X-a_i)\in \overline{K}[X],$$ where we can assume $f$ and hence $g$ are monic and $\overline{K}$ is a algebraic closure of $K$.  Let $b_i$ be the $p^r$-th root of $a_i$, then we have $$f(X)=\prod_{i=1}^n (X^{p^r}-b_i^{p^r})=\prod_{i=1}^n (X-b_i)^{p^r}\in \overline{K}[X].$$
+        It is clear to see that the zeros of $f$ are all of multiplicity $p^r$.
+    \end{enumerate} 
 \end{proof}
 
 \begin{defn}
@@ -682,7 +679,7 @@ Now the discussion on finite fields in Week 1 makes more sense now.
 Fortunately, almost all the fields we have good feelings at are perfect, for example, Theorem \ref{ff1} says $\FF_p$ is perfect for any prime $p$.
 
 \begin{thm}
-    A field $F$ is perfect if and only if either $F$ has characteristic $0$, or $F$ has characteristic $p$ and the Frobenius map $\sigma(x): F\to F, x\mapsto x^p$ is an isomorphism.
+    A field $F$ is perfect if and only if either $F$ has characteristic $0$, or $F$ has characteristic $p$ and the Frobenius map $\sigma: F\to F, x\mapsto x^p$ is an isomorphism.
 \end{thm}
 
 \begin{proof}
@@ -703,6 +700,28 @@ Fortunately, almost all the fields we have good feelings at are perfect, for exa
 \end{proof}
 
 This theorem says that fields of characteristic 0 and finite fields are perfect. One has to work fairly hard to come up with an example of an inseparable extension. But these do come up naturally in algebraic geometry over fields of positive characteristic.
+
+Now the discussion on finite fields in Week 1 makes more sense now.
+
+\begin{thm}[Galois]
+    If $p$ is prime and $n$ is a positive integer, then there exists a field having exactly $p^n$ elements.
+\end{thm}
+
+\begin{proof}
+    Look at a splitting field of $g(x)=x^{p^n}-x\in \FF_p[x]$. The roots of $g(x)$ are all distinct and forms a subfield of the splitting field by checking addition and multiplication.  
+\end{proof}
+
+\begin{thm}[Moore]
+    Any two finite fields having exactly $p^n$ elements are isomorphic.
+\end{thm}
+
+\begin{proof}
+    They are all the splitting fields of $g(x)=x^{p^n}-x\in \FF_p[x]$, and hence isomorphic.
+\end{proof}
+
+\begin{remark}
+    It follows immediately that $\FF^{p^n}/\FF_p$ is normal.
+\end{remark}
 
 A lot of results about field theory that are valid in characteristic 0 carry over to perfect fields in characteristic $p$ (but not everything), and the reader should be attentive to this point when reading texts which try to make life easy by always assuming fields have characteristic 0. You should always check if the theorems (and even proofs) go through to general perfect fields. 
 
@@ -747,7 +766,7 @@ In this section we prove a result which is not entirely necessary for the discou
 
     Claim: $F(\aa,\bb)=F(\gamma)$.
 
-    The theorem follows from the claim (and induction) immediately.
+    The theorem follows from the claim (and inductions) immediately.
 
     Proof of Claim: Note that since $\gamma = \aa+a\bb$, we have $F(\aa,\bb)=F(\gamma,\beta)$. It is enough to show $\beta$ is in $F(\gamma)$. Let $g(x) = f(\gamma - ax) \in F(\gamma)[x]$. Note that 
     $$g(\beta) =f(\gamma - a \beta) = f((\aa+a\bb)-a\bb) = f(\aa) = 0.$$
@@ -780,9 +799,9 @@ element.
 \end{thm}
 
 \begin{proof}
-    By the primitive element theorem, we may suppose that $E = F(\aa)$, and let $f(x) \in F[x]$ be the minimal polynomial of $\aa$. For each root $\aa' \in \overline{F}$, we have an isomorphism $$E = F(\aa) \cong F(x)/(f(x)) \cong F(\aa') \subset F.$$
-    This gives us $\deg(f) = [E:F]$ embeddings of $E$ into $\overline{F}$, which must be distinct, since they send $\aa$ to the $\deg(f)$ distinct roots of $f$ (hidden here is the fact that $E/F$ is separable). 
-    On the other hand, any embedding $F(\aa) \to F$ which fixes $F$ is determined entirely by the value at $\aa$ (which must be a root of the same minimal polynomials in $F[x]$ as $\aa$), and so these are the only possible embeddings of $E \to F$.
+    By the primitive element theorem, we may suppose that $E = F(\aa)$, and let $f(x) \in F[x]$ be the minimal polynomial of $\aa$. For each root $\aa' \in \overline{F}$, we have an isomorphism $$E = F(\aa) \cong F[x]/(f(x)) \cong F(\aa') \subset \overline{F}.$$
+    This gives us $\deg(f) = [E:F]$ embeddings of $E$ into $\overline{F}$, which must be distinct, since they send $\aa$ to the $\deg(f)$ distinct roots of $f$ (as $E/F$ is separable). 
+    On the other hand, any embedding $F(\aa) \to \overline{F}$ which fixes $F$ is determined entirely by the value at $\aa$ (which must be a root of the same minimal polynomials in $F[x]$ as $\aa$), and so these are the only possible embeddings of $E \to \overline{F}$.
 \end{proof}
 
 \begin{cor}\label{cor1}
@@ -815,8 +834,8 @@ We will now proceed with a slightly more detailed examination of extensions whic
     Parts of the proof have appeared discretely many times.
     \begin{enumerate}
         \item This is just a reformulation of Lemma \ref{splitlemma1}.
-        \item $f$ have at most $\deg(f)=[L:K]$ roots and each distinct root gives a distinct embedding $K\to \overline{L}$. There are $[L : K]_s=[L : K]$ such embeddings hence all the roots are distinct.
-        \item If a root of $f$ has multiplicity $p^r$, then $f(X)=g(X^p)$ for some $g(X)\in K[X]$. Hence there are $\deg(f)/p^r$ distinct roots and so is the number of separation degree. In other words, $[L:K] =  p^r [L:K]_s$.
+        \item $f$ have at most $\deg(f)=[L:K]$ roots and each distinct root gives a distinct embedding $L\to \overline{K}$. There are $[L : K]_s=[L : K]$ such embeddings hence all the roots are distinct.
+        \item If a root of $f$ has multiplicity $p^r$, then $f(X)=g(X^{p^r})$ for some $g(X)\in K[X]$. Hence there are $\deg(f)/p^r$ distinct roots and so is the number of separation degree. In other words, $[L:K] =  p^r [L:K]_s$.
     \end{enumerate}
 \end{proof}
 
@@ -919,7 +938,7 @@ It follows immediately that purely inseparable field extensions are normal.
 \end{proof}
 
 \begin{example}
-    Consider the field extension $\FF_p/\FF_p(t^n)$. $x^p-t^p\in \FF_p(t^n)[x]$ is irreducible (by Eisenstein's Criterion) and purely inseparable over $\FF_p(t)$. It is indeed a purely inseparable extension by above theorem. 
+    Consider the field extension $\FF_p(t)/\FF_p(t^n)$. $x^p-t^p\in \FF_p(t^n)[x]$ is irreducible (by Eisenstein's Criterion) and purely inseparable over $\FF_p(t)$. It is indeed a purely inseparable extension by above theorem. 
 \end{example}
 
 We finish this section by showing that every algebraic field extension can be decomposed into a separable extension, followed by a purely inseparable extension. 
@@ -1028,7 +1047,7 @@ needed.
 
 \begin{proof}[Proof of Theorem \ref{artin}]
     It is easy to check that $E^G$ is a subfield of $E$. We need to show that $E/E^G$ is a finite, separable, and normal extension. For each element $\aa \in E$, choose a subset $S \subset G$ such that $\{\sigma(\aa): \sigma\in S\}$ is as large as possible, but such that $\sigma_1(\aa) \not= \sigma_2(\aa)$ for $\sigma_1\not=\sigma_2$.
-    Now define $$f_aa(x) =\prod_{\sigma\in S}(x-\sigma(\aa)) \in E[x].$$
+    Now define $$f_\aa(x) =\prod_{\sigma\in S}(x-\sigma(\aa)) \in E[x].$$
     
     Our first claim is that $f_\aa(x) \in E^G[x]$.
     To see this, first note that if $\tau \in G$, then

@@ -4,20 +4,20 @@
 \contentsline {section}{\numberline {2.4}Algebraic closure}{11}{}%
 \contentsline {section}{\numberline {2.5}Splitting fields}{15}{}%
 \contentsline {section}{\numberline {3.6}Separable extensions}{19}{}%
-\contentsline {section}{\numberline {3.7}The primitive element theorem}{21}{}%
-\contentsline {section}{\numberline {3.8}Separable degree}{23}{}%
-\contentsline {section}{\numberline {3.9}Inseparable extensions}{25}{}%
-\contentsline {section}{\numberline {4.10}Galois extensions}{28}{}%
-\contentsline {section}{\numberline {4.11}The fundamental theorem}{31}{}%
-\contentsline {section}{\numberline {5.12}Cyclotomic extensions}{35}{}%
-\contentsline {section}{\numberline {5.13}Cubic extensions}{38}{}%
-\contentsline {section}{\numberline {5.14}Galois group of an equation}{39}{}%
-\contentsline {section}{\numberline {6.15}Norm and trace}{40}{}%
-\contentsline {section}{\numberline {6.16}Hilbert 90 and Noether's Lemma}{40}{}%
-\contentsline {section}{\numberline {7.17}Kummer Theory}{41}{}%
-\contentsline {section}{\numberline {7.18}Solvable groups}{41}{}%
-\contentsline {section}{\numberline {8.19}Solvability by radicals}{42}{}%
-\contentsline {section}{\numberline {8.20}The transcendence of $\pi $ and $e$}{42}{}%
-\contentsline {section}{\numberline {9.21}Profinite groups}{43}{}%
-\contentsline {section}{\numberline {9.22}Infinite Galois extensions}{43}{}%
-\contentsline {section}{\numberline {10.23}Transcendental extensions}{44}{}%
+\contentsline {section}{\numberline {3.7}The primitive element theorem}{22}{}%
+\contentsline {section}{\numberline {3.8}Separable degree}{24}{}%
+\contentsline {section}{\numberline {3.9}Inseparable extensions}{26}{}%
+\contentsline {section}{\numberline {4.10}Galois extensions}{29}{}%
+\contentsline {section}{\numberline {4.11}The fundamental theorem}{32}{}%
+\contentsline {section}{\numberline {5.12}Cyclotomic extensions}{36}{}%
+\contentsline {section}{\numberline {5.13}Cubic extensions}{39}{}%
+\contentsline {section}{\numberline {5.14}Galois group of an equation}{40}{}%
+\contentsline {section}{\numberline {6.15}Norm and trace}{41}{}%
+\contentsline {section}{\numberline {6.16}Hilbert 90 and Noether's Lemma}{41}{}%
+\contentsline {section}{\numberline {7.17}Kummer Theory}{42}{}%
+\contentsline {section}{\numberline {7.18}Solvable groups}{42}{}%
+\contentsline {section}{\numberline {8.19}Solvability by radicals}{43}{}%
+\contentsline {section}{\numberline {8.20}The transcendence of $\pi $ and $e$}{43}{}%
+\contentsline {section}{\numberline {9.21}Profinite groups}{44}{}%
+\contentsline {section}{\numberline {9.22}Infinite Galois extensions}{44}{}%
+\contentsline {section}{\numberline {10.23}Transcendental extensions}{45}{}%

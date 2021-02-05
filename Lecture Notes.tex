@@ -960,6 +960,10 @@ We finish this section by showing that every algebraic field extension can be de
     It remains to show that $K_s/K$ is normal if the same is true for $L/K$. To do this, consider a $K$-homomorphism $\sigma : K_s\to \overline{L}$ into an algebraic closure of $L$. Since we can view $\overline{L}$ as an algebraic closure of $K$ as well, we can extend $\sigma$ due to Lemma \ref{extensionlemma} to a $K$-homomorphism $\sigma' : L\to \overline{L}$. Now, assuming $L/K$ to be normal, $\sigma'$ restricts to a $K$-automorphism of $L$. Furthermore, the uniqueness of $K_s$ implies that $\sigma$ restricts to a $K$-automorphism of $K_s$, and it follows that $K_s/K$ is normal.
 \end{proof}
 
+\begin{example}
+    Consider the function field $F=\FF_x(x)$ and the field extension $E=F(x^{1/6})$. Then it is easily seen that $E=F(x^{1/2},x^{1/3})$. $x^{1/2}$ is purely inseparable and $x^{1/3}$ is separable. Hence $F(x^{1/3})$ is the separable closure and $[E:F]_s=3$.
+\end{example}
+
 \chapter*{Week 4}
 \setcounter{chapter}{4}
 
@@ -1310,8 +1314,9 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
 %     Note any $\sigma\in \Gal(E/F)$ is entirely determined by what it does to $\aa^{1/n}$ and $\sigma(\aa)$ must be $\zeta^a\aa$. We get an bijection, indeed, an isomorphism between $\Gal(E/F)$ and $\ZZ/r\ZZ$
 % \end{proof}
 
-\section{Norm and trace}
- In this section, we will discuss some methods from linear algebra that are of special interest for applications in Galois theory, in particular for the  study of cyclic extensions in next week.
+\section{Characters}
+
+In this section, we will discuss some methods from linear algebra that are of special interest for applications in Galois theory, in particular for the  study of cyclic extensions in next week.
 
 \begin{defn}
     Let $G$ be a group and $K$ a field. A $K$-valued character of $G$ is a group homomorphism $\chi: G \to K^*$.
@@ -1346,14 +1351,14 @@ For a group $G$ and a field $K$, there exists always the trivial character $G \t
 
 The preceding proposition can be applied in various settings. For example, if $L/K$ is an algebraic field extension, we see that the system $\Aut(L/K)$ of all $K$-automorphisms of $L$ is linearly independent in the $L$-vector space of all maps $L \to L$. Indeed, we have:
 
-\begin{cor}
+\begin{cor}\label{charcor}
     Let $L/K$ be a finite separable field extension and $x_1, \cdots , x_n$ a basis of $L$ as a $K$-vector space. Furthermore, let $\sigma_1, \cdots , \sigma_n$ denote the $K$-homomorphisms of $L$ to an algebraic closure $\overline{K}$ of $K$. Then the vectors
     \begin{align*}
-        \xi_1= (\sigma_1(x_1),\cdots,\sigma_1(x_n)),\\
-        \cdots,\\
-        \xi_n = (\sigma_n(x_1),\cdots,\sigma_n(x_n)),
+        \xi_1 &= (\sigma_1(x_1),\cdots,\sigma_1(x_n)),\\
+        &\cdots,\\
+        \xi_n &= (\sigma_n(x_1),\cdots,\sigma_n(x_n)),
     \end{align*}
-    give rise to a system that is linearly independent over $\overline{K}$.
+    give rise to a system that is linearly independent over $\overline{K}$. Therefore, they form an $L$-basis of $L^n$ if $L/K$ is Galois.
 \end{cor}
 
 \begin{proof}
@@ -1361,10 +1366,101 @@ The preceding proposition can be applied in various settings. For example, if $L
 \end{proof}
 
 \begin{example}
-    Consider characters of type $$\ZZ \to K^*, v\mapsto a^v,$$ for some fixed $a \in K^*$. If there are distinct elements $a_1, \cdots , a_n \in K^*$, as well as further elements $c_1, \cdots , c_n \in K$ such that 
-    $$c_1a_1^v +\cdots+c_na_n^v=0$$
-    for all $v\in \ZZ$, then Dedekind's Theorem says that $c_1 = \cdots = c_n = 0$.
+    An $\RR$-basis of $\CC$ is $\{1,i\}$. The corollary says $\{1+i, 1-i\}$ is a $\CC$-basis of $\CC^2$.
 \end{example}
+
+
+\begin{defn}
+    Let $L/K$ be a finite Galois extension of degree $n$. A $K$-\emph{conjugate} of an element $\aa\in L$ is $\sigma(\aa)$, where $\sigma$ is an element in $\Gal(L/K)$. A \emph{normal basis} of $L/K$ is a basis of $L$ consisting of $K$-conjugates only, namely,  $\{\sigma(\aa):\sigma\in \Gal(L/K)\}$ for some $\aa\in L$.
+\end{defn}
+
+\begin{example}
+    The usual basis $\{1,i\}$ is not a normal basis since the terms are not related by an element in Galois group. $\{i,-i\}$ is a set of $\RR$-conjugate, but it is linearly dependent. The set $\{1+i,1-i\}$ is a normal basis.
+\end{example}
+
+\begin{example}
+    Consider the field extension $\QQ(\sqrt{2}+\sqrt{3})/\QQ$. The set of four conjugates of $\sqrt{2}+\sqrt{3}$ is not a normal basis, since it is not linearly independent. If $\aa=1+\sqrt{2}+\sqrt{3}+\sqrt{6}$, then the four conjugates of $\aa$ are
+    $$1+\sqrt{2}+\sqrt{3}+\sqrt{6},1-\sqrt{2}+\sqrt{3}-\sqrt{6},1+\sqrt{2}-\sqrt{3}-\sqrt{6},1-\sqrt{2}-\sqrt{3}+\sqrt{6}.$$ They are linearly independent by checking the determinate and spans $\QQ(\sqrt{2}+\sqrt{3})$. Therefore, they form a normal basis. 
+\end{example}
+
+The normal basis theorem says that every finite Galois extension admits a normal basis. However, we only give a proof of this theorem when $K$ is infinite.
+
+\begin{thm}[Normal Basis Theorem]
+    Every finite Galois extension of an infinite field admits a normal basis.
+\end{thm}
+
+\begin{proof}
+    Let $L/K$ be a Galois extension and $[L:K]=n$ and $\Gal(L/K)=\{\sigma_1,\cdots,\sigma_n\}$. We aim to find an element $\aa\in L$ such that $\sigma_1(\aa),\cdots,\sigma_n(\aa)$ are linearly independent.
+\end{proof}
+
+\section{Norm and trace}
+
+\begin{defn}
+    Let $L/K$ be a finite field extension. For an element $a \in L$, consider the multiplication map $\phi_a : L \to L, x \mapsto ax$, as a linear transformation of $L$ as a $K$-vector space. Then $$\Tr_{L/K}(a)= \Tr(\phi_a),\quad \nm_{L/K}(a) = \det(\phi_a)$$ are called the trace and the norm of $a$ with respect to the extension $L/K$.
+\end{defn}
+
+In particular, $\Tr_{L/K} : L \to K$ is a homomorphism of $K$-vector spaces, or in more precise terms, a linear functional on $L$ viewed as a $K$-vector space. Likewise, $\nm_{L/K} : L^* \to K^*$ is a group homomorphism.
+
+\begin{example}
+    If $z = x+yi$ is the decomposition of a complex number $z$ into its real and imaginary parts, then the multiplication by $z$ on $\CC$ is described relative to the $\RR$-basis $1, i$ by the matrix $$    \begin{pmatrix}
+      x & -y \\
+      y &  x
+    \end{pmatrix}.$$
+    And then $\Tr_{\CC/\RR}(z)= 2\Re(z)$ and $\nm_{\CC/\RR} = z\overline{z}$.
+\end{example}
+
+\begin{example}
+    Consider the field extension $\QQ(\sqrt{2})/\QQ$. For $\aa=a+b\sqrt{2}$, the action $\phi_\aa$ on a $\QQ$-basis $\{1,\sqrt{2}\}$ of $\QQ(\sqrt{2})$ is given by $$\phi_\aa(1)=a+b\sqrt{2},\quad \phi_\aa(\sqrt{2})=2b+a\sqrt{2}.$$ The matrix represetation of $\phi_\aa$ is then $$\begin{pmatrix}
+        a & 2b\\
+        b & a
+    \end{pmatrix},$$=and then $\Tr(\aa)=2a, \nm(\aa)=a^2-2b^2.$
+\end{example}
+
+\begin{example}
+    Here we use trace and norm to show $1+\sqrt[3]{2}$ is not a perfect square in $F=\QQ(\sqrt[3]{2})$. Let $\{1,\sqrt[3]{2},\sqrt[3]{4}\}$ be the $\QQ$-basis of $F$. Then the action $\phi_{1+\sqrt[3]{2}}$ has the matrix representation $$\begin{pmatrix}
+        1 & 0 & 2\\
+        1 & 1 & 0\\
+        0 & 1& 1
+    \end{pmatrix}.$$
+    Hence $\nm_{F/\QQ}(1+\sqrt[3]{2}) =  3$. If $1+\sqrt[3]{2}$ is a perfect square, then so is its norm. But 3 is not a square of any rational number.  
+\end{example}
+
+\begin{lemma}
+    Let $L/K$ be a finite field extension of degree $n = [L : K]$, and consider an element $a \in L$.
+\begin{enumerate}
+    \item If $a \in K$, then
+    $$\Tr_{L/K}(a) = na,\quad \nm_{L/K}(a) = a^n.$$
+    \item If $L = K(a)$ and $X^n + c_{n-1}X^{n-1} +\cdots + c_0$ is the minimal polynomial of $a$ over $K$, then
+    $$\Tr_{L/K}=-c_{n-1},\quad \nm_{L/K}(a)=(-1)^nc_0.$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    For $a \in K$= the linear map $\phi_a : L \to L$ is described by $a$ times the unit matrix of $K_{n\times n}$. This justifies the formulas in (i). 
+    
+    
+    Furthermore, if $L = K(a)$, the minimal polynomial of a coincides with the minimal polynomial of the endomorphism $\phi_a$, and hence by reasons of degree, must coincide with the characteristic polynomial of $\phi_a$. Therefore, the formulas in (ii) follow from the description of $\Tr(\phi_a)$ and $\det(\phi_a)$ in terms of the coefficients of the characteristic polynomial of $\phi_a$.
+\end{proof}
+
+We can extend the lemma above to compute the norm and the trace of elements when one is dealing with arbitrary field extensions.
+
+\begin{lemma}
+    Consider an element $a \in L$ of a finite field extension $L/K$, and let $s = [L : K(a)]$. Then $$\Tr_{L/K}(a)=s\Tr_{K(a)/K}(a),\quad \nm_{L/K}(a)=(\nm_{K(a)/K}(a))^s$$
+\end{lemma}
+
+\begin{proof}
+    Choose a $K$-basis $x_1, \cdots , x_r$ of $K(a)$, as well as a $K(a)$-basis $y_1, \cdots , y_s$ of $L$. Then the products $x_iy_j$ form a $K$-basis of $L$. Let $A \in K_{r\times r}$ be the matrix describing the multiplication by $a$ on $K(a)$ relative to the basis $x_1, \cdots , x_r$. It follows that, relative to the basis consisting of the $x_iy_j$, the multiplication by $a$ on $L$ is given by the matrix
+    $$\begin{pmatrix}
+       A &0 &\cdots & 0\\
+       0 & A &\cdots & 0\\
+      \vdots & \ddots & \cdots  & \vdots\\
+       0 &0 &\cdots & A
+    \end{pmatrix}.$$
+\end{proof}
+
+\begin{thm}
+    Let $L/K$ be a finite field extension of degree $[L : K] = qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$
+\end{thm}
 
 \section{Hilbert 90 and Noether's Lemma}
 

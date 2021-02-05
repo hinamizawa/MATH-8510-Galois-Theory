@@ -1391,6 +1391,27 @@ The normal basis theorem says that every finite Galois extension admits a normal
 
 \begin{proof}
     Let $L/K$ be a Galois extension and $[L:K]=n$ and $\Gal(L/K)=\{\sigma_1,\cdots,\sigma_n\}$. We aim to find an element $\aa\in L$ such that $\sigma_1(\aa),\cdots,\sigma_n(\aa)$ are linearly independent.
+    If we have a linear dependence relation for some $\aa\in L$: $$\sum_{j=1}^n a_n\sigma_j(\aa) = 0,$$ for some $a_1,\cdots,a_j\in K$, then we can get a new one by applying $\sigma_i^{-1}$: $$\sum_{j=1}^n a_n(\sigma_i^{-1}\sigma_j)(\aa) = 0.$$
+    Collecting these together for $i=1,\cdots,n$, we get $$\begin{pmatrix}
+        \sigma_1^{-1}\sigma_1(\aa) &\cdots& \sigma_1^{-1}\sigma_n(\aa)\\
+        \vdots &\ddots&\vdots\\
+        \sigma_n^{-1}\sigma_1(\aa) &\cdots & \sigma_n^{-1}\sigma_n(\aa)
+    \end{pmatrix} \begin{pmatrix}
+        a_1 \\
+        \vdots\\
+        a_n
+    \end{pmatrix} = \begin{pmatrix}
+        0\\
+        \vdots\\
+        0
+    \end{pmatrix}.$$
+    For force a trivial solution for $a_1,\cdot,a_n$, we must have $\det((\sigma_i^{-1}\sigma_j)(\aa)) \not= 0.$
+    Let $\{e_1,\cdots,e_n\}$ be a $K$-basis of $L$. Then an arbitrary element $\aa\in L$ is of the form $\sum_{k=1}^n b_k e_k$ with $b_k\in K$. And then we have $$(\sigma_i^{-1}\sigma_j)(\aa)=\sum_{k=1}^n b_k((\sigma_i^{-1}\sigma_j)(e_k)).$$
+    Consider the polynomial $$\Delta(X_1,\cdots, X_n) = \det(\sum_{k=1}^n X_k((\sigma_i^{-1}\sigma_j)(e_k)))\in L[X_1,\cdots,X_n].$$
+    Let $\sigma_1$ be the identity automorphism. Corollary \ref{charcor} says there are $c_1,\cdots, c_n\in L$ such that    $$\sum_{k=1}^nc_k(\sigma_1(e_k),\cdots,\sigma_n(e_k))=(1,0,\cdots,0).$$ Reading this off component-wise, $$\sum_{k=1}^n c_ke_k=1, \quad \sum_{k=1}^n c_k \sigma(e_k)=0 \mbox{ for }\sigma\not= id.$$
+    Thus $$ \sum_{k=1}^n c_k (\sigma_i^{-1} \sigma_j)(e_k)=1$$ if $i=j$ and $=0$ otherwise. Therefore the matrix $(\sum_{k=1}^n c_k (\sigma_i^{-1} \sigma_j)(e_k))$ is the identity matrix and so $\Delta(c_1,\cdots,c_n)  =1 $, which means $\Delta(X_1,\cdots,X_n)$ is not the zero polynomial.
+
+    Since $K$ is infinite, there must be $b_1,\cdots, b_n\in K$ such that $\Delta(b_1,\cdots,b_n)\not=0$. Then $\aa=\sum_{k=1}^n b_k e_k$ is the desired element.
 \end{proof}
 
 \section{Norm and trace}

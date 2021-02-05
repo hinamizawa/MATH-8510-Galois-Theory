@@ -13,11 +13,11 @@
 \contentsline {section}{\numberline {5.13}Cubic extensions}{39}{}%
 \contentsline {section}{\numberline {6.14}Characters}{41}{}%
 \contentsline {section}{\numberline {6.15}Norm and trace}{43}{}%
-\contentsline {section}{\numberline {6.16}Hilbert 90 and Noether's Lemma}{44}{}%
-\contentsline {section}{\numberline {7.17}Kummer Theory}{45}{}%
-\contentsline {section}{\numberline {7.18}Solvable groups}{45}{}%
-\contentsline {section}{\numberline {8.19}Solvability by radicals}{46}{}%
-\contentsline {section}{\numberline {8.20}The transcendence of $\pi $ and $e$}{46}{}%
-\contentsline {section}{\numberline {9.21}Profinite groups}{47}{}%
-\contentsline {section}{\numberline {9.22}Infinite Galois extensions}{47}{}%
-\contentsline {section}{\numberline {10.23}Transcendental extensions}{48}{}%
+\contentsline {section}{\numberline {6.16}Hilbert 90 and Noether's Lemma}{45}{}%
+\contentsline {section}{\numberline {7.17}Kummer Theory}{46}{}%
+\contentsline {section}{\numberline {7.18}Solvable groups}{46}{}%
+\contentsline {section}{\numberline {8.19}Solvability by radicals}{47}{}%
+\contentsline {section}{\numberline {8.20}The transcendence of $\pi $ and $e$}{47}{}%
+\contentsline {section}{\numberline {9.21}Profinite groups}{48}{}%
+\contentsline {section}{\numberline {9.22}Infinite Galois extensions}{48}{}%
+\contentsline {section}{\numberline {10.23}Transcendental extensions}{49}{}%

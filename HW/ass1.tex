@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage[margin=1in,footskip=0.25in]{geometry}
+
+\def\AA{\mathfrak{A}}
+\def\BB{\mathcal{B}}
+\def\OO{\mathcal{O}}
+\def\ZZ{\mathbb{Z}}
+\def\NN{\mathbb{N}}
+\def\CC{\mathbb{C}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\FF{\mathbb{F}}
+\def\im{\text{im}}
+\def\Tr{\text{Tr}}
+\def\sgn{\text{sgn}}
+\def\nm{\text{N}}
+\def\tk{\theta_K}
+\def\Hom{\text{Hom}}
+\def\Aut{\text{Aut}}
+\def\Inn{\text{Inn}}
+\def\aa{\alpha}
+\def\bb{\beta}
+\def\aaa{\mathfrak{a}}
+\def\bbb{\mathfrak{b}}
+\def\mm{\mathfrak{m}}
+\def\Gal{\text{Gal}}
+\def\char{\text{char}}
+\def\irr{\text{irr}}
+
+\title{Assignment 1}
+\author{}
+\date{}
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{Q1:}
+Consider the field extension $F=\QQ(\sqrt{2},\sqrt[3]{2},\sqrt[4]{2},\cdots)$. Clearly, $F/\QQ$ is an algebraic extension and $F\subsetneq \overline{\QQ}$ since $i$ is not in $F$. Given any positive integer $n$, we see that $\QQ(\sqrt[n+1]{2})\subset F$. The minimal polynomial of $\sqrt[n+1]{2}$ is $x^{n+1}-2\in \QQ[x]$ --- the irreducibility is given by Eisenstein's Criterion taking prime $p=2$. Hence $$[F:\QQ] \geq [\QQ(\sqrt[n+1]{2}): \QQ] = n+1 >n.$$
+Therefore, $F$ is infinite dimensional over $\QQ$.
+
+\bigskip
+
+\noindent\textbf{Q2:}
+Suppose that $F(\aa)\not= F(\aa^3)$. Clearly, $F(\aa)/F(\aa^3)$ is a finite extension. We see that  $\aa$ is a root of the polynomial $x^3-\aa^3\in F(\aa^3)[x]$, then the minimal polynomial of $\aa$ over $F(\aa^3)$ divides $x^3-\aa^3$. But $\aa$ is not in $F(\aa^3)$, so the minimal polynomial of $\aa$ have degree 2 or 3 and hence $[F(\aa):F(\aa^3)]=2$ or 3. But then, 
+\begin{align*}
+    [K:F]& =[K:F(\aa)][F(\aa):F(\aa^3)][F(\aa^3):F] \\
+    & =2[K:F(\aa)][F(\aa^3):F]  \mbox{ or } 3[K:F(\aa)][F(\aa^3):F].
+\end{align*}
+But this contradicts to the assumption $[K:F]$ is relatively prime to 6. Hence we must have $F(\aa)=F(\aa^3)$.
+
+\bigskip
+
+\noindent\textbf{Q3:} 
+Consider $F=\QQ, K=\QQ(\sqrt{2}), L=\QQ(\sqrt[4]{2})$. We insist real roots so they are subfields of $\RR$. We claim that $L/K$ and $K/F$ are normal but $L/F$ is not. 
+
+The minimal polynomial of $\sqrt{2}$ over $\QQ$ is clearly $x^2-2\in \QQ[x]$, whose roots are $\pm \sqrt{2}$. But $K$ contains both $\pm\sqrt{2}$ and so is the splitting field of $x^2-2$. Therefore, $K/F$ is normal. Similarly, the minimal polynomial of $\sqrt[4]{2}$ over $\QQ(\sqrt{2})$ is $x^2-\sqrt{2}$, whose roots are $\pm\sqrt[4]{2}$ both lying in $\QQ(\sqrt[4]{2})$. Hence $L$ is the splitting field $x^2-\sqrt{2}$ and so $L/K$ is normal.
+
+On the other hand, the minimal polynomial of $\sqrt[4]{2}$ over $\QQ$ is $x^4-2$ --- the irreducible is checked by Eisenstein's Criterion with prime $p=2$. But the roots are then $$\sqrt[4]{2},-\sqrt[4]{2},i\sqrt[4]{2},-i\sqrt[4]{2}.$$ But $i\sqrt[4]{2}$ is not in $E$, then $x^4-2$ cannot fact completely in $\QQ(\sqrt[4]{2})[x]$. So $L/F$ is not normal.
+
+\bigskip
+
+\noindent\textbf{Q4:}
+Let $F$ be perfect and $E/F$ an algebraic extension. Let $f(x) \in E[x]$ be an irreducible polynomial. Assume $\aa$ is a root of $f$ in an algebraic closure $\overline{F}$ ---  note that $\overline{F}$ is also an algebraic closure of $E$ hence we definitely can find such a root in $\overline{F}$. Let $f'(x)\in F[x]$ be the minimal polynomial of $\aa$ over $F$. Since $F$ is perfect, $f'$ has no repeated root. Regarding $f'$ as a polynomial in $E[x]$, we see $f$ divides $f'$ and hence has no repeat root as well. Therefore, $f$ is separable and $E$ is perfect.
+
+
+As an counter example, the function field $\FF_2(t)$ is not perfect --- $\FF_2(t^{1/2})/\FF_2(t)$ is not a separable extension. The main difference is that we cannot find a root of a polynomial, say $X^2-t \in \FF_2(t)[X]$, in $\overline{\FF_2}$.
+
+\bigskip
+
+\noindent\textbf{Q5:} Assume $[\overline{F}:F]$ is finite. Then $\overline{F}$ is also finite and has $|F|^{[\overline{F}:F]}$ elements. Consider the polynomial $$f(x)=1+\prod_{a\in\overline{F}} (x-a) \in \overline{F}[x].$$ This is a well define polynomial since it is a product of finitely many terms. But $f(\aa)=1$ for every element $\aa\in \overline{F}$, in other words, $f$ has no root over $\overline{F}$. This contradicts to the definition of $\overline{F}$.
+
+
+\bigskip
+
+\noindent\textbf{Q6:}
+Take any element $\aa\in E$. The minimal polynomial $f_K$ of $\aa$ over $K$ is purely inseparable, namely, has one root only. But the minimal polynomial $f_F$ of $\aa$ over $F$ divides $f_K$ (by treating $f_K$ as a polynomial in $F[x]$) and hence has one root only as well. In other words, $f_F$ is purely inseparable and so $E/F$ is purely inseparable.
+
+\bigskip
+
+\noindent\textbf{Q7:}
+
+\bigskip
+
+\noindent\textbf{Q8:}
+
+
+
+
+
+\end{document}

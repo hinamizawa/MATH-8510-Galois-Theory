@@ -84,13 +84,71 @@ Take any element $\aa\in E$. The minimal polynomial $f_K$ of $\aa$ over $K$ is p
 
 \bigskip
 
-\noindent\textbf{Q7:}
+\noindent\textbf{Q7:} I happen to have a copy of Hungerford's algebra in my hand. The problem is indeed on page 256. I will follow the hint.
+
+We want to show $K^{\Aut(K(x)/K)}=K$, where $x$ is an indeterminate and $K$ is an infinite field, by breaking it into several small claims.
+
+Let $t\in K(x)$ be in the lowest form $\frac{p(x)}{q(x)}$ with $q(x)\not=0$ and $p(x),q(x)\in K[x]$.
+
+Claim 1: $p(X)-tq(X)\in K(t)[X]$ ($X$ is another indeterminate not $x$) is irreducible and has $x$ as a root.
+
+
+Proof of Claim 1: Since $K[t]$ is a PID and has $K(t)$ as its fraction field, Gauss's Lemma says $p(X)-tq(X)$ is irreducible in $K(t)[X]$ if and only if it is irreducible in $K[t][X]$. But $(K[t])[X]=(K[X])[t]$ and $p(X)-tq(X)$ is linear in $(K[X])[t]$ and thus irreducible. Therefore,  $p(X)-tq(X)$ is irreducible over $K(t)$. Moreover, $p(x)-tq(x) =  p(x)-\frac{p(x)}{q(x)}q(x)=0$, so $x$ is a root.
+
+
+
+\bigskip
+Claim 2:  The degree of $p(X)-tq(X)\in K(t)[X]$ as a polynomial in $X$ with coefficients in $K(t)$ is the maximum of the degrees of $p(x)$ and $q(x)$. And so $[K(x):K(t)]=\max\{\deg(p),\deg(q)\}$.
+
+
+Proof of Claim 2: Let $n=\max\{\deg(p),\deg(q)\}$. Then $p(x)=a_nx^n+\mbox{ (lower degree terms)}$ and $q(x)=b_nx^n+\mbox{ (lower degree terms)}$ and at least one of $a_n,b_n$ is nonzero. Clearly, $\deg(p(X)-tq(X))\leq n$ and the coefficient of $X^n$ is then $a_n-tb_n$. Since $t\in K(x)$ but $t\notin K$, it follows that $a_n-tb_n\not=0$ and so $\deg(p(X)-tq(X))=n$. Note $p(X)-tq(X)$ is the minimal polynomial of $x$ over $K(t)$ and hence $[K(x):K(t)]=\deg(p(X)-tq(X))=\max\{\deg(p),\deg(q)\}$.
+
+
+\bigskip
+Claim 3: If $E\not=K$ is an indeterminate field, then $[K(x):E]$ is finite.
+
+
+Proof of Claim 3: Since $E\not=K$, we can find a rational function $t=\frac{p}{q}\in (K(x)\cap E) \setminus K$. But then $K(t)\subset E$ and $[K(x):K(t)]= \max\{\deg(p),\deg(q)\}$. Thus $[K(t):E]$ is a finite extension.
+
+
+
+\bigskip
+Now we define a map $\phi: K(x)\to K(x), f(x)\mapsto f(\frac{ax+b}{cx+d})$, where $a,b,c,d\in K$. If $ad-bc=0$, then $\frac{ax+b}{cx+d}=\aa\in K$ and $\phi$ is an evaluation map at $\aa$ not well defined on $K(x)$ since $\aa$ can be a singular point of $f(x)$. We want to exclude this case.
+
+Claim 4: $\phi$ is a $K$-map when $ab-bc\not=0$. Moreover, $K(x)=K(\frac{ax+b}{cx+d})$ and $\phi$ is indeed an automorphism.
+
+
+Proof if Claim 4: It is straightforward to check the $\phi$ is a $K$-map. Let $f,g\in K(x)$, then \begin{align*}
+    \phi((f+g)(x))&=(f+g)(\frac{ax+b}{cx+d})=f(\frac{ax+b}{cx+d})+g(\frac{ax+b}{cx+d})=\phi(f(x))+\phi(g(x)),\\
+    \phi((fg)(x))&=(fg)(\frac{ax+b}{cx+d})=f(\frac{ax+b}{cx+d})g(\frac{ax+b}{cx+d})=\phi(f(x))\phi(g(x)).
+\end{align*}
+And it is trivial to see that $\phi$ fixes $K$, which are constant functions in $K(x)$. From Claim 2, we see that $[K(x):K(\frac{ax+b}{cx+d})]=\max\{\deg(ax-b),\deg(cx-d)\} = 1$ since $ad-bc\not=0$. Hence $K(x)=K(\frac{ax+b}{cx+d})$ and the surjectivity from the equality $\im(\phi)=K(\frac{ax+b}{cx+d})$ implies $\phi$ is an automorphism indeed.
+
+
+
+\bigskip
+Claim 5: If $\phi\in \Aut(K(x)/K)$, then $\phi$ has the from as in Claim 4. 
+
+
+Proof of Claim 5: Let $f(x)\in K(x)$ be in the lowest form $f(x)=\frac{\sum_{i=0}^n a_ix^i}{\sum_{j=0}^m b_j x^j}$. Note that 
+$$\phi(f(x))==\frac{\phi(\sum_{i=0}^n a_ix^i)}{\phi(\sum_{j=0}^m b_j x^j)}=\frac{\sum_{i=0}^n a_i\phi(x^i)}{\sum_{j=0}^m b_j \phi(x^j)}=f(h(x)),$$ where $h(x)=\phi(x)=\frac{p(x)}{q(x)}\in K(x)$ is the lowest form where $p(x),q(x)\in K[x]$. But then $$1=[K(x):K(h(x))]= \max\{\deg(p),\deg(q)\}.$$ Hence $p,q$ have degree less or equal to 1 and so $\phi$ has the form in Claim 4. But if $ad-bc=0$, then $h(x)=\frac{ax+b}{cx+d}$ is a constant and hence $\phi$ is an evaluation map but not an automorphism. So we have $ad-bc\not=0$.
+
+
+\bigskip
+CLaim 6: $\Aut(K(x)/K)\cong \mbox{PGL}_2(K)$.
+
+
+Proof of Claim 6: We already have a map $\mbox{GL}_2(K)\to \Aut(K(x)/K)$ base on Claim  4 \& 5. What left is to determine the kernel. If $\phi$ is the identity map, then $\frac{ax+b}{cx+d}= x$ or $ax+b=cx^2+dx$ and the only possibility is $b=d=0, a=c\not=0$ by arguing about the degree. So the kernel is of the form $\begin{pmatrix}
+    a & 0\\
+    0 & a
+\end{pmatrix}=aI$ where $a$ can be any nonzero element in $K$ hence $\Aut(K(x)/K)\cong \mbox{PGL}_2(K)$. 
 
 \bigskip
 
-\noindent\textbf{Q8:}
+Claim 7: $K^{\Aut(K(x)/K)}=K$.
 
-
+Proof of Claim 7: Clearly, $K^{\Aut(K(x)/K)}$ is a field. Suppose $K^{\Aut(K(x)/K)}=E\not= K$. By Claim 3, $K^{\Aut(K(x)/K)}/E$ is a finite extension. And then  $\Aut(K(x)/K))=\Aut(K(x)/E)$. It follows that  $$|\Aut(K(x)/K)|=|\Aut(K(x)/E|\leq [K(x):E].$$
+However, $K$ is an infinite field and so $\mbox{PGL}_2(K)\cong \Aut(K(x)/K)$ is also infinite. We reach a contradiction.
 
 
 

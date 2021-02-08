@@ -204,7 +204,7 @@ of fields, then we may view $E$ as a vector space over $F$.
     Suppose that $E/F$ is a finite extension and $\aa\in E$. Consider the elements $$1,\aa,\aa^2,\cdots,\aa^{[E:F]}\in E.$$
     Since there are $[E:F]+1$ elements, they must be linearly dependent over $F$. Hence we can find $c_i\in F$ such that $$c_o\cdot 1+c_1\aa+\cdots+c_{[E:F]}\aa^{[E:F]} =0.$$  In other words, $\aa$ is a root of the (non-zero) polynomial $$g(x)=\sum_{i=0}^{[E:F]}c_i x^i \in F[x].$$ And the degree of $g$ is at most $[E:F]$.
 
-    Now consider the evaluation map $$\varphi: F[x]\to E, f(x)\mapsto f(\aa),$$ where one may consider it as the restriction of $e_\aa: E[x]\to E$. Then $\ker(\varphi)$ is non-empty since $g$ lies in it and then $\ker(\varphi)=(f(x))$ for some monic $f(x)\in F[x]$ since $F[x]$ is a PID. Any polynomial $g(x)\in F[x]$ with a root $\aa$ belongs to the kernal and hense is divisible by $f(x)$. Clearly, $\deg f$ is no bigger than $\deg g$ and then no bigger than $[E:F]$. Since $E$ is a field as well, $\im(\varphi)$ is a domain. So the kernel is a prime (hence maximal) ideal and therefore $f$ is irreducible and $\im(\varphi)$ is a field containing $\QQ$ and $\aa$ indeed. $\phi$ is the canonical isomorphism  induced by $\varphi$. 
+    Now consider the evaluation map $$\varphi: F[x]\to E, f(x)\mapsto f(\aa),$$ where one may consider it as the restriction of $e_\aa: E[x]\to E$. Then $\ker(\varphi)$ is non-empty since $g$ lies in it and then $\ker(\varphi)=(f(x))$ for some monic $f(x)\in F[x]$ since $F[x]$ is a PID. Any polynomial $g(x)\in F[x]$ with a root $\aa$ belongs to the kernel and hense is divisible by $f(x)$. Clearly, $\deg f$ is no bigger than $\deg g$ and then no bigger than $[E:F]$. Since $E$ is a field as well, $\im(\varphi)$ is a domain. So the kernel is a prime (hence maximal) ideal and therefore $f$ is irreducible and $\im(\varphi)$ is a field containing $\QQ$ and $\aa$ indeed. $\phi$ is the canonical isomorphism  induced by $\varphi$. 
 
     Finally , notice both $F(\aa), F(\aa')$ are isomorphic to $F[x]/I$.
 \end{proof}
@@ -1496,7 +1496,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 \end{proof}
 
 \begin{thm}
-    Let $L/K$ be a finite field extension of degree $[L : K] =n= qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$ In particular, if $a$ is not separable, then $\Tr_{L/K}(a)=0$.
+    Let $L/K$ be a finite field extension of degree $[L : K] =n= qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$ In particular, if $L/K$ is not separable, then $\Tr_{L/K}(a)=0$ for all $a\in L$.
 \end{thm}
 
 \begin{proof}
@@ -1518,7 +1518,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
         \end{align*} by counting the multiplicity. Then $g$ is in $K[x]$ as well.
     \end{proof}
 
-    For the "in particular" part, if $a$ is inseparable, $m/s$ part of above equation is $p^w$ for some $w$. The trace of $a$ is the coefficient of $x^{n-1}$ term in $g(x)=p(x)^{n/m}$, which is 0.
+    For the "in particular" part, if $a$ is inseparable, then the characteristic of $K$ must be a prime $l$. And then the trace of $a$ is the coefficient of $x^{n-1}$ term in $g(x)=p(x)^{n/m}$, which is a multiply of $l$ and hence is 0. In particular, $\Tr_{L/K}(a)=[L:K] a = 0$ for $a\in K$ since $[L:k]=l^uv$ is zero in a characteristic $l$ field.
 \end{proof}
 
 \begin{thm}
@@ -1545,6 +1545,18 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
         \nm_{F(\sqrt{d})/F}(a+b\sqrt{d}) &=(a+b\sqrt{d})(a-b\sqrt{d})=a^2-b^2d.
     \end{align*} 
 \end{example}
+
+\begin{thm}
+    A finite extension $L/K$ is separable if and only if the $K$-linear map $\Tr_{L/K}: L\to K$ is nontrivial and hence surjective. If $L/K$ is separable, the symmetric bilinear map $$\Tr:L\times L\to K,\quad (x,y)\mapsto \Tr_{L/K}(xy)$$ is nondegenerate. In other words, $\Tr$ induces an isomorphism $$L\to \hat{L}, \quad x\mapsto \Tr(x,\cdot)$$ of $L$ into its dual $\hat{L}$.
+\end{thm}
+
+\begin{proof}
+    We already see that if $L/K$ is separable, then $\Tr_{L/K}$ is the zero map.
+    Now assume $L/K$ is separable. If $\sigma_1,\cdots,\sigma_r$ are all the $K$-map $L\to\overline{K}$, where $\ok$ is an algebraic closure of $K$, then we have $$\Tr_{L/K}=\sigma_1+\cdots+\sigma_r.$$ Dedekind's Theorem says characters are linearly independent hence the sum is not the zero map.
+
+
+    Now consider an element $x$ of the kernel of $L\to \hat{L}$. Then we get $\Tr_{L/K}(xL)=0$ which says $x=0$. Otherwise, $xL=x$ and then $\Tr_{L/K}$ vanished on $L$. Contradiction. And an injection homomorphism between finite dimensional vector spaces is necessarily an isomorphism. 
+\end{proof}
 
 
 \section{Hilbert 90}

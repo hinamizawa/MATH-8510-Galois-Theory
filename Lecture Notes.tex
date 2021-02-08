@@ -44,6 +44,8 @@
 \def\Gal{\text{Gal}}
 \def\char{\text{char}}
 \def\irr{\text{irr}}
+\def\of{\overline{F}}
+\def\ok{\overline{K}}
 
 
 \begin{document}
@@ -839,14 +841,14 @@ We will now proceed with a slightly more detailed examination of extensions whic
     \end{enumerate}
 \end{proof}
 
-\begin{thm}
+\begin{thm}\label{sepdeg}
     Let $K \subset L \subset M$ be algebraic field extensions. Then
     $$[M : K]_s = [M : L]_s [L : K]_s.$$
 \end{thm}
 
 \begin{proof}
     Fix an algebraic closure $\overline{K}$ of $K$. Then $K \subset L \subset M \subset \overline{K}$, and we may view $K$ also as an algebraic closure of $M$ and of $L$. Furthermore, let
-    $$\Hom_K(L,\overline{K}) = \{\sigma_i: i \in I\}, \Hom_L(M,\overline{K}) = \{\tau_j: j \in J\},$$ where in each case, the $\sigma_i$ as well as the $\tau_j$ are distinct. Now extend the $K$-homomorphisms $\sigma_i : L \to \overline{K}$ via Lemma \ref{extensionlemma} to $K$-automorphisms $\overline{\sigma_i}: \overline{K} \to \overline{K}$. 
+    $$\Hom_K(L,\overline{K}) = \{\sigma_i: i \in I\},\quad \Hom_L(M,\overline{K}) = \{\tau_j: j \in J\},$$ where in each case, the $\sigma_i$ as well as the $\tau_j$ are distinct. Now extend the $K$-homomorphisms $\sigma_i : L \to \overline{K}$ via Lemma \ref{extensionlemma} to $K$-automorphisms $\overline{\sigma_i}: \overline{K} \to \overline{K}$. 
     The desired multiplicative formula will then be a consequence of the following two assertions:
     \begin{enumerate}
         \item The maps $\overline{\sigma_i} \circ \tau_j : M \to \overline{K}, i \in I, j \in J$, are distinct.
@@ -1473,7 +1475,11 @@ In particular, $\Tr_{L/K} : L \to K$ is a homomorphism of $K$-vector spaces, or 
     Furthermore, if $L = K(a)$, the minimal polynomial of a coincides with the minimal polynomial of the endomorphism $\phi_a$, and hence by reasons of degree, must coincide with the characteristic polynomial of $\phi_a$. Therefore, the formulas in (ii) follow from the description of $\Tr(\phi_a)$ and $\det(\phi_a)$ in terms of the coefficients of the characteristic polynomial of $\phi_a$.
 \end{proof}
 
-We can extend the lemma above to compute the norm and the trace of elements when one is dealing with arbitrary field extensions.
+% \begin{lemma}
+%     Let $E/F$ be a finite extension, and let $f$ be the minimal polynomial of $\aa\in E$. Let $\chi(x)$ be the characteristic polynomial of $\phi_a: E\to E, x\mapsto ax$. Then $$\chi(x)=f(x)^{[E:F(\aa)]}.$$
+% \end{lemma}
+
+Now we can extend the lemma above to compute the norm and the trace of elements when one is dealing with arbitrary field extensions.
 
 \begin{lemma}
     Consider an element $a \in L$ of a finite field extension $L/K$, and let $s = [L : K(a)]$. Then $$\Tr_{L/K}(a)=s\Tr_{K(a)/K}(a),\quad \nm_{L/K}(a)=(\nm_{K(a)/K}(a))^s$$
@@ -1490,10 +1496,58 @@ We can extend the lemma above to compute the norm and the trace of elements when
 \end{proof}
 
 \begin{thm}
-    Let $L/K$ be a finite field extension of degree $[L : K] = qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$
+    Let $L/K$ be a finite field extension of degree $[L : K] =n= qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$ In particular, if $a$ is not separable, then $\Tr_{L/K}(a)=0$.
 \end{thm}
 
-\section{Hilbert 90 and Noether's Lemma}
+\begin{proof}
+    Let $$g(x)=(\prod_{j=1}^r(x-\sigma_j(a)))^q \in \ok[x]$$. The degree of $g$ is exactly $qr=[L:K]$.
+
+    Claim: $g(x)$ is in $K[x]$ and has precisely the same root as the minimal polynomial $p(x)=\irr(a,K)$ of $a$ over K.
+    
+    Let's postpone the proof of claim. It follows that $p$ divides $g$ immediately since all roots of $g$ are roots of $p$.  And then the only irreducible factor of $g$ is $p$ and so $g(x)=p(x)^{n/m}$, where $m$ is the degree of $p$. The characteristic polynomial $\chi(x)$ of $\phi_a$ is also divisible by the minimal polynomial of $\phi_a$, which is $p(x)$. By arguing over the degrees of polynomials, we have $\chi(x)=g(x)$. Multiplying $g(x)$ out and looking at the constant term and the coefficient of $x^{n-1}$, we have $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$
+
+    Now it remains to prove the claim.
+    \begin{proof}[Proof of Claim]
+        To see that $g,p$ have the same roots, we note that each $\sigma_j(a)$ is a root of $p$ since $\sigma_j$ fixed $K$. If $a'\in \ok$ is a root of $p(x)$, then by the extension theorem, we have a $K$-map $\tau:\ok\to \ok$ with $\tau(a)=a'$. Since $\tau|_K$ is one of $\sigma_j$, say $\tau|_K=\sigma_i$, then $a'=\tau(a)=\sigma_i(a)$. So $a'$ is also a root of $g$. This proves $g,p$ have the same roots.
+        
+        To see that $g(x)$ is in $K[x]$, we aim to show that $g=p^{n/m}$. We have $[L:K(a)]_s [K(a):K]_s=[L:K]_s$ by Theorem \ref{sepdeg}. In lieu of the proof of Theorem \ref{sepdeg}, we have $$\Hom_K(L,\ok)\cong \Hom_{K(a)}(L,\ok)\times\Hom_K(K(a),\ok).$$ In other words, an element $\sigma$ in $\Hom_K(L,\ok)$ can be unqiuely written as $\sigma = \overline{\rho}\circ\tau,$ where $\tau\in\Hom_K(K(a),\ok)$ and $\rho\in  \Hom_{K(a)}(L,\ok)$ and $\sigma|_{K(a)}=\tau$. Write $\Hom_K(K(a),\ok)=\{\tau_1,\cdots,\tau_s\}$ and then we have  
+
+        \begin{align*}
+            p(x) &= (\prod_{i=1}^s(x-\tau_s(a)))^{m/s},\\
+            g(x) &= (\prod_{j=1}^r(x-\sigma_j(a)))^q =((\prod_{i=1}^s(x-\tau_i(a)))^{r/s})^q = p(x)^{n/m},
+        \end{align*} by counting the multiplicity. Then $g$ is in $K[x]$ as well.
+    \end{proof}
+
+    For the "in particular" part, if $a$ is inseparable, $m/s$ part of above equation is $p^w$ for some $w$. The trace of $a$ is the coefficient of $x^{n-1}$ term in $g(x)=p(x)^{n/m}$, which is 0.
+\end{proof}
+
+\begin{thm}
+    Let $M/L$ and $L/K$ be finite field extensions. Then $$\Tr_{M/K} = \Tr_{L/K}\circ\Tr_{M/L},\quad \nm_{M/K}=\nm_{L/K}\circ\nm_{M/L}.$$
+\end{thm}
+
+\begin{proof}
+    Note that $$[L:K]=q_1[L:K]_s,\quad [M:L]=q_2[M:L]_s,\quad [M:K]=q_1q_2[M:K]_s.$$ Write $$\Hom_K(L,\overline{K}) = \{\sigma_i: i \in I\},\quad \Hom_L(M,\overline{K}) = \{\tau_j: j \in J\},$$ then $$\Hom_K(M,\overline{K}) = \{\overline{\sigma_i} \circ \tau_j ; i \in I, j \in J\}.$$ And then a straightforward calculation by the formula above shows \begin{align*}
+        \Tr_{M/K}(a)&=q_1q_2\sum_{i,j} \overline{\sigma_i}\circ\tau_j(a) \\
+        &= q_1 \sum_i\overline{\sigma_i}(q_2\sum_j \tau_j(a)) \\
+        &=\Tr_{L/K}(\Tr_{M/L}(a)),
+    \end{align*} 
+    as well as a similar chain equalities of norm.
+\end{proof}
+
+\begin{cor}
+    If $K/F$ is Galois with Galois group $G$, then for all $a\in K$ we have $$\Tr_{K/F}(a)=\sum_{\sigma\in G}\sigma(a),\quad \nm_{K/F}=\prod_{\sigma\in G}\sigma(a).$$
+\end{cor}
+
+\begin{example}
+    Let $F$ be a field with $\char(F)\not=2,3$ and let $d\in F\setminus F^2$. We already see that $F(\sqrt{d})/F$ is Galois and $\Gal(F(\sqrt{d})/F)=\{id,\sigma\}$, where $\sigma(\sqrt{d})=-\sqrt{d}$. Therefore, 
+    \begin{align*}
+        \Tr_{F(\sqrt{d})/F}(a+b\sqrt{d})&=(a+b\sqrt{d})+(a-b\sqrt{d})=2a,\\
+        \nm_{F(\sqrt{d})/F}(a+b\sqrt{d}) &=(a+b\sqrt{d})(a-b\sqrt{d})=a^2-b^2d.
+    \end{align*} 
+\end{example}
+
+
+\section{Hilbert 90}
 
 
 \chapter*{Week 7}

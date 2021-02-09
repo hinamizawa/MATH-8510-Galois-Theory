@@ -1001,7 +1001,7 @@ In other words, a finite extension $E/F$ is Galois if it is separable, and conta
     Let $L/K$ be a finite extension. Then
     \begin{enumerate}
         \item if $L/K$ is separable, then the normal closure $L'/K$ is Galois;
-        \item if $L/K$ is normal, the the separable closure $K_s/K$ is Galois.
+        \item if $L/K$ is normal, then the separable closure $K_s/K$ is Galois.
     \end{enumerate}
 \end{prop}
 
@@ -1130,7 +1130,7 @@ For one thing, if $H \subset  \Gal(E/F)$, then $F \subset  E^H \subset  E$, and 
 It is always true, when $E/F$ is a finite Galois extension, and $F \subset  K \subset  E$, that $E/K$ is a Galois extension, as noted in the proof above. It is \emph{not} typically true that $K/F$ is also a Galois extension. A lemma below tells us precisely when this happens, but first we'll see a simple example of the bijection above.
 
 \begin{example}
-    Let $E = \QQ(\sqrt{2},\sqrt{3})$. Then $E$ is the splitting field over $\QQ$ of the polynomial $(x^2- 2)(x^2 - 3)$, and hence is a Galois extension. As we've seen before, $[\QQ(\sqrt{2})] = 2$. This confirms the plausible statement that $[E : \QQ] = 4$. So there are four automorphisms of $E$ fixing $\QQ$, and they are defined by what they do to $\sqrt{2}$ and $\sqrt{3}$. If $\sigma\in \Gal(E/\QQ)$, then $\sigma(\sqrt{2})=\pm \sqrt{2}$ and $\sigma(\sqrt{3})=\pm \sqrt{3}$. So we see precisely what the four automorphisms are. Indeed, $\Gal(E/\QQ) \cong \ZZ/2\ZZ \times \ZZ/2\ZZ$, by the isomorphism $(a, b) \mapsto \sigma_{a,b}$ defined by $$\sigma_{a,b}(\sqrt{2})=(-1)^a \sqrt{2}\mbox{ and }\sigma_{a,b}(\sqrt{3})=(-1)^b \sqrt{3}.$$
+    Let $E = \QQ(\sqrt{2},\sqrt{3})$. Then $E$ is the splitting field over $\QQ$ of the polynomial $(x^2- 2)(x^2 - 3)$, and hence is a Galois extension. As we've seen before, $[\QQ(\sqrt{2}):\QQ] = 2$. This confirms the plausible statement that $[E : \QQ] = 4$. So there are four automorphisms of $E$ fixing $\QQ$, and they are defined by what they do to $\sqrt{2}$ and $\sqrt{3}$. If $\sigma\in \Gal(E/\QQ)$, then $\sigma(\sqrt{2})=\pm \sqrt{2}$ and $\sigma(\sqrt{3})=\pm \sqrt{3}$. So we see precisely what the four automorphisms are. Indeed, $\Gal(E/\QQ) \cong \ZZ/2\ZZ \times \ZZ/2\ZZ$, by the isomorphism $(a, b) \mapsto \sigma_{a,b}$ defined by $$\sigma_{a,b}(\sqrt{2})=(-1)^a \sqrt{2}\mbox{ and }\sigma_{a,b}(\sqrt{3})=(-1)^b \sqrt{3}.$$
 
     The group $\Gal(E/\QQ)$ has three distinct subgroups:
     $$H_1=\{id, \sigma_{1,0}\}, H_2=\{id,\sigma_{0,1}\}, H_3=\{id, \sigma_{1,1}\}.$$ 
@@ -1551,7 +1551,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 \end{thm}
 
 \begin{proof}
-    Assume $L/K$ is not separable and let $K_s$ be the separable closure of $K$. It follows that $\char(K)=p>0$, $L\not=K_s$ and $L/K$ is purely inseparable. But then $\Tr_{L/K} =\Tr_{K_s/K} \circ\Tr_{L/K_s}$ and $[L:K_s]=p^r [L:K_s]$. Theorem \ref{trnmfor} says $$\Tr_{L/K_s}(a)=p^r(\sum_i \sigma_i(a))=0,$$ for all $a\in L$, since $p^r=0$ --- we are in characteristic $p$. And then $\Tr_{L/K}$ is the zero map.
+    Assume $L/K$ is not separable. It follows that $\char(K)=p>0$ and $[L:K]=p^r[L:K]_s$. Theorem \ref{trnmfor} says $$\Tr_{L/K_s}(a)=p^r(\sum_i \sigma_i(a))=0,$$ for all $a\in L$, since $p^r=0$ --- we are in characteristic $p$. And then $\Tr_{L/K}$ is the zero map.
 
 
     
@@ -1562,6 +1562,98 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 \end{proof}
 
 \section{Cyclic extensions}
+
+\begin{defn}
+    A Galois extension $L/K$ is said to be \emph{cyclic} (resp. \emph{abelian}) if the Galois group is \emph{cyclic} (resp. \emph{abelian}).
+\end{defn}
+
+\begin{example}
+    Quadratic extensions are cyclic.
+\end{example}
+
+\begin{example}
+    Let $\zeta_n$ be a primitive $n$-th root. Then the cyclotomic extension $\QQ(\zeta_n)/\QQ$ is abelian. Moreover, when $n=1,2,4,p^k,2p^k$, where $p$ is an odd prime, $(\ZZ/n\ZZ)^\times$ is cyclic and in this case $\QQ(\zeta_n)/\QQ$ is a cyclic extension.
+\end{example}
+
+\begin{example}
+    Let $\omega$ be a primitive 5-th root of unity (in $\CC$) and let $F=\QQ(\omega)$ and $K=F(\sqrt[5]{2})$. Then $K$ is the splitting field of $x^5-2$ over $F$, so $K/F$ is Galois. Also, $[F:\QQ]=4$ and $[\QQ(\sqrt[5]{2}):\QQ]=5$. The degree of $[K:\QQ]$ is divisible by 4 and 5, hence by 20. On the other side, $[K:F]\leq 5$, so $[K:\QQ]\leq 20$. Therefore, $[K:\QQ]=20$ and $[K:F]=5$. The roots of $x^5-2$ are precisely $\sqrt[5]{2},\omega\sqrt[5]{2},\omega^2\sqrt[5]{2},\omega^3\sqrt[5]{2}$ and $\omega^4\sqrt[5]{2}$. By isomorphism extension theorem, there is a $\sigma\in \Gal(K/F)$ with $\sigma(\sqrt[5]{2})=\omega \sqrt[5]{2}$. Then $\sigma^5=id$ and $\Gal(K/F)=\langle \sigma\rangle$.
+\end{example}
+
+There is no simple description of the cyclic extension of degree $n$ of a field $n$ that does not contain a primitive $n$-th root of unity, unless $n=p=\char(F)$. Let;s discuss the case when $F$ does contain a primitive $n$-th root of unity first.
+
+The following lemma will be used in Theorem \ref{cyclicgal1}. The standard way to prove it is to use Hilbert Theorem 90. We will discuss Hilbert 90  in details later and use a linear algebra argument here.
+
+\begin{lemma}\label{cycliclem1}
+    Let $F$ be a field containing a primitive $n$-th root $\omega$, let $K/F$ be a cyclic extension of degree $n$, and let $\sigma$ be a generator of $\Gal(K/F)$. Then there is an $a\in K$ with $\omega=\sigma(a)/a$.
+\end{lemma}
+% errata on page 89 in original book
+\begin{proof}
+    The automorphism $\sigma$ is also a $F$-linear transformation of $K$. We wish to find an $a\in K$ with $\sigma(a)=\omega a$, that is, we want to show that $\omega$ is an eigenvalue of $\sigma$. To do this, we show that $\omega$ is a root of the characteristic polynomial of $\omega$. Now since $\omega$ has order $n$, we have $\sigma^n=id$. Therefore, $\sigma$ satisfies the polynomial $x^n-1$. Moreover, if there is a polynomial $g(x)\in F[x]$ of degree $m<n$ satisfied by $\sigma$, then the automorphisms $id,\sigma,\cdots,\sigma^{m}$ are linearly dependent over $F$, a contradiction to the Dedekind independence lemma. Thus, $x^n-1$ is the minimal polynomial of $\sigma$ over $F$. However, the characteristic polynomial of $\sigma$ has degree $n=[K:F]$ and is divisible by $x^n-1$, so indeed $x^n-1$ is the characteristic polynomial of $\sigma$. Since $\omega$ is a root of this polynomial, it is an eigenvalue for $\sigma$. Thus, there is an $a\in K$ such that $\sigma(a)=\omega a$.
+\end{proof}
+
+\begin{thm}\label{cyclicgal1}
+    Let $F$ be a field  of characteristic not dividing $n$, containing a primitive $n$-th root of unity, and let $K/F$ by a cyclic Galois extension of degree $n$. Then there is an $a\in K$ such that $K=F(a)$ and $a^n=b\in F$, that is, $K=F(\sqrt[n]{b})$.
+\end{thm}
+
+\begin{proof}
+    By the lemma above, there is an $a$ with $\sigma(a)=\omega a$. Therefore, $\sigma^i(a)=\omega^ia$, so $a$ is fixed by $\sigma^i$ only when $n\mid i$. Since the order of $\sigma$ is $n$, we see that $a$ is fixed by $id$ only, in other words, $\Gal(K/F(a))=\{id\}$. Thus $K=F(a)$ by the fundamental theorem. Further more, we see that $\sigma(a^n)=(\omega a)^n=a^n$, so $a^n$ is fixed by $\sigma$ and hence by $\Gal(K/F)$. We have some $b=a^n\in F$ and $K=F(\sqrt[n]{b})$.
+\end{proof}
+
+We also have a converse of this theorem.
+
+\begin{thm}
+    Let $F$ be a field of characteristic not dividing $n$, containing a primitive $n$-th root of unity, and let $E/F$ be an extension of the form $E=F(\sqrt[n]{a})$, where $a\in F$. Then if $r$ is the order of $a$ in the group $(F^*)/(F^*)^n$, then we have $E/F$ is Galois and $\Gal(E/F)\cong \ZZ/r\ZZ$. 
+\end{thm}
+
+\begin{proof}
+    If $a$ has order $r$ in $(F^*)/(F^*)^n$, then $a^r=b^n$ for some $b\in F^*$, and there is no smaller $r>0$ for which this is true. First, note that $E=F(\sqrt[n]{a})=F(\sqrt[r]{b})$. Also note that $r\mid n$ and that $(\sqrt[n]{a})^k=(\sqrt[r]{b})^k\notin F$ for $0<k<r$ (or this will contradict the minimality of $r$). 
+    
+    Claim: $f(x)=x^r-b$ is irreducible over $F$.
+
+    Proof of Claim: If not, assume $f=gh$ and $g$ is an irreducible factor of degree $\geq 2$.  Note that $$f(x)=\prod_{i=0}^{r-1}(x-\zeta_r^i \sqrt[r]{b}),$$ where $\zeta_r$ is a primitive $r$-th root. Then we can find a subset $I\subset \{0,1,\cdots,r-1\}$ such that $$g(x)=\prod_{i\in I}(x-\zeta_r^i\sqrt[r]{b}).$$ The constant term of $g$ is $\pm\prod_{i\in I}(\sigma_r^i \sqrt[r]{b})=\pm \zeta' (\sqrt[r]{b})^{|I|},$ where $\zeta'$ is a $r$-th root of unity. Then we get $(\sqrt[r]{b})^{|I|}\in F$, which reaches a contradiction unless $|I|=0$ or $r$.
+    
+    Now since $\char(F)\nmid n$, we also have $\char(F)\nmid r$ and so $E/F$ is separable. On the other hand, $E/F$ is the splitting field of $x^r-b$, since all the roots of it are just $\zeta_r^i \sqrt[r]{b}$ for $i=0,1,\cdots,r-1$. Finally, note that any $\sigma\in \Gal(E/F)$ is entirely determined by its action on $\sqrt[r]{b}$, where $\sigma(\sqrt[r]{b})=\zeta_r^i \sqrt[r]{b}$ for some $i\in \ZZ/r\ZZ$. But $|\Gal(E/F)|=r$, we indeed have a bijection between $\ZZ/r\ZZ$  and $\Gal(E/F)$. It remains to check that it is indeed a group isomorphism, but that is straightforward.
+\end{proof}
+
+Now let's go to the case where $[E:F]=\char(F)=p$. Define $\pi: F\to F, a\mapsto a^p-a$. When $F$ is treated as an additive abelian group, $\pi$ is a group homomorphism with kernel $\FF_p$, as we have $$\pi(a+b)=(a+b)^p-(a+b)=(a^p-a)+(b^p-b)=\pi(a)+\pi(b).$$
+So if $\pi(a)=b$, then $\pi^{-1}(b)=\{a+i: i\in \FF_p\}$. Therefore, if $K$ is an extension of $F$ such that there is an $a\in K$ with $\pi(a)=b\in F$, then $F(a)=(\pi^{-1}(b))$.
+
+Again, the usual proof of the following lemma uses Hilbert 90, but as with Lemma \ref{cycliclem1}, we give a linear algebraic proof.
+
+\begin{thm}
+    Let $\char(F)=p$, and let $K/F$ be a cyclic Galois extension of degree $p$. Then $K=F(\aa)$ with $\aa^p-\aa-a=0$ for some $a\in F$, namely, $K=F(\pi^{-1}(a))$.
+\end{thm}
+
+\begin{proof}
+    Let $\sigma$ be a generator of $\Gal(K/F)$, and let $T$ be the linear transformation $T=\sigma-id$. Note that he kernel of $T$ is $$\ker(T)=\{b\in K: \sigma(b)=b\}=F.$$ Also we have $T^p=(\sigma-id)^p=\sigma^p-id=0$, since the order of $\sigma$ is $p$ and $\char(F)=p$. Thus $\im(T^{p-1})\subset \ker(T)=F$. We also have $\im(T^{p-1})$ is nontrivial, otherwise, $id,\sigma,\cdots,\sigma^{p-1}$ is linear dependent and that contradicts the Dedekind independence lemma. So $\im(T^{p-1})=F$ and we can find $c\in K$ such that $T^{p-1}(c)=1$. Let $\aa=T^{p-2}(c)$. Then $T(\aa)=1$ and so $\sigma(\aa)=\aa+1$. Since $\aa$ is not fixed by $\sigma$, we see that $\aa\notin F$ and $F(\aa)=K$. Moreover, \begin{align*}
+        \sigma(\aa^p -\aa)&=\sigma(\aa)^p-\sigma(\aa) \\
+        &= (\aa+1)^p-(\aa+1)\\
+        &=\aa^p-\aa.
+    \end{align*}
+    So $\aa^p-\aa$ is fixed by $\sigma$ and hence $\aa^-\aa=a\in F$, in other words, $\aa^p-\aa-a=0$.
+\end{proof}
+
+The converse of this theorem is also true.
+
+\begin{thm}
+    Let $F$ be a field of characteristic $p$, and let $a\in F-\pi^{-1}(F)$. Then $f(x)=x^p-x-a$ is irreducibility over $F$ and the splitting field of $f$ is a cyclic Galois extension of degree $p$.
+\end{thm}
+
+\begin{proof}
+    Let $K$ be the splitting field of $f$ over $F$. If $\aa$ is a root of $f$, then it is easy to check that $\aa+1$ is also a root. Hence, the $p$ roots of $f$ are $\aa,\aa+1,\cdots,\aa+p-1$ and $\aa$ is separable. Therefore, $K=F(\aa)$. The assumption on $a$ assures $\aa\notin F$.
+
+    Claim: $f(x)$ is irreducible.
+
+    Under the claim, $[K:F]=p$ and there is a $\sigma\in \Gal(K/F)$ with $\sigma(\aa)=\aa+1$. The order of $\sigma$ is $p$ and so $\Gal(K/F)=\langle \sigma\rangle$. The statement of this theorem follows.
+
+    Proof of Claim: Assume not. Then $f=gh$ in $F[x]$ where $g$ is an irreducible factor with degree $\geq 2$. Since $f(x)=\prod_{i=0}^{p-1}(x-(\aa+i))$, we can find a subset $I\subset\{0,1,\cdots,p-1\}$ such that $$g(x)=\prod_{i\in I}(x-(\aa+i)).$$ The coefficient of the second highest term of $g$ is then $-|I|\aa-\sum_{i\in I}i$. But this implies $\aa\in F$, which is a contradiction, unless $|I|=0$ or $p$. 
+\end{proof}
+
+\begin{example}
+    Let $F=\FF_p(t)$ the rational function field in one variable over $\FF_p$. We claim that $t\notin \pi^{-1}(F)$, so the extension $F(\pi^{-1}(t))$ is a cyclic extension of $F$ of degree $p$.
+
+    To prove the claim, suppose instead $t\in \pi^{-1}(F)$, so $t=a^p-a$ for some $a\in F$, say, $a=f/g$ with $f,g\in \FF_p[t]$ coprime. Then $t=f^p/g^p-f/g$ or $g^px=f^p-fg^{p-1}$ or $f^p=g^{p-1}(gt-f)$, so $g$ divides $f^p$. This is impossible.
+\end{example}
 
 \section{Hilbert Theorem 90}
 

@@ -46,6 +46,7 @@
 \def\irr{\text{irr}}
 \def\of{\overline{F}}
 \def\ok{\overline{K}}
+\def\gm{$G$-module}
 
 
 \begin{document}
@@ -1655,8 +1656,30 @@ The converse of this theorem is also true.
     To prove the claim, suppose instead $t\in \pi^{-1}(F)$, so $t=a^p-a$ for some $a\in F$, say, $a=f/g$ with $f,g\in \FF_p[t]$ coprime. Then $t=f^p/g^p-f/g$ or $g^px=f^p-fg^{p-1}$ or $f^p=g^{p-1}(gt-f)$, so $g$ divides $f^p$. This is impossible.
 \end{example}
 
-\section{Hilbert Theorem 90}
+\section{Hilbert theorem 90 and Noether's lemma}
 
+The statement about Hilbert 90 and Noether's lemma is about the cohomology of the Galois group. We have a brief discussion about the group cohomology here.
+
+Let $G$ be a group and $M$ an abelian group. We say $M$ is a $G$-module if there is a function $G\times M\to M$, where the image of $(\sigma,m)$ is written as $\sigma m$, such that \begin{align*}
+    1m &= m,\\
+    \sigma(\tau m)&=(\sigma\tau)m,\\
+    \sigma(m+n)&=\sigma m +\sigma n,
+\end{align*}
+for all $\sigma,\tau\in G$ and $m,n\in M$. It is equivalent to say that $M$ is a left module over the group ring $\ZZ[G]$. For example, if $K$ is a Galois extension of a field $F$ and $G=\Gal(K/F)$, then $K^*$ is $G$-module by defining $\sigma a=\sigma(a)$. Similarly, the additive group $(K,+)$ is a \gm. 
+
+Suppose that $M$ is a Let $C^n(G,M)$ be the set of all functions from the Cartesian product $G\times G\times\cdots\times G$ ($n$ copies) to $M$. The elements of $C^n(G,M)$ are called $n$-\emph{cochains}. If $n=0$, we define $C^0(G,M)=M$. The set $C^n(G,M)$ can be made into a group by adding functions component-wise. Namely, define $f+g$  by $$(f+g)(\sigma_1,\cdots,\sigma_n)=f(\sigma_1,\cdots,\sigma_n)+g(\sigma_1,\cdots,\sigma_n).$$
+
+Define a map $\delta_n: C^n(G,M)\to C^{n+1}(G,M)$ by \begin{align*}
+    \delta_n(f)(\sigma_1,\cdots,\sigma_{n+1})=&\sigma_1f(\sigma_2,\cdots,\sigma_{n+1}) \\
+    &+\sum_{i=1}^n(-1)^if(\sigma_1,\cdots,\sigma_i\sigma_{i+1},\cdots,\sigma_{n+1}) \\
+    &+ (-1)^{n+1} f(\sigma_1,\cdots,\sigma_n).
+\end{align*}
+If $n=0$, then the map $\delta_0: M=C^0(G,M)\to C^1(G,M)$ is defined by $\delta_0(m)(\sigma)=\sigma m-m$. The definition is compatible with the general formal above. A straightforward but tedious calculation shows that $\delta_n$ is a homomorphism and that $\delta_{n+1}\circ\delta_n$ is the zero map. The maps $\delta_n$ are called boundary maps.
+
+
+Let $Z^n(G,M)=\ker(\delta_n)$. The elements of $Z^n(G,M)$ are called $n$-\emph{cocycles}. Let $B^n(G,M)=\im(\delta_{n-1})$ if $n>$, and $B^0(G,M)=0$. The elements of $B^n(G,M)$ are called $n$-\emph{cobundaries}. Since $\delta_n\circ\delta_{n-1}$, $B^n(G,M)$ is a subgroup of $C^n(G,M)$. Finally, the $n$-th \emph{cohomology group} $H^n(G,M)$ is defined to be $$H^n(G,M)=Z^n(G,M)/B^n(G,M).$$ Two cocycles in $Z^n(G,M)$ are said to be \emph{cohomologous} if they represent the same element in $H^n(G,M)$.
+
+Let's look at the cohomology group of small $n$.
 
 \chapter*{Week 7}
 \setcounter{chapter}{7}

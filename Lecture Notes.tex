@@ -1495,8 +1495,8 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
     \end{pmatrix}.$$
 \end{proof}
 
-\begin{thm}
-    Let $L/K$ be a finite field extension of degree $[L : K] =n= qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$ In particular, if $L/K$ is not separable, then $\Tr_{L/K}(a)=0$ for all $a\in L$.
+\begin{thm}\label{trnmfor}
+    Let $L/K$ be a finite field extension of degree $[L : K] =n= qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$ 
 \end{thm}
 
 \begin{proof}
@@ -1551,7 +1551,10 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 \end{thm}
 
 \begin{proof}
-    We already see that if $L/K$ is separable, then $\Tr_{L/K}$ is the zero map.
+    Assume $L/K$ is not separable and let $K_s$ be the separable closure of $K$. It follows that $\char(K)=p>0$, $L\not=K_s$ and $L/K$ is purely inseparable. But then $\Tr_{L/K} =\Tr_{K_s/K} \circ\Tr_{L/K_s}$ and $[L:K_s]=p^r [L:K_s]$. Theorem \ref{trnmfor} says $$\Tr_{L/K_s}(a)=p^r(\sum_i \sigma_i(a))=0,$$ for all $a\in L$, since $p^r=0$ --- we are in characteristic $p$. And then $\Tr_{L/K}$ is the zero map.
+
+
+    
     Now assume $L/K$ is separable. If $\sigma_1,\cdots,\sigma_r$ are all the $K$-map $L\to\overline{K}$, where $\ok$ is an algebraic closure of $K$, then we have $$\Tr_{L/K}=\sigma_1+\cdots+\sigma_r.$$ Dedekind's Theorem says characters are linearly independent hence the sum is not the zero map.
 
 

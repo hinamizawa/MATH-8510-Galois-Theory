@@ -1156,10 +1156,11 @@ Before beginning the proof, we note that since $E/F$ is separable, it is automat
 
     It remains to show that $\ker(\phi) = \Gal(E/K)$, which will also show that the latter subgroup is normal. But $\sigma\in \ker(\phi)$ if and only if $\sigma|_K$ is trivial, which happens if and only if $\sigma(x) = x$ for all $x\in K$. Thus $\sigma\in \ker(\phi)$ if and only if $\sigma\in \Gal(E/K)$. This completes one direction of the proof, and shows that in this case $\Gal(K/F)$ is the expected quotient.
 
-    The other direction, that $\Gal(E/K)$ being a normal subgroup of $\Gal(E/F)$ is sufficient for $K/F$ to be a normal extension, is left as an exercise.
+    The other direction, suppose that $H$ is a normal subgroup of $\Gal(E/F)$. Then $\Gal(E/E^H) = H$. Fix an algebraic closure $\overline{F}$ of $F$. Note $\overline{F}$ is also an algebraic closure of $E^H$ and $E$. Consider an $F$-map $\sigma: E^H\to \overline{F}$ and let us show $\sigma(E^H)=E^H$ and then by the equivalent conditions of normality, $E^H/H$ is normal hence Galois. Extend $\sigma$ to a $F$-map $\sigma': E\to \overline{F}$. Since $E/F$ is normal, $\sigma'(E)=E$, it follows that $\sigma(E^H)\subset E$. Now let $b\in \sigma(E^H)$, say $b=\sigma(a)=\sigma'(a)$ for some $a\in E^H$. To check $b\in E^H$, we need show $b$ is fixed by all elements in $H$. Since $H$ is normal, we have $\sigma' H=H\sigma'$. For any element $\tau\in H$, we can find another element $\tau'\in H$ such that $$\tau \circ \sigma' =\sigma'\circ \tau'.$$
+    And then $$\tau(b)=\tau\circ\sigma'(a)=\sigma'\circ \tau'(a)= \sigma'(a)=b,$$ since $a\in E^H$. It follows that $\sigma(E^H)\subset E^H$. Repeating the argument for $\sigma^{-1}$, we see that $\sigma^{-1}(E^H)\subset E^H$  and conclude that $\sigma(E^H)=E^H$ since $\sigma\circ\sigma^{-1} =id|_{\sigma(E^H)}$ and $\sigma^{-1}\circ \sigma=id|_{E^H}$.
 \end{proof}
 
-So, in total, we've proven the following theorem.
+All in all, we've proven the following theorem.
 
 \begin{thm}[The fundamental theorem of Galois Theory]\label{galois}
     Let $E/F$ be a Galois extension. Then the function $H \mapsto E^H$ from subgroups of $\Gal(E/F)$ to intermediate fields of $E/F$ is an inclusion-reversing bijection, and the inverse is given by $K \mapsto \Gal(E/K)$. Moreover, $H \trianglelefteq \Gal(E/F)$ if and only if $K = E^H$ is a Galois extension of $F$, in which case $$\Gal(E/F)/\Gal(E/K) \cong \Gal(K/F).$$

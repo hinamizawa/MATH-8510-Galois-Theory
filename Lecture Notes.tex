@@ -1684,7 +1684,7 @@ The converse of this theorem is also true.
     To prove the claim, suppose instead $t\in \pi^{-1}(F)$, so $t=a^p-a$ for some $a\in F$, say, $a=f/g$ with $f,g\in \FF_p[t]$ coprime. Then $t=f^p/g^p-f/g$ or $g^px=f^p-fg^{p-1}$ or $f^p=g^{p-1}(gt-f)$, so $g$ divides $f^p$. This is impossible.
 \end{example}
 
-\section{Hilbert theorem 90 and Noether's lemma}
+\section{Hilbert Theorem 90 and Noether's lemma}
 
 The statement about Hilbert 90 and Noether's lemma is about the cohomology of the Galois group. We have a brief discussion about the group cohomology here.
 
@@ -1707,7 +1707,63 @@ If $n=0$, then the map $\delta_0: M=C^0(G,M)\to C^1(G,M)$ is defined by $\delta_
 
 Let $Z^n(G,M)=\ker(\delta_n)$. The elements of $Z^n(G,M)$ are called $n$-\emph{cocycles}. Let $B^n(G,M)=\im(\delta_{n-1})$ if $n>$, and $B^0(G,M)=0$. The elements of $B^n(G,M)$ are called $n$-\emph{cobundaries}. Since $\delta_n\circ\delta_{n-1}$, $B^n(G,M)$ is a subgroup of $C^n(G,M)$. Finally, the $n$-th \emph{cohomology group} $H^n(G,M)$ is defined to be $$H^n(G,M)=Z^n(G,M)/B^n(G,M).$$ Two cocycles in $Z^n(G,M)$ are said to be \emph{cohomologous} if they represent the same element in $H^n(G,M)$.
 
-Let's look at the cohomology group of small $n$.
+Let's look at the cohomology group of small $n$. The kernel of $\delta_0$ consists of all elements $m\in M$ such that $\sigma m=m$ for all $\sigma\in G$. Therefore, $$H^0(G,M)=M^G\{m\in M: \sigma m =m \mbox{ for all }\sigma\in G\}.$$
+If $n=1$, then $f:G\to M$ is 1-cocycle if $\delta_1(f)=0$, namely $$\sigma f(\tau)-f(\sigma\tau)+f(\sigma)=0,$$ for all $\sigma,\tau \in G$. If $g$ is a 1-coboundary, then $g\in \im(\delta_0)$, namely, we can find an element $m\in M$ such that $$g(\sigma)=\sigma m -m.$$ If the group $M$ is written multiplicatively, for example $M= F^\times$, then the above is translated into $$f(\sigma\tau)=f(\sigma)\tau f(\sigma),\quad g(\sigma)=\frac{\sigma m}{m}.$$
+
+The following theorem is in fact a lemma of Noether's work.
+
+\begin{thm}[Noether's Lemma]
+    Let $E/F$ be a finite Galois extension and $G=\Gal(E/F)$. Then both $H^1(G,E)$ and $H^1(G,E^\times)$ are trivial.
+\end{thm}
+
+We break the proof into Multiplicative case and additive case.
+
+\begin{defn}
+    Let $E/F$ be a finite Galois extension and $G=\Gal(E/F)$. Let $$f: G\to E^\times$$ be a function. Then $f$ is a \emph{multiplicative cocycle} if $$f(\sigma\tau)=f(\sigma)\sigma(f(\tau))$$ for all $\tau,\sigma\in G$. $f$ is a \emph{multiplicative coboundary} if and only if there is a $\bb\in E^\times$ such that $$f(\sigma)=\frac{\sigma(\bb)}{\bb}$$ for all $\sigma\in G$.
+
+
+    Let $$g: G\to E$$ be another function.  Then $f$ is a \emph{additive cocycle} if $$f(\sigma\tau)=f(\sigma)+\sigma(f(\tau))$$ for all $\tau,\sigma\in G$. $f$ is a \emph{additive coboundary} if and only if there is a $\aa\in E^\times$ such that $$f(\sigma)=\sigma(\aa) -\aa$$ for all $\sigma\in G$.
+\end{defn}
+
+\begin{prop}
+    Let $E/F$ be a finite Galois extension with $\Gal(E/F)=G$. Then $f: G\to E^\times$ is a (multiplicative) cocycle if and ony if it is a (multiplicative) coboundary.
+\end{prop}
+
+\begin{proof}
+    One direction is easy. Assume $f$ is a coboundary corresponding to $\aa\in E^\times$, then $$f(\sigma)\sigma(f(\tau))=\frac{\sigma(\aa)}{\aa}\sigma(\frac{\tau(\aa)}{\aa})=\frac{\sigma(\aa)}{\aa}\frac{\sigma\circ\tau(\aa)}{\sigma(\aa)}=f(\sigma\tau).$$
+
+    In the other direction, suppose $f$ is a cocycle. Define a function $$S:E\to E,x\mapsto \sum_{\sigma\in G} f(\sigma)\sigma(x).$$ Dedekind independence lemma says $S$ is not identically 0. Choose $\aa\in E^\times$ with $\aa=S(x)\not= 0$ for some $x\in E$. Then we have $$\sigma(\aa)=\sigma(\sum_{\tau\in G} f(\tau)\tau(x))=\sum_{\tau \in G} \sigma(f(\tau)) \sigma\circ\tau(x).$$
+    By the cocycle condition, we can turn this into 
+    \begin{align*}
+        \sigma(\aa)&= \frac{1}{f(\sigma)}\sum_{\tau \in G} f(\sigma)\sigma(f(\tau)) \sigma\circ\tau(x) \\
+        &=\frac{1}{f(\sigma)} \sum_{\tau \in G} f(\sigma\tau) \sigma\circ\tau(x) \\
+        &=\frac{\aa}{f(\sigma)},
+    \end{align*}
+    namely, we have $f(\sigma)=\aa/\sigma(\aa)$ for any $\sigma\in G$. And we may take $\bb=\aa^{-1}$.
+\end{proof}
+
+\begin{prop}
+    Let $E/F$ be a finite Galois extension with $\Gal(E/F)=G$. Then $g G\to E$ is a (additive) cocycle if and ony if it is a (additive) coboundary.
+\end{prop}
+
+\begin{proof}
+    The proof is exactly an analogy of the above one.
+
+    One direction is straightforward. Assume $g$ is a coboundary corresponding to $\bb\in E$.
+
+
+    We now prove the other direction. Since $E/F$ is separable, $\Tr_{E/F}$ is not the zero map. Then we can find an element $c\in E$ such that $\Tr_{E/F}(c)=1$ by rescaling if necessary as $\Tr_{E/F}$ is $F$-linear. Recall that $\Tr_{E/F}(x)=\sum_{\sigma\in G}\sigma(x)$ for all $x\in E$. Write $\bb=\sum_{\sigma\in G}g(\sigma)\sigma(c)$. Then we have $$\tau(\bb)=\sum_{\sigma\in G}\tau(g(\sigma))(\tau\sigma)(c).$$ By the cocycle condition, we can turn this into 
+    \begin{align*}
+        \tau(\bb)&=\sum_{\sigma\in G}\tau(g(\sigma))(\tau\sigma)(c)\\
+        &=\sum_{\sigma\in G}(g(\tau\sigma)-g(\tau))(\tau\sigma)(c)\\
+        &=\sum_{\sigma\in G}g(\tau\sigma)(\tau\sigma)(c)-\sum_{\sigma\in G}g(\tau)(\tau\sigma)(c)\\
+        &=\bb-g(\tau)\tau(\Tr_{E/F}(c))\\
+        &= \bb-g(\tau),
+    \end{align*}
+    namely, $g(\tau)=\bb-\tau(\bb)$. And we may take $\aa=-\bb$.
+\end{proof}
+
+
 
 \chapter*{Week 7}
 \setcounter{chapter}{7}

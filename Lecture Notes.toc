@@ -14,8 +14,8 @@
 \contentsline {section}{\numberline {5.14}Quartic functions of special type}{42}{}%
 \contentsline {section}{\numberline {6.15}Characters}{44}{}%
 \contentsline {section}{\numberline {6.16}Norm and trace}{46}{}%
-\contentsline {section}{\numberline {6.17}Cyclic extensions}{50}{}%
-\contentsline {section}{\numberline {6.18}Hilbert Theorem 90 and Noether's lemma}{53}{}%
+\contentsline {section}{\numberline {7.17}Cyclic extensions}{51}{}%
+\contentsline {section}{\numberline {7.18}Hilbert Theorem 90 and Noether's lemma}{54}{}%
 \contentsline {section}{\numberline {7.19}Kummer Theory}{57}{}%
 \contentsline {section}{\numberline {7.20}Solvable groups}{57}{}%
 \contentsline {section}{\numberline {8.21}Solvability by radicals}{58}{}%

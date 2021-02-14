@@ -11,14 +11,15 @@
 \contentsline {section}{\numberline {4.11}The fundamental theorem}{33}{}%
 \contentsline {section}{\numberline {5.12}Cyclotomic extensions}{38}{}%
 \contentsline {section}{\numberline {5.13}Cubic extensions}{41}{}%
-\contentsline {section}{\numberline {6.14}Characters}{43}{}%
-\contentsline {section}{\numberline {6.15}Norm and trace}{45}{}%
-\contentsline {section}{\numberline {6.16}Cyclic extensions}{49}{}%
-\contentsline {section}{\numberline {6.17}Hilbert Theorem 90 and Noether's lemma}{52}{}%
-\contentsline {section}{\numberline {7.18}Kummer Theory}{56}{}%
-\contentsline {section}{\numberline {7.19}Solvable groups}{56}{}%
-\contentsline {section}{\numberline {8.20}Solvability by radicals}{57}{}%
-\contentsline {section}{\numberline {8.21}The transcendence of $\pi $ and $e$}{57}{}%
-\contentsline {section}{\numberline {9.22}Profinite groups}{58}{}%
-\contentsline {section}{\numberline {9.23}Infinite Galois extensions}{58}{}%
-\contentsline {section}{\numberline {10.24}Transcendental extensions}{59}{}%
+\contentsline {section}{\numberline {5.14}Quartic functions of special type}{42}{}%
+\contentsline {section}{\numberline {6.15}Characters}{44}{}%
+\contentsline {section}{\numberline {6.16}Norm and trace}{46}{}%
+\contentsline {section}{\numberline {6.17}Cyclic extensions}{50}{}%
+\contentsline {section}{\numberline {6.18}Hilbert Theorem 90 and Noether's lemma}{53}{}%
+\contentsline {section}{\numberline {7.19}Kummer Theory}{57}{}%
+\contentsline {section}{\numberline {7.20}Solvable groups}{57}{}%
+\contentsline {section}{\numberline {8.21}Solvability by radicals}{58}{}%
+\contentsline {section}{\numberline {8.22}The transcendence of $\pi $ and $e$}{58}{}%
+\contentsline {section}{\numberline {9.23}Profinite groups}{59}{}%
+\contentsline {section}{\numberline {9.24}Infinite Galois extensions}{59}{}%
+\contentsline {section}{\numberline {10.25}Transcendental extensions}{60}{}%

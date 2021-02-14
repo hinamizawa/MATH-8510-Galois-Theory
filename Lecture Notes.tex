@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{times}
 \usepackage{graphicx}
+\usepackage[all]{xy}
 \usepackage[margin=1in,footskip=0.25in]{geometry}
 \vfuzz=2pt
 
@@ -1338,6 +1339,31 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
     $$14^2 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) = A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E = \FF_{73^3}$.
 \end{example}
 
+\section{Quartic functions of special type}
+
+Let $K$ be a field and $f\in K[x]$ a separable polynomial. Let $L$ be a splitting field of $f$ over $K$. Then $L/K$ is a finite Galois extension. $\Gal(L/K)$ is also referred as the Galois group of the equation $f(x)=0$.
+
+Let us look at a special kind of irreducible polynomial of degree 4, more precisely, irreducible monic polynomial $f\in \QQ[x]$ that are biquadratic in the sense that the linear and cubic terms are trivial. Such polynomials can be written as $f(x)=(x^2-a)^2-b,$ where we further assume $b>a^2$. For instance, $x^4-2$ and $x^4-4x^2-6$ are of this type.
+
+The zeros of $f$ in $\overline{\QQ}\subset \CC$ are given by 
+$$\aa=\sqrt{a+\sqrt{b}},-\aa,\bb=\sqrt{a-\sqrt{b}},-\bb,$$ where $\sqrt{b}>|a|$. And then we have $\aa$ is real and $\bb$ has a non-trivial imaginary part. The splitting field of $f$ is given by $L=\QQ(\aa,\bb)$. Note that $[\QQ(\aa):\QQ]=4$ and that $\bb^2=a-\sqrt{b}\in \QQ(\aa)$ implies $[\QQ(\aa,\bb):\QQ(\aa)]\leq 2$. But $\bb$ has a non-trivial imaginary part and so $[\QQ(\aa,\bb):\QQ(\aa)]=2$. We conclude $[L:\QQ]=8$.
+
+Now let us determine the Galois group $G=\Gal(L/\QQ)$. We already $G$ is a subgroup of the group permutations $S$ on $\{\aa,-\aa,\bb,-\bb\}$ and $|G|=8$. Moreover, every $\sigma\in G$ shall have $\sigma(-\aa)=-\sigma(\aa), \sigma(-\bb)=-\sigma(bb)$. Now the combinations of $$\sigma(\aa)\in \{\aa,-\aa\},\quad \sigma(\bb)\in \{\bb,-\bb\}$$ will give you 4 possibilities. The rest elements in $G$ shall have $\sigma(\aa)=\pm\bb$, say $\sigma(\aa)=\pm\bb$. Since $\sigma$ is injective, we must have then $\sigma(\bb)=\pm\aa$. This gives you another 4 possibilities: $$\sigma(\aa)\in \{\bb,-\bb\},\quad \sigma(\bb)\in \{\aa,-\aa\}.$$ Consider two elements $\sigma,\tau\in G$ given by $$\sigma: \aa\mapsto \bb, \bb\mapsto -\aa;\quad \tau: \aa\mapsto -\aa, \bb\mapsto \bb.$$
+Now $\sigma^2(\aa)=\sigma(\bb)=-\aa$ and $\sigma^2(\bb)=\sigma(-\aa)=-\bb$. Hence $\sigma$ is of order 4 and clearly $\tau$ is of order $2$. Since $\tau\notin \langle \sigma \rangle$, $G=\langle \tau,\sigma \rangle$. Now by checking the ration $\tau\sigma\tau =\sigma^{-1}$, we see that $$G=\langle \tau,\sigma| \tau^2,\sigma^4,\tau\sigma\tau =\sigma^{-1} \rangle\cong D_4.$$ We can list all the subgroups of $G$ by the following diagram:
+% $$\xymatrix{
+%     & & \Gal(L/\QQ)\ar[dll]\ar[drr]\ar[d] &   &   \\
+%     \{id,\sigma^2,\tau,\sigma^2\tau\}\ar[d]\ar[dr]\ar[drr] & & \langle \sigma \rangle\ar[d] & & \{id,\sigma^2,\sigma\tau,\sigma^3\tau\}\ar[d]\ar[dl]\ar[dll] \\
+%     \langle \tau \rangle \ar[drr] &\{id,\sigma^2\tau\}\ar[dr]&\langle \sigma^2 \rangle\ar[d]&\{id,\sigma\tau\}\ar[dl] &\{1,\sigma^3\tau\}\ar[dll]\\
+%     & & \{id\} & & }
+% $$
+And the intermediate fields can be determine accordingly. We will do it in lecture.
+
+
+As a counterexample to the preceding type of biquadratic polynomials, let us consider $f(x)=x^4-4x^2+16\in \QQ[x]$. Now if we write $f(x)=(x^2-a)^2-b$, then we have $a=2$ and $b=-12$, not satisfying the above condition. Let $\zeta=\frac{1}{2}+\frac{\sqrt{3}}{2}i$ a primitive 12-th root. Then it is easy to verify the roots of $f$ in $\CC$ are $$2\zeta,2\zeta^7=-2\zeta,2\zeta^5,2\zeta^{11}=-2\zeta^5.$$ 
+
+The splitting field is indeed the Cyclotomic extension. And then the Galois group is isomorphic to $(\ZZ/12\ZZ)^*=\{1,5,7,9\}\cong \ZZ/2\ZZ\times \ZZ/2\ZZ.$
+
+
 
 \chapter*{Week 6}
 \setcounter{chapter}{6}
@@ -1649,7 +1675,7 @@ So if $\pi(a)=b$, then $\pi^{-1}(b)=\{a+i: i\in \FF_p\}$. Therefore, if $K$ is a
 
 Again, the usual proof of the following lemma uses Hilbert 90, but as with Lemma \ref{cycliclem1}, we give a linear algebraic proof.
 
-\begin{thm}
+\begin{thm}\label{9.8}
     Let $\char(F)=p$, and let $K/F$ be a cyclic Galois extension of degree $p$. Then $K=F(\aa)$ with $\aa^p-\aa-a=0$ for some $a\in F$, namely, $K=F(\pi^{-1}(a))$.
 \end{thm}
 
@@ -1757,12 +1783,26 @@ We break the proof into Multiplicative case and additive case.
         \tau(\bb)&=\sum_{\sigma\in G}\tau(g(\sigma))(\tau\sigma)(c)\\
         &=\sum_{\sigma\in G}(g(\tau\sigma)-g(\tau))(\tau\sigma)(c)\\
         &=\sum_{\sigma\in G}g(\tau\sigma)(\tau\sigma)(c)-\sum_{\sigma\in G}g(\tau)(\tau\sigma)(c)\\
-        &=\bb-g(\tau)\tau(\Tr_{E/F}(c))\\
+        &=\bb-g(\tau)\sum_{\sigma\in G}(\tau\sigma)(c)\\
         &= \bb-g(\tau),
     \end{align*}
     namely, $g(\tau)=\bb-\tau(\bb)$. And we may take $\aa=-\bb$.
 \end{proof}
 
+Now we shall move to Hilbert 90, which in fact is equivalent to Noether's lemma.
+
+\begin{thm}[Hilbert 90, Multiplicative Form]
+    Let $K/F$ be a cyclic Galois extension of degree $n$ with $\sigma$ a generator of $\Gal(K/F)$. If $u\in K$, then $\nm_{K/F}(u)=1$ if and only if $u=\sigma(a)/a$ for some $a\in K$.
+\end{thm}
+
+
+Lemma \ref{cycliclem1} follows quickly from this theorem.
+
+\begin{thm}[Hilbert 90, Additive Form]
+    Let $K/F$ be a cyclic Galois extension of degree $n$ with $\sigma$ a generator of $\Gal(K/F)$. If $u\in K$, then $\Tr_{K/F}(u)=0$ if and only if $u=\sigma(a)-a$ for some $a\in K$.
+\end{thm}
+
+Theorem \ref{9.8} then goes as follows.
 
 
 \chapter*{Week 7}

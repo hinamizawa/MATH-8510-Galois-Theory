@@ -1280,8 +1280,8 @@ We can calculate the cyclotomic polynomials based on this theorem without going 
 An extension of the above sort is called a \emph{cyclotomic extension}.
 
 \begin{proof}
-    Since $\Phi_N(x)$ is irreducible over $\QQ$, we have $$[E : Q] = \deg(\Phi_N) = \phi(N).$$
-    Also, note that if $\Phi_N(\zeta) = 0$, then the roots of $\Phi_N(x)$ in $\CC$ are precisely the numbers of the form $\zeta^a$ for $\gcd(a,N) = 1$, all of which are in $E = \QQ(\zeta)$. So $E/\QQ$ is a normal extension, and hence Galois. Now, any $\sigma \in \Gal(E/\QQ)$ is entirely determined by what it does to $\zeta$, and $\sigma(\zeta)$ must be $\zeta^a$ for some $\gcd(a,N) = 1$. Since there are precisely $\phi(N)$ such values of $a (\mod N)$, and since $|\Gal(E/\QQ) = \phi(N)$, we must have an automorphism $\sigma_a \in \Gal(E/\QQ)$ defined by $\sigma_a(\zeta) = \zeta^a$ for each $a \in (\ZZ/N\ZZ)^\times$. But the group operation is $$\sigma_a \circ \sigma_b = \sigma_{ab},$$
+    Since $\Phi_N(x)$ is irreducible over $\QQ$, we have $$[E : \QQ] = \deg(\Phi_N) = \phi(N).$$
+    Also, note that if $\Phi_N(\zeta) = 0$, then the roots of $\Phi_N(x)$ in $\CC$ are precisely the numbers of the form $\zeta^a$ for $\gcd(a,N) = 1$, all of which are in $E = \QQ(\zeta)$. So $E/\QQ$ is a normal extension, and hence Galois. Now, any $\sigma \in \Gal(E/\QQ)$ is entirely determined by what it does to $\zeta$, and $\sigma(\zeta)$ must be $\zeta^a$ for some $\gcd(a,N) = 1$. Since there are precisely $\phi(N)$ such values of $a ~(\mbox{mod}~ N)$, and since $|\Gal(E/\QQ) = \phi(N)$, we must have an automorphism $\sigma_a \in \Gal(E/\QQ)$ defined by $\sigma_a(\zeta) = \zeta^a$ for each $a \in (\ZZ/N\ZZ)^\times$. But the group operation is $$\sigma_a \circ \sigma_b = \sigma_{ab},$$
     and so the bijection $a \mapsto \sigma_a$ is actually an isomorphism $(\ZZ/N\ZZ)^\times \to \Gal(E/\QQ)$.
 \end{proof}
 
@@ -1316,7 +1316,7 @@ $$\delta = (\aa_1 - \aa_2)(\aa_2 - \aa_3)(\aa_1 - \aa_3).$$
 Then clearly $\sigma(\delta) = \pm\delta$ for each $\sigma \in \Gal(E/F)$. It is easy to check that an arbitrary transposition of two elements in $\{\aa_1, \aa_2, \aa_3\}$ changes the sign of $\delta$, and so for $\sigma \in \Gal(E/F) \subset S_3$ a permutation of the $\aa_i$, we have
 $$\sigma(\delta) = (-1)^{\sgn(\sigma)} \delta.$$
 
-In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\sigma\in \Gal(E/F)$, and so $\delta\in F$. If $\Gal(E/F) = S_3$, then $\Gal(E/F)$ contains an odd element which doesn't fix $\delta$, and hence $\delta \notin F$. But $\delta^2\in F$, since $\sigma(\delta^2) = (\pm\delta)^2 =\delta^2$ for all $\sigma\in \Gal(E/F)$. Note that, in the case that $\Gal(E/F) = S_3$, so that $\delta \notin F$, there must be a quadratic extension of $F$ corresponding to the subgroup $A_3 \subset \Gal(E/F)$. But clearly $\delta\in E$, and $\delta^2\in F$, so $F(\delta)$ is precisely this quadratic extension. A simple calculation shows that $$\Delta =\delta^2 =  -(4a^2+27b^2).$$
+In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\sigma\in \Gal(E/F)$, and so $\delta\in F$. If $\Gal(E/F) = S_3$, then $\Gal(E/F)$ contains an odd element which doesn't fix $\delta$, and hence $\delta \notin F$. But $\delta^2\in F$, since $\sigma(\delta^2) = (\pm\delta)^2 =\delta^2$ for all $\sigma\in \Gal(E/F)$. Note that, in the case that $\Gal(E/F) = S_3$, so that $\delta \notin F$, there must be a quadratic extension of $F$ corresponding to the subgroup $A_3 \subset \Gal(E/F)$. But clearly $\delta\in E$, and $\delta^2\in F$, so $F(\delta)$ is precisely this quadratic extension. A simple calculation shows that $$\Delta =\delta^2 =  -(4a^3+27b^2).$$
 
 \begin{thm}
     Let $F$ be a field with $\char(F) \not= 2$ or 3, let $f(x) = x^3+ax+b\in F[x]$  be irreducible, let $E$ be the splitting field of $f(x)$ over $F$. Then if $\Delta = -(4a^2+27b^2)$ is the square of an element in $F$, then $\Gal(E/F) \cong A_3$. Otherwise, if $\Delta$ is not a square, then $\Gal(E/F) \cong S_3$.
@@ -1324,14 +1324,14 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
 
 \begin{example}
     We can check that $x^3 - x - 1$ has no roots in $\QQ$, and hence (being cubic) is irreducible. We can also calculate the discriminant:
-    $$\Delta(x^3 - x - 1) = -(4(-1)3 + 27(-1)2) = -23.$$
+    $$\Delta(x^3 - x - 1) = -(4(-1)^3 + 27(-1)^2) = -23.$$
     This is not a square in $\QQ$, and so if $E$ is the splitting field of $x^3 - x - 1$, we have $\Gal(E/\QQ) \cong S_3$. The unique quadratic extension corresponding to $A_3 \subset S_3$ is $\QQ(\sqrt{-23})$.
 \end{example}
 
 \begin{example}
     We can check that $x^3 - 3x + 1$ is irreducible over Q, and
     $$\Delta(x^3 - 3x + 1) = 9^2.$$
-    Thus if $\aa_3 - 2\aa + 1 = 0$, the extension $\QQ(\aa)=\QQ$ is Galois.
+    Thus if $\aa^3 - 3\aa + 1 = 0$, the extension $\QQ(\aa)/\QQ$ is Galois.
 \end{example}
 
 \begin{example}

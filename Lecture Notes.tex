@@ -1681,13 +1681,13 @@ We also have a converse of this theorem.
     Now since $\char(F)\nmid n$, we also have $\char(F)\nmid r$ and so $E/F$ is separable. On the other hand, $E/F$ is the splitting field of $x^r-b$, since all the roots of it are just $\zeta_r^i \sqrt[r]{b}$ for $i=0,1,\cdots,r-1$. Finally, note that any $\sigma\in \Gal(E/F)$ is entirely determined by its action on $\sqrt[r]{b}$, where $\sigma(\sqrt[r]{b})=\zeta_r^i \sqrt[r]{b}$ for some $i\in \ZZ/r\ZZ$. But $|\Gal(E/F)|=r$, we indeed have a bijection between $\ZZ/r\ZZ$  and $\Gal(E/F)$. It remains to check that it is indeed a group isomorphism, but that is straightforward.
 \end{proof}
 
-Now let's go to the case where $[E:F]=\char(F)=p$. Define $\pi: F\to F, a\mapsto a^p-a$. When $F$ is treated as an additive abelian group, $\pi$ is a group homomorphism with kernel $\FF_p$, as we have $$\pi(a+b)=(a+b)^p-(a+b)=(a^p-a)+(b^p-b)=\pi(a)+\pi(b).$$
-So if $\pi(a)=b$, then $\pi^{-1}(b)=\{a+i: i\in \FF_p\}$. Therefore, if $K$ is an extension of $F$ such that there is an $a\in K$ with $\pi(a)=b\in F$, then $F(a)=(\pi^{-1}(b))$.
+Now let's go to the case where $[E:F]=\char(F)=p$. Define $\wp: F\to F, a\mapsto a^p-a$. When $F$ is treated as an additive abelian group, $\wp$ is a group homomorphism with kernel $\FF_p$, as we have $$\wp(a+b)=(a+b)^p-(a+b)=(a^p-a)+(b^p-b)=\wp(a)+\wp(b).$$
+So if $\wp(a)=b$, then $\wp^{-1}(b)=\{a+i: i\in \FF_p\}$. Therefore, if $K$ is an extension of $F$ such that there is an $a\in K$ with $\wp(a)=b\in F$, then $F(a)=F(\wp^{-1}(b))$.
 
 Again, the usual proof of the following lemma uses Hilbert 90, but as with Lemma \ref{cycliclem1}, we give a linear algebraic proof.
 
 \begin{thm}\label{9.8}
-    Let $\char(F)=p$, and let $K/F$ be a cyclic Galois extension of degree $p$. Then $K=F(\aa)$ with $\aa^p-\aa-a=0$ for some $a\in F$, namely, $K=F(\pi^{-1}(a))$.
+    Let $\char(F)=p$, and let $K/F$ be a cyclic Galois extension of degree $p$. Then $K=F(\aa)$ with $\aa^p-\aa-a=0$ for some $a\in F$, namely, $K=F(\wp^{-1}(a))$.
 \end{thm}
 
 \begin{proof}
@@ -1696,13 +1696,13 @@ Again, the usual proof of the following lemma uses Hilbert 90, but as with Lemma
         &= (\aa+1)^p-(\aa+1)\\
         &=\aa^p-\aa.
     \end{align*}
-    So $\aa^p-\aa$ is fixed by $\sigma$ and hence $\aa^-\aa=a\in F$, in other words, $\aa^p-\aa-a=0$.
+    So $\aa^p-\aa$ is fixed by $\sigma$ and hence $\aa^p-\aa=a\in F$, in other words, $\aa^p-\aa-a=0$.
 \end{proof}
 
 The converse of this theorem is also true.
 
 \begin{thm}
-    Let $F$ be a field of characteristic $p$, and let $a\in F-\pi^{-1}(F)$. Then $f(x)=x^p-x-a$ is irreducibility over $F$ and the splitting field of $f$ is a cyclic Galois extension of degree $p$.
+    Let $F$ be a field of characteristic $p$, and let $a\in F\setminus\wp^{-1}(F)$. Then $f(x)=x^p-x-a$ is irreducibility over $F$ and the splitting field of $f$ is a cyclic Galois extension of degree $p$.
 \end{thm}
 
 \begin{proof}
@@ -1716,9 +1716,9 @@ The converse of this theorem is also true.
 \end{proof}
 
 \begin{example}
-    Let $F=\FF_p(t)$ the rational function field in one variable over $\FF_p$. We claim that $t\notin \pi^{-1}(F)$, so the extension $F(\pi^{-1}(t))$ is a cyclic extension of $F$ of degree $p$.
+    Let $F=\FF_p(t)$ the rational function field in one variable over $\FF_p$. We claim that $t\notin \wp^{-1}(F)$, so the extension $F(\wp^{-1}(t))$ is a cyclic extension of $F$ of degree $p$.
 
-    To prove the claim, suppose instead $t\in \pi^{-1}(F)$, so $t=a^p-a$ for some $a\in F$, say, $a=f/g$ with $f,g\in \FF_p[t]$ coprime. Then $t=f^p/g^p-f/g$ or $g^px=f^p-fg^{p-1}$ or $f^p=g^{p-1}(gt-f)$, so $g$ divides $f^p$. This is impossible.
+    To prove the claim, suppose instead $t\in \wp^{-1}(F)$, so $t=a^p-a$ for some $a\in F$, say, $a=f/g$ with $f,g\in \FF_p[t]$ coprime. Then $t=f^p/g^p-f/g$ or $g^px=f^p-fg^{p-1}$ or $f^p=g^{p-1}(gt-f)$, so $g$ divides $f^p$. This is impossible.
 \end{example}
 
 \section{Hilbert Theorem 90 and Noether's lemma}
@@ -1753,7 +1753,7 @@ The following theorem is in fact a lemma of Noether's work.
     Let $E/F$ be a finite Galois extension and $G=\Gal(E/F)$. Then both $H^1(G,E)$ and $H^1(G,E^\times)$ are trivial.
 \end{thm}
 
-We break the proof into Multiplicative case and additive case.
+We divide the proof into multiplicative case and additive case.
 
 \begin{defn}
     Let $E/F$ be a finite Galois extension and $G=\Gal(E/F)$. Let $$f: G\to E^\times$$ be a function. Then $f$ is a \emph{multiplicative cocycle} if $$f(\sigma\tau)=f(\sigma)\sigma(f(\tau))$$ for all $\tau,\sigma\in G$. $f$ is a \emph{multiplicative coboundary} if and only if there is a $\bb\in E^\times$ such that $$f(\sigma)=\frac{\sigma(\bb)}{\bb}$$ for all $\sigma\in G$.
@@ -1785,8 +1785,9 @@ We break the proof into Multiplicative case and additive case.
 
 \begin{proof}
     The proof is exactly an analogy of the above one.
-
-    One direction is straightforward. Assume $g$ is a coboundary corresponding to $\bb\in E$.
+    
+    One direction is straightforward. Assume $g$ is a coboundary corresponding to $\bb\in E$. Then 
+    $$f(\sigma\tau)=\sigma\tau(\bb)-\bb =(\sigma(\tau(\bb))-\sigma(\bb))+(\sigma(\bb)-\bb)=\sigma(f(\tau))+ f(\sigma).$$
 
 
     We now prove the other direction. Since $E/F$ is separable, $\Tr_{E/F}$ is not the zero map. Then we can find an element $c\in E$ such that $\Tr_{E/F}(c)=1$ by rescaling if necessary as $\Tr_{E/F}$ is $F$-linear. Recall that $\Tr_{E/F}(x)=\sum_{\sigma\in G}\sigma(x)$ for all $x\in E$. Write $\bb=\sum_{\sigma\in G}g(\sigma)\sigma(c)$. Then we have $$\tau(\bb)=\sum_{\sigma\in G}\tau(g(\sigma))(\tau\sigma)(c).$$ By the cocycle condition, we can turn this into 
@@ -1806,14 +1807,44 @@ Now we shall move to Hilbert 90, which in fact is equivalent to Noether's lemma.
     Let $K/F$ be a cyclic Galois extension of degree $n$ with $\sigma$ a generator of $\Gal(K/F)$. If $u\in K$, then $\nm_{K/F}(u)=1$ if and only if $u=\sigma(a)/a$ for some $a\in K$.
 \end{thm}
 
+\begin{proof}
+    One direction is easy. If $u=\sigma(a)/a$, then $\nm_{K/F}(\sigma(a))=\nm_{K/F}(a)$, so $\nm_{K/F}(u)=1$.
 
-Lemma \ref{cycliclem1} follows quickly from this theorem.
+    Conversely, if $\nm_{K/F}(u)=1$, we define $f: G\to K^*$ by $f(id)=1,f(\sigma)=u$ and $f(\sigma^i)=u\sigma(u)\cdots\sigma^{i-1}(u)$ for $1\leq i\leq n$. We want to show $f$ is a (multiplicative) cocycle. If $i+j< n$, then \begin{align*}
+        f(\sigma^i\sigma^j) &= f(\sigma^{i+j})=u\sigma(u)\cdots\sigma^{i+k-1}(u)\\
+        &= (u\sigma(u)\cdots\sigma^{i-1}(u))\cdot \sigma^i(u\sigma(u)\cdots\sigma^{j-1}(u))\\
+        &=f(\sigma^i)\sigma^i(f(\sigma^j)).
+    \end{align*}
+
+    If $i+j\geq n$, then $0\leq i+j-n<n$ and so \begin{align*}
+        f(\sigma^i\sigma^j) &= f(\sigma^{i+j})=f(\sigma^{i+j-n})=u\sigma(u)\cdots\sigma^{i+k-n-1}(u)\\
+        f(\sigma^i)\sigma^i(f(\sigma^j)) &=(u\sigma(u)\cdots\sigma^{i-1}(u))\cdot \sigma^i(u\sigma(u)\cdots\sigma^{j-1}(u))\\
+        &=(u\sigma(u)\cdots\sigma^{i+j-n-1}(u))\cdot \sigma^{i+j-n}(u\sigma(u)\cdots\sigma^{j-1}(u))\\
+        &=  f(\sigma^i\sigma^j)\sigma^{i+j-n}(\nm_{K/F}(u))\\
+        &=  f(\sigma^i\sigma^j).
+    \end{align*}
+    So $f$ is a cocycle. By Noether's lemma, $f$ is also a coboundary and we can find $\aa\in K$ with $f(\sigma^i)=\sigma^i(\aa)/\aa$. Therefore, $u=f(\sigma)=\sigma(\aa)/\aa$.
+\end{proof}
+
+
+Lemma \ref{cycliclem1} follows quickly from this theorem. If $K/F$ is a cyclic extension of degree $n$ and $\sigma$ is a generator of $\Gal(K/F)$, and if $F$ contains a primitive $n$-th root $\omega$, then $\nm_{K/F}(\omega)=\omega^n=1$. Therefore, we can find some $a\in K$ such that $\omega=\sigma(a)/a$.
 
 \begin{thm}[Hilbert 90, Additive Form]
     Let $K/F$ be a cyclic Galois extension of degree $n$ with $\sigma$ a generator of $\Gal(K/F)$. If $u\in K$, then $\Tr_{K/F}(u)=0$ if and only if $u=\sigma(a)-a$ for some $a\in K$.
 \end{thm}
 
-Theorem \ref{9.8} then goes as follows.
+\begin{proof}
+    If $u=\sigma(a)-a$, then clearly $\Tr_{K/F}(u)=0$. Conversely, suppose $\Tr_{K/F}(u)=0$. Define $g: G\to K$ by $g(id)=0,g(\sigma)=u$ and for $1\leq i<n $ by $$g(\sigma)=u+\sigma(u)+\cdots+\sigma^{i-1}(u).$$
+    Since $\Tr_{K/F}(u)=0=\sum_{i=1}^n\sigma^i(u)=0$, for $0\leq i,j<n$, we always have 
+    \begin{align*}
+        g(\sigma^i\sigma^j)&=u+\sigma(u)+\cdots+\sigma^{i+j-1}(u) \\
+        &= (u+\sigma(u)+\cdots+\sigma^{i-1}(u))+\sigma^i(u+\sigma(u)+\cdots+\sigma^{j-1}(u))\\
+        &=g(\sigma^i)+\sigma^i(g(\sigma^j))
+    \end{align*}
+    And so $g$ is a (additive) cocycle. By Noether's lemma, $g$ is also a coboundary, namely, we can find $a\in K$ such that $g(\sigma^i)=\sigma^i(a)-a$. Therefore, $u=g(\sigma)=\sigma(a)-a$.
+\end{proof}
+
+Theorem \ref{9.8} then goes as follows. If $K/F$ is a cyclic Galois extension of degree $p$ with $\char(F)=p$ and $\sigma$ is a generator of $\Gal(K/F)$, then $\Tr_{K/F}(1)=p=1$. So by the theorem above, we can find $a\in K$ such that $1=\sigma(a)-a$. And we can continue the last part of the proof of Theorem \ref{9.8}.
 
 
 \chapter*{Week 8}

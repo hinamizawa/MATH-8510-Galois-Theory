@@ -1,0 +1,146 @@
+\documentclass[12pt,reqno]{article}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\usepackage[all,cmtip]{xy}
+\usepackage{hyperref}
+\vfuzz=2pt
+
+\pgfplotsset{compat=1.17}
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+{\theoremstyle{remark}\newtheorem*{remark}{Remark}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{
+  \newenvironment{#1}[1]
+  {
+   \renewcommand\customgenericname{#2}
+   \renewcommand\theinnercustomgeneric{##1}
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+\newcustomtheorem{solution}{Solution}
+
+\newcommand{\ccc}{\mathcal{C}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\ta}[1]{\langle #1 \rangle}
+\newcommand{\ff}{\mathbb{F}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+\begin{document}
+
+\title{Inverse Galois Problems for $S_p$ and Abelian Groups}
+
+\author{LU Junyu}
+
+\maketitle
+
+\noindent In this short article, we construct a field extension $E$ over the rationals $\qq$ with Galois group $\gal(E/\qq)\cong S_p$, $p$ prime, or $\gal(E/\qq)$ any finite abelian group. If it is the latter case, the extension $E$ is so constructed that it is a subfield of some cyclotomic extension.
+
+% Cyclotomic extensions are of great interests in algebraic number theory. Among the most outstanding theorems is the Kronecker-Weber theorem, which says every abelian Galois extension of the rationals embeds into some cyclotomic extension.
+
+\begin{lemma}
+	Let $p$ be a prime. If a subgroup $G$ of the symmetric group $S_p$ contains a transposition and a $p$-cycle, then $G$ is the whole group $S_p$.
+\end{lemma}
+
+\begin{proof}
+	After renaming elements, we can assume the transposition $\sigma=(1~ 2)$. We can write a $p$-cycle $\tau$ as $\tau=(1~ i_2 ~\cdots ~i_p)$ after rotations on $\tau$, if necessary. Now $i_j=2$ for some $2\leq j\leq p$, and then $\tau^{j-1}=(1~2~\cdots)$ is also a $p$-cycle. After renaming elements, we get $\sigma=(1~2), \tau=(1~2\cdots~p)$ and then $\sigma,\tau$ generate $S_p$.
+\end{proof}
+
+\begin{theorem}\label{symgal}
+	Let $f\in\qq[x]$ be a monic irreducible polynomial of degree $p$, $p$ prime. If $f$ has precisely two complex roots and $p-2$ real roots, then the Galois group of $f$ is isomorphic to the symmetric group $S_p$.
+\end{theorem}
+
+\begin{proof}
+	Fix an algebraic closure $\overline{\qq}\subset\cc$. Let $E$ be the splitting field of $f$ over $\qq$ and $\alpha$ one of the roots. Note that $E/\qq$ is a Galois extension and $\gal(E/\qq)$ is (isomorphic to) a subgroup of $S_p$. Since $f$ is irreducible, $[\qq(\alpha):\qq ]=p$ and so $p\mid \left[ E:\qq\right]=|\gal(E/\qq)|$. By Cauchy's theorem (or Sylow's theorem), $\gal(E/\qq)$ contains an element of order $p$. But the only elements in $S_p$ of order $p$ are $p$-cycles. Hence $\gal(E/\qq)$ contains a $p$-cycle. Note the complex conjugation exchanges the two complex roots of $f$ and fixes reals, so it is also an element in $\gal(E/\qq)$ and is a transposition indeed. Since $\gal(E/\qq)$ contains a transposition and a $p$-cycle, $\gal(E/qq)$ is the whole group $S_p$ by the lemma above.
+\end{proof}
+
+\begin{example}
+	Probably the simplest example of a polynomial over $\qq$ with Galois group $S_n~ (n > 1)$ is $x^n-x-1$. This is proved in a paper by H.~Osada in J.~Number Theory, 25(1987), 230–238.
+\end{example}
+
+\begin{example}
+  Let $p\geq 5$ be a prime. Define $f(x),g(x)\in \qq[x]$ as 
+  \[g(x)=(x^4+4)(x-2)(x-4)\cdots(x-2(p-2)),~f(x)=g(x)-2.\]
+
+  If we draw $f,g$ on the plane, we see that $g(x)$ interests $x$-axis at $2,4,\dots,2(p-2)$ and that $g(x)>2$ for $x=3,5,7,\dots,2p-1$. The graph of $f$ is obatined by shifting down 2 units of that of $g$. Therefore, $f$ has precisely $p-2$ real roots. Write $f(x)$ as 
+  \[f(x)=x^p+d_{p-1}x^{p-1}+\dots+d_{0}.\]
+  Then $d_{0}= 4k-2$ for some nonzero integer $k$ and hence $2^2\nmid d_{0}$ while it is easily seen that $2\mid d_{j}$ for $j=0,\dots,d-1$. By Eisenstein's criterion, $f$ is irreducible. And Theorem \ref{symgal} says the Galois group of $f$ over $\qq$ is $S_p$.
+\end{example}
+
+
+Now we move the the case where we want the Galois group be finite abelian. Recall from the classification on finite abelian groups, we can write a finite abelian group $G$ as \[G\cong \zz/p_1^{e_1}\times\dots\times \zz/p_r^{e_r},\] where $p_i$ are primes not necessarily distinct and $e_r$ are positive integers. And for two rings $R_1,R_2$, we have \[(R_1\times R_2)^*=R_1^*\times R_2^*.\]
+
+The following theorem is a special case of Dirichlet's theorem about primes in arithmetic progression. To be self-contained, we prove it using cyclotomic polynomials 
+
+\begin{theorem}
+  Let $n>1$ be a positive integer. Then there are infinitely many primes $p$ such that $p\equiv 1\Mod{n}$.
+\end{theorem}
+
+\begin{proof}
+  Let $\Phi_n(x)$ be the $n$-th cyclotomic polynomial.
+  We first note that $\Phi_1(0)=-1$ and $\Phi_n(0)=1$ for $n\geq 2$. This can be easily done by induction on $n\geq 2$. Hence the constant term for $\Phi_n(x)$ is 1 when $n>1$.
+
+  Claim: Let $p$ be a prime. If $p\mid \Phi_n(x_0)$ for some integer $x_0$, then $p\mid n$ or $p\equiv 1\Mod{n}$.
+
+
+  Proof of Claim: Note that $p\mid \Phi_n(x_0)\mid x_0^n-1$. We must have $p\nmid x_0$. Let $k$ be the order of $x_0$ in $(\zz/p)^*$. Since $|(\zz/p)^*|=p-1$, we have $k\mid (p-1)$ and so $p\equiv 1\Mod{k}$. Since $x_0^n\equiv 1\Mod{p}$, we have $k\mid n$. If $k=n$, then $p\equiv 1\Mod{n}$ and we are done. If $k<n$, then $p\mid x_0^k-1$ implies $p\mid \Phi_d(x_0)$ for some $d\leq k<n$. Since $p$ also divides $\Phi_n(x_0)$, $x_0$ is a double root of $x^n-1$ when we regard it as a polynomial in $\ff_p[x]$. This can only happen if $p$ divides $n$. 
+
+
+  Assume that there are only finitely many primes $p\equiv 1\Mod{n}$. We define \[N=n\prod_{p \text{ prime, } p\equiv 1\Mod{n}} p.\] Then $N>n>1$ is well-defined. Consider the monic polynomial $\Phi_n(x)$. We have $\Phi_n(N^k)>1$ for some large enough integer $k$. Let $p$ be a prime divisor of $\Phi_n(N^k)$. Note the constant term of $\Phi_n(x)$ is 1 and then $\Phi_n(N^k)-1$ is a multiply of $N$. But $p\mid \Phi_n(N^k)$ implies $p\nmid \Phi_n(N^k)-1 $ and $p\nmid N$ and $p\nmid n$. It follows from the claim that $p\equiv 1\Mod{n}$. On the other hand $p\nmid N$ means $p$ is not any of the primes in the definition of $N$. Contradiction. 
+\end{proof}
+
+We need one lemma more before going to construct abelian extensions.
+
+\begin{lemma}
+  Let $G$ be a finite abelian group. Then there is a surjective homomorphism $$\phi:(\zz/n)^*\to G$$ for some positive integer $n$.
+\end{lemma}
+
+\begin{proof}
+  By the classification of finite abelian groups, we can write \[G\cong \zz/n_1\times\dots\times\zz/n_r,\] where $\zz/n_i$ is a cyclic group of order $n_i$.
+
+  Since there are infinitely many primes $p\equiv 1\Mod{n_i}$, we can choose distinct primes $p_i$ such that $p_i=n_im_i+1$ for some positive integer $m_i$ for $i=1,\dots,r$. Now $(\zz/p_i)^*$ is a cyclic group of order $n_im_i$ and hence there is a surjection $\phi_i: (\zz/p_i)^* \to \zz/n_i$. Collecting all the surjections, we can define a surjective homomorphism 
+  \[\phi:(\zz/p_1)^*\times\dots\times (\zz/p_r)^*\to \zz/n_1\times\dots\times\zz/n_r,~ (a_1,\dots,a_r)\mapsto (\phi_1(a_1),\dots,\phi_r(a_r)).\]
+  Note that $(\zz/p_1)^*\times\dots\times (\zz/p_r)^* = (\zz/p_1\times\dots\times \zz/p_r)^*$ and that by Chinese Remainder Theorem $\zz/p_1\times\dots\times \zz/p_r \cong \zz/(p_1\dots p_r)$. We get a surjection $\phi': (\zz/(p_1\dots p_r))^*\to G.$
+\end{proof}
+
+\begin{theorem}
+  Let $G$ be a finite abelian group. Then there is a subfield $E$ of $\qq(\zeta_n)$, where $\zeta_n$ is a primitive $n$-th root for some positive integer $n$, such that $E$ is Galois over $\qq$ and $\gal(E/\qq)\cong G$.
+\end{theorem}
+
+\begin{proof}
+  By the lemma above, we can find a positive integer $n$ such that there is a surjection $$\phi:(\zz/n)^*\to G.$$ Then the kernel $H=\ker(\phi)$ is a normal subgroup.
+
+  Now let $E=\qq(\zeta_n)^H$ be the fixed subfield of $H$. Since $H$ is normal, by the fundamental theorem about Galois theory, $E/\qq$ is Galois and \[\gal(E/\qq) \cong \gal(\qq(\zeta_n)/\qq)/\gal(\qq(\zeta_n)/E) \cong (\zz/n)^*/H \cong G.\]
+\end{proof}
+
+Note the difference between this theorem and Kronecker-Weber theorem. Kronecker-Weber theorem says \emph{every} abelian extension over the rationals can be embedded into a cyclotomic extension, while we we constructed \emph{some} extension with Galois group a finite abelian group $G$ that happens to embed into a cyclotomic extension.
+
+\begin{theorem}[Kronecker-Weber]
+	Let $E/\qq$ be a finite Galois extension such that $\gal(E/\qq)$ is abelian. Then there is a root of unity $\zeta$ such that $E \subset \qq(\zeta)$.
+\end{theorem}
+
+Now we prove a special case of Kronecker-Weber theorem.
+
+
+\end{document}

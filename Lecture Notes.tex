@@ -1373,7 +1373,7 @@ And the intermediate fields can be determine accordingly. We will do it in lectu
 
 As a counterexample to the preceding type of biquadratic polynomials, let us consider $f(x)=\Phi_{12}(x)=x^4-x^2+1\in \QQ[x]$. Now if we write $f(x)=(x^2-a)^2-b$, then we have $a=1/2$ and $b=-3/4$, not satisfying the above condition. And then the Galois group is isomorphic to $(\ZZ/12\ZZ)^*=\{1,5,7,9\}\cong \ZZ/2\ZZ\times \ZZ/2\ZZ.$
 
-\section{Inverse Galois problems for \texorpdfstring{$S_p$} and abelian groups}
+\section{Inverse Galois problems for \texorpdfstring{$S_p$}~ and abelian groups}
 
 In this section, we construct a field extension $E$ over the rationals $\qq$ such that its Galois group $\gal(E/\qq)$ is isomorphic to $S_p$, $p$ prime, or $\gal(E/\qq)$ is an arbitrary finite abelian group. If it is the latter case, the extension $E$ is so constructed that it is a subfield of some cyclotomic extension.
 
@@ -1398,7 +1398,7 @@ Through all this article, $\zeta_n$ is a primitive $n$-th root and $\Phi_n(x)$ i
 \end{proof}
 
 \begin{example}
-	Probably the simplest example of a polynomial over $\qq$ with Galois group $S_n~ (n > 1)$ is $x^n-x-1$. This is proved in a paper by H.~Osada in J.~Number Theory, 25(1987), 230–238.
+	Probably the simplest example of a polynomial over $\qq$ with Galois group $S_n$, where $n$ is a positive integer, is $x^n-x-1$. This is proved in a paper by H.~Osada in J.~Number Theory, 25(1987), 230–238.
 \end{example}
 
 \begin{example}
@@ -1492,10 +1492,11 @@ We need a technical lemma before proving Theorem \ref{webspe}.
 	\]
 \end{lemma}
 \begin{proof}
-	Consider the case $\mymod{p}{1}{4}$. The equation $x^2+gy^2=0$ has the trivial solutions only. If not, say $y\not=0$, then $g=-(x^2/y^2)=-(x/y)^2$ but this says $g^{(p-1)/2}=(x/y)^{p-1}=1$ contradicting to the assumption that $g$ is a generator of $\ff_p^*$. Therefore, the quadratic polynomial $T^2+g\in \ff_p[T]$ has no solution in $\ff_p$. Let $\alpha=\sqrt{-g}$ be one of its roots. Then $\ff_p[\alpha]/\ff_p$ is a Galois extension of degree 2. The norm of an element $a+b\alpha\in \ff_p[\alpha]$ is given as $\nm{a+b\alpha}=a^2+b^2g$. The norm mapping $\text{N}:\ff_p[\alpha]^\times\to \ff_p\times$ is a group homomorphism. The map is surjective since $\nm{\alpha}=g$ and the kernel is of size $|\ff_p[\alpha]^\times|/ |\ff_p^\times|=(p^2-1)/(p-1)=p+1$. Namely, for each $r\in \ff_p^*$ we will get $p+1$ solutions $x+y\alpha$ with $\nm{x+y\alpha}=x^2+y^2\alpha=r$.
+	Consider the case $\mymod{p}{1}{4}$. The equation $x^2+gy^2=0$ has the trivial solutions only. If not, say $y\not=0$, then $g=-(x^2/y^2)=-(x/y)^2$ but this says $g^{(p-1)/2}=(x/y)^{p-1}=1$ contradicting to the assumption that $g$ is a generator of $\ff_p^*$. Therefore, the quadratic polynomial $T^2+g\in \ff_p[T]$ has no solution in $\ff_p$. Let $\alpha=\sqrt{-g}$ be one of its roots. Then $\ff_p[\alpha]/\ff_p$ is a Galois extension of degree 2. The norm of an element $a+b\alpha\in \ff_p[\alpha]$ is given as $\nm{(a+b\alpha)}=a^2+b^2g$. The norm mapping $\text{N}:\ff_p[\alpha]^\times\to \ff_p^\times$ is a group homomorphism. The map is surjective since $\nm{(\alpha)}=g$ and the kernel is of size $|\ff_p[\alpha]^\times|/ |\ff_p^\times|=(p^2-1)/(p-1)=p+1$. Namely, for each $r\in \ff_p^*$ we will get $p+1$ solutions $x+y\alpha$ with $\nm{(x+y\alpha)}=x^2+y^2\alpha=r$.
 
 
-	Now consider the case $\mymod{p}{3}{4}$. In this case, $-1$ is not a quadratic residue  and so $-g$ is, say $-g=\beta^2$ for some $\beta\in \ff_p^*$. We have $x^2+gy^2=(x-\beta y)(x+\beta y)=0$ if and only if $x=\pm\beta y$ and so we get $2p-1$ solutions. Now consider the polynomial $T^2-g\in \ff_p[x]$ and let $\alpha=\sqrt{g}$ be one of its roots and $\gamma\in \ff_p$ with $\gamma^2=-1$. Then the norm map \[\text{N}: \ff_p[\alpha]\to \ff_p, x+y\gamma \alpha \mapsto x^2-y^2\gamma^2 g =x^2+y^2 g\] is surjective since $\nm{\gamma\alpha}=g$. The restriction of $N$ on the non-zero-norm element is again a group homomorphism. The size of kernel is then $(p^2-(2p-1))/(p-1)=p-1$. Namely, there are precisely $p-1$ solutions for $\nm{x+y\gamma \alpha}=x^2+gy^2=r$ for each $r\not=0$. 
+	The case $\mymod{p}{3}{4}$ can be argued in a similar manner and left as an exercise.
+	% In this case, $-1$ is not a quadratic residue  and so $-g$ is, say $-g=\beta^2$ for some $\beta\in \ff_p^*$. We have $x^2+gy^2=(x-\beta y)(x+\beta y)=0$ if and only if $x=\pm\beta y$ and so we get $2p-1$ solutions. Now consider the polynomial $T^2-g\in \ff_p[x]$ and let $\alpha=\sqrt{g}$ be one of its roots and $\gamma\in \ff_p$ with $\gamma^2=-1$. Then the norm map \[\text{N}: \ff_p[\alpha]\to \ff_p, x+y\gamma \alpha \mapsto x^2-y^2\gamma^2 g =x^2+y^2 g\] is surjective since $\nm{(\gamma\alpha)}=g$. The restriction of $N$ on the non-zero-norm element is again a group homomorphism. The size of kernel is then $(p^2-(2p-1))/(p-1)=p-1$. Namely, there are precisely $p-1$ solutions for $\nm{(x+y\gamma \alpha)}=x^2+gy^2=r$ for each $r\not=0$. 
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{webspe}]
@@ -1853,7 +1854,7 @@ Again, the usual proof of the following lemma uses Hilbert 90, but as with Lemma
 
 The converse of this theorem is also true.
 
-\begin{theorem}
+\begin{theorem}\label{as1}
 	Let $F$ be a field of characteristic $p$, and let $a\in F\setminus\wp^{-1}(F)$. Then $f(x)=x^p-x-a$ is irreducibility over $F$ and the splitting field of $f$ is a cyclic Galois extension of degree $p$.
 \end{theorem}
 
@@ -1872,6 +1873,22 @@ The converse of this theorem is also true.
 
 	To prove the claim, suppose instead $t\in \wp^{-1}(F)$, so $t=a^p-a$ for some $a\in F$, say, $a=f/g$ with $f,g\in \FF_p[t]$ coprime. Then $t=f^p/g^p-f/g$ or $g^px=f^p-fg^{p-1}$ or $f^p=g^{p-1}(gt-f)$, so $g$ divides $f^p$. This is impossible.
 \end{example}
+
+Combining Theorem \ref{9.8} and Theorem \ref{as1} we get the Artin-Schreier Theorem.
+
+\begin{theorem}[Artin-Schreier]
+	Let $E/F$ be a finite extension with $\charr{F}=p>0$. Then $E/F$ is a cyclic extension if and only if there is some $a\in F$ not of the form $b^p-b$ for any $b\in F$, namely, $a\in F\setminus \wp^{-1}(F)$, such that $E/F$ is the splitting field of $f(x)=x^p-x-a$.
+\end{theorem}
+
+Recall that for algebraic closures, we have $[\cc:\RR]=2, [\overline{\qq}:\qq]=\infty, [\overline{\ff_p}:\ff_p]=\infty$. We use Artin-Schreier Theorem to prove the following theorem.
+
+\begin{theorem}
+	Suppose that $E/F$ is a finite field extension and $F\subsetneq E$ is algebraically closed. Then $\charr(F)=0$ and $E=F(\sqrt{-1})$ and so $[E:F]=2$.
+\end{theorem}
+
+\begin{proof}
+	TBD
+\end{proof}
 
 \section{Hilbert Theorem 90 and Noether's lemma}
 
@@ -2012,7 +2029,7 @@ Theorem \ref{9.8} then goes as follows. If $K/F$ is a cyclic Galois extension of
 
 \section{Solvability by radicals}
 
-\section{The transcendence of \texorpdfstring{$\pi$} and \emph{e}}
+\section{The transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
 
 \chapter*{Week 10}
 \setcounter{chapter}{10}

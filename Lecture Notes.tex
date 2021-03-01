@@ -9,7 +9,10 @@
 \usepackage{mathtools}
 \usepackage[all]{xy}
 \usepackage[margin=1in,footskip=0.25in]{geometry}
-\usepackage{hyperref}
+\usepackage[colorlinks=true,
+            linkcolor=red,
+            urlcolor=blue,
+            citecolor=gray]{hyperref}
 \vfuzz=2pt
 
 % some "funny lines" referred to later:
@@ -1590,7 +1593,7 @@ The preceding proposition can be applied in various settings. For example, if $L
 \end{proof}
 
 \begin{example}
-	An $\RR$-basis of $\CC$ is $\{1,i\}$. The corollary says $\{1+i, 1-i\}$ is a $\CC$-basis of $\CC^2$.
+	An $\RR$-basis of $\CC$ is $\{1,i\}$. The corollary says $\{(1,1), (i,-i)\}$ is a $\CC$-basis of $\CC^2$.
 \end{example}
 
 
@@ -1607,7 +1610,7 @@ The preceding proposition can be applied in various settings. For example, if $L
 	$$1+\sqrt{2}+\sqrt{3}+\sqrt{6},1-\sqrt{2}+\sqrt{3}-\sqrt{6},1+\sqrt{2}-\sqrt{3}-\sqrt{6},1-\sqrt{2}-\sqrt{3}+\sqrt{6}.$$ They are linearly independent by checking the determinate and spans $\QQ(\sqrt{2}+\sqrt{3})$. Therefore, they form a normal basis.
 \end{example}
 
-The normal basis theorem says that every finite Galois extension admits a normal basis. However, we only give a proof of this theorem when $K$ is infinite.
+The normal basis theorem says that every finite Galois extension admits a normal basis. Firstly, we  give a proof of this theorem when the base field is infinite.
 
 \begin{theorem}[Normal Basis Theorem]
 	Every finite Galois extension of an infinite field admits a normal basis.
@@ -1615,7 +1618,7 @@ The normal basis theorem says that every finite Galois extension admits a normal
 
 \begin{proof}
 	Let $L/K$ be a Galois extension and $[L:K]=n$ and $\Gal(L/K)=\{\sigma_1,\cdots,\sigma_n\}$. We aim to find an element $\alpha\in L$ such that $\sigma_1(\alpha),\cdots,\sigma_n(\alpha)$ are linearly independent.
-	If we have a linear dependence relation for some $\alpha\in L$: $$\sum_{j=1}^n a_n\sigma_j(\alpha) = 0,$$ for some $a_1,\cdots,a_j\in K$, then we can get a new one by applying $\sigma_i^{-1}$: $$\sum_{j=1}^n a_n(\sigma_i^{-1}\sigma_j)(\alpha) = 0.$$
+	If we have a linear dependence relation for some $\alpha\in L$: $$\sum_{j=1}^n a_j\sigma_j(\alpha) = 0,$$ for some $a_1,\cdots,a_j\in K$, then we can get a new one by applying $\sigma_i^{-1}$: $$\sum_{j=1}^n a_j(\sigma_i^{-1}\sigma_j)(\alpha) = 0.$$
 	Collecting these together for $i=1,\cdots,n$, we get $$\begin{pmatrix}
 			\sigma_1^{-1}\sigma_1(\alpha) & \cdots & \sigma_1^{-1}\sigma_n(\alpha) \\
 			\vdots                        & \ddots & \vdots                        \\
@@ -1629,11 +1632,15 @@ The normal basis theorem says that every finite Galois extension admits a normal
 			\vdots \\
 			0
 		\end{pmatrix}.$$
-	For force a trivial solution for $a_1,\cdot,a_n$, we must have $\det((\sigma_i^{-1}\sigma_j)(\alpha)) \not= 0.$
+	To force a trivial solution for $a_1,\cdot,a_n$, we must have $\det((\sigma_i^{-1}\sigma_j)(\alpha)) \not= 0.$
 	Let $\{e_1,\cdots,e_n\}$ be a $K$-basis of $L$. Then an arbitrary element $\alpha\in L$ is of the form $\sum_{k=1}^n b_k e_k$ with $b_k\in K$. And then we have $$(\sigma_i^{-1}\sigma_j)(\alpha)=\sum_{k=1}^n b_k((\sigma_i^{-1}\sigma_j)(e_k)).$$
 	Consider the polynomial $$\Delta(X_1,\cdots, X_n) = \det(\sum_{k=1}^n X_k((\sigma_i^{-1}\sigma_j)(e_k)))\in L[X_1,\cdots,X_n].$$
 	Let $\sigma_1$ be the identity automorphism. Corollary \ref{charcor} says there are $c_1,\cdots, c_n\in L$ such that    $$\sum_{k=1}^nc_k(\sigma_1(e_k),\cdots,\sigma_n(e_k))=(1,0,\cdots,0).$$ Reading this off component-wise, $$\sum_{k=1}^n c_ke_k=1, \quad \sum_{k=1}^n c_k \sigma(e_k)=0 \mbox{ for }\sigma\not= id.$$
-	Thus $$ \sum_{k=1}^n c_k (\sigma_i^{-1} \sigma_j)(e_k)=1$$ if $i=j$ and $=0$ otherwise. Therefore the matrix $(\sum_{k=1}^n c_k (\sigma_i^{-1} \sigma_j)(e_k))$ is the identity matrix and so $\Delta(c_1,\cdots,c_n)  =1 $, which means $\Delta(X_1,\cdots,X_n)$ is not the zero polynomial.
+	Thus $$ \sum_{k=1}^n c_k (\sigma_i^{-1} \sigma_j)(e_k)=
+		\begin{cases}
+			1 & \quad \mbox{if } i=j,   \\
+			0 & \quad \mbox{otherwise.}
+		\end{cases}$$ Therefore the matrix $(\sum_{k=1}^n c_k (\sigma_i^{-1} \sigma_j)(e_k))$ is the identity matrix and so $\Delta(c_1,\cdots,c_n)  =1 $, which means $\Delta(X_1,\cdots,X_n)$ is not the zero polynomial.
 
 	Since $K$ is infinite, there must be $b_1,\cdots, b_n\in K$ such that $\Delta(b_1,\cdots,b_n)\not=0$. Then $\alpha=\sum_{k=1}^n b_k e_k$ is the desired element.
 \end{proof}
@@ -1641,28 +1648,28 @@ The normal basis theorem says that every finite Galois extension admits a normal
 
 Before proving the normal basis theorem for finite fields, let us recap a few facts which we did not quite make explicitly before.
 
-Suppose $E/F$ is a finite Galois extension. Then $\sigma\in\gal(E/F)$ is also a $F$-linear transformation from $E$ to $E$. There are different angles of views. One can say there is a canonical embedding $\gal(E/F)\to \mbox{GL}(E)$ or one can say $E$ has a $F[x]$-module structure induced by $\sigma\in \gal(E/F)$. Either case, it makes sense if we take about the characteristic/minimal polynomial of $\sigma$ (and then also $\phi_a: E\to E, x\to ax$ as in the definition \ref{ntdef} of the norm and trace).
+Suppose $E/F$ is a finite Galois extension. Then $\sigma\in\gal(E/F)$ is also a $F$-linear transformation from $E$ to $E$. There are different angles of views. One can say there is a canonical embedding $\gal(E/F)\to \mbox{GL}(E)$ or one can say $E$ has a $F[x]$-module structure induced by $\sigma\in \gal(E/F)$. Either case, it makes sense to talk about the characteristic/minimal polynomial of $\sigma$ (and then also $\phi_a: E\to E, x\to ax$ as in the definition \ref{ntdef} of the norm and trace).
 
 Finite extensions over finite fields are cyclic. In particular, the Galois group is generated by the Frobenius map. Suppose $E/\ff_q$, where $q=p^r$ for some prime $p$ and $r$ a positive integer, is such an extension. Then the Frobenius map $\varphi: E\to E, x\mapsto x^q$ is clearly a ring homomorphism. $\varphi|_{\ff_q}=id|_{\ff_q}$ and $\varphi^{[E:\ff_{q}]}=id|_{E}$.
 
-\begin{theorem}
-	Every finite extension of a finite fields admits a normal basis.
+\begin{theorem}[Normal Basis Theorem]
+	Every finite Galois extension of a finite field admits a normal basis.
 \end{theorem}
 
 Indeed, the proof works for the Galois extensions whose Galois group is cyclic.
 
 \begin{proof}
-	Suppose $E/F$ is a Galois extension of degree $n$ with cyclic Galois group generated by $\sigma$. By the primitive element theorem, $E=F(\alpha)$ for some $\alpha\in E$. An element in $\gal(E/F)=\ta{\sigma}$ is complete determined by its action on $\alpha$. The Dedekind independence lemma says $\sigma,\sigma^2,\dots,\sigma^n$ are $F$-linearly independent and hence so are $\sigma(\alpha),\dots,\sigma^n(\alpha)$. By counting the dimensions, the set $\{\sigma(\alpha),\dots,\sigma^n(\alpha)\}$ is a $F$-basis of $E$.
+	Please refer to Conrad's \href{https://kconrad.math.uconn.edu/blurbs/galoistheory/linearchar.pdf}{notes}.
 \end{proof}
 
-\begin{example}
-	Let $p$ be a prime. Then $\gal(\qq(\zeta_p)/\qq)\cong (\zz/p)^*$ is cyclic of order $p-1$. Assume $g$ is a generator of $(\zz/p)^*$. Then the theorem above says $\{\zeta_p^g,\zeta_p^{g^2},\dots,\zeta_p{g^{p-1}}\}$ is a normal $\qq$-basis of $\qq(\zeta_p)$. Note that since $g$ is a generator, $\{g,g^2,\dots,g^{p-1}\}$ is just all of the group $(\zz/p)^*$. So it actually says $\{\zeta_p,\dots,\zeta_p^{p-1}\}$ is a normal basis. In the mean time, $\{1,\zeta_p,\dots,\zeta_p^{p-2}\}$ is a basis but not normal.
-\end{example}
+% \begin{example}
+% 	Let $p$ be a prime. Then $\gal(\qq(\zeta_p)/\qq)\cong (\zz/p)^*$ is cyclic of order $p-1$. Assume $g$ is a generator of $(\zz/p)^*$. Then the theorem above says $\{\zeta_p^g,\zeta_p^{g^2},\dots,\zeta_p^{g^{p-1}}\}$ is a normal $\qq$-basis of $\qq(\zeta_p)$. Note that since $g$ is a generator, $\{g,g^2,\dots,g^{p-1}\}$ is just all of the group $(\zz/p)^*$. So it actually says $\{\zeta_p,\dots,\zeta_p^{p-1}\}$ is a normal basis. In the mean time, $\{1,\zeta_p,\dots,\zeta_p^{p-2}\}$ is a basis but not normal.
+% \end{example}
 
 \section{Norm and trace}
 
 \begin{definition}\label{ntdef}
-	Let $L/K$ be a finite field extension. For an element $a \in L$, consider the multiplication map $\phi_a : L \to L, x \mapsto ax$, as a linear transformation of $L$ as a $K$-vector space. Then $$\Tr_{L/K}(a)= \Tr(\phi_a),\quad \nm_{L/K}(a) = \det(\phi_a)$$ are called the trace and the norm of $a$ with respect to the extension $L/K$.
+	Let $L/K$ be a finite field extension. For an element $a \in L$, consider the multiplication map $\phi_a : L \to L, x \mapsto ax$, as a linear transformation of $L$ as a $K$-vector space. Then $$\Tr_{L/K}(a)= \Tr(\phi_a),\quad \nm_{L/K}(a) = \det(\phi_a)$$ are called the \emph{trace} and the \emph{norm} of $a$ with respect to the extension $L/K$.
 \end{definition}
 
 In particular, $\Tr_{L/K} : L \to K$ is a homomorphism of $K$-vector spaces, or in more precise terms, a linear functional on $L$ viewed as a $K$-vector space. Likewise, $\nm_{L/K} : L^* \to K^*$ is a group homomorphism.
@@ -1706,7 +1713,7 @@ In particular, $\Tr_{L/K} : L \to K$ is a homomorphism of $K$-vector spaces, or 
 \end{lemma}
 
 \begin{proof}
-	For $a \in K$= the linear map $\phi_a : L \to L$ is described by $a$ times the unit matrix of $K_{n\times n}$. This justifies the formulas in (i).
+	For $a \in K$, the linear map $\phi_a : L \to L$ is described by $a$ times the unit matrix of $K_{n\times n}$. This justifies the formulas in (i).
 
 
 	Furthermore, if $L = K(a)$, the minimal polynomial of a coincides with the minimal polynomial of the endomorphism $\phi_a$, and hence by reasons of degree, must coincide with the characteristic polynomial of $\phi_a$. Therefore, the formulas in (ii) follow from the description of $\Tr(\phi_a)$ and $\det(\phi_a)$ in terms of the coefficients of the characteristic polynomial of $\phi_a$.
@@ -1727,17 +1734,18 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 	$$\begin{pmatrix}
 			A      & 0      & \cdots & 0      \\
 			0      & A      & \cdots & 0      \\
-			\vdots & \ddots & \cdots & \vdots \\
+			\vdots & \vdots & \ddots & \vdots \\
 			0      & 0      & \cdots & A
 		\end{pmatrix}.$$
 \end{proof}
 
 \begin{theorem}\label{trnmfor}
 	Let $L/K$ be a finite field extension of degree $[L : K] =n= qr$, where $r = [L : K]_s$ is the separable degree of $L/K$. If $\sigma_1, \cdots , \sigma_r$ are the $K$-homomorphisms of $L$ into an algebraic closure $\overline{K}$ of $K$, the following formulas hold for elements $a \in L$: $$\Tr_{L/K}(a)=q\sum_{i=1}^r \sigma_i(a),\quad \nm_{L/K}(a) = (\prod_{i=1}^r \sigma_i(a))^q. $$
+	In particular, if $L/K$ is not separable, then $\Tr_{L/K}$ is the zero map.
 \end{theorem}
 
 \begin{proof}
-	Let $$g(x)=(\prod_{j=1}^r(x-\sigma_j(a)))^q \in \ok[x]$$. The degree of $g$ is exactly $qr=[L:K]$.
+	Let $$g(x)=(\prod_{j=1}^r(x-\sigma_j(a)))^q \in \ok[x].$$ The degree of $g$ is exactly $qr=[L:K]$.
 
 	Claim: $g(x)$ is in $K[x]$ and has precisely the same root as the minimal polynomial $p(x)=\irr(a,K)$ of $a$ over $K$.
 
@@ -1755,7 +1763,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 		\end{align*} by counting the multiplicity. Then $g$ is in $K[x]$ as well.
 	\end{proof}
 
-	For the "in particular" part, if $a$ is inseparable, then the characteristic of $K$ must be a prime $l$. And then the trace of $a$ is the coefficient of $x^{n-1}$ term in $g(x)=p(x)^{n/m}$, which is a multiply of $l$ and hence is 0. In particular, $\Tr_{L/K}(a)=[L:K] a = 0$ for $a\in K$ since $[L:k]=l^uv$ is zero in a characteristic $l$ field.
+	For the ``in particular'' part, if $a$ is inseparable, then the characteristic of $K$ must be a prime $l$. And then the trace of $a$ is the coefficient of $x^{n-1}$ term in $g(x)=p(x)^{n/m}$, which is a multiply of $l$ and hence is 0. In particular, $\Tr_{L/K}(a)=[L:K] a = 0$ for $a\in K$ since $[L:k]=l^uv$ is zero in a characteristic $l$ field.
 \end{proof}
 
 \begin{theorem}
@@ -1775,27 +1783,23 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 	If $K/F$ is Galois with Galois group $G$, then for all $a\in K$ we have $$\Tr_{K/F}(a)=\sum_{\sigma\in G}\sigma(a),\quad \nm_{K/F}=\prod_{\sigma\in G}\sigma(a).$$
 \end{corollary}
 
-\begin{example}
-	Let $F$ be a field with $\charr(F)\not=2,3$ and let $d\in F\setminus F^2$. We already see that $F(\sqrt{d})/F$ is Galois and $\Gal(F(\sqrt{d})/F)=\{id,\sigma\}$, where $\sigma(\sqrt{d})=-\sqrt{d}$. Therefore,
-	\begin{align*}
-		\Tr_{F(\sqrt{d})/F}(a+b\sqrt{d}) & =(a+b\sqrt{d})+(a-b\sqrt{d})=2a,      \\
-		\nm_{F(\sqrt{d})/F}(a+b\sqrt{d}) & =(a+b\sqrt{d})(a-b\sqrt{d})=a^2-b^2d.
-	\end{align*}
-\end{example}
+% \begin{example}
+% 	Let $F$ be a field with $\charr(F)\not=2,3$ and let $d\in F\setminus F^2$. We already see that $F(\sqrt{d})/F$ is Galois and $\Gal(F(\sqrt{d})/F)=\{id,\sigma\}$, where $\sigma(\sqrt{d})=-\sqrt{d}$. Therefore,
+% 	\begin{align*}
+% 		\Tr_{F(\sqrt{d})/F}(a+b\sqrt{d}) & =(a+b\sqrt{d})+(a-b\sqrt{d})=2a,      \\
+% 		\nm_{F(\sqrt{d})/F}(a+b\sqrt{d}) & =(a+b\sqrt{d})(a-b\sqrt{d})=a^2-b^2d.
+% 	\end{align*}
+% \end{example}
 
 \begin{theorem}
 	A finite extension $L/K$ is separable if and only if the $K$-linear map $\Tr_{L/K}: L\to K$ is nontrivial and hence surjective. If $L/K$ is separable, the symmetric bilinear map $$\Tr:L\times L\to K,\quad (x,y)\mapsto \Tr_{L/K}(xy)$$ is nondegenerate. In other words, $\Tr$ induces an isomorphism $$L\to \hat{L}, \quad x\mapsto \Tr(x,\cdot)$$ of $L$ into its dual $\hat{L}$.
 \end{theorem}
 
 \begin{proof}
-	Assume $L/K$ is not separable. It follows that $\charr(K)=p>0$ and $[L:K]=p^r[L:K]_s$. Theorem \ref{trnmfor} says $$\Tr_{L/K_s}(a)=p^r(\sum_i \sigma_i(a))=0,$$ for all $a\in L$, since $p^r=0$ --- we are in characteristic $p$. And then $\Tr_{L/K}$ is the zero map.
+	The ``in particular'' part of Theorem \ref{trnmfor} says one direction. For the other direction, assume $L/K$ is separable. If $\sigma_1,\cdots,\sigma_r$ are all the $K$-map $L\to\overline{K}$, where $\ok$ is an algebraic closure of $K$ (and $L$), then we have $$\Tr_{L/K}=\sigma_1+\cdots+\sigma_r.$$ Dedekind's Theorem says characters are linearly independent hence the sum is not the zero map.
 
 
-
-	Now assume $L/K$ is separable. If $\sigma_1,\cdots,\sigma_r$ are all the $K$-map $L\to\overline{K}$, where $\ok$ is an algebraic closure of $K$, then we have $$\Tr_{L/K}=\sigma_1+\cdots+\sigma_r.$$ Dedekind's Theorem says characters are linearly independent hence the sum is not the zero map.
-
-
-	Now consider an element $x$ of the kernel of $L\to \hat{L}$. Then we get $\Tr_{L/K}(xL)=0$ which says $x=0$. Otherwise, $xL=x$ and then $\Tr_{L/K}$ vanished on $L$. Contradiction. And an injection homomorphism between finite dimensional vector spaces is necessarily an isomorphism.
+	Now consider an element $x$ of the kernel of $L\to \hat{L}$. Then we get $\Tr_{L/K}(xL)=0$ which says $x=0$. Otherwise, $xL=L$ and then $\Tr_{L/K}$ vanished on $L$. Contradiction. And an injection homomorphism between finite dimensional vector spaces is necessarily an isomorphism.
 \end{proof}
 
 \chapter*{Week 7}
@@ -1819,7 +1823,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 	Let $\omega$ be a primitive 5-th root of unity (in $\CC$) and let $F=\QQ(\omega)$ and $K=F(\sqrt[5]{2})$. Then $K$ is the splitting field of $x^5-2$ over $F$, so $K/F$ is Galois. Also, $[F:\QQ]=4$ and $[\QQ(\sqrt[5]{2}):\QQ]=5$. The degree of $[K:\QQ]$ is divisible by 4 and 5, hence by 20. On the other side, $[K:F]\leq 5$, so $[K:\QQ]\leq 20$. Therefore, $[K:\QQ]=20$ and $[K:F]=5$. The roots of $x^5-2$ are precisely $\sqrt[5]{2},\omega\sqrt[5]{2},\omega^2\sqrt[5]{2},\omega^3\sqrt[5]{2}$ and $\omega^4\sqrt[5]{2}$. By isomorphism extension theorem, there is a $\sigma\in \Gal(K/F)$ with $\sigma(\sqrt[5]{2})=\omega \sqrt[5]{2}$. Then $\sigma^5=id$ and $\Gal(K/F)=\langle \sigma\rangle$.
 \end{example}
 
-There is no simple description of the cyclic extension of degree $n$ of a field $n$ that does not contain a primitive $n$-th root of unity, unless $n=p=\charr(F)$. Let;s discuss the case when $F$ does contain a primitive $n$-th root of unity first.
+There is no simple description of the cyclic extension of degree $n$ of a field $n$ that does not contain a primitive $n$-th root of unity, unless $n=p=\charr(F)$. Let us discuss the case when $F$ does contain a primitive $n$-th root of unity first.
 
 The following lemma will be used in Theorem \ref{cyclicgal1}. The standard way to prove it is to use Hilbert Theorem 90. We will discuss Hilbert 90  in details later and use a linear algebra argument here.
 
@@ -1831,9 +1835,9 @@ The following lemma will be used in Theorem \ref{cyclicgal1}. The standard way t
 	The automorphism $\sigma$ is also a $F$-linear transformation of $K$. We wish to find an $a\in K$ with $\sigma(a)=\omega a$, that is, we want to show that $\omega$ is an eigenvalue of $\sigma$. To do this, we show that $\omega$ is a root of the characteristic polynomial of $\omega$. Now since $\omega$ has order $n$, we have $\sigma^n=id$. Therefore, $\sigma$ satisfies the polynomial $x^n-1$. Moreover, if there is a polynomial $g(x)\in F[x]$ of degree $m<n$ satisfied by $\sigma$, then the automorphisms $id,\sigma,\cdots,\sigma^{m}$ are linearly dependent over $F$, a contradiction to the Dedekind independence lemma. Thus, $x^n-1$ is the minimal polynomial of $\sigma$ over $F$. However, the characteristic polynomial of $\sigma$ has degree $n=[K:F]$ and is divisible by $x^n-1$, so indeed $x^n-1$ is the characteristic polynomial of $\sigma$. Since $\omega$ is a root of this polynomial, it is an eigenvalue for $\sigma$. Thus, there is an $a\in K$ such that $\sigma(a)=\omega a$.
 \end{proof}
 
-\begin{remark}
-	We did not prove the normal basis theorem for the case where the base field is finite. But it `follows' quickly from this theorem or elsewhere. Suppose that the extension is $E/\ff_q$ and $[ E:\ff_q ]=n$. Dedekind independence lemma says that $id=\varphi^n,\varphi,\varphi^2,\dots,\varphi^{n-1}$ are linearly independent and we also have $E=\ff_q(\alpha)$. Since $\varphi$ is entirely determined by its action on $\alpha$, $\alpha,\varphi(\alpha),\dots,\varphi^{n-1}(\alpha)$ are linearly independent and hence form a $\ff_q$-basis of $E$.
-\end{remark}
+% \begin{remark}
+% 	We did not prove the normal basis theorem for the case where the base field is finite. But it `follows' quickly from this theorem or elsewhere. Suppose that the extension is $E/\ff_q$ and $[ E:\ff_q ]=n$. Dedekind independence lemma says that $id=\varphi^n,\varphi,\varphi^2,\dots,\varphi^{n-1}$ are linearly independent and we also have $E=\ff_q(\alpha)$. Since $\varphi$ is entirely determined by its action on $\alpha$, $\alpha,\varphi(\alpha),\dots,\varphi^{n-1}(\alpha)$ are linearly independent and hence form a $\ff_q$-basis of $E$.
+% \end{remark}
 
 \begin{theorem}\label{cyclicgal1}
 	Let $F$ be a field  of characteristic not dividing $n$, containing a primitive $n$-th root of unity, and let $K/F$ by a cyclic Galois extension of degree $n$. Then there is an $a\in K$ such that $K=F(a)$ and $a^n=b\in F$, that is, $K=F(\sqrt[n]{b})$.

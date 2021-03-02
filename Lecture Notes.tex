@@ -36,6 +36,7 @@
 \newcommand{\ff}{\mathbb{F}}
 \newcommand{\qq}{\mathbb{Q}}
 
+\newcommand{\sqrtn}[1]{\sqrt[n]{#1}}
 \newcommand{\charr}{\text{char}}
 \newcommand{\Hom}{\text{Hom}}
 \newcommand{\Aut}{\text{Aut}}
@@ -151,7 +152,7 @@ A typical application of Eisenstein's Criterion is to prove the irreducibility o
 
 \noindent One sentence proof: there is no non-trivial proper ideal in a field.
 
-\section{Extensions of fields}
+\section{Extensions of Fields}
 
 Most of this course will involve studying fields relative to certain subfield which we feel we understand better. For example, if $\alpha\in\CC$ is the root of some polynomial with coefficients in $\QQ$, we might wish to study $\QQ(\alpha)$, the smallest subfield of $\CC$ containing $\alpha$ and all of $\QQ$. Certainly, if we want to understand how "complicated" the number $\alpha$ is, it makes sense to consider how "complicated" the field $\QQ(\alpha)$ is as an extension of $\QQ$. If $F \subset E$ are fields, we will denote the extension by $E/F$ (this just means that $F$ is a subfield of $E$, and that we're considering $E$ relative to $F$, in particular, $E/F$ is not a quotient or anything too formal). Note that often we will consider $E$ to be an extension of $F$ even if $F\nsubseteq E$, as long as there is an obvious embedding of $F$ into $E$ (an embedding is a homomorphism with is injective).
 
@@ -379,7 +380,7 @@ On the other hand, by Theorem \ref{stem}, we have the following proposition:
 \chapter*{Week 2}
 \setcounter{chapter}{2}
 
-\section{Algebraic closure}
+\section{Algebraic Closure}
 
 Although we can get by with constructing fields like $\QQ(i)$ as quotients:
 $$\QQ(i) \cong \QQ[x]/(x^2 + 1),$$
@@ -497,7 +498,7 @@ If $F$ is countably generated over $k$, namely, $F=k[\alpha_1,...,\alpha_n]$, th
 
 It is now permissible to speak of \emph{the} algebraic closure of a field.
 
-\section{Splitting fields}
+\section{Splitting Fields}
 
 Most of the cases, the algebraic closure $\overline{k}$ of $k$ is too big. We may want to a smaller but still big enough field extension $E/k$.
 
@@ -651,7 +652,7 @@ The following theorem, which is perhaps surprising, says that the splitting fiel
 \chapter*{Week 3}
 \setcounter{chapter}{3}
 
-\section{Separable extensions}
+\section{Separable Extensions}
 Let $f(x)\in F[x]$ be an irreducible polynomial and $(E=F[\alpha],\alpha)$ its stem field (or $E$ a possibly larger field containing all the roots). From what we have learnt from the first week, we know an element in $\Aut(E/F)$ shall permute the roots of $f$. It then follows not surprisingly that we want the distinctness of the roots; in other words, we want the roots to be separable.
 
 \begin{definition}
@@ -755,7 +756,7 @@ A lot of results about field theory that are valid in characteristic 0 carry ove
 
 It is clear that extensions of fields of characteristic 0 have characteristic 0, and that finite extensions of finite fields are finite, so this theorem is only non-trivial if $F$ is infinite, but has a positive characteristic.
 
-\section{The primitive element theorem}
+\section{The Primitive Element Theorem}
 
 In this section we prove a result which is not entirely necessary for the discourse, but simplifies the proofs of several other theorems.
 
@@ -826,7 +827,7 @@ element.
 	Each distinct automorphism $\sigma\in\Aut(E/F)$ gives a distinct embedding $\sigma : E \to E \subset \overline{F},$ which fixes $F$.
 \end{proof}
 
-\section{Separable degree}
+\section{Separable Degree}
 
 We will now proceed with a slightly more detailed examination of extensions which are not separable.
 
@@ -909,7 +910,7 @@ Put all the knowledge together, we get the following statement:
 
 The usefulness of this corollary is that it gives a practical way to check a finite extension $L/K$ is separable: rather than show every element of $L$ is separable over $K$ it suffices to show there is a set of field generators for $L/K$ that are each separable over $K$.
 
-\section{Inseparable extensions}
+\section{Inseparable Extensions}
 
 A field of characteristic 0 is perfect. We assume in this section that the characteristic of a field is $p$.
 
@@ -1112,7 +1113,7 @@ Artin's Theorem has an immediate, and very useful, corollary:
 \end{proof}
 
 
-\section{The fundamental theorem}
+\section{The Fundamental Theorem}
 
 
 The original aim was to understand finite field extensions $E/F$ using the group $\Aut(E/F)$. In general, it's possible that $E/F$ is non-trivial, but $\Aut(E/F)$ is trivial, which means in general it's unlikely that $\Aut(E/F)$ will shed a lot of light on the structure of $E/F$. In the case where $E/F$ is Galois, though, we know that $\Aut(E/F)$ is as large as it possibly could be, and hence gives as much information as possible. One might expect, than, that Galois extensions are the ones for which $\Aut(E/F)$ gives as much information as possible. The purpose of this section is to show that $\Gal(E/F)$ gives a great deal of information about the intermediate fields. Artin's Theorem raises a natural question: Given a finite Galois extension $E/F$, for any subgroup $H \subset  \Gal(E/F)$, the field $E^H$ is a subfield of $E$, and $E/E^H$ is a Galois extension; what is the exact relation between $H$ and $E^H$?
@@ -1232,7 +1233,7 @@ All in all, we've proven the following theorem.
 
 We have already seen one broad class of Galois extensions, namely the quadratic extensions (of a field of characteristic other than 2). In this part of the notes, we'll see some more families of examples.
 
-\section{Cyclotomic extensions}
+\section{Cyclotomic Extensions}
 Cyclotomic extensions are extensions generated by roots of unity. Recall that we have Equation \ref{cycoeq1}.
 
 \begin{definition}
@@ -1317,7 +1318,7 @@ Let us see some examples before ending this section.
 	Let $K=\QQ(\zeta_7)$ and then $\Gal(K/\QQ)\cong (\ZZ/7\ZZ)^\times$, which is a cyclic group 6. Write $\Gal(K/\QQ)=\{\sigma_i: i=1,\cdots,6\}$, where $\sigma(\zeta_7)=\zeta_7^i$. Then $\sigma_1=id$ and $\sigma_3$ is a generator. Moreover, $\sigma_i\circ\sigma_j=\sigma_{ij}$. The nontrivial proper subgroups are $\langle \sigma_3^3 \rangle, \langle \sigma_3^2 \rangle$. Let $L=K^{\langle \sigma_3^3 \rangle}=K^{\sigma_3^3}=K^{\sigma_6}$. Then $[K:L]=|\langle \sigma_3^3 \rangle|=2$. The unique intermediate extension is discussed above $L=\QQ(\zeta_7+\zeta_7^{-1})=\QQ(\cos(2\pi/7))$. Now let $M=K^{\langle \sigma_3^2 \rangle}=K^{\sigma_3^2}=K^{\sigma_2}$. Note $\sigma_2^3=id$ and then $$\alpha=\zeta_7+\sigma_2(\zeta_7)+\sigma_2^2(\zeta_7)=\zeta_7+\zeta_7^2+\zeta_7^4$$ is easy to be checked to be fixed by $\sigma_2$. Since $[M:\QQ]=2$, it is enough to show $\alpha\notin\QQ$. If yes, then we reach a contradiaction that $\zeta_7$ satisfies a polynomial $x^4+x^2+x-\alpha\in \QQ[x]$ of degree 4.
 \end{example}
 
-\section{Cubic extensions}
+\section{Cubic Extensions}
 
 We've seen that, at least if $\charr(F) \not= 2$, every extension of degree 2 is Galois. We know that this is not true for extensions of degree 3, since $\QQ(\sqrt[3]{2})/\QQ$ is not a Galois extension. Rather than address the problem of which degree-three extensions of a field are Galois, we'll instead ask what the splitting field of a cubic polynomial looks like (which ultimately answers the other question).
 
@@ -1354,7 +1355,7 @@ In other words, if $\Gal(E/F) =A_3$, then $\sigma(\delta) = \delta$ for all $\si
 	$$14^2 + 23 = 3 \cdot 73,$$ and so $-23$ is a perfect square in $\FF_{73}$. In other words, if $E/\FF_{73}$ is the splitting field of $x^3 - x - 1$, then $\Gal(E/F) \cong A_3$. Note that, since $[E : \FF_{73}] = 3$, we must have $E \cong \FF_{73^3}$.
 \end{example}
 
-\section{Quartic functions of special type}
+\section{Quartic Functions of Special Type}
 
 Let $K$ be a field and $f\in K[x]$ a separable polynomial. Let $L$ be a splitting field of $f$ over $K$. Then $L/K$ is a finite Galois extension. $\Gal(L/K)$ is also referred as the Galois group of the equation $f(x)=0$. Then the Galois group of a polynomial is clearly isomorphic to a subgroup of the symmetric group on the roots.
 
@@ -1376,7 +1377,7 @@ And the intermediate fields can be determine accordingly. We will do it in lectu
 
 As a counterexample to the preceding type of biquadratic polynomials, let us consider $f(x)=\Phi_{12}(x)=x^4-x^2+1\in \QQ[x]$. Now if we write $f(x)=(x^2-a)^2-b$, then we have $a=1/2$ and $b=-3/4$, not satisfying the above condition. And then the Galois group is isomorphic to $(\ZZ/12\ZZ)^*=\{1,5,7,9\}\cong \ZZ/2\ZZ\times \ZZ/2\ZZ.$
 
-\section{Inverse Galois problems for \texorpdfstring{$S_p$}~ and abelian groups}
+\section{Inverse Galois Problems for \texorpdfstring{$S_p$}~ and Abelian Groups}
 
 In this section, we construct a field extension $E$ over the rationals $\qq$ such that its Galois group $\gal(E/\qq)$ is isomorphic to $S_p$, $p$ prime, or $\gal(E/\qq)$ is an arbitrary finite abelian group. If it is the latter case, the extension $E$ is so constructed that it is a subfield of some cyclotomic extension.
 
@@ -1666,7 +1667,7 @@ Indeed, the proof works for the Galois extensions whose Galois group is cyclic.
 % 	Let $p$ be a prime. Then $\gal(\qq(\zeta_p)/\qq)\cong (\zz/p)^*$ is cyclic of order $p-1$. Assume $g$ is a generator of $(\zz/p)^*$. Then the theorem above says $\{\zeta_p^g,\zeta_p^{g^2},\dots,\zeta_p^{g^{p-1}}\}$ is a normal $\qq$-basis of $\qq(\zeta_p)$. Note that since $g$ is a generator, $\{g,g^2,\dots,g^{p-1}\}$ is just all of the group $(\zz/p)^*$. So it actually says $\{\zeta_p,\dots,\zeta_p^{p-1}\}$ is a normal basis. In the mean time, $\{1,\zeta_p,\dots,\zeta_p^{p-2}\}$ is a basis but not normal.
 % \end{example}
 
-\section{Norm and trace}
+\section{Norm and Trace}
 
 \begin{definition}\label{ntdef}
 	Let $L/K$ be a finite field extension. For an element $a \in L$, consider the multiplication map $\phi_a : L \to L, x \mapsto ax$, as a linear transformation of $L$ as a $K$-vector space. Then $$\Tr_{L/K}(a)= \Tr(\phi_a),\quad \nm_{L/K}(a) = \det(\phi_a)$$ are called the \emph{trace} and the \emph{norm} of $a$ with respect to the extension $L/K$.
@@ -1805,7 +1806,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 \chapter*{Week 7}
 \setcounter{chapter}{7}
 
-\section{Cyclic extensions}
+\section{Cyclic Extensions}
 
 \begin{definition}
 	A Galois extension $L/K$ is said to be \emph{cyclic} (resp. \emph{abelian}) if the Galois group is \emph{cyclic} (resp. \emph{abelian}).
@@ -1823,7 +1824,7 @@ Now we can extend the lemma above to compute the norm and the trace of elements 
 	Let $\omega$ be a primitive 5-th root of unity (in $\CC$) and let $F=\QQ(\omega)$ and $K=F(\sqrt[5]{2})$. Then $K$ is the splitting field of $x^5-2$ over $F$, so $K/F$ is Galois. Also, $[F:\QQ]=4$ and $[\QQ(\sqrt[5]{2}):\QQ]=5$. The degree of $[K:\QQ]$ is divisible by 4 and 5, hence by 20. On the other side, $[K:F]\leq 5$, so $[K:\QQ]\leq 20$. Therefore, $[K:\QQ]=20$ and $[K:F]=5$. The roots of $x^5-2$ are precisely $\sqrt[5]{2},\omega\sqrt[5]{2},\omega^2\sqrt[5]{2},\omega^3\sqrt[5]{2}$ and $\omega^4\sqrt[5]{2}$. By isomorphism extension theorem, there is a $\sigma\in \Gal(K/F)$ with $\sigma(\sqrt[5]{2})=\omega \sqrt[5]{2}$. Then $\sigma^5=id$ and $\Gal(K/F)=\langle \sigma\rangle$.
 \end{example}
 
-There is no simple description of the cyclic extension of degree $n$ of a field $n$ that does not contain a primitive $n$-th root of unity, unless $n=p=\charr(F)$. Let us discuss the case when $F$ does contain a primitive $n$-th root of unity first.
+There is no simple description of the cyclic extension of degree $n$ of a field $F$ that does not contain a primitive $n$-th root of unity, unless $n=p=\charr(F)$. Let us discuss the case when $F$ does contain a primitive $n$-th root of unity first.
 
 The following lemma will be used in Theorem \ref{cyclicgal1}. The standard way to prove it is to use Hilbert Theorem 90. We will discuss Hilbert 90  in details later and use a linear algebra argument here.
 
@@ -1832,7 +1833,7 @@ The following lemma will be used in Theorem \ref{cyclicgal1}. The standard way t
 \end{lemma}
 % errata on page 89 in original book
 \begin{proof}
-	The automorphism $\sigma$ is also a $F$-linear transformation of $K$. We wish to find an $a\in K$ with $\sigma(a)=\omega a$, that is, we want to show that $\omega$ is an eigenvalue of $\sigma$. To do this, we show that $\omega$ is a root of the characteristic polynomial of $\omega$. Now since $\omega$ has order $n$, we have $\sigma^n=id$. Therefore, $\sigma$ satisfies the polynomial $x^n-1$. Moreover, if there is a polynomial $g(x)\in F[x]$ of degree $m<n$ satisfied by $\sigma$, then the automorphisms $id,\sigma,\cdots,\sigma^{m}$ are linearly dependent over $F$, a contradiction to the Dedekind independence lemma. Thus, $x^n-1$ is the minimal polynomial of $\sigma$ over $F$. However, the characteristic polynomial of $\sigma$ has degree $n=[K:F]$ and is divisible by $x^n-1$, so indeed $x^n-1$ is the characteristic polynomial of $\sigma$. Since $\omega$ is a root of this polynomial, it is an eigenvalue for $\sigma$. Thus, there is an $a\in K$ such that $\sigma(a)=\omega a$.
+	The automorphism $\sigma$ is also a $F$-linear transformation of $K$. We wish to find an $a\in K$ with $\sigma(a)=\omega a$, that is, we want to show that $\omega$ is an eigenvalue of $\sigma$. To do this, we show that $\omega$ is a root of the characteristic polynomial of $\sigma$. Now since $\omega$ has order $n$, we have $\sigma^n=id$. Therefore, $\sigma$ satisfies the polynomial $x^n-1$. Moreover, if there is a polynomial $g(x)\in F[x]$ of degree $m<n$ satisfied by $\sigma$, then the automorphisms $id,\sigma,\cdots,\sigma^{m}$ are linearly dependent over $F$, a contradiction to the Dedekind independence lemma. Thus, $x^n-1$ is the minimal polynomial of $\sigma$ over $F$. However, the characteristic polynomial of $\sigma$ has degree $n=[K:F]$ and is divisible by $x^n-1$, so indeed $x^n-1$ is the characteristic polynomial of $\sigma$. Since $\omega$ is a root of this polynomial, it is an eigenvalue for $\sigma$. Thus, there is an $a\in K$ such that $\sigma(a)=\omega a$.
 \end{proof}
 
 % \begin{remark}
@@ -1919,7 +1920,7 @@ Recall that for algebraic closures, we have $[\cc:\RR]=2, [\overline{\qq}:\qq]=\
 	See \href{https://kconrad.math.uconn.edu/blurbs/galoistheory/artinschreier.pdf}{supplement notes} from Conrad.
 \end{proof}
 
-\section{Hilbert Theorem 90 and Noether's lemma}
+\section{Hilbert Theorem 90 and Noether's Lemma}
 
 The statement about Hilbert 90 and Noether's lemma is about the cohomology of the Galois group. We have a brief discussion about the group cohomology here.
 
@@ -1942,7 +1943,7 @@ If $n=0$, then the map $\delta_0: M=C^0(G,M)\to C^1(G,M)$ is defined by $\delta_
 
 Let $Z^n(G,M)=\ker(\delta_n)$. The elements of $Z^n(G,M)$ are called $n$-\emph{cocycles}. Let $B^n(G,M)=\im(\delta_{n-1})$ if $n>$, and $B^0(G,M)=0$. The elements of $B^n(G,M)$ are called $n$-\emph{cobundaries}. Since $\delta_n\circ\delta_{n-1}$, $B^n(G,M)$ is a subgroup of $C^n(G,M)$. Finally, the $n$-th \emph{cohomology group} $H^n(G,M)$ is defined to be $$H^n(G,M)=Z^n(G,M)/B^n(G,M).$$ Two cocycles in $Z^n(G,M)$ are said to be \emph{cohomologous} if they represent the same element in $H^n(G,M)$.
 
-Let's look at the cohomology group of small $n$. The kernel of $\delta_0$ consists of all elements $m\in M$ such that $\sigma m=m$ for all $\sigma\in G$. Therefore, $$H^0(G,M)=M^G\{m\in M: \sigma m =m \mbox{ for all }\sigma\in G\}.$$
+Let's look at the cohomology group of small $n$. The kernel of $\delta_0$ consists of all elements $m\in M$ such that $\sigma m=m$ for all $\sigma\in G$. Therefore, $$H^0(G,M)=M^G=\{m\in M: \sigma m =m \mbox{ for all }\sigma\in G\}.$$
 If $n=1$, then $f:G\to M$ is 1-cocycle if $\delta_1(f)=0$, namely $$\sigma f(\tau)-f(\sigma\tau)+f(\sigma)=0,$$ for all $\sigma,\tau \in G$. If $g$ is a 1-coboundary, then $g\in \im(\delta_0)$, namely, we can find an element $m\in M$ such that $$g(\sigma)=\sigma m -m.$$ If the group $M$ is written multiplicatively, for example $M= F^\times$, then the above is translated into $$f(\sigma\tau)=f(\sigma)\tau f(\sigma),\quad g(\sigma)=\frac{\sigma m}{m}.$$
 
 The following theorem is in fact a lemma of Noether's work.
@@ -2049,27 +2050,92 @@ Theorem \ref{9.8} then goes as follows. If $K/F$ is a cyclic Galois extension of
 \setcounter{chapter}{8}
 
 \section{Kummer Theory}
+We have descriptions on cyclic Galois extensions if the ambient field contains sufficient root of unity. Now we want to do the same for abelian extension.
 
-\section{Solvable groups}
+\begin{definition}
+	A group $G$ has \emph{exponent dividing} $n$ if $g^n=id$ for all $g\in G$. The \emph{exponent} of $G$ is the least such $n$.
+\end{definition}
+
+\begin{definition}
+	Let $F$ be a field of character not dividing $n$ and contain a $n$-th primitive unity. A finite Galois extension $K/F$ is said to be an $n$-\emph{Kummer extension} if the Galois group $\gal(K/F)$ is abelian and has exponent dividing $n$. If $K$ is an $n$-Kummer extension of $F$ for some $n$, then it is said to be a \emph{Kummer extension} of $F$.
+\end{definition}
+
+\begin{example}
+	Let $K=\qq(\sqrt{2},\sqrt{3})$. Then $K/\qq$ is Galois and it is a 2-Kummer extension since the Galois group is isomorphic to $\zz/2\times \zz/2$.
+\end{example}
+
+The classification of finite abelian groups say any abelian group is a direct product of cyclic groups. Together this fact with the fundamental theorem of Galois theory and the characterization of cyclic extensions, we obtain the following theorem.
+
+\begin{theorem}\label{kummer2}
+	Let $F$ be a field containing a primitive $n$-th root of unity and $K/F$ a finite extension. Then $K/F$ is an $n$-Kummer extension if and only if $K=F(\sqrtn{a_1},\dots,\sqrtn{a_r})$ for some $a_i\in F$. 
+\end{theorem}
+
+\begin{proof}
+	Suppose that $K=F(\alpha_1,\dots,\alpha_r)$ with $\alpha_i^n=a_i\in F$. Let $\omega$ be a primitive $n$-th root of unity in $F$. Then the distinct elements are $\alpha_i,\omega\alpha_i,\dots,\omega^{n-1}\alpha_i$ are all the roots of $x^n-a_i\in F[x]$. Since $\charr(F)\nmid n$, $x^n-a_i$ is also separable. Hence $K$ as a splitting field of $\prod_i(x^n-a_i)$ is Galois. If $\sigma\in\gal(K/F)$, then $\sigma(\alpha_i)=\omega^j\alpha_i$ for some $j$ since $\sigma(\alpha_i)$ must be a root of $x^n-a_i$ as well. This is true for each $i$ and since $\alpha_i$ generates $K$ over $F$, we see that $\sigma^n=id$. Therefore, $\gal(K/F)$ has exponent dividing $n$. To see $\gal(K/F)$ is abelian, take $\sigma,\tau\in \gal(K/F)$. We only need to show $\sigma\tau(\alpha_i)=\tau\sigma(\alpha_i)$ for each $i$. And it is quite straightforward to verify that.
+
+
+	For the converse, suppose that $K/F$ is a Galois extension with $G=\gal(K/F)$ abelian and having exponent dividing $n$. By the classification of finite abelian groups, $G=C_1\times\dots\times C_r$, where each $C_i$ is cyclic. There is a canonical homomorphism $$G\to C_i,$$ where the kernel is $H_i= C_1\times\dots \times C_{i-1} \times \hat{C_i}\times C_{+i} \times\dots\times C_r$, namely, the product of all $C_j$ with $j\not=i$. Note $H_i$ is normal in $G$. Let $L_i=K^{H_i}$ be the fixed field of $H_i$. Then by the fundamental theorem of Galois theory, $L_i/F$ is a Galois extension with Galois group $$\gal(L_i/F)\cong \gal(K/F)/\gal(K/L_i)=G/H_i=C_i.$$ Therefore, $L_i/F$ is a cyclic extension. Write $m_i=[L_i:K]=|C_i|$. Then $m$ divides $n$. The field $F$ containing a primitive $n$-th root of unity also contains a primitive $m_i$-th root of unity and so by Theorem \ref{cyclicgal1}, $L_i=F(\alpha_i)$ for some $\alpha_i\in L_i$ with $\alpha_i^{m_i}\in F$ and so $\alpha_i^n\in F$. And the Galois correspondence says $F(\alpha_1,\dots,\alpha_r)$ corresponds to $\cap_{i=i}^r H_i=\{id\}$. And thus $K=F(\alpha_1,\dots,\alpha_r)=F(\sqrtn{a_1},\dots,\sqrtn{a_r})$.
+\end{proof}
+
+\begin{example}
+	Let $F=\qq(i)$ and $\overline{F}=\overline{\qq}\subset \cc$. Suppose $K=\qq(\sqrt[4]{12},\sqrt[4]{3})$. Since $i$ is a 4-th primitive root of unity, $K/F$ is a 4-Kummer extension. Note that $[K:F]=8$ not 16, since $K=F(\sqrt{2},\sqrt[4]{3})$ by noting that $\sqrt{2}=\sqrt[4]{12}/\sqrt[4]{3}$.
+\end{example}
+
+Now suppose $F$ be a field of characteristic not dividing $n$ containing a $n$-th primitive root of unity. Let $B\subset F^\times/(F^{\times})^{n}$ be a finite subgroup. We write \[F(B^{1/n})=F(\sqrt[n]{b}: b(F^\times)^n\in B).\]
+The definition does not depend on the choice of representation: if $b_1(F^\times)^n=b_2(F^\times)^n$, then $b_1=b_2\gamma^n$ for some $\gamma\in F^\times$ and so $F(b_1)=F(b_2)$ and so on. The extension $F(B^{1/n})/F$ is clearly algebraic, and it is also finite if we further require $B$ is finite. If $B\subset F^\times/(F^{\times})^{n}$ is generated by some $\alpha\in F^\times$, then $F(B^{1/n})=F(\alpha^{1/n},\alpha^{2/n},\dots)=F(\alpha^{1/n})$. We know that if $\alpha$ has order $r$ in $F^\times/(F^{\times})^{n}$, then $\gal(F(\alpha^{1/n}))\cong \zz/r\cong B$. In general, if $B$ is generated by $\alpha_1,\dots,\alpha_s$, then $F(B^{1/n})$ is just a convenient way of writing $F(\alpha_1^{1/n},\dots,\alpha_s^{1/n})$. The next theorem finishes the description of Kummer extensions. 
+
+\begin{theorem}\label{kummer3}
+	Let $F$ be a field of characteristic not dividing $n$ and containing a primitive $n$-t root, and let $B\subset F^\times/(F^{\times})^{n}$ be a finite subgroup. Then $F(B^{1/n})/F$ is Galois and $$\gal(F(B^{1/n})/F)\cong B.$$
+\end{theorem}
+
+The extension $F(B^{1/n})/F$ is Galois by Theorem \ref{kummer2}. The question is really to confirm what the Galois group is.
+
+\begin{definition}
+	Let $A,B,C$ be abelian groups writing multiplicatively. A \emph{perfect bilinear pairing} is a function $\langle \cdot,\cdot\rangle: A\times B\to C$ such that
+	\begin{itemize}
+		\item $\ta{a_1a_2,b}=\ta{a_1,b}\ta{a_2,b}$,
+		\item $\ta{a,b_1b_2}=\ta{a,b_1}\ta{a,b_2}$,
+		\item $\ta{a,b}=1$ fo all $b\in B$ implies $a=1$,
+		\item $\ta{a,b}=1$ fo all $a\in A$ implies $b=1$.
+	\end{itemize}
+\end{definition}
+
+\begin{lemma}
+	Let $A,B$ be abelian groups and $C$ a cyclic group of order $m$. Also suppose that $B$ has exponent dividing $m$. If there is a perfect bilinear pairing $A\times B\to C$, then there is an embeddings $A\to B$.
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{kummer3}]
+	
+\end{proof}
+
+\section{Ruler and Compass Construction}
+
+
 
 \chapter*{Week 9}
 \setcounter{chapter}{9}
 
-\section{Solvability by radicals}
+\section{Solvable Groups}
 
-\section{The transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
+\section{Solvability by Radicals}
+
+\section{The Transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
 
 \chapter*{Week 10}
 \setcounter{chapter}{10}
-\section{Profinite groups}
+\section{Profinite Groups}
 
-\section{Infinite Galois extensions}
+\section{Infinite Galois Extensions}
 
 
 \chapter*{Week 11}
 \setcounter{chapter}{11}
 
-\section{Transcendental extensions}
+\section{Transcendental Extensions}
 
 
 % \newpage

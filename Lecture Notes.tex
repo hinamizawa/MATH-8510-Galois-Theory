@@ -981,7 +981,7 @@ We finish this section by showing that every algebraic field extension can be de
 \chapter*{Week 4}
 \setcounter{chapter}{4}
 
-\section{Galois extensions}
+\section{Galois Extensions}
 
 There is an alternate characterization of normal extensions in the separable case:
 
@@ -1727,7 +1727,7 @@ In particular, $\Tr_{L/K} : L \to K$ is a homomorphism of $K$-vector spaces, or 
 Now we can extend the lemma above to compute the norm and the trace of elements when one is dealing with arbitrary field extensions.
 
 \begin{lemma}
-	Consider an element $a \in L$ of a finite field extension $L/K$, and let $s = [L : K(a)]$. Then $$\Tr_{L/K}(a)=s\Tr_{K(a)/K}(a),\quad \nm_{L/K}(a)=(\nm_{K(a)/K}(a))^s$$
+	Consider an element $a \in L$ of a finite field extension $L/K$, and let $s = [L : K(a)]$. Then $$\Tr_{L/K}(a)=s\Tr_{K(a)/K}(a),\quad \nm_{L/K}(a)=(\nm_{K(a)/K}(a))^s.$$
 \end{lemma}
 
 \begin{proof}
@@ -1874,7 +1874,7 @@ Again, the usual proof of the following lemma uses Hilbert 90, but as with Lemma
 \end{theorem}
 
 \begin{proof}
-	Let $\sigma$ be a generator of $\Gal(K/F)$, and let $T$ be the linear transformation $T=\sigma-id$. Note that he kernel of $T$ is $$\ker(T)=\{b\in K: \sigma(b)=b\}=F.$$ Also we have $T^p=(\sigma-id)^p=\sigma^p-id=0$, since the order of $\sigma$ is $p$ and $\charr(F)=p$. Thus $\im(T^{p-1})\subset \ker(T)=F$. We also have $\im(T^{p-1})$ is nontrivial, otherwise, $id,\sigma,\cdots,\sigma^{p-1}$ is linear dependent and that contradicts the Dedekind independence lemma. So $\im(T^{p-1})=F$ and we can find $c\in K$ such that $T^{p-1}(c)=1$. Let $\alpha=T^{p-2}(c)$. Then $T(\alpha)=1$ and so $\sigma(\alpha)=\alpha+1$. Since $\alpha$ is not fixed by $\sigma$, we see that $\alpha\notin F$ and $F(\alpha)=K$. Moreover, \begin{align*}
+	Let $\sigma$ be a generator of $\Gal(K/F)$, and let $T$ be the linear transformation $T=\sigma-id$. Note that the kernel of $T$ is $$\ker(T)=\{b\in K: \sigma(b)=b\}=F.$$ Also we have $T^p=(\sigma-id)^p=\sigma^p-id=0$, since the order of $\sigma$ is $p$ and $\charr(F)=p$. Thus $\im(T^{p-1})\subset \ker(T)=F$. We also have $\im(T^{p-1})$ is nontrivial, otherwise, $\{id,\sigma,\cdots,\sigma^{p-1}\}$ is linear dependent and that contradicts the Dedekind independence lemma. So $\im(T^{p-1})=F$ and we can find $c\in K$ such that $T^{p-1}(c)=1$. Let $\alpha=T^{p-2}(c)$. Then $T(\alpha)=1$ and so $\sigma(\alpha)=\alpha+1$. Since $\alpha$ is not fixed by $\sigma$, we see that $\alpha\notin F$ and $F(\alpha)=K$. Moreover, \begin{align*}
 		\sigma(\alpha^p -\alpha) & =\sigma(\alpha)^p-\sigma(\alpha) \\
 		                         & = (\alpha+1)^p-(\alpha+1)        \\
 		                         & =\alpha^p-\alpha.
@@ -1907,7 +1907,7 @@ The converse of this theorem is also true.
 \noindent Combining Theorem \ref{9.8} and Theorem \ref{as1}, we get the Artin-Schreier Theorem.
 
 \begin{theorem}[Artin-Schreier]
-	Let $E/F$ be a finite extension with $\charr{F}=p>0$. Then $E/F$ is a cyclic extension if and only if there is some $a\in F$ not of the form $b^p-b$ for any $b\in F$, namely, $a\in F\setminus \wp^{-1}(F)$, such that $E/F$ is the splitting field of $f(x)=x^p-x-a$.
+	Let $E/F$ be a finite extension with $\charr(F)=p>0$. Then $E/F$ is a cyclic extension of degree $p$ if and only if there is some $a\in F$ not of the form $b^p-b$ for any $b\in F$, namely, $a\in F\setminus \wp^{-1}(F)$, such that $E/F$ is the splitting field of $f(x)=x^p-x-a$.
 \end{theorem}
 
 Recall that for algebraic closures, we have $[\cc:\RR]=2, [\overline{\qq}:\qq]=\infty, [\overline{\ff_p}:\ff_p]=\infty$. We use Artin-Schreier Theorem to prove the following theorem.
@@ -1934,7 +1934,7 @@ for all $\sigma,\tau\in G$ and $m,n\in M$. It is equivalent to say that $M$ is a
 Suppose that $M$ is a Let $C^n(G,M)$ be the set of all functions from the Cartesian product $G\times G\times\cdots\times G$ ($n$ copies) to $M$. The elements of $C^n(G,M)$ are called $n$-\emph{cochains}. If $n=0$, we define $C^0(G,M)=M$. The set $C^n(G,M)$ can be made into a group by adding functions component-wise. Namely, define $f+g$  by $$(f+g)(\sigma_1,\cdots,\sigma_n)=f(\sigma_1,\cdots,\sigma_n)+g(\sigma_1,\cdots,\sigma_n).$$
 
 Define a map $\delta_n: C^n(G,M)\to C^{n+1}(G,M)$ by \begin{align*}
-	\delta_n(f)(\sigma_1,\cdots,\sigma_{n+1})= & \sigma_1f(\sigma_2,\cdots,\sigma_{n+1})                                        \\
+	\delta_n(f)(\sigma_1,\cdots,\sigma_{n+1})= &~ \sigma_1f(\sigma_2,\cdots,\sigma_{n+1})                                        \\
 	                                           & +\sum_{i=1}^n(-1)^if(\sigma_1,\cdots,\sigma_i\sigma_{i+1},\cdots,\sigma_{n+1}) \\
 	                                           & + (-1)^{n+1} f(\sigma_1,\cdots,\sigma_n).
 \end{align*}
@@ -2043,7 +2043,7 @@ Lemma \ref{cycliclem1} follows quickly from this theorem. If $K/F$ is a cyclic e
 	And so $g$ is a (additive) cocycle. By Noether's lemma, $g$ is also a coboundary, namely, we can find $a\in K$ such that $g(\sigma^i)=\sigma^i(a)-a$. Therefore, $u=g(\sigma)=\sigma(a)-a$.
 \end{proof}
 
-Theorem \ref{9.8} then goes as follows. If $K/F$ is a cyclic Galois extension of degree $p$ with $\charr(F)=p$ and $\sigma$ is a generator of $\Gal(K/F)$, then $\Tr_{K/F}(1)=p=1$. So by the theorem above, we can find $a\in K$ such that $1=\sigma(a)-a$. And we can continue the last part of the proof of Theorem \ref{9.8}.
+Theorem \ref{9.8} then goes as follows. If $K/F$ is a cyclic Galois extension of degree $p$ with $\charr(F)=p$ and $\sigma$ is a generator of $\Gal(K/F)$, then $\Tr_{K/F}(1)=p=0$. So by the theorem above, we can find $a\in K$ such that $1=\sigma(a)-a$. And we can continue the last part of the proof of Theorem \ref{9.8}.
 
 
 \chapter*{Week 8}
@@ -2074,7 +2074,7 @@ The classification of finite abelian groups say any abelian group is a direct pr
 	Suppose that $K=F(\alpha_1,\dots,\alpha_r)$ with $\alpha_i^n=a_i\in F$. Let $\omega$ be a primitive $n$-th root of unity in $F$. Then the distinct elements are $\alpha_i,\omega\alpha_i,\dots,\omega^{n-1}\alpha_i$ are all the roots of $x^n-a_i\in F[x]$. Since $\charr(F)\nmid n$, $x^n-a_i$ is also separable. Hence $K$ as a splitting field of $\prod_i(x^n-a_i)$ is Galois. If $\sigma\in\gal(K/F)$, then $\sigma(\alpha_i)=\omega^j\alpha_i$ for some $j$ since $\sigma(\alpha_i)$ must be a root of $x^n-a_i$ as well. This is true for each $i$ and since $\alpha_i$ generates $K$ over $F$, we see that $\sigma^n=id$. Therefore, $\gal(K/F)$ has exponent dividing $n$. To see $\gal(K/F)$ is abelian, take $\sigma,\tau\in \gal(K/F)$. We only need to show $\sigma\tau(\alpha_i)=\tau\sigma(\alpha_i)$ for each $i$. And it is quite straightforward to verify that.
 
 
-	For the converse, suppose that $K/F$ is a Galois extension with $G=\gal(K/F)$ abelian and having exponent dividing $n$. By the classification of finite abelian groups, $G=C_1\times\dots\times C_r$, where each $C_i$ is cyclic. There is a canonical homomorphism $$G\to C_i,$$ where the kernel is $H_i= C_1\times\dots \times C_{i-1} \times \hat{C_i}\times C_{+i} \times\dots\times C_r$, namely, the product of all $C_j$ with $j\not=i$. Note $H_i$ is normal in $G$. Let $L_i=K^{H_i}$ be the fixed field of $H_i$. Then by the fundamental theorem of Galois theory, $L_i/F$ is a Galois extension with Galois group $$\gal(L_i/F)\cong \gal(K/F)/\gal(K/L_i)=G/H_i=C_i.$$ Therefore, $L_i/F$ is a cyclic extension. Write $m_i=[L_i:K]=|C_i|$. Then $m$ divides $n$. The field $F$ containing a primitive $n$-th root of unity also contains a primitive $m_i$-th root of unity and so by Theorem \ref{cyclicgal1}, $L_i=F(\alpha_i)$ for some $\alpha_i\in L_i$ with $\alpha_i^{m_i}\in F$ and so $\alpha_i^n\in F$. And the Galois correspondence says $F(\alpha_1,\dots,\alpha_r)$ corresponds to $\cap_{i=i}^r H_i=\{id\}$. And thus $K=F(\alpha_1,\dots,\alpha_r)=F(\sqrtn{a_1},\dots,\sqrtn{a_r})$.
+	For the converse, suppose that $K/F$ is a Galois extension with $G=\gal(K/F)$ abelian and having exponent dividing $n$. By the classification of finite abelian groups, $G=C_1\times\dots\times C_r$, where each $C_i$ is cyclic. There is a canonical homomorphism $$G\to C_i,$$ where the kernel is $H_i= C_1\times\dots \times C_{i-1} \times \hat{C_i}\times C_{i+1} \times\dots\times C_r$, namely, the product of all $C_j$ with $j\not=i$. Note $H_i$ is normal in $G$. Let $L_i=K^{H_i}$ be the fixed field of $H_i$. Then by the fundamental theorem of Galois theory, $L_i/F$ is a Galois extension with Galois group $$\gal(L_i/F)\cong \gal(K/F)/\gal(K/L_i)=G/H_i=C_i.$$ Therefore, $L_i/F$ is a cyclic extension. Write $m_i=[L_i:K]=|C_i|$. Then $m$ divides $n$. The field $F$ containing a primitive $n$-th root of unity also contains a primitive $m_i$-th root of unity and so by Theorem \ref{cyclicgal1}, $L_i=F(\alpha_i)$ for some $\alpha_i\in L_i$ with $\alpha_i^{m_i}\in F$ and so $\alpha_i^n\in F$. And the Galois correspondence says $F(\alpha_1,\dots,\alpha_r)$ corresponds to $\cap_{i=i}^r H_i=\{id\}$. And thus $K=F(\alpha_1,\dots,\alpha_r)=F(\sqrtn{a_1},\dots,\sqrtn{a_r})$.
 \end{proof}
 
 \begin{example}
@@ -2112,7 +2112,7 @@ The extension $F(B^{1/n})/F$ is Galois by Theorem \ref{kummer2}. The question is
 
 \begin{proof}[Proof of Theorem \ref{kummer3}]
 	From Theorem \ref{kummer2}, we know $F(B^{1/n})/F$ is Galois. Now assume $B$ is generated by $b_1,\dots,b_k$ and write $E=F(B^{1/n})$ from simplicity. Now let $\mu_n$ be the group of $n$-th root of unity and define a map
-	$$\ta{\cdot,\cdot}: \gal(E/F)\times B\to\mu_n, \ta{\sigma, b(F^\times)^n} = \frac{\sigma(b^{1/n})}{b^{1/n}}.$$
+	$$\ta{\cdot,\cdot}: \gal(E/F)\times B\to\mu_n,~ (\sigma, b(F^\times)^n) \mapsto \frac{\sigma(b^{1/n})}{b^{1/n}}.$$
 	Note this map is independent of the choice of coset representative since $\sigma$ fixes $F^\times$ pointwise and is also independent of the choice of the $n$-th root of $b$ since $\zeta\in F$. We write $\ta{\sigma,b}$ for simplicity. And the fact that the image is contained in $\mu_n$ is from that for any $\sigma\in \gal(E/F)$ and $b\in B$, we have
 	$$(\ta{\sigma,b})^n =(\frac{\sigma(b^{1/n})}{b^{1/n}})^n=\frac{\sigma(b)}{b}=1.$$
 
@@ -2123,7 +2123,7 @@ The extension $F(B^{1/n})/F$ is Galois by Theorem \ref{kummer2}. The question is
 	Now fix $\sigma\in\gal(E/F)$ and suppose that $\ta{\sigma,b}=1$ for all $b\in B$. Then $\sigma(b^{1/n})=b^{1/n}$ for all $b\in B$ and hence $\sigma$ fixed $E=F(B^{1/n})$ pointwise. And so $\sigma$ must be the trivial map.
 
 
-	The last piece is to show $\gal(E/F)$ has exponent dividing $m$. And then by the lemma above, we get an embedding $\gal(E/F)\to B$ and by counting the number of elements, we conclude that $\gal(E/F)\cong B$. To see the last piece, note that $\sigma\in\gal(E/F)$ is entirely determined by what it does to each of $b_1^{1/n},\dots,b_k^{1/n}$ and it must act in the way that $\sigma(b_i^{1/n})=\zeta^{e_i}b_i^{1/n}$. And then we have $\sigma^n(b^1/n)=\zeta^{ne_i}b_i^{1/n}=b_i^{1/n}$ for each $i$ and so $\sigma^n$ is the trivial map. This completes the proof. 
+	The last piece is to show $\gal(E/F)$ has exponent dividing $m$. And then by the lemma above, we get an embedding $\gal(E/F)\to B$ and by counting the number of elements, we conclude that $\gal(E/F)\cong B$. To see the last piece, note that $\sigma\in\gal(E/F)$ is entirely determined by what it does to each of $b_1^{1/n},\dots,b_k^{1/n}$ and it must act in the way that $\sigma(b_i^{1/n})=\zeta^{e_i}b_i^{1/n}$. And then we have $\sigma^n(b^1/n)=\zeta^{ne_i}b_i^{1/n}=b_i^{1/n}$ for each $i$ and so $\sigma^n$ is the trivial map. This completes the proof.
 
 \end{proof}
 
@@ -2136,7 +2136,7 @@ The extension $F(B^{1/n})/F$ is Galois by Theorem \ref{kummer2}. The question is
 \end{example}
 
 \begin{example}
-	Let $F=\cc(x,y,z)$ be the rational function field in three variables over $\cc$ and let $K=F(\sqrt[4]{xyz},\sqrt[4]{y^2z},\sqrt[4]{xz^2})$. Then $K/F$ is a 4-Kummer extension. The set $B\subset F^\times/(F^\times)^4$ is generated by $xyz,y^2z,xz^2$. For simplicity, we just call them $a,b,c$. We claim that $B=\ta{a,b,c}$ has order 32, which implies $[K:F]=32$ by Theorem \ref{kummer3}. The subgroup $\ta{a,b}$ha order 16 since the 16 elements $a^ib^j$ with $1\leq,i,j\leq 4$ are all distinct. To see this, suppose $a^ib^j=a^kb^l$. Then there is an $h\in F^\times$ such that
+	Let $F=\cc(x,y,z)$ be the rational function field in three variables over $\cc$ and let $K=F(\sqrt[4]{xyz},\sqrt[4]{y^2z},\sqrt[4]{xz^2})$. Then $K/F$ is a 4-Kummer extension. The set $B\subset F^\times/(F^\times)^4$ is generated by $xyz,y^2z,xz^2$. For simplicity, we just call them $a,b,c$. We claim that $B=\ta{a,b,c}$ has order 32, which implies $[K:F]=32$ by Theorem \ref{kummer3}. The subgroup $\ta{a,b}$ has order 16 since the 16 elements $a^ib^j$ with $1\leq,i,j\leq 4$ are all distinct. To see this, suppose $a^ib^j=a^kb^l$. Then there is an $h\in F^\times$ such that
 	$$(xyz)^i(y^2z)^j=(xyz)^k(y^2z)^lh^4.$$
 	Writing $h=g/f$ with $f,g\in \cc[x,y,z]$ coprime, we get
 	$$(xyz)^i(y^2z)^jf(x,y,z)^4=(xyz)^k(y^2z)^lg(x,y,z)^4.$$
@@ -2157,7 +2157,7 @@ In the days of the ancient Greeks, some of the major mathematical questions invo
 	\item Is it possible to trisect any angle?
 	\item Is it possible to double the cube? That is, given a cube of volume $V$, a side of which can be constructed, is it possible to construct a line segment whose length is that of the side of a cube of volume $2V$?
 	\item Is it possible to square the circle? That is, given a constructible circle of area $A$, is it possible to construct a square of area $A$?
-	\item For which n is it possible to construct a regular $n$-gon?
+	\item For which $n$ is it possible to construct a regular $n$-gon?
 \end{enumerate}
 
 The notion of ruler and compass construction was a theoretical one to the Greeks. A ruler was taken to be an object that could draw perfect, infinitely long lines with no thickness but with no markings to measure distance. The only way to use a ruler was to draw the line passing through two points. Similarly, a compass was taken to be a device that could draw a perfect circle, and the only way it could be used was to draw the circle centered at one point and passing through another. The compass was sometimes referred to as a ``collapsible compass''; that is, after drawing a circle, the compass could not be lifted to draw a circle centered at another point with the same radius as that of the previous circle. Likewise, given two points a distance $d$ apart, the ruler cannot be used to mark a point on another line a distance $d$ from a given point on the line. (This is an unimportant restriction since, using a multi-step procedure, a distance can be transferred even with collapsing compass.)
@@ -2212,11 +2212,12 @@ Please go to the book to find the proof.
 
 \section{Solvability by Radicals}
 
-\section{The Transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
-
 \chapter*{Week 10}
 \setcounter{chapter}{10}
-\section{Profinite Groups}
+
+\section{The Transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
+
+% \section{Profinite Groups}
 
 \section{Infinite Galois Extensions}
 

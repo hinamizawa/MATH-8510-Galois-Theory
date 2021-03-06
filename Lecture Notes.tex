@@ -113,7 +113,7 @@ Hence or otherwise, $\ZZ[X]$ is not a PID. Indeed, $\langle 2, X\rangle$ is an e
 	If $f(X)\in F[X]$ where $F$ is a field, then a \emph{root} of $f$ in $F$ is an element $\alpha\in F$ such that $f(\alpha)=0$.
 \end{definition}
 
-Given a polynomial $f[X]\in F[X]$ and any $u\in F$, the division algoritheorem give us: $$f(X)= q(X)(X-u)+f(u).$$
+Given a polynomial $f[X]\in F[X]$ and any $u\in F$, the division algorithm give us: $$f(X)= q(X)(X-u)+f(u).$$
 
 And lying in the center of proving that every finite subgroup of $F^\times$ is cyclic is counting the roots of polynomial $X^n-1$.
 
@@ -1941,7 +1941,7 @@ Define a map $\delta_n: C^n(G,M)\to C^{n+1}(G,M)$ by \begin{align*}
 If $n=0$, then the map $\delta_0: M=C^0(G,M)\to C^1(G,M)$ is defined by $\delta_0(m)(\sigma)=\sigma m-m$. The definition is compatible with the general formal above. A straightforward but tedious calculation shows that $\delta_n$ is a homomorphism and that $\delta_{n+1}\circ\delta_n$ is the zero map. The maps $\delta_n$ are called boundary maps.
 
 
-Let $Z^n(G,M)=\ker(\delta_n)$. The elements of $Z^n(G,M)$ are called $n$-\emph{cocycles}. Let $B^n(G,M)=\im(\delta_{n-1})$ if $n>$, and $B^0(G,M)=0$. The elements of $B^n(G,M)$ are called $n$-\emph{cobundaries}. Since $\delta_n\circ\delta_{n-1}$, $B^n(G,M)$ is a subgroup of $C^n(G,M)$. Finally, the $n$-th \emph{cohomology group} $H^n(G,M)$ is defined to be $$H^n(G,M)=Z^n(G,M)/B^n(G,M).$$ Two cocycles in $Z^n(G,M)$ are said to be \emph{cohomologous} if they represent the same element in $H^n(G,M)$.
+Let $Z^n(G,M)=\ker(\delta_n)$. The elements of $Z^n(G,M)$ are called $n$-\emph{cocycles}. Let $B^n(G,M)=\im(\delta_{n-1})$ if $n>1$, and $B^0(G,M)=0$. The elements of $B^n(G,M)$ are called $n$-\emph{cobundaries}. Since $\delta_n\circ\delta_{n-1}=0$, $B^n(G,M)$ is a subgroup of $C^n(G,M)$. Finally, the $n$-th \emph{cohomology group} $H^n(G,M)$ is defined to be $$H^n(G,M)=Z^n(G,M)/B^n(G,M).$$ Two cocycles in $Z^n(G,M)$ are said to be \emph{cohomologous} if they represent the same element in $H^n(G,M)$.
 
 Let's look at the cohomology group of small $n$. The kernel of $\delta_0$ consists of all elements $m\in M$ such that $\sigma m=m$ for all $\sigma\in G$. Therefore, $$H^0(G,M)=M^G=\{m\in M: \sigma m =m \mbox{ for all }\sigma\in G\}.$$
 If $n=1$, then $f:G\to M$ is 1-cocycle if $\delta_1(f)=0$, namely $$\sigma f(\tau)-f(\sigma\tau)+f(\sigma)=0,$$ for all $\sigma,\tau \in G$. If $g$ is a 1-coboundary, then $g\in \im(\delta_0)$, namely, we can find an element $m\in M$ such that $$g(\sigma)=\sigma m -m.$$ If the group $M$ is written multiplicatively, for example $M= F^\times$, then the above is translated into $$f(\sigma\tau)=f(\sigma)\tau f(\sigma),\quad g(\sigma)=\frac{\sigma m}{m}.$$
@@ -1958,7 +1958,7 @@ We divide the proof into multiplicative case and additive case.
 	Let $E/F$ be a finite Galois extension and $G=\Gal(E/F)$. Let $$f: G\to E^\times$$ be a function. Then $f$ is a \emph{multiplicative cocycle} if $$f(\sigma\tau)=f(\sigma)\sigma(f(\tau))$$ for all $\tau,\sigma\in G$. $f$ is a \emph{multiplicative coboundary} if and only if there is a $\beta\in E^\times$ such that $$f(\sigma)=\frac{\sigma(\beta)}{\beta}$$ for all $\sigma\in G$.
 
 
-	Let $$g: G\to E$$ be another function.  Then $f$ is a \emph{additive cocycle} if $$f(\sigma\tau)=f(\sigma)+\sigma(f(\tau))$$ for all $\tau,\sigma\in G$. $f$ is a \emph{additive coboundary} if and only if there is a $\alpha\in E^\times$ such that $$f(\sigma)=\sigma(\alpha) -\alpha$$ for all $\sigma\in G$.
+	Let $$g: G\to E$$ be another function.  Then $g$ is a \emph{additive cocycle} if $$g(\sigma\tau)=g(\sigma)+\sigma(g(\tau))$$ for all $\tau,\sigma\in G$. $g$ is a \emph{additive coboundary} if and only if there is a $\alpha\in E^\times$ such that $$g(\sigma)=\sigma(\alpha) -\alpha$$ for all $\sigma\in G$.
 \end{definition}
 
 \begin{proposition}
@@ -1979,14 +1979,14 @@ We divide the proof into multiplicative case and additive case.
 \end{proof}
 
 \begin{proposition}
-	Let $E/F$ be a finite Galois extension with $\Gal(E/F)=G$. Then $g G\to E$ is a (additive) cocycle if and ony if it is a (additive) coboundary.
+	Let $E/F$ be a finite Galois extension with $\Gal(E/F)=G$. Then $g: G\to E$ is a (additive) cocycle if and ony if it is a (additive) coboundary.
 \end{proposition}
 
 \begin{proof}
 	The proof is exactly an analogy of the above one.
 
 	One direction is straightforward. Assume $g$ is a coboundary corresponding to $\beta\in E$. Then
-	$$f(\sigma\tau)=\sigma\tau(\beta)-\beta =(\sigma(\tau(\beta))-\sigma(\beta))+(\sigma(\beta)-\beta)=\sigma(f(\tau))+ f(\sigma).$$
+	$$g(\sigma\tau)=\sigma\tau(\beta)-\beta =(\sigma(\tau(\beta))-\sigma(\beta))+(\sigma(\beta)-\beta)=\sigma(g(\tau))+ f(\sigma).$$
 
 
 	We now prove the other direction. Since $E/F$ is separable, $\Tr_{E/F}$ is not the zero map. Then we can find an element $c\in E$ such that $\Tr_{E/F}(c)=1$ by rescaling if necessary as $\Tr_{E/F}$ is $F$-linear. Recall that $\Tr_{E/F}(x)=\sum_{\sigma\in G}\sigma(x)$ for all $x\in E$. Write $\beta=\sum_{\sigma\in G}g(\sigma)\sigma(c)$. Then we have $$\tau(\beta)=\sum_{\sigma\in G}\tau(g(\sigma))(\tau\sigma)(c).$$ By the cocycle condition, we can turn this into
@@ -2016,7 +2016,7 @@ Now we shall move to Hilbert 90, which in fact is equivalent to Noether's lemma.
 	\end{align*}
 
 	If $i+j\geq n$, then $0\leq i+j-n<n$ and so \begin{align*}
-		f(\sigma^i\sigma^j)              & = f(\sigma^{i+j})=f(\sigma^{i+j-n})=u\sigma(u)\cdots\sigma^{i+k-n-1}(u)                     \\
+		f(\sigma^i\sigma^j)              & = f(\sigma^{i+j})=f(\sigma^{i+j-n})=u\sigma(u)\cdots\sigma^{i+j-n-1}(u)                     \\
 		f(\sigma^i)\sigma^i(f(\sigma^j)) & =(u\sigma(u)\cdots\sigma^{i-1}(u))\cdot \sigma^i(u\sigma(u)\cdots\sigma^{j-1}(u))           \\
 		                                 & =(u\sigma(u)\cdots\sigma^{i+j-n-1}(u))\cdot \sigma^{i+j-n}(u\sigma(u)\cdots\sigma^{j-1}(u)) \\
 		                                 & =  f(\sigma^i\sigma^j)\sigma^{i+j-n}(\nm_{K/F}(u))                                          \\

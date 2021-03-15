@@ -2386,7 +2386,7 @@ For any homomorphism $\phi: G\to H$, we see that
 	A \emph{meta-abelian group} is a group whose commutator subgroup is abelian.
 \end{definition}
 
-Meta-abelian groups are solvable. In fact, they are precisely the solvable groups of derived length at most 2.
+Abelian and meta-abelian groups are solvable. In fact, meta-abelian groups are precisely the solvable groups of derived length at most 2.
 
 \begin{proposition}
 	The symmetric group $S_n$ is solvable for $n\leq 4$, but not solvable for $n\geq 5$.
@@ -2409,6 +2409,12 @@ Meta-abelian groups are solvable. In fact, they are precisely the solvable group
 	$$S_n \supset A_n \supset A_n \supset \dots,$$
 	which never terminates to $\{1\}$. However, by the theorem above, if a group is solvable, the derived series eventually becomes $\{1\}$.
 \end{proof}
+
+\begin{theorem}[Feit-Thompson]
+	Every finite group of odd degree is solvable.
+\end{theorem}
+
+The proof is beyond the scope of this course and we omit it here.
 
 \begin{definition}
 	A \emph{composition series} of a group is a normal series where all the factor groups are simple and nontrivial. The list of factor groups of a composition series of $G$ is called the list of \emph{composition factors} of $G$.
@@ -2437,12 +2443,58 @@ A group need not have a composition; for example, $\zz$ does not admit a composi
 	They are two composition series and isomorphic by a straightforward checking.
 \end{example}
 
-We aim to prove the following profound theorem which is important in the development of group theory.
+We aim to prove the following profound theorem which is of historical importance in the development of group theory.
 
-\begin{theorem}[Jordan-H\"{o}lder Theorem]
+\begin{theorem}[Jordan-H\"{o}lder Theorem]\label{jhthm}
 	Any two composition series of a group $G$ are isomorphic. In particular, the length of a composition series, if exists, is an invariant of $G$.
 \end{theorem}
 
+We need some technical lemmas to prove the Jordan-H\"{o}lder Theorem.
+
+\begin{lemma}[Zassenhaus Lemma, aka Butterfly Lemma]
+	Given four subgroups $A\triangleleft A^*$ and $B\triangleleft B^*$ of a group $G$, then $A(A^*\cap B)\triangleleft A(A^*\cap B^*), B(B^*\cap A)\triangleleft B(B^*\cap A^*)$, and there is an isomorphism
+	\[A(A^*\cap B^*)/A(A^* \cap B) \cong B(B^*\cap A^*)/B(B^*\cap A).\]
+\end{lemma}
+
+\begin{proof}
+	We claim that $A\cap B^* \triangleleft A^*\cap B^*$. Let $c\in A\cap B^*$ and $x\in A^*\cap B^*$. Now $xcx^{-c}\in A$ since $c\in A$ and $x\in A^*$, and $xcx^{-1}$ since $c\in B^*$ and $x\in B^{*}$. Therefore $xcx^{-1}\in A\cap B^*$ and this is true for all $c\in A\cap B^*$ and $x\in A^*\cap B^*$ and so $A\cap B^* \triangleleft A^*\cap B^*$. Similarly, $A^*\cap B\triangleleft A^*\cap B^*$. Write $D=(A\cap B^*)(A^*\cap B)$. Then $D$ is a subgroup of $A^*\cap B^*$.
+
+	By symmetry, it suffices to show that there is an isomorphism
+	$$ A(A^*\cap B^*)/A(A^* \cap B) \to A^*\cap B^*/D.$$
+	Define 
+	$$\phi: A(A^*\cap B^*) \to A^*\cap B^*/D, ax\mapsto xD,$$ where $a\in A$ and $x\in A^*\cap B^*$. We need to check is well-defined: if $ax=a'x'$, where $a,a'\in A$ and $x,x'\in A^*\cap B^*$, then $(a')^{-1}a=x'x^{-1}\in A\cap (A^*\cap B^*)=A\cap B^*\subset D$; hence $xD=x'D$. Also, $\phi$ is a group homomorphism: write $a x a'x'=a''xx'$, where $a''=a(x a'x^{-1})\in A$ because $A\triangleleft A^*$, and so $$\phi(a x a'x')=\phi(a''xx')=x x'D=\phi(ax)\phi(a'x').$$ Since $A^*\cap B^*\subset A(A^*\cap B^*)$, $\phi$ is surjective and the kernel is $\ker(\phi)=A(A^*\cap B)$. By the First Isomorphism Theorem, it completes the proof.
+\end{proof}
+
+\begin{definition}
+	A \emph{refinement} of a normal series of a group $G$ is a normal series having the original series as a subseries.
+\end{definition}
+
+
+\begin{theorem}[Schreier Refinement Theorem]
+	Any twi normal series of a group $G$,
+	$$G=G_0\supset \dots\supset G_n=\{1\}~\mbox{ and }~ G=N_0\supset \dots\supset N_k=\{1\},$$ 
+	have isomorphic refinements.
+\end{theorem}
+
+\begin{proof}
+	We insert a copy of the second series between each pair of adjacent terms in the first series. In more details, for each $i\geq 0$, define $$G_{ij}=G_{i+1}(G_i\cap N_j),$$ which is a subgroup since $G_{i+1}\triangleleft G_i$. Since $N_0=G$, we have $$G_{i0}=G_{i+1}(G_i\cap N_0)=G_{i+i}G_i=G_i.$$ Similarly, since $N_k=\{1\}$, we have $$G_{ik}=G_{i+1}(G_i\cap N_{k})=G_{i+1}.$$
+	Therefore, the series of $G_i$ is a subsequence of the series of $G_{ij}$:
+	\[\dots\supset G_i=G_{i0} \supset G_{i1}\supset \dots\supset G_{ik}=G_{i+1}\supset \dots.\]
+	Similarly, the second series of $N_j$ is a subsequence of the series $$N_{ji}=N_{j+1}(N_j\cap G_i).$$
+	Both sequences are doubly indexed and have $nk$ terms. For each $i,j$, the Zassenhaus Lemma, for the four subgroups $G_{i+1}\triangleleft G_i$ and $N_{j+1}\triangleleft N_j$, says both sequences are normal series and hence are refinements, and there os an isomorphism $$ G_{i+1}(G_i\cap N_k)/G_{i+1}(G_i\cap N_{j+1}) \cong N_{j+1}(N_j\cap G_i)/N_{j+1}(N_j\cap G_{i+1}),$$ that is $G_{i,j}/G_{i,j+1}\cong N_{j,i}/N_{j,i+1}$. And we see these two refinements are isomorphic.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{jhthm}]
+	Any refinement of a composition is insignificant in the sense that one can insert repetitions only since all the factor groups are simple. The it follows from Schreier Refinement Theorem, any two composition series are isomorphic.
+\end{proof}
+
+\begin{corollary}
+	Every integer $n\geq 2$ has a factorization into primes, which are unique up to rearrangement.
+\end{corollary}
+
+\begin{proof}
+	Note that the only simple abelian groups are cyclic and of prime order and consider the composition series of $\zz/n\zz$.
+\end{proof}
 
 \chapter*{Week 10}
 \setcounter{chapter}{10}

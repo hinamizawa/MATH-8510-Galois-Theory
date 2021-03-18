@@ -2583,16 +2583,14 @@ So far, we just considered the case where the characteristic of the ambient fiel
 	Then $L/K$ is necessarily separable.
 \end{definition}
 
-If you accept the fact a simple of minimal order is isomorphic to $S_4$, then you have the following corollary.
+If you accept the fact the simple of the minimal order is isomorphic to $S_4$, then you have the following corollary.
 
 \begin{corollary}
 	Let $L/K$ be a separable field extension of degree $\leq 4$. Then $L/K$ is solvable by radicals.
 \end{corollary}
 
+\section{Symmetric Polynomials}
 
-\section{The Transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
-
-% \section{Profinite Groups}
 
 
 
@@ -2600,9 +2598,116 @@ If you accept the fact a simple of minimal order is isomorphic to $S_4$, then yo
 \chapter*{Week 11}
 \setcounter{chapter}{11}
 
+\section{Topological Groups}
+
+We need some preliminaries before going into infinite Galois extension.
+
+\begin{definition}
+	A \emph{topological group} is a group $G$ endowed with a topology such that the multiplication, $G\times G\to G,(x,y)\mapsto xy$, and the inverse map, $G\to G, x\mapsto x^{-1}$, are continuous.
+\end{definition}
+
+\begin{example}
+	$\qq$ viewed as an additive group with usual topology is a topological group.
+	In particular, any Lie group is a topological group.
+\end{example}
+
+\begin{lemma}
+	For every $g\in G$, the left multiplication $l_g: G\to G, x\to gx$ is continuous.
+\end{lemma}
+
+\begin{proof}
+	Consider the composition $$G\to G\times G \to G, x\mapsto (g,x)\mapsto gx.$$
+	The composition, literally $l_g$, is continuous as it is a composition of two continuous map. 
+\end{proof}
+
+Before we dig into the properties of topological groups, we see they have quite nice properties fitting one's intuitions quite well. For example, we have the following.
+
+\begin{lemma}
+	Let $G$ be a topological group, and let $H$ be a subgroup.
+	\begin{enumerate}
+		\item If $H$ is open, then $H$ is also closed.
+		\item If $H$ is closed and of finite index, then it is also open.
+		\item If we further require $G$ to be compact, then $H$ is open if and only if $H$ is closed and of finite index.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	The main idea here is to note we get partition of $G$ by the cosets of $H$.
+	\begin{enumerate}
+		\item The group $G$ is a disjoint union of (left) cosets of $H$, namely, $G=\sqcup_{g} gH$. Each coset $gH$ is open because $l_{g^{-1}}: G\to G, x\mapsto g^{-1}x$ is continuous and $gH$ is the per-image of $H$ and so is open. Since any union of open sets is open, $\sqcup_{g\not= e}gH$ is open and its compliment $H=G\setminus (\sqcup_{g\not= e}gH)$ is closed.
+		\item Any finite union of closed sets are closed. We repeat the proof as part (1). Since $H$ is of finite index, the compliment of $H$ is a finite union, and so $H$is  open.
+		\item It remains to prove that if $G$ is compact and $H$ is open, then $H$ is of finite index. Indeed, $G$ is covered by the cosets of $H$, which are all open. By the compactness of $G$, it is covered by finitely many of them and so $G$ is a finite disjoint union of cosets $gH$ and $H$ is of finite index. 
+	\end{enumerate}
+\end{proof}
+
+Indeed, the key topological feature of a topological group $G$ is its \emph{homogeneity}: the neighborhoods of the identity and the neighborhoods of every other element in $G$ look the same. (This is visually clear when $G = \RR^n$.) The reason is that left multiplication by each $g \in G$ is a continuous function $l_g : G \to G$ with a continuous inverse (namely left multiplication by $g^{-1}$), so $l_g$ is a homeomorphism that sends the identity element to $g$. Right multiplication by $g$ is also a homeomorphism of $G$ taking $e$ to $g$, which need not be the same as left multiplication by $g$ when $G$ is non-abelian. Homogeneity in a topological group often reduces arguments about neighborhoods of arbitrary points to neighborhoods of the identity. The reason is that $U$ is a neighborhood of $g$ if and only if $g^{-1}U$ is a neighborhood of the identity. (More generally, if $\{U_i\}$ is a fundamental system of neighborhoods of the identity in $G$ then for each $g \in G$, $\{gU_i\}$ is a fundamental system of neighborhoods of $g$.)
+
+\begin{theorem}
+	Let $H$ be a subgroup of a topological group $G$. Then its closure $\overline{H}$ is also a subgroup, and if $H$ is normal, then so is $\overline{H}$.
+\end{theorem}
+
+\begin{proof}
+	This could be proved with a direct use of the definition of closure: $g \in \overline{H}$ when every open subset of $G$ that contains $g$ intersects $H$. Instead we will give a proof using a property of closures and homogeneity:
+	\begin{itemize}
+		\item if a subset $C$ is closed, then $gC$ and $Cg$ are closed for each $g \in G$,
+		\item the closure $\overline{A}$ of a subset $A$ is the smallest subset containing it: if $A\subset C$ and $C$ is closed then $\overline{A}\subset C$.
+	\end{itemize}
+
+	To prove $\overline{H}$ is a subgroup we show that $\overline{H}~\overline{H}\subset \overline{H}$ and $\overline{H}^{-1}=\overline{H}$.
+
+	Since $H$ is a subgroup, $HH\subset H\subset \overline{H}$. Thus for each $h\in H$, $hH\subset \overline{H}$, so $H\subset h^{-1}\overline{H}$, which is closed since $\overline{H}$ is closed. And so $\overline{H}\subset \overline{H}$ for all $h\in H$ and then we have $H\overline{H}\subset \overline{H}$. And similarly, $\overline{H}H\subset \overline{H}$.
+
+	To get $\overline{H}~\overline{H}\subset \overline{H}$, pick $y\in \overline{H}$ and so $Hy\subset \overline{H}$. Then $H\subset \overline{H}y^{-1}$, which is closed, and so $\overline{H}\subset \overline{H}y^{-1}$. Therefore, $\overline{H}y\subset \overline{H}$ for all $y\in \overline{H}$ and so $\overline{H}~\overline{H}\subset \overline{H}$.
+
+
+	Now we consider the inverse function. We have $H\subset \overline{H}$ and then $H^{-1} \overline{H}^{-1}$ so $H\subset \overline{H}^{-1}$. Since the inverse function is a homeomorphism, $\overline{H}^{-1}$ is closed and so $\overline{H}\subset \overline{H}^{-1}$. Taking inversion once more, we get $\overline{H}^{-1}\subset \overline{H}$ and so $\overline{H}^{-1}=\overline{H}$.
+	
+	
+	Suppose that $H$ is normal. To prove $\overline{H}$ is normal, we need to show that $g\overline{H}g^{-1}=\overline{H}$ for all $g\in G$. From basic group theory, it suffices to show$g\overline{H}g^{-1}\subset \overline{H}$ for all $g\in G$.
+
+	Since $H$ is normal in $G$, $gHg^{-1}=H\subset \overline{H}$ and then $H\subset g^{-1}\overline{H} g$. But $ g^{-1}\overline{H} g$ is closed and then $\overline{H}\subset g^{-1}\overline{H}g$. Thus $g\overline{H}g^{-1}\subset \overline{H}$. Since $g$ is a arbitrary in $G$, $\overline{h}$ is normal.
+\end{proof}
+
+And due to homogeneity, some properties are only needed to be checked around the identity.
+
+\begin{theorem}
+	Let $f:G\to H$ be a homomorphism between two topological groups.
+	\begin{enumerate}
+		\item The map $f$ is continuous if and only if $f$ is continuous at $e_G\in G$: for each open set $V$ around the identity in $H$, there is an open set $U$ around the identity in $G$ such that $f(U)\subset V$.
+		\item The map $f$ is open if and only if $f$ is open at the identity $e_G\in G$: for each open set $U$ in $G$ containing identity, $f(U)$ contains an open set around the identity in $H$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	One direction is clear. We need to prove the reverse direction for both statements.
+	\begin{enumerate}
+		\item If $f$ is continuous, then it is continuous at the identity of $G$. Conversely, suppose $f$ is continuous at the identity in $G$. To prove $f$ is continuous at each $g\in G$, pick an open set $V$ in $H$ around $f(g)\in H$. Then $f(g)^{-1}V$ is an open set around the identity in $H$, so by the continuity of $f$ at the identity of $G$, there is an open set $U$ around the identity of $G$ such that $f(U)\subset f(g)^{-1}V$. Thus $f(gU)=f(g)f(U)\subset V$, so $gU$ is the open set around $g$ in $G$ whose image lies inside $V$.
+		\item If $f$ is open, then it is open at the identity in $G$. Conversely, suppose $f$ is open at the identity in $G$. Pick a nonempty open set $U$ in $G$ and choose $g\in U$. Then $g^{-1}U$ is an open set containing the identity in $G$, so $f(g^{-1}U)=f(g)^{-1}f(U)$ contains an open set $V$ around the identity in $H$. The set $f(g)V$ after left multiplication by $f(g)$ is then contained in $f(U)$ and $f(g)\in V$. Therefore, $f(U)$ is open.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	A group homomorphism $f:G\to H$ between two topological groups is called an \emph{isomorphism between topological groups} if it is a homeomorphism.
+\end{definition}
+
+\begin{example}
+	The exponential function $e^x$ is an isomorphism between the topological group $\RR$ and $(0,\infty)$.
+\end{example}
+
+It's important to keep in mind the difference between an isomorphism of groups and an isomorphism of topological groups. For a function between topological groups to be an isomorphism it has to be an isomorphism both algebraically and topologically: a group isomorphism and a homeomorphism. While a bijective homomorphism between groups is a
+group isomorphism (that is, the inverse map is automatically a homomorphism), in topology a bijective continuous map need not be a homeomorphism: the inverse map might not be continuous. Equivalently, the original map might not be an open map.
+
+Since a continuous bijection from a compact space to a Hausdorff space is closed, when we are dealing with compact Hausdorff topological groups, the subtlety above does not occur: a bijective continuous homomorphism G ! H from a compact topological group to a Hausdorff topological group is a homeomorphism and thus is an isomorphism of topological groups.
+
+\section{Profinite Groups}
+
+\chapter*{Week 12}
+\setcounter{chapter}{11}
+
 \section{Infinite Galois Extensions}
 
-\section{Transcendental Extensions}
+
+% \section{The Transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}
+% \section{Transcendental Extensions}
 
 
 % \newpage

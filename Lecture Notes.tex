@@ -2461,7 +2461,7 @@ We need some technical lemmas to prove the Jordan-H\"{o}lder Theorem.
 
 	By symmetry, it suffices to show that there is an isomorphism
 	$$ A(A^*\cap B^*)/A(A^* \cap B) \to A^*\cap B^*/D.$$
-	Define 
+	Define
 	$$\phi: A(A^*\cap B^*) \to A^*\cap B^*/D, ax\mapsto xD,$$ where $a\in A$ and $x\in A^*\cap B^*$. We need to check is well-defined: if $ax=a'x'$, where $a,a'\in A$ and $x,x'\in A^*\cap B^*$, then $(a')^{-1}a=x'x^{-1}\in A\cap (A^*\cap B^*)=A\cap B^*\subset D$; hence $xD=x'D$. Also, $\phi$ is a group homomorphism: write $a x a'x'=a''xx'$, where $a''=a(x a'x^{-1})\in A$ because $A\triangleleft A^*$, and so $$\phi(a x a'x')=\phi(a''xx')=x x'D=\phi(ax)\phi(a'x').$$ Since $A^*\cap B^*\subset A(A^*\cap B^*)$, $\phi$ is surjective and the kernel is $\ker(\phi)=A(A^*\cap B)$. By the First Isomorphism Theorem, it completes the proof.
 \end{proof}
 
@@ -2472,7 +2472,7 @@ We need some technical lemmas to prove the Jordan-H\"{o}lder Theorem.
 
 \begin{theorem}[Schreier Refinement Theorem]
 	Any twi normal series of a group $G$,
-	$$G=G_0\supset \dots\supset G_n=\{1\}~\mbox{ and }~ G=N_0\supset \dots\supset N_k=\{1\},$$ 
+	$$G=G_0\supset \dots\supset G_n=\{1\}~\mbox{ and }~ G=N_0\supset \dots\supset N_k=\{1\},$$
 	have isomorphic refinements.
 \end{theorem}
 
@@ -2512,7 +2512,7 @@ Note that there is not ``Galois'' involved in the definition.
 \end{example}
 
 \begin{example}
-	For any positive integer $n$ and $a,b\in \qq$, the polynomial $$f(x)=x^{2n}+ax^n+b\in \qq[x]$$ is solvable by radicals. To see this, note the splitting field of $f(x)$ is contained in $\qq(\zeta_n,a_1,a_2,a_3)$, where $\zeta_n$ is a $n$-primitive root of unity, $a_1^2=a^2-4b$, $a_2^n=(-a+a_1)/2$, and $a_3^n=(-a-a_1)/2$.  
+	For any positive integer $n$ and $a,b\in \qq$, the polynomial $$f(x)=x^{2n}+ax^n+b\in \qq[x]$$ is solvable by radicals. To see this, note the splitting field of $f(x)$ is contained in $\qq(\zeta_n,a_1,a_2,a_3)$, where $\zeta_n$ is a $n$-primitive root of unity, $a_1^2=a^2-4b$, $a_2^n=(-a+a_1)/2$, and $a_3^n=(-a-a_1)/2$.
 \end{example}
 
 \begin{definition}
@@ -2541,7 +2541,7 @@ We need some lemmas to prove this theorem.
 	If $F$ contains a primitive $n$-th root, then we know that $E=F(\sqrt[n]{a})$ and $\gal(E/F)\cong \zz/r\zz$ for some $r\mid n$ from previous sections.
 
 
-	If $F$ does not contain a primitive $n$-th root unity, let $\zeta$ be one such root. Now the minimal polynomial of $\zeta$ is some factor of $\Phi_n(x)\in F[x]$ and so other roots are all powers of $\zeta$. Therefore $F(\zeta)/F$ is a Galois extension. Moreover, \[\gal(F(\zeta)/F)=\gal(E/F)/\gal(E/F(\zeta)).\] 
+	If $F$ does not contain a primitive $n$-th root unity, let $\zeta$ be one such root. Now the minimal polynomial of $\zeta$ is some factor of $\Phi_n(x)\in F[x]$ and so other roots are all powers of $\zeta$. Therefore $F(\zeta)/F$ is a Galois extension. Moreover, \[\gal(F(\zeta)/F)=\gal(E/F)/\gal(E/F(\zeta)).\]
 	Since both $\gal(E/F(\zeta))$ and $\gal(F(\zeta)/F)$, being a subgroup of $(\zz/n\zz)^*$, are solvable, we deduce that $\gal(E/F)$ is solvable.
 \end{proof}
 
@@ -2550,7 +2550,7 @@ We need some lemmas to prove this theorem.
 \end{theorem}
 
 \begin{proof}
-	The field $K$, as a finite Galois extension of $F$, is a splitting field of some separable polynomial $f[x]\in F[x]$. Regarding $f(x)$ as a polynomial in $L[x]$, $f(x)$ is also separable and then $KL$ as the splitting field of $f(x)$ over $L$ is a finite Galois extension of $L$, since it is both separable and normal. 
+	The field $K$, as a finite Galois extension of $F$, is a splitting field of some separable polynomial $f[x]\in F[x]$. Regarding $f(x)$ as a polynomial in $L[x]$, $f(x)$ is also separable and then $KL$ as the splitting field of $f(x)$ over $L$ is a finite Galois extension of $L$, since it is both separable and normal.
 
 	Define $\phi: \gal(KL/L)\to \gal(K/F)$ by $\phi(\sigma)=\sigma|_K$. This map is well defined since $K$ is normal over $F$, and $\phi$ is obviously a group homomorphism. The kernel of $\phi$ is $$\ker \phi = \{\sigma\in \gal(KL/L): \sigma|_K=id_K\}.$$
 	Note that $\sigma\in \ker(\phi)$ implies $\sigma|_K=id_K$ and $\sigma|_L=id_L$ and so $\phi$ fixes $KL$ and $\phi=id$. In other words, $\phi$ is injective. Let $E=K^{\im(\phi)}$ be the subfield of $K$ fixed by the image of $\gal(KL/L)$. We show that $E=K\cap L$. We have $\sigma_L=id_L$ for all $\sigma\in \gal(KL/L)$ and if $a\in K\cap L \subset L$, then $\sigma(a)=a$ and so $K\cap L\subset E$. For the reverse inclusion, let $a\in E$. Then we have $a\in K$ and $\sigma(a)=\sigma|_K(a)=a$ for all $\sigma\in \gal(KL/L)$. This means $a\in KL^{\gal(KL/L)}=L$ and so $a\in K\cap L$. So $E\subset K\cap L$ and then $E=K\cap L$. We have proved that \[\gal(KL/L)\cong \im(\phi) =\gal(K/K\cap L).\]
@@ -2561,7 +2561,7 @@ We need some lemmas to prove this theorem.
 
 
 	For the other direction, we proceed by the number of terms in the composition series of $\gal(E/F)$. If the length is 0, then $\gal(E/F)$ is trivial and so we are done.
-	Now suppose the statement is true when the length of the composition series is $k-1$ and let 
+	Now suppose the statement is true when the length of the composition series is $k-1$ and let
 	\[\gal(E/F)=G_0\supset G_1\supset \dots\supset G_k=\{1\}\] be the composition series of $\gal(E/F)$. The field $K=E^{G_1}$ is then a Galois extension of $F$, and the composition series of $\gal(E/K)$ is \[\gal(E/K)=G_1\supset \dots\supset G_k=\{1\}.\]
 	By induction hypothesis, $E$ is contained in an extension by radicals, say, $K(a_1,\dots,a_s)$. If $K$ is contained in an extension of $F$ by radicals, say, $F(b_1,\dots,b_m)$, then it is easily seen that $E\subset F(b_1,\dots,b_m,a_1,\dots,a_s)$, namely, $E$ is contained in an extension of $F$ by radicals. So it suffices to show that $K$ is contained in an extension of $F$ by radicals. By the definition of solvability, \[\gal(K/F)\cong \gal(E/F)/\gal(E/K) = G_0/G_1\]
 	is a simple abelian group and hence is a cyclic abelian group of prime order $p$. Let $\zeta\in \overline{F}$ be a primitive $p$-th root. Clearly, $F(\zeta)$ is an extension of $F$ by radicals. Now apply Natural Irrationalities Theorem, $K(\zeta)=KF(\zeta)$ is a Galois extension of $F(\zeta)$ and \[\gal(K(\zeta)/F(\zeta))\cong \gal(K/F)\cong \zz/p\zz.\] Since $F(\zeta)$ contains a primitive $p$-th root of unity, we see from Theorem \ref{cyclicgal1} that $K(\zeta)=F(\zeta, \sqrt[n]{a})$ for some $a\in F(\zeta)$, that is, $K$ is contained in an extension of $F$ by radicals. Hence so is $E$.
@@ -2617,7 +2617,7 @@ We need some preliminaries before going into infinite Galois extension.
 
 \begin{proof}
 	Consider the composition $$G\to G\times G \to G, x\mapsto (g,x)\mapsto gx.$$
-	The composition, literally $l_g$, is continuous as it is a composition of two continuous map. 
+	The composition, literally $l_g$, is continuous as it is a composition of two continuous map.
 \end{proof}
 
 Before we dig into the properties of topological groups, we see they have quite nice properties fitting one's intuitions quite well. For example, we have the following.
@@ -2635,7 +2635,7 @@ Before we dig into the properties of topological groups, we see they have quite 
 	\begin{enumerate}
 		\item The group $G$ is a disjoint union of (left) cosets of $H$, namely, $G=\sqcup_{g} gH$. Each coset $gH$ is open because $l_{g^{-1}}: G\to G, x\mapsto g^{-1}x$ is continuous and $gH$ is the per-image of $H$ and so is open. Since any union of open sets is open, $\sqcup_{g\not= e}gH$ is open and its compliment $H=G\setminus (\sqcup_{g\not= e}gH)$ is closed.
 		\item Any finite union of closed sets are closed. We repeat the proof as part (1). Since $H$ is of finite index, the compliment of $H$ is a finite union, and so $H$is  open.
-		\item It remains to prove that if $G$ is compact and $H$ is open, then $H$ is of finite index. Indeed, $G$ is covered by the cosets of $H$, which are all open. By the compactness of $G$, it is covered by finitely many of them and so $G$ is a finite disjoint union of cosets $gH$ and $H$ is of finite index. 
+		\item It remains to prove that if $G$ is compact and $H$ is open, then $H$ is of finite index. Indeed, $G$ is covered by the cosets of $H$, which are all open. By the compactness of $G$, it is covered by finitely many of them and so $G$ is a finite disjoint union of cosets $gH$ and $H$ is of finite index.
 	\end{enumerate}
 \end{proof}
 
@@ -2660,8 +2660,8 @@ Indeed, the key topological feature of a topological group $G$ is its \emph{homo
 
 
 	Now we consider the inverse function. We have $H\subset \overline{H}$ and then $H^{-1} \overline{H}^{-1}$ so $H\subset \overline{H}^{-1}$. Since the inverse function is a homeomorphism, $\overline{H}^{-1}$ is closed and so $\overline{H}\subset \overline{H}^{-1}$. Taking inversion once more, we get $\overline{H}^{-1}\subset \overline{H}$ and so $\overline{H}^{-1}=\overline{H}$.
-	
-	
+
+
 	Suppose that $H$ is normal. To prove $\overline{H}$ is normal, we need to show that $g\overline{H}g^{-1}=\overline{H}$ for all $g\in G$. From basic group theory, it suffices to show$g\overline{H}g^{-1}\subset \overline{H}$ for all $g\in G$.
 
 	Since $H$ is normal in $G$, $gHg^{-1}=H\subset \overline{H}$ and then $H\subset g^{-1}\overline{H} g$. But $ g^{-1}\overline{H} g$ is closed and then $\overline{H}\subset g^{-1}\overline{H}g$. Thus $g\overline{H}g^{-1}\subset \overline{H}$. Since $g$ is a arbitrary in $G$, $\overline{h}$ is normal.
@@ -2709,8 +2709,11 @@ Since a continuous bijection from a compact space to a Hausdorff space is closed
 \begin{proof}
 	One direction is clearly for both statements.
 	\begin{enumerate}
-		\item 
-	\end{enumerate}
+		\item Topology is discrete if and only if every singleton is open. If $\{e\}$ is open, then so is every $\{g\}=g\{e\}$.
+		\item If $G$ is Hausdorff, then every singleton is closed, so in particular, $\{e\}$ is closed.
+		Conversely, suppose $\{e\}$ is closed. Then so is every singleton $\{g\}$. To show that $G$ is Hausdorff, it suffices to show that $e$ and $g$ can be separated by open sets for any $g\in G, g\not=e$ due to the homogeneity.
+		First we show that for a neighbourhood $\mathcal{N}$ of $e$ in $G$ there is a ``symmetric'' neighbourhood $U$ of $e$ such that $U=U^{-1}$ and $UU\subset \mathcal{N}$. Since the multiplication $m: G\times G\to G$ is continuous, there are open sets $U_1, U_2$ around the identity such that $m(U_1\times U_2)\subset \mathcal{N}$
+ 	\end{enumerate}
 \end{proof}
 
 \section{Profinite Groups}

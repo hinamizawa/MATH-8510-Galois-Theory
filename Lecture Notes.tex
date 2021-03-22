@@ -2503,7 +2503,7 @@ We need some technical lemmas to prove the Jordan-H\"{o}lder Theorem.
 \section{Solvability by Radicals}
 
 \begin{definition}
-	Let $E/F$ be a finite extension. We say $E$ is an \emph{extension by radicals} of $F$ if there exist $a_1,\dots,a_k\in E$ such that $E=F(a_1,\dots,a_n)$ and that for all $1\leq i\leq k$, we have $a_i^n\in F(a_1,\dots,a_{i-1})$ for some $n$. We say $f(x)\in F[x]$ is \emph{solvable by radicals} if $f(x)$ splits in some $E$, an extension of $F$ by radicals, or equivalently, the splitting field of $f(x)$ is contained in some extension $E$ of $F$ by radicals.
+	Let $E/F$ be a finite extension. We say $E$ is an \emph{extension by radicals} of $F$ if there exist $a_1,\dots,a_n\in E$ such that $E=F(a_1,\dots,a_n)$ and that for all $1\leq i\leq k$, we have $a_i^n\in F(a_1,\dots,a_{i-1})$ for some $n$. We say $f(x)\in F[x]$ is \emph{solvable by radicals} if $f(x)$ splits in some $E$, an extension of $F$ by radicals, or equivalently, the splitting field of $f(x)$ is contained in some extension $E$ of $F$ by radicals.
 \end{definition}
 
 Note that there is not ``Galois'' involved in the definition.
@@ -2535,18 +2535,18 @@ Note that there is not ``Galois'' involved in the definition.
 We need some lemmas to prove this theorem.
 
 \begin{lemma}
-	Let $F$ be a field of characteristic 0 and $E$ ve a splitting field of $x^n-a\in F[x]$ for some $a\in F$. Then $\gal(E/F)$ is solvable.
+	Let $F$ be a field of characteristic 0 and $E$ be a splitting field of $x^n-a\in F[x]$ for some $a\in F$. Then $\gal(E/F)$ is solvable.
 \end{lemma}
 
 \begin{proof}
-	If $F$ contains a primitive $n$-th root, then we know that $E=F(\sqrt[n]{a})$ and $\gal(E/F)\cong \zz/r\zz$ for some $r\mid n$ from previous sections.
+	If $F$ contains a primitive $n$-th root, then we know that $E=F(\sqrt[n]{a})$ and $\gal(E/F)\cong \zz/r\zz$ for some $a\in F$ and some $r\mid n$ from previous sections.
 
 
 	If $F$ does not contain a primitive $n$-th root unity, let $\zeta$ be one such root. Now the minimal polynomial of $\zeta$ is some factor of $\Phi_n(x)\in F[x]$ and so other roots are all powers of $\zeta$. Therefore $F(\zeta)/F$ is a Galois extension. Moreover, \[\gal(F(\zeta)/F)=\gal(E/F)/\gal(E/F(\zeta)).\]
 	Since both $\gal(E/F(\zeta))$ and $\gal(F(\zeta)/F)$, being a subgroup of $(\zz/n\zz)^*$, are solvable, we deduce that $\gal(E/F)$ is solvable.
 \end{proof}
 
-\begin{theorem}[Natural Irrationalities]
+\begin{theorem}[Natural Irrationality]
 	Let $K/F$ be a finite Galois extension and $L/F$ another finite extension. Then $KL$ is a finite Galois extension of $L$ and $\gal(KL/L)\cong \gal(K/(K\cap L))$.
 \end{theorem}
 
@@ -2554,26 +2554,26 @@ We need some lemmas to prove this theorem.
 	The field $K$, as a finite Galois extension of $F$, is a splitting field of some separable polynomial $f[x]\in F[x]$. Regarding $f(x)$ as a polynomial in $L[x]$, $f(x)$ is also separable and then $KL$ as the splitting field of $f(x)$ over $L$ is a finite Galois extension of $L$, since it is both separable and normal.
 
 	Define $\phi: \gal(KL/L)\to \gal(K/F)$ by $\phi(\sigma)=\sigma|_K$. This map is well defined since $K$ is normal over $F$, and $\phi$ is obviously a group homomorphism. The kernel of $\phi$ is $$\ker \phi = \{\sigma\in \gal(KL/L): \sigma|_K=id_K\}.$$
-	Note that $\sigma\in \ker(\phi)$ implies $\sigma|_K=id_K$ and $\sigma|_L=id_L$ and so $\phi$ fixes $KL$ and $\phi=id$. In other words, $\phi$ is injective. Let $E=K^{\im(\phi)}$ be the subfield of $K$ fixed by the image of $\gal(KL/L)$. We show that $E=K\cap L$. We have $\sigma_L=id_L$ for all $\sigma\in \gal(KL/L)$ and if $a\in K\cap L \subset L$, then $\sigma(a)=a$ and so $K\cap L\subset E$. For the reverse inclusion, let $a\in E$. Then we have $a\in K$ and $\sigma(a)=\sigma|_K(a)=a$ for all $\sigma\in \gal(KL/L)$. This means $a\in KL^{\gal(KL/L)}=L$ and so $a\in K\cap L$. So $E\subset K\cap L$ and then $E=K\cap L$. We have proved that \[\gal(KL/L)\cong \im(\phi) =\gal(K/K\cap L).\]
+	Note that $\sigma\in \ker(\phi)$ implies $\sigma|_K=id_K$ and $\sigma|_L=id_L$ and so $\phi$ fixes $KL$ and $\phi=id$. In other words, $\phi$ is injective. Let $E=K^{\im(\phi)}$ be the subfield of $K$ fixed by the image of $\gal(KL/L)$. We show that $E=K\cap L$. We have $\sigma|_L=id_L$ for all $\sigma\in \gal(KL/L)$ and if $a\in K\cap L \subset L$, then $\sigma(a)=a$ and so $K\cap L\subset E$. For the reverse inclusion, let $a\in E$. Then we have $a\in K$ and $\sigma(a)=\sigma|_K(a)=a$ for all $\sigma\in \gal(KL/L)$. This means $a\in KL^{\gal(KL/L)}=L$ and so $a\in K\cap L$. So $E\subset K\cap L$ and then $E=K\cap L$. We have proved that \[\gal(KL/L)\cong \im(\phi) =\gal(K/K\cap L).\]
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{galoissol}]
-	Suppose $E/F$ is contained in an extension by radicals, say, $E/F'$ is that extension. We suppose that $E'=F(a_1,\dots,a_k)$ such that for each $i$, $a_i^n\in F(a_1,\dots,a_{n-1})$ for some $n$. Passing to the normal closure of $E'$ if necessary, we can assume $E'/F$ is Galois. If $\gal(E'/F)$ is solvable, then by Proposition \ref{subsol}, $\gal(E/F)$ is also solvable. We claim indeed $\gal(E'/F)$ is solvable. If $k=0$, the extension is trivial and so is the claim. Now suppose the statement is true for extensions by $k-1$ radicals. We have $a_1^n\in F$ for some $n$, so let $K/F$ be the splitting field of $x^n-a_1^n\in F[x]$/ Since $E'/F$ is normal with $a_1$ a root of $x^n-a_1^n$, we have $K\subset E'$. Now by the lemma above, $K/F$ is solvable. It suffices to show $E'/K$ is solvable. But we see that $E'=K(a_2,\dots,a_k)$ and that $a_i^n\in K(a_2,\dots,a_{i-1})$ for some $n$ for each $2\leq i\leq k$. By induction hypothesis, $E'/K$ is solvable. We finish the induction.
+	Suppose $E/F$ is contained in an extension by radicals, say, $E'/F$ is that extension. We suppose that $E'=F(a_1,\dots,a_k)$ such that for each $i$, $a_i^n\in F(a_1,\dots,a_{i-1})$ for some $n$. Passing to the normal closure of $E'$ if necessary, we can assume $E'/F$ is Galois. If $\gal(E'/F)$ is solvable, then by Proposition \ref{subsol}, $\gal(E/F)$ is also solvable. We claim indeed $\gal(E'/F)$ is solvable. If $k=0$, the extension is trivial and so is the claim. Now suppose the statement is true for extensions by $k-1$ radicals. We have $a_1^n\in F$ for some $n$, so let $K/F$ be the splitting field of $x^n-a_1^n\in F[x]$. Since $E'/F$ is normal with $a_1$ a root of $x^n-a_1^n$, we have $K\subset E'$. Now by the lemma above, $K/F$ is solvable. It suffices to show $E'/K$ is solvable. But we see that $E'=K(a_2,\dots,a_k)$ and that $a_i^n\in K(a_2,\dots,a_{i-1})$ for some $n$ for each $2\leq i\leq k$. By induction hypothesis, $E'/K$ is solvable. We finish the induction.
 
 
 	For the other direction, we proceed by the number of terms in the composition series of $\gal(E/F)$. If the length is 0, then $\gal(E/F)$ is trivial and so we are done.
 	Now suppose the statement is true when the length of the composition series is $k-1$ and let
 	\[\gal(E/F)=G_0\supset G_1\supset \dots\supset G_k=\{1\}\] be the composition series of $\gal(E/F)$. The field $K=E^{G_1}$ is then a Galois extension of $F$, and the composition series of $\gal(E/K)$ is \[\gal(E/K)=G_1\supset \dots\supset G_k=\{1\}.\]
 	By induction hypothesis, $E$ is contained in an extension by radicals, say, $K(a_1,\dots,a_s)$. If $K$ is contained in an extension of $F$ by radicals, say, $F(b_1,\dots,b_m)$, then it is easily seen that $E\subset F(b_1,\dots,b_m,a_1,\dots,a_s)$, namely, $E$ is contained in an extension of $F$ by radicals. So it suffices to show that $K$ is contained in an extension of $F$ by radicals. By the definition of solvability, \[\gal(K/F)\cong \gal(E/F)/\gal(E/K) = G_0/G_1\]
-	is a simple abelian group and hence is a cyclic abelian group of prime order $p$. Let $\zeta\in \overline{F}$ be a primitive $p$-th root. Clearly, $F(\zeta)$ is an extension of $F$ by radicals. Now apply Natural Irrationalities Theorem, $K(\zeta)=KF(\zeta)$ is a Galois extension of $F(\zeta)$ and \[\gal(K(\zeta)/F(\zeta))\cong \gal(K/F)\cong \zz/p\zz.\] Since $F(\zeta)$ contains a primitive $p$-th root of unity, we see from Theorem \ref{cyclicgal1} that $K(\zeta)=F(\zeta, \sqrt[n]{a})$ for some $a\in F(\zeta)$, that is, $K$ is contained in an extension of $F$ by radicals. Hence so is $E$.
+	is a simple abelian group and hence is a cyclic abelian group of prime order $p$. Let $\zeta\in \overline{F}$ be a primitive $p$-th root. Clearly, $F(\zeta)$ is an extension of $F$ by radicals. Now apply Natural Irrationality Theorem, $K(\zeta)=KF(\zeta)$ is a Galois extension of $F(\zeta)$ and \[\gal(K(\zeta)/F(\zeta))\cong \gal(K/F)\cong \zz/p\zz.\] Since $F(\zeta)$ contains a primitive $p$-th root of unity, we see from Theorem \ref{cyclicgal1} that $K(\zeta)=F(\zeta, \sqrt[n]{a})$ for some $a\in F(\zeta)$, that is, $K$ is contained in an extension of $F$ by radicals. Hence so is $E$.
 \end{proof}
 
 Now from Theorem \ref{symgal}, we known that if $f(x)\in \qq[x]$ is irreducible and has exactly 3 real roots, then $G_f$ is isomorphic to $S_5$, which is not solvable. Moreover, Example \ref{symgal} translates into that $f(x)=(x^2+4)(x-2)(x-4)(x-6)-2$ is not solvable by radicals.
 
-So far, we just considered the case where the characteristic of the ambient field is 0. In order to approach the theory of characteristic $p$, we need to modify the definitions a bit in the sprit of Artin-Schreier theorem.
+So far, we just considered the case where the characteristic of the ambient field is 0. In order to approach the theory of characteristic $p$, we need to modify the definitions a bit in the sprit of Artin-Schreier Theorem.
 
 \begin{definition}
-	A finite field extension is \emph{solvable by radicals} if $L$ admits an extension field together with a chain of field extension
+	A finite field extension $L/K$ is \emph{solvable by radicals} if $L$ admits an extension field $E$ together with a chain of field extension
 	\[K=E_0\subset E_1\subset \dots\subset E_m=E\]
 	such that in each case, $E_{i+1}$ is obtained from $E_i$ by adjoining an element of the following type:
 	\begin{enumerate}
@@ -2635,7 +2635,7 @@ Regarding $f$ as an element in $L[X]$, we see that it is invariant under $S_n$ a
 
 The idea we have just employed, namely to make use of generic polynomials, i.e., of polynomials with variables as coefficients, leads immediately to the generic equation of degree $n$. Indeed, fixing variables $S_1, \dots, S_n$, the polynomial 
 $$p(X) = X^n + S_1X^{n-1} + \dots + S_n \in k(S_1,\dots, S_n)[X]$$
-is referred to as the \emph{generic polynomial} of degree $n$ over $k$. The corresponding equation $p(x) = 0$ is called the \emph{generic equation} of degree $n$. We want to determine its Galois group by showing that we may identify $p(X)$ up to isomorphism with the polynomial $f(X)$ discussed above.
+is referred to as the \emph{generic polynomial} (aka \emph{general polynomial}) of degree $n$ over $k$. The corresponding equation $p(x) = 0$ is called the \emph{generic equation} (aka \emph{general equation}) of degree $n$. We want to determine its Galois group by showing that we may identify $p(X)$ up to isomorphism with the polynomial $f(X)$ discussed above.
 
 
 \begin{theorem}

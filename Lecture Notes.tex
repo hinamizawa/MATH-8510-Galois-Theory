@@ -25,6 +25,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 
+\newcommand{\lex}{\mbox{lexdeg}}
 \newcommand{\mymod}[3]{#1 \equiv #2 \Mod{#3}}
 \newcommand{\ccc}{\mathcal{C}}
 \newcommand{\nmm}[2]{\text{N}_{#1}(#2)}
@@ -2567,7 +2568,7 @@ We need some lemmas to prove this theorem.
 	is a simple abelian group and hence is a cyclic abelian group of prime order $p$. Let $\zeta\in \overline{F}$ be a primitive $p$-th root. Clearly, $F(\zeta)$ is an extension of $F$ by radicals. Now apply Natural Irrationalities Theorem, $K(\zeta)=KF(\zeta)$ is a Galois extension of $F(\zeta)$ and \[\gal(K(\zeta)/F(\zeta))\cong \gal(K/F)\cong \zz/p\zz.\] Since $F(\zeta)$ contains a primitive $p$-th root of unity, we see from Theorem \ref{cyclicgal1} that $K(\zeta)=F(\zeta, \sqrt[n]{a})$ for some $a\in F(\zeta)$, that is, $K$ is contained in an extension of $F$ by radicals. Hence so is $E$.
 \end{proof}
 
-Now from Theorem \ref{symgal}, we known that if $f(x)\in \qq[x]$ is irreducible and has exactly 3 real roots, then $G_f$ is isomorphic to $S_5$, which is not solvable. Moreover, Example \ref{symgal} translates into that $f(x)=(x^4+4)(x-2)-2=x^5-2x^4+4x-2$ is not solvable by radicals.
+Now from Theorem \ref{symgal}, we known that if $f(x)\in \qq[x]$ is irreducible and has exactly 3 real roots, then $G_f$ is isomorphic to $S_5$, which is not solvable. Moreover, Example \ref{symgal} translates into that $f(x)=(x^2+4)(x-2)(x-4)(x-6)-2$ is not solvable by radicals.
 
 So far, we just considered the case where the characteristic of the ambient field is 0. In order to approach the theory of characteristic $p$, we need to modify the definitions a bit in the sprit of Artin-Schreier theorem.
 
@@ -2589,11 +2590,107 @@ If you accept the fact the simple of the minimal order is isomorphic to $S_4$, t
 	Let $L/K$ be a separable field extension of degree $\leq 4$. Then $L/K$ is solvable by radicals.
 \end{corollary}
 
-\section{Symmetric Polynomials}
+\section{Generic and Symmetric Polynomials}
+When we say quintics are not solvable by radicals, what do we really mean? It can be said more formally that the generic equation of degree $n$ over the rational function field $K=k(c_1,c_2,\dots,c_n)$ is not solvable. We shall give formal definitions.
+
+We fix a field $k$ and consider over it the field $L$ of rational functions in many variables (indeterminates) $T_1,\dots,T_n$, namely, 
+\[L=k(T_1,\dots,T_n)=\mbox{Frac}(k[T_1,\dots,T_n]).\]
+
+Every permutation $\pi\in S_n$ defines an automorphism of $L$ in a canonical way: $$k(T_1,\dots,T_n)\to k(T_1,\dots,T_n),~\frac{g(T_1,\dots,T_n)}{h(T_1,\dots,T_n)}\mapsto \frac{g(T_{\pi(1)},\dots,T_{\pi(n)})}{h(T_{\pi(1)},\dots,T_{\pi(n)})}.$$
+The corresponding fixed field $K=L^{S_n}$ is referred as the field of \emph{symmetric rational functions} in $n$ variables with coefficients in $k$. By Artin's Theorem, the extension $L/K$ is Galois with Galois group $S_n$.
+
+Now we choose a variable $X$ and consider the polynomial
+$$f(X)=\prod_{i=1}^n(X-T_i)=\sum_{j=0}^n (-1)^js_j(T_1,\dots,T_n)X^{n-j}\in k[T_1,\dots,T_n][x],$$
+where $s_j$ is obtained by expanding the product of $X-T_i$ and by collecting coefficients of $X^{n-j}$. $s_j$ is called bt $j$-th \emph{elementary symmetric polynomial} in $T_1,\dots,T_n$, more explicitly, they are given by 
+\begin{align*}
+	s_0&=1,\\
+	s_1&=T_1+\dots+T_n,\\
+	s_2&= \sum_{1\leq i<j\leq n} T_iT_j\\
+	& ...\\
+	s_n&=T_1\dots T_n.
+\end{align*}
+
+Regarding $f$ as an element in $L[X]$, we see that it is invariant under $S_n$ and so its coefficients are also invariant. Therefore, we have $k(s_1,\dots,s_n)\subset K$. Similarly, by treating $f$ as a polynomial in $k(s_1,\dots,s_n)[X]$, we see that $L$ is the splitting field of $f$ over $k(s_1,\dots,s_n)$. Moreover, since the Galois group is transitive, $f$ is irreducible.
+
+\begin{definition}
+	Let $L/K$ be a field extension. A system $(x_1,\dots, x_n)$ of elements in $L$ is called \emph{algebraically independent} or \emph{transcendental} over $K$ if every equation $f(x_1,\dots, x_n) = 0$ for a polynomial $f \in K[X_1,\dots, X_n]$ implies $f = 0$, namely, if the evaluation map  
+	$$K[X_1,\dots, X_n]\to L,\quad f(X_1,\dots,X_n)\mapsto f(x_1,\dots, x_n)$$
+	is injective.
+\end{definition}
+
+\begin{theorem}
+	Every symmetric rational function in $k(T_1,\dots,T_n)$ can be written uniquely as rational function over $k$ in the elementary polynomials $s_1,\dots,s_n$, more precisely,
+	\begin{enumerate}
+		\item $k(s_1,\dots,s_n)=K$,
+		\item $s_1,\dots,S_n$ are algebraically independent over $k$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Observe that $[L:K]=|S_n|=n!$. But $L$ is the splitting field of $f=\prod(X-T_i)$ over $k(s_1,\dots,s_n)$ hence $[L:k(s_1,\dots,s_n)]\leq n!$. With $k(s_1,\dots,s_n)\subset K$, we indeed have $K=k(s_1,\dots,s_n)$. 
+
+	To see the elementary polynomials are algebraically independent, consider $k(S_1,\dots,S_n)$ of all rational functions in $n$ variables over $k$. With the convention $S_0=1$, we consider the function $$\tilde{f}(X)=\sum_{j=0}^n(-1)^jS_j X^{n-j}\in k(S_1,\dots,S_n)[X]$$ as well as its splitting field $\tilde{L}$. Let $t_1,\dots,t_n$ be all the roots of $\tilde{f}$ in $\tilde{L}$ allowing repetitions. Then we see that $$\tilde{L}=k(S_1,\dots,S_n)(t_1,\dots,t_n)=k(t_1,\dots,t_n),$$ since $S_1,\dots,S_n$ can be written as elementary symmetric functions in $t_1,\dots,t_n$ and so they belong to $k(t_1,\dots,t_n)$. Now consider the evaluation map 
+	\[k[T_1,\dots,T_n]\to k[t_1,\dots,t_n], f(T_1,\dots,T_n)\mapsto f(t_1,\dots,t_n).\] It maps elementary functions in $T_1,\dots,T_n$ to elementary function in $t_1,\dots,t_n$ and thus restricts to a homomorphism $$k[s_1,\dots,s_n]\to k[S_1,\dots,S_n], f(s_1,\dots,s_n)\to f(S_1,\dots,S_n).$$ Since $S_1,\dots,S_n$ are variables, this map is necessarily injective and therefore an isomorphism. In particular, $s_1,\dots,s_n$ may be viewed as variables and hence are algebraically independent over $k$. 
+\end{proof}
+
+The idea we have just employed, namely to make use of generic polynomials, i.e., of polynomials with variables as coefficients, leads immediately to the generic equation of degree $n$. Indeed, fixing variables $S_1, \dots, S_n$, the polynomial 
+$$p(X) = X^n + S_1X^{n-1} + \dots + S_n \in k(S_1,\dots, S_n)[X]$$
+is referred to as the \emph{generic polynomial} of degree $n$ over $k$. The corresponding equation $p(x) = 0$ is called the \emph{generic equation} of degree $n$. We want to determine its Galois group by showing that we may identify $p(X)$ up to isomorphism with the polynomial $f(X)$ discussed above.
 
 
+\begin{theorem}
+	The generic polynomial $p(x)\in k(S_1,\dots,S_n)[X]$ of degree $n$ is separable and irreducible. It admits $S_n$ as its Galois group.
+\end{theorem}
+
+\begin{proof}
+	As discussed above, let $L=k(T_1,\dots,T_n)$ and $K=L^{S_n}=k(s_1,\dots,s_n)$. Since the elementary symmetric polynomials are algebraically independent over $k$, we can view them as variables and therefore introduced a $k$-isomorphism
+	$$k(S_1,\dots,S_n)\to k(s_1,\dots,s_n)=K$$ via $S_j\mapsto (-1)^js_j$. Interpreting this as an identification, $p(x)$ is then transformed into the familiar polynomial $$f(x)=\prod_{i=1}^n(X-T_i)=\sum_{j=0}^n(-1)^js_jX^{n-j}\in K[X].$$
+	Therefore, $p(x)$, just like $f$, is separable and irreducible and admits $S_n$ as its Galois group.
+\end{proof}
+
+Now it makes more sense to say quintic, the generic polynomial of degree 5, is irreducible.
 
 
+If we restrict the automorphism of $k(T_1,\dots,T_n)$ given by $S_n$ to the subring $k[T_1,\dots,T]$, then just as the case of rational functions, we get the symmetric polynomial $f\in k[T_1,\dots,T_n]$, which is fixed by all permutations $\pi\in S_n$.
+
+\begin{theorem}[Fundamental Theorem on Symmetric Polynomials]
+	For every symmetric polynomial $f\in k[T_1,\dots,T_n]$, there is a unique polynomial $g\in k[S_1,\dots,S_n]$ in $n$ variables $S_1,\dots,S_n$ such that $f=g(s_1,\dots,s_n)$.
+\end{theorem}
+
+\begin{proof}
+	Uniqueness follows directly from the algebraic independence of the polynomials $s_1,\dots,s_n$.
+
+
+	Consider the lexicographic order on $\NN^n$, where $v\preceq v'$ for $v,v'\in \NN^n$ if there is an $m$ such that $v_m<v'_m$ and $v_i=v_i'$ for $1\leq i<m$. Then for any nontrivial polynomial $f=\sum_{v} c_vT^v\in k[T_1,\dots, T_n]$, then set $\{v\in \NN^n: c_v\not=0\}$ is finite and has a largest element. Such an element is unique and called the lexicographic degree of $f$ denoted by $\lex(f)$. Now let $f= \sum c_v T^v$ be a symmetric polynomial with lexicographic degree $\lex(f)=u=(u_1,\dots,u_n)$. Then we have $u_1\geq u_2\geq \dots\geq u_n$ since $f$ is symmetric. Furthermore, $$f_1=c_u s_1^{u_1-u_2} s_2^{u_3-u_2}\dots s_n^{u_n}\in k[s_1,\dots,s_n]$$ is a symmetric polynomial of total degree $\sum u_i$ and has lexicographic degree $u$. This implies 
+	$$\lex(f-f_1)<\lex(f),\quad \deg(f-f_1)\leq \deg(f).$$
+	If $f$ is different from $f_1$, we can repeat this step once more, replacing $f$ by $f-f_1$. Continuing this wat, we end uup with a sequence $f_1,\dots \in k[s_1,\dots,s_n]$ such that the lexicographic degree of the sequence 
+	$$f,f-f_1,f-f_1-f_2,\dots$$ decreases step by step, while in the same time, th total degree is bounded by $\deg(f)$. Therefore, the sequence will end after finitely many steps with the zero polynomial, thereby yielding a representation of $f$ as a polynomial in the elementary symmetric polynomials $s_1,\dots,s_n$.
+\end{proof}
+
+
+The proof of this theorem yields a very effective principle to determine for a given symmetric polynomial $f$ a polynomial $g$ satisfying $f = g(s_1,\dots,s_n).$ Note that the principle works quite generally over an arbitrary ring $R$ instead of $k$ as coefficient domain.
+
+\begin{example}
+	In three variables, treating $X_1,X_2,X_3$ as $X,Y,Z$, let $f(X,Y,Z)=X^4+Y^4+Z^4$. We want to write $f$ as a polynomial  in the elementary symmetric polynomials in $X,Y, Z$, which are $$s_1=X+Y+Z, s_2=XY+XZ+YZ, s_3=XYZ.$$
+	The leading term of $f$ is $X^4$ with lexicographic degree $u=(4,0,0)$. So we subtract \begin{align*}
+		f-s_1^4= f-(X+Y+Z)^4 = & -4X^3Y-4X^3Z-6X^2Y^2-12X^2YZ-6X^2Z^2-4XY^3 \\
+		 &-12XY^2Z -12XYZ^2-4XZ^3-6Y^3Z-6Y^2Z^2-6YZ^3.
+	\end{align*}
+	This has leading term $-4X^3Y$ with lexicographic degree $(3,1,0)$. So we do the subtraction again: $$f-s_1^4+4s_1^2s_2=2X^2Y^2+8X^2Y^2Z+2X^2Z^2+8XY^2Z+8XY^2Z+8XYZ^2+2Y^2Z^2.$$
+	This has leading term $2X^2Y^2$ with lexicographic order $(2,2,0)$. We do the subtraction one more time:
+	$$f-s_1^4+4s_1^2s_2-2s_2^2=4X^2YZ+4XY^2Z+4XYZ^2.$$
+	This had leading term $4X^2YZ$ with lexicographic order $(2,1,1)$.
+	We do the subtraction one more time:
+	$$f-s_1^4+4s_1^2s_2-2s_2^2-4s_1s_3=0.$$
+	Thus $$X^4+Y^4+Z^4=s_1^4-4s_1^2s_2+2s_2^2+4s_1s_3.$$
+\end{example}
+
+\begin{corollary}
+	Let $L/K$ be a field extension and $f(x)\in K[x]$ factor as 
+	$$f(x)=(x-a_1)\dots(x-x_n)\in L[x].$$
+	Then for all positive integer $r$, we have 
+	$$(x-a_1^r)\dots(x-a_n^r)\in K[x].$$
+\end{corollary}
 
 \chapter*{Week 11}
 \setcounter{chapter}{11}

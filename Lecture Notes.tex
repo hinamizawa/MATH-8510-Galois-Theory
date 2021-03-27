@@ -2570,6 +2570,12 @@ We need some lemmas to prove this theorem.
 
 Now from Theorem \ref{symgal}, we known that if $f(x)\in \qq[x]$ is irreducible and has exactly 3 real roots, then $G_f$ is isomorphic to $S_5$, which is not solvable. Moreover, Example \ref{symgal} translates into that $f(x)=(x^2+4)(x-2)(x-4)(x-6)-2$ is not solvable by radicals.
 
+If you accept the fact the simple of the minimal order is isomorphic to $S_5$, then you have the following corollary.
+
+\begin{corollary}
+	Let $L/K$ be a separable field extension of degree $\leq 4$. Then $L/K$ is solvable by radicals.
+\end{corollary}
+
 So far, we just considered the case where the characteristic of the ambient field is 0. In order to approach the theory of characteristic $p$, we need to modify the definitions a bit in the sprit of Artin-Schreier Theorem.
 
 \begin{definition}
@@ -2584,16 +2590,15 @@ So far, we just considered the case where the characteristic of the ambient fiel
 	Then $L/K$ is necessarily separable.
 \end{definition}
 
-If you accept the fact the simple of the minimal order is isomorphic to $S_4$, then you have the following corollary.
+\begin{proposition}
+	Any abelian extension is solvable by radicals.
+\end{proposition}
 
-\begin{corollary}
-	Let $L/K$ be a separable field extension of degree $\leq 4$. Then $L/K$ is solvable by radicals.
-\end{corollary}
 
 \section{Generic and Symmetric Polynomials}
 When we say quintics are not solvable by radicals, what do we really mean? It can be said more formally that the generic equation of degree $n$ over the rational function field $K=k(c_1,c_2,\dots,c_n)$ is not solvable. We shall give formal definitions.
 
-We fix a field $k$ and consider over it the field $L$ of rational functions in many variables (indeterminates) $T_1,\dots,T_n$, namely, 
+We fix a field $k$ and consider over it the field $L$ of rational functions in many variables (indeterminates) $T_1,\dots,T_n$, namely,
 \[L=k(T_1,\dots,T_n)=\mbox{Frac}(k[T_1,\dots,T_n]).\]
 
 Every permutation $\pi\in S_n$ defines an automorphism of $L$ in a canonical way: $$k(T_1,\dots,T_n)\to k(T_1,\dots,T_n),~\frac{g(T_1,\dots,T_n)}{h(T_1,\dots,T_n)}\mapsto \frac{g(T_{\pi(1)},\dots,T_{\pi(n)})}{h(T_{\pi(1)},\dots,T_{\pi(n)})}.$$
@@ -2601,19 +2606,19 @@ The corresponding fixed field $K=L^{S_n}$ is referred as the field of \emph{symm
 
 Now we choose a variable $X$ and consider the polynomial
 $$f(X)=\prod_{i=1}^n(X-T_i)=\sum_{j=0}^n (-1)^js_j(T_1,\dots,T_n)X^{n-j}\in k[T_1,\dots,T_n][x],$$
-where $s_j$ is obtained by expanding the product of $X-T_i$ and by collecting coefficients of $X^{n-j}$. $s_j$ is called bt $j$-th \emph{elementary symmetric polynomial} in $T_1,\dots,T_n$, more explicitly, they are given by 
+where $s_j$ is obtained by expanding the product of $X-T_i$ and by collecting coefficients of $X^{n-j}$. $s_j$ is called bt $j$-th \emph{elementary symmetric polynomial} in $T_1,\dots,T_n$, more explicitly, they are given by
 \begin{align*}
-	s_0&=1,\\
-	s_1&=T_1+\dots+T_n,\\
-	s_2&= \sum_{1\leq i<j\leq n} T_iT_j\\
-	& ...\\
-	s_n&=T_1\dots T_n.
+	s_0 & =1,                             \\
+	s_1 & =T_1+\dots+T_n,                 \\
+	s_2 & = \sum_{1\leq i<j\leq n} T_iT_j \\
+	    & ...                             \\
+	s_n & =T_1\dots T_n.
 \end{align*}
 
 Regarding $f$ as an element in $L[X]$, we see that it is invariant under $S_n$ and so its coefficients are also invariant. Therefore, we have $k(s_1,\dots,s_n)\subset K$. Similarly, by treating $f$ as a polynomial in $k(s_1,\dots,s_n)[X]$, we see that $L$ is the splitting field of $f$ over $k(s_1,\dots,s_n)$. Moreover, since the Galois group is transitive, $f$ is irreducible.
 
 \begin{definition}
-	Let $L/K$ be a field extension. A system $(x_1,\dots, x_n)$ of elements in $L$ is called \emph{algebraically independent} or \emph{transcendental} over $K$ if every equation $f(x_1,\dots, x_n) = 0$ for a polynomial $f \in K[X_1,\dots, X_n]$ implies $f = 0$, namely, if the evaluation map  
+	Let $L/K$ be a field extension. A system $(x_1,\dots, x_n)$ of elements in $L$ is called \emph{algebraically independent} or \emph{transcendental} over $K$ if every equation $f(x_1,\dots, x_n) = 0$ for a polynomial $f \in K[X_1,\dots, X_n]$ implies $f = 0$, namely, if the evaluation map
 	$$K[X_1,\dots, X_n]\to L,\quad f(X_1,\dots,X_n)\mapsto f(x_1,\dots, x_n)$$
 	is injective.
 \end{definition}
@@ -2627,13 +2632,13 @@ Regarding $f$ as an element in $L[X]$, we see that it is invariant under $S_n$ a
 \end{theorem}
 
 \begin{proof}
-	Observe that $[L:K]=|S_n|=n!$. But $L$ is the splitting field of $f=\prod(X-T_i)$ over $k(s_1,\dots,s_n)$ hence $[L:k(s_1,\dots,s_n)]\leq n!$. With $k(s_1,\dots,s_n)\subset K$, we indeed have $K=k(s_1,\dots,s_n)$. 
+	Observe that $[L:K]=|S_n|=n!$. But $L$ is the splitting field of $f=\prod(X-T_i)$ over $k(s_1,\dots,s_n)$ hence $[L:k(s_1,\dots,s_n)]\leq n!$. With $k(s_1,\dots,s_n)\subset K$, we indeed have $K=k(s_1,\dots,s_n)$.
 
-	To see the elementary polynomials are algebraically independent, consider $k(S_1,\dots,S_n)$ of all rational functions in $n$ variables over $k$. With the convention $S_0=1$, we consider the function $$\tilde{f}(X)=\sum_{j=0}^n(-1)^jS_j X^{n-j}\in k(S_1,\dots,S_n)[X]$$ as well as its splitting field $\tilde{L}$. Let $t_1,\dots,t_n$ be all the roots of $\tilde{f}$ in $\tilde{L}$ allowing repetitions. Then we see that $$\tilde{L}=k(S_1,\dots,S_n)(t_1,\dots,t_n)=k(t_1,\dots,t_n),$$ since $S_1,\dots,S_n$ can be written as elementary symmetric functions in $t_1,\dots,t_n$ and so they belong to $k(t_1,\dots,t_n)$. Now consider the evaluation map 
-	\[k[T_1,\dots,T_n]\to k[t_1,\dots,t_n], f(T_1,\dots,T_n)\mapsto f(t_1,\dots,t_n).\] It maps elementary functions in $T_1,\dots,T_n$ to elementary function in $t_1,\dots,t_n$ and thus restricts to a homomorphism $$k[s_1,\dots,s_n]\to k[S_1,\dots,S_n], f(s_1,\dots,s_n)\to f(S_1,\dots,S_n).$$ Since $S_1,\dots,S_n$ are variables, this map is necessarily injective and therefore an isomorphism. In particular, $s_1,\dots,s_n$ may be viewed as variables and hence are algebraically independent over $k$. 
+	To see the elementary polynomials are algebraically independent, consider $k(S_1,\dots,S_n)$ of all rational functions in $n$ variables over $k$. With the convention $S_0=1$, we consider the function $$\tilde{f}(X)=\sum_{j=0}^n(-1)^jS_j X^{n-j}\in k(S_1,\dots,S_n)[X]$$ as well as its splitting field $\tilde{L}$. Let $t_1,\dots,t_n$ be all the roots of $\tilde{f}$ in $\tilde{L}$ allowing repetitions. Then we see that $$\tilde{L}=k(S_1,\dots,S_n)(t_1,\dots,t_n)=k(t_1,\dots,t_n),$$ since $S_1,\dots,S_n$ can be written as elementary symmetric functions in $t_1,\dots,t_n$ and so they belong to $k(t_1,\dots,t_n)$. Now consider the evaluation map
+	\[k[T_1,\dots,T_n]\to k[t_1,\dots,t_n], f(T_1,\dots,T_n)\mapsto f(t_1,\dots,t_n).\] It maps elementary functions in $T_1,\dots,T_n$ to elementary function in $t_1,\dots,t_n$ and thus restricts to a homomorphism $$k[s_1,\dots,s_n]\to k[S_1,\dots,S_n], f(s_1,\dots,s_n)\to f(S_1,\dots,S_n).$$ Since $S_1,\dots,S_n$ are variables, this map is necessarily injective and therefore an isomorphism. In particular, $s_1,\dots,s_n$ may be viewed as variables and hence are algebraically independent over $k$.
 \end{proof}
 
-The idea we have just employed, namely to make use of generic polynomials, i.e., of polynomials with variables as coefficients, leads immediately to the generic equation of degree $n$. Indeed, fixing variables $S_1, \dots, S_n$, the polynomial 
+The idea we have just employed, namely to make use of generic polynomials, i.e., of polynomials with variables as coefficients, leads immediately to the generic equation of degree $n$. Indeed, fixing variables $S_1, \dots, S_n$, the polynomial
 $$p(X) = X^n + S_1X^{n-1} + \dots + S_n \in k(S_1,\dots, S_n)[X]$$
 is referred to as the \emph{generic polynomial} (aka \emph{general polynomial}) of degree $n$ over $k$. The corresponding equation $p(x) = 0$ is called the \emph{generic equation} (aka \emph{general equation}) of degree $n$. We want to determine its Galois group by showing that we may identify $p(X)$ up to isomorphism with the polynomial $f(X)$ discussed above.
 
@@ -2651,7 +2656,7 @@ is referred to as the \emph{generic polynomial} (aka \emph{general polynomial}) 
 Now it makes more sense to say quintic, the generic polynomial of degree 5, is irreducible.
 
 
-If we restrict the automorphism of $k(T_1,\dots,T_n)$ given by $S_n$ to the subring $k[T_1,\dots,T]$, then just as the case of rational functions, we get the symmetric polynomial $f\in k[T_1,\dots,T_n]$, which is fixed by all permutations $\pi\in S_n$.
+If we restrict the automorphism of $k(T_1,\dots,T_n)$ given by $S_n$ to the subring $k[T_1,\dots,T_n]$, then just as the case of rational functions, we get the symmetric polynomial $f\in k[T_1,\dots,T_n]$, which is fixed by all permutations $\pi\in S_n$.
 
 \begin{theorem}[Fundamental Theorem on Symmetric Polynomials]
 	For every symmetric polynomial $f\in k[T_1,\dots,T_n]$, there is a unique polynomial $g\in k[S_1,\dots,S_n]$ in $n$ variables $S_1,\dots,S_n$ such that $f=g(s_1,\dots,s_n)$.
@@ -2661,9 +2666,9 @@ If we restrict the automorphism of $k(T_1,\dots,T_n)$ given by $S_n$ to the subr
 	Uniqueness follows directly from the algebraic independence of the polynomials $s_1,\dots,s_n$.
 
 
-	Consider the lexicographic order on $\NN^n$, where $v\preceq v'$ for $v,v'\in \NN^n$ if there is an $m$ such that $v_m<v'_m$ and $v_i=v_i'$ for $1\leq i<m$. Then for any nontrivial polynomial $f=\sum_{v} c_vT^v\in k[T_1,\dots, T_n]$, then set $\{v\in \NN^n: c_v\not=0\}$ is finite and has a largest element. Such an element is unique and called the lexicographic degree of $f$ denoted by $\lex(f)$. Now let $f= \sum c_v T^v$ be a symmetric polynomial with lexicographic degree $\lex(f)=u=(u_1,\dots,u_n)$. Then we have $u_1\geq u_2\geq \dots\geq u_n$ since $f$ is symmetric. Furthermore, $$f_1=c_u s_1^{u_1-u_2} s_2^{u_3-u_2}\dots s_n^{u_n}\in k[s_1,\dots,s_n]$$ is a symmetric polynomial of total degree $\sum u_i$ and has lexicographic degree $u$. This implies 
+	Consider the lexicographic order on $\NN^n$, where $v\preceq v'$ for $v,v'\in \NN^n$ if there is an $m$ such that $v_m<v'_m$ and $v_i=v_i'$ for $1\leq i<m$. Then for any nontrivial polynomial $f=\sum_{v} c_vT^v\in k[T_1,\dots, T_n]$, then set $\{v\in \NN^n: c_v\not=0\}$ is finite and has a largest element. Such an element is unique and called the lexicographic degree of $f$ denoted by $\lex(f)$. Now let $f= \sum c_v T^v$ be a symmetric polynomial with lexicographic degree $\lex(f)=u=(u_1,\dots,u_n)$. Then we have $u_1\geq u_2\geq \dots\geq u_n$ since $f$ is symmetric. Furthermore, $$f_1=c_u s_1^{u_1-u_2} s_2^{u_2-u_3}\dots s_n^{u_n}\in k[s_1,\dots,s_n]$$ is a symmetric polynomial of total degree $\sum u_i$ and has lexicographic degree $u$. This implies
 	$$\lex(f-f_1)<\lex(f),\quad \deg(f-f_1)\leq \deg(f).$$
-	If $f$ is different from $f_1$, we can repeat this step once more, replacing $f$ by $f-f_1$. Continuing this wat, we end uup with a sequence $f_1,\dots \in k[s_1,\dots,s_n]$ such that the lexicographic degree of the sequence 
+	If $f$ is different from $f_1$, we can repeat this step once more, replacing $f$ by $f-f_1$. Continuing this wat, we end uup with a sequence $f_1,\dots \in k[s_1,\dots,s_n]$ such that the lexicographic degree of the sequence
 	$$f,f-f_1,f-f_1-f_2,\dots$$ decreases step by step, while in the same time, th total degree is bounded by $\deg(f)$. Therefore, the sequence will end after finitely many steps with the zero polynomial, thereby yielding a representation of $f$ as a polynomial in the elementary symmetric polynomials $s_1,\dots,s_n$.
 \end{proof}
 
@@ -2673,10 +2678,10 @@ The proof of this theorem yields a very effective principle to determine for a g
 \begin{example}
 	In three variables, treating $X_1,X_2,X_3$ as $X,Y,Z$, let $f(X,Y,Z)=X^4+Y^4+Z^4$. We want to write $f$ as a polynomial  in the elementary symmetric polynomials in $X,Y, Z$, which are $$s_1=X+Y+Z, s_2=XY+XZ+YZ, s_3=XYZ.$$
 	The leading term of $f$ is $X^4$ with lexicographic degree $u=(4,0,0)$. So we subtract \begin{align*}
-		f-s_1^4= f-(X+Y+Z)^4 = & -4X^3Y-4X^3Z-6X^2Y^2-12X^2YZ-6X^2Z^2-4XY^3 \\
-		 &-12XY^2Z -12XYZ^2-4XZ^3-6Y^3Z-6Y^2Z^2-6YZ^3.
+		f-s_1^4= f-(X+Y+Z)^4 = & -4X^3Y-4X^3Z-6X^2Y^2-12X^2YZ-6X^2Z^2-4XY^3   \\
+		                       & -12XY^2Z -12XYZ^2-4XZ^3-6Y^3Z-6Y^2Z^2-6YZ^3.
 	\end{align*}
-	This has leading term $-4X^3Y$ with lexicographic degree $(3,1,0)$. So we do the subtraction again: $$f-s_1^4+4s_1^2s_2=2X^2Y^2+8X^2Y^2Z+2X^2Z^2+8XY^2Z+8XY^2Z+8XYZ^2+2Y^2Z^2.$$
+	This has leading term $-4X^3Y$ with lexicographic degree $(3,1,0)$. So we do the subtraction again: $$f-s_1^4+4s_1^2s_2=2X^2Y^2+8X^2YZ+2X^2Z^2+8XY^2Z+8XY^2Z+8XYZ^2+2Y^2Z^2.$$
 	This has leading term $2X^2Y^2$ with lexicographic order $(2,2,0)$. We do the subtraction one more time:
 	$$f-s_1^4+4s_1^2s_2-2s_2^2=4X^2YZ+4XY^2Z+4XYZ^2.$$
 	This had leading term $4X^2YZ$ with lexicographic order $(2,1,1)$.
@@ -2686,13 +2691,13 @@ The proof of this theorem yields a very effective principle to determine for a g
 \end{example}
 
 \begin{corollary}
-	Let $L/K$ be a field extension and $f(x)\in K[x]$ factor as 
-	$$f(x)=(x-a_1)\dots(x-x_n)\in L[x].$$
-	Then for all positive integer $r$, we have 
+	Let $L/K$ be a field extension and $f(x)\in K[x]$ factor as
+	$$f(x)=(x-a_1)\dots(x-a_n)\in L[x].$$
+	Then for all positive integer $r$, we have
 	$$(x-a_1^r)\dots(x-a_n^r)\in K[x].$$
 \end{corollary}
 
-If time permits, we shall discuss about \hyperlink{http://buzzard.ups.edu/courses/2016spring/projects/woody-resultants-ups-434-2016.pdf}{resultant}. I will not bother to reproduce the materials here. 
+If time permits, we shall discuss about \hyperlink{http://buzzard.ups.edu/courses/2016spring/projects/woody-resultants-ups-434-2016.pdf}{resultant}. I will not bother to reproduce the materials here.
 
 \chapter*{Week 11}
 \setcounter{chapter}{11}
@@ -2705,36 +2710,46 @@ We need some preliminaries before going into infinite Galois extension.
 	A \emph{topological group} is a group $G$ endowed with a topology such that the multiplication, $G\times G\to G,(x,y)\mapsto xy$, and the inverse map, $G\to G, x\mapsto x^{-1}$, are continuous.
 \end{definition}
 
+\begin{remark}
+	Munkres also puts the $T_1$-axiom in the definition.
+\end{remark}
+
 \begin{example}
 	$\qq$ viewed as an additive group with usual topology is a topological group.
 	In particular, any Lie group is a topological group.
 \end{example}
 
 \begin{lemma}
-	For every $g\in G$, the left multiplication $l_g: G\to G, x\to gx$ is continuous.
+	For every $g\in G$, the left multiplication $l_g: G\to G, x\to gx$ is continuous. If $U$ is an open (resp. closed) subset, then the coset $gU$ is also open (rep. closed) for any $g\in G$.
 \end{lemma}
 
 \begin{proof}
 	Consider the composition $$G\to G\times G \to G, x\mapsto (g,x)\mapsto gx.$$
 	The composition, literally $l_g$, is continuous as it is a composition of two continuous map.
+
+	Each coset $gU$ is open (resp. closed) because $l_{g^{-1}}: G\to G, x\mapsto g^{-1}x$ is continuous and $gU$ is the per-image of $U$ and so is open (resp. closed).
 \end{proof}
 
 Before we dig into the properties of topological groups, we see they have quite nice properties fitting one's intuitions quite well. For example, we have the following.
 
-\begin{lemma}
+\begin{proposition}
 	Let $G$ be a topological group, and let $H$ be a subgroup.
 	\begin{enumerate}
+		\item If $H$ contains a nonempty open subset, then $H$ is open.
 		\item If $H$ is open, then $H$ is also closed.
 		\item If $H$ is closed and of finite index, then it is also open.
 		\item If we further require $G$ to be compact, then $H$ is open if and only if $H$ is closed and of finite index.
+		\item $H$ is also a topological group under subspace topology.
 	\end{enumerate}
-\end{lemma}
+\end{proposition}
 \begin{proof}
-	The main idea here is to note we get partition of $G$ by the cosets of $H$.
+	The main idea of (2) (3) and (4) here is to note we get partition of $G$ by the cosets of $H$.
 	\begin{enumerate}
-		\item The group $G$ is a disjoint union of (left) cosets of $H$, namely, $G=\sqcup_{g} gH$. Each coset $gH$ is open because $l_{g^{-1}}: G\to G, x\mapsto g^{-1}x$ is continuous and $gH$ is the per-image of $H$ and so is open. Since any union of open sets is open, $\sqcup_{g\not= e}gH$ is open and its compliment $H=G\setminus (\sqcup_{g\not= e}gH)$ is closed.
+		\item Say $U$ is open and contained in $H$, then $H=\cup_{h\in H} hU$ is open.
+		\item The group $G$ is a disjoint union of (left) cosets of $H$, namely, $G=\sqcup_{g} gH$. Each coset $gH$ is open by the lemma above. Since any union of open sets is open, $\sqcup_{g\not= e}gH$ is open and its compliment $H=G\setminus (\sqcup_{g\not= e}gH)$ is closed.
 		\item Any finite union of closed sets are closed. We repeat the proof as part (1). Since $H$ is of finite index, the compliment of $H$ is a finite union, and so $H$is  open.
 		\item It remains to prove that if $G$ is compact and $H$ is open, then $H$ is of finite index. Indeed, $G$ is covered by the cosets of $H$, which are all open. By the compactness of $G$, it is covered by finitely many of them and so $G$ is a finite disjoint union of cosets $gH$ and $H$ is of finite index.
+		\item $H$ is closed under product and inverse and the statement is clear about $H$.
 	\end{enumerate}
 \end{proof}
 
@@ -2810,12 +2825,117 @@ Since a continuous bijection from a compact space to a Hausdorff space is closed
 	\begin{enumerate}
 		\item Topology is discrete if and only if every singleton is open. If $\{e\}$ is open, then so is every $\{g\}=g\{e\}$.
 		\item If $G$ is Hausdorff, then every singleton is closed, so in particular, $\{e\}$ is closed.
-		Conversely, suppose $\{e\}$ is closed. Then so is every singleton $\{g\}$. To show that $G$ is Hausdorff, it suffices to show that $e$ and $g$ can be separated by open sets for any $g\in G, g\not=e$ due to the homogeneity.
-		First we show that for a neighbourhood $\mathcal{N}$ of $e$ in $G$ there is a ``symmetric'' neighbourhood $U$ of $e$ such that $U=U^{-1}$ and $UU\subset \mathcal{N}$. Since the multiplication $m: G\times G\to G$ is continuous, there are open sets $U_1, U_2$ around the identity such that $m(U_1\times U_2)\subset \mathcal{N}$
- 	\end{enumerate}
+
+
+		      Conversely, suppose $\{e\}$ is closed. Then so is every singleton $\{g\}$. To show that $G$ is Hausdorff, it suffices to show that $e$ and $g$ can be separated by open sets for any $g\in G, g\not=e$ due to the homogeneity.
+		      First we show that for a neighbourhood $\mathcal{N}$ of $e$ in $G$ there is a ``symmetric'' neighbourhood $U$ of $e$ such that $U=U^{-1}$ and $UU\subset \mathcal{N}$. Since the multiplication $m: G\times G\to G$ is continuous, there are open sets $U_1, U_2$ around the identity such that $m(U_1\times U_2)\subset \mathcal{N}$. Let $U'=U_1\cap U_2$, which is also an open neighbourhood of $e$, so $m(U'\times U')\subset \mathcal{N}$. Set $U=U'\cap(U')^{-1}$ and $m(U\times U)=UU\subset U'U'\subset \mathcal{N}$.
+
+
+		      Since $G\setminus\{g\}$ is an open neighbourhood of $e$, we can obtain an open set $U$ containing $e$ such that $U=U^{-1}$ and $UU\subset U\setminus \{g\}$. Then we have $U\cap gU=\emptyset$ because if $u=gv$ for some $u,v\in U$, then $g=uv^{-1}\in UU^{-1} \subset G\setminus\{g\}$, which is a contradiction. Since $e\in U$ and $g\in gU$, $U$ and $gU$ separates $e$ and $g$.
+	\end{enumerate}
 \end{proof}
 
+\begin{corollary}
+	If $f:G\to H$ is a continuous group homomorphism of topological groups and $H$ is Hausdorff, then $\ker(f)$ is a closed normal subgroup of $G$.
+\end{corollary}
+
+\begin{corollary}
+	Let $G$ be a topological group and $N$ a normal subgroup. The $G/N$ with the quotient topology is discrete if and only if $N$ is open and $G/N$ is Hausdorff if and only if $N$ is closed.
+\end{corollary}
+
+\begin{proof}
+	The identify element in $G/N$ is the coset $H$. Hence $\{H\}$ is open (resp. closed) if and only if $H$ is open (resp. closed) from the definition of quotient map.
+\end{proof}
+
+\begin{theorem}
+	In a Hausdorff topological group, every discrete subgroup is closed.
+\end{theorem}
+
+\begin{proof}
+	Let $H$ be a discrete subgroup of a Hausdorff topological group $G$. We show that $G\setminus H$ is open. More precisely, pick $g\notin H$, we want to find an open neighbourhood of $g$ which is disjoint from $H$.
+
+	By the discreteness of $H$, there is an open set $N$ of $G$ such that $N\cap H=\{e\}$. Then there is a symmetric neighbourhood $U$ of $e$ such that $UU\subset N$.
+
+	Suppose $gU$ meets $H$ twice: $gu_1=h_1$ and $gu_2=h_2$. Then $h_1^{-1}h_2=u_1^{-1}u_2\in H\cap UU \subset H\cap N=\{e\}$ and so $h_1=h_2$ and $u_1=u_2$. Thus $gU\cap H$ has cardinality at most 1. If $gU\cap H=\emptyset$, then $gU$ is the desired neighbourhood of $g$ that is disjoint from $H$. If $gU\cap H\not=\emptyset$, then the intersection has size 1, say $gU\cap H=\{h\}$. Since $G$ is Hausdorff and singletons are closed, then $gU\setminus\{h\}$ is the desired open neighbourhood of $g$.
+\end{proof}
+
+\begin{remark}
+	$\{1,1/2,1/3,\dots\}$ is discrete not closed in $\RR$. It is not a subgroup so the theorem above does not apply.
+\end{remark}
+
+It is true more generally that in a Hausdorff topological group every locally compact subgroup is closed.
+
+\begin{corollary}
+	If $N$ is a discrete normal subgroup of a Hausdorff topological group $G$, then $G/N$ is Hausdorff in the quotient topology.
+\end{corollary}
+
+\begin{theorem}
+	If $G$ is a topological group and $N$ is a normal subgroup then the quotient map $G\to G/N$ is an open map. If $N$ is compact then $G\to G/N$ is also a closed map.
+\end{theorem}
+
+\begin{proof}
+	Let $U$ be open in $G$ and $\pi: G\to G/N$ be the canonical quotient map. The image $\pi(U)$ is open, by definition, if $\pi^{-1}(\pi(U))$ is open. Note $\pi^{-1}(\pi(U))=\cup_{n\in N}Un$ is open since it is union of open sets.
+\end{proof}
+
+\begin{corollary}
+	With same assumption as the theorem above, $G/N$ endowed with the quotient topology is a topological group.
+\end{corollary}
+\begin{proof}
+	We take the short way by showing that $\tilde{m}: G/N \times G/N, (xN,yN)\mapsto xy^{-1}N$ is continuous. Let $U\subset G/N$ be a nonempty and open subset. By the definition of quotient map, $\pi^{-1}(U)$ is empty. Since $U$ is nonempty, $uv^{-1}N\in U$ for some $u,v\in G$ and then $uv^{-1}\in\pi^{-1}(U)$. Hence we can find open neighbourhoods $C,D$ of $u$ and $v$ respectively, such that $m(C\times D)\subset \pi^{-1}(U)$. Since $\pi$ is an open map, $\pi(C)=CN$ and $\pi(D)=DN$ are open neighbourhoods of $uN$ and $vN$ such that $\tilde{CN\times DN}\subset U$.
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be a Hausdorff topological group and $H$ be a discrete subgroup. Let $N$ be a normal subgroup of $G$ contained in $H$. Then $H/N$ is discrete in $G/N$.
+\end{theorem}
+
+\begin{proof}
+	The quotient map is open.
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be a Hausdorff topological group and $N$ be a closed normal subgroup. Then $G$ is compact if and only if $N$ and $G/N$ are compact.
+\end{theorem}
+
 \section{Profinite Groups}
+
+\begin{definition}
+	A \emph{directed set} is a partially ordered set $I$ such that for any $i,j\in I$ we can find $k\in I$ such that $i\leq k$ and $j\leq k$.
+\end{definition}
+
+\begin{definition}
+	An \emph{inverse system} $(X_i, \varphi_{ij})$ indexed by a directed set $I$ consisting of a family $X_i$ of topological spaces (resp. groups, $R$-modules and etc) and a family $\varphi_{ij}: X_j\to X_i$ of continuous maps (resp. homomorphisms, $R$-maps and etc) such that $\varphi_{ii}$ is the identity map and whenever $i\leq j\leq k$ we have $\varphi_{ij}\varphi_{jk}=\varphi_{ik}$
+\end{definition}
+
+Sets for which no other topology is specified will be regarded with discrete topology.
+
+\begin{example}
+	Let $I=\NN$ with the usual order and let $X_i$ be finite sets. Let $\phi_{i,i+1}$ be an arbitrary map for each $i$ and define $\phi_{ii}=id_{X_i}$ and $\phi_{ij}=\phi_{i,i+1}\dots\phi_{j-1,j}$. Then $(X_i,\phi_{ij})$ us an inverse system of finite sets.
+\end{example}
+
+\begin{definition}
+	Let $(X_i,\varphi_{ij})$ be an inverse system of topological spaces (resp. groups, $R$-modules and etc) and let $Y$ be a topological space (resp. group, $R$-module and etc). A family $\psi:Y\to X_i$ of continuous maps (resp. homomorphisms, $R$-maps and etc) is \emph{compatible} if $\varphi_{ij}\psi_j=\psi_i$ whenever $i\leq j$. In other words, the following diagram commutes whenever $i\leq j$.
+	$$\xymatrix{
+		& Y\ar[dl]_{\psi_j}\ar[dr]^{\psi_i} &    \\
+		X_j\ar[rr]^{i\leq j}_{\varphi_{ij}}& & X_i }
+	$$
+
+
+	An \emph{inverse limit} $(X,\varphi_i)$ of an inverse family $(X_i,\varphi_{ij})$ is a topological space (resp. groups, $R$-modules and etc) $X$ together with a compatible family $\varphi_i: X\to X_i$ of continuous maps (resp. groups, $R$-modules and etc) with the following universal property: whenever $\psi:Y\to X_i$ is a compatible family of continuous maps resp. homomorphisms, $R$-maps and etc) from a topological space $Y$ (resp. group, $R$-module and etc), there is a unique continuous map (resp. homomorphism, $R$-map and etc) $\psi: Y\to X$ such that $\varphi_i\psi =\psi_i$ for each $i$.  In other words, the following diagram commutes.
+	$$\xymatrix{
+		& Y\ar[dl]_{\psi}\ar[dr]^{\psi_i} &    \\
+		X\ar[rr]_{\varphi_{i}}& & X_i }
+	$$
+\end{definition}
+
+The inverse limit is unique in the following sense.
+
+\begin{proposition}
+	Let $(X_i,\phi_{ij})$ be an inverse system indexed by $I$.
+	\begin{enumerate}
+		\item 
+	\end{enumerate}
+\end{proposition}
+
 
 \chapter*{Week 12}
 \setcounter{chapter}{11}

@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{mathtools}
 \usepackage[all]{xy}
-\usepackage[margin=1in,footskip=0.25in]{geometry}
+\usepackage[margin=0.8in,footskip=0.25in]{geometry}
 \usepackage[colorlinks=true,
             linkcolor=red,
             urlcolor=blue,
@@ -2720,12 +2720,12 @@ We need some preliminaries before going into infinite Galois extension.
 \end{example}
 
 \begin{lemma}
-	For every $g\in G$, the left multiplication $l_g: G\to G, x\to gx$ is continuous. If $U$ is an open (resp. closed) subset, then the coset $gU$ is also open (rep. closed) for any $g\in G$.
+	For every $g\in G$, the left multiplication $l_g: G\to G, x\to gx$ is a homeomorphism. If $U$ is an open (resp. closed) subset, then the coset $gU$ is also open (resp. closed) for any $g\in G$.
 \end{lemma}
 
 \begin{proof}
 	Consider the composition $$G\to G\times G \to G, x\mapsto (g,x)\mapsto gx.$$
-	The composition, literally $l_g$, is continuous as it is a composition of two continuous map.
+	The composition, literally $l_g$, is continuous as it is a composition of two continuous map. And its inverse is continuous by the same reason.
 
 	Each coset $gU$ is open (resp. closed) because $l_{g^{-1}}: G\to G, x\mapsto g^{-1}x$ is continuous and $gU$ is the per-image of $U$ and so is open (resp. closed).
 \end{proof}
@@ -2812,9 +2812,10 @@ group isomorphism (that is, the inverse map is automatically a homomorphism), in
 
 Since a continuous bijection from a compact space to a Hausdorff space is closed, when we are dealing with compact Hausdorff topological groups, the subtlety above does not occur: a bijective continuous homomorphism $G \to H$ from a compact topological group to a Hausdorff topological group is a homeomorphism and thus is an isomorphism of topological groups.
 
-\begin{theorem}
+\begin{theorem}\label{26.9}
 	Let $G$ be a topological group with identity $e$.
 	\begin{enumerate}
+		\item If $\mathcal{N}$ is a neighborhood of $e$, then we can find a symmetric open neighborhood $U$ of $e$ such that $UU^{-1}\subset \mathcal{N}$ and $U=U^{-1}$.
 		\item The topology on $G$ is discrete if and only if $\{e\}$ is open.
 		\item The topology on $G$ is Hausdorff if and only if $\{e\}$ is closed.
 	\end{enumerate}
@@ -2823,15 +2824,11 @@ Since a continuous bijection from a compact space to a Hausdorff space is closed
 \begin{proof}
 	One direction is clearly for both statements.
 	\begin{enumerate}
+		\item We want to show that for a neighbourhood $\mathcal{N}$ of $e$ in $G$ there is a ``symmetric'' neighbourhood $U$ of $e$ such that $U=U^{-1}$ and $UU\subset \mathcal{N}$. Since the multiplication $m: G\times G\to G$ is continuous, there are open sets $U_1, U_2$ around the identity such that $m(U_1\times U_2)\subset \mathcal{N}$. Let $U'=U_1\cap U_2$, which is also an open neighbourhood of $e$, so $m(U'\times U')\subset \mathcal{N}$. Set $U=U'\cap(U')^{-1}$ and $m(U\times U)=UU\subset U'U'\subset \mathcal{N}$.
 		\item Topology is discrete if and only if every singleton is open. If $\{e\}$ is open, then so is every $\{g\}=g\{e\}$.
 		\item If $G$ is Hausdorff, then every singleton is closed, so in particular, $\{e\}$ is closed.
 
-
-		      Conversely, suppose $\{e\}$ is closed. Then so is every singleton $\{g\}$. To show that $G$ is Hausdorff, it suffices to show that $e$ and $g$ can be separated by open sets for any $g\in G, g\not=e$ due to the homogeneity.
-		      First we show that for a neighbourhood $\mathcal{N}$ of $e$ in $G$ there is a ``symmetric'' neighbourhood $U$ of $e$ such that $U=U^{-1}$ and $UU\subset \mathcal{N}$. Since the multiplication $m: G\times G\to G$ is continuous, there are open sets $U_1, U_2$ around the identity such that $m(U_1\times U_2)\subset \mathcal{N}$. Let $U'=U_1\cap U_2$, which is also an open neighbourhood of $e$, so $m(U'\times U')\subset \mathcal{N}$. Set $U=U'\cap(U')^{-1}$ and $m(U\times U)=UU\subset U'U'\subset \mathcal{N}$.
-
-
-		      Since $G\setminus\{g\}$ is an open neighbourhood of $e$, we can obtain an open set $U$ containing $e$ such that $U=U^{-1}$ and $UU\subset U\setminus \{g\}$. Then we have $U\cap gU=\emptyset$ because if $u=gv$ for some $u,v\in U$, then $g=uv^{-1}\in UU^{-1} \subset G\setminus\{g\}$, which is a contradiction. Since $e\in U$ and $g\in gU$, $U$ and $gU$ separates $e$ and $g$.
+		      Conversely, suppose $\{e\}$ is closed. Then so is every singleton $\{g\}$. To show that $G$ is Hausdorff, it suffices to show that $e$ and $g$ can be separated by open sets for any $g\in G, g\not=e$ due to the homogeneity. Since $G\setminus\{g\}$ is an open neighbourhood of $e$, we can obtain an open set $U$ containing $e$ such that $U=U^{-1}$ and $UU\subset U\setminus \{g\}$ by part (1). Then we have $U\cap gU=\emptyset$ because if $u=gv$ for some $u,v\in U$, then $g=uv^{-1}\in UU^{-1} \subset G\setminus\{g\}$, which is a contradiction. Since $e\in U$ and $g\in gU$, $U$ and $gU$ separates $e$ and $g$.
 	\end{enumerate}
 \end{proof}
 
@@ -2869,12 +2866,14 @@ It is true more generally that in a Hausdorff topological group every locally co
 	If $N$ is a discrete normal subgroup of a Hausdorff topological group $G$, then $G/N$ is Hausdorff in the quotient topology.
 \end{corollary}
 
-\begin{theorem}
+\begin{theorem}\label{26.14}
 	If $G$ is a topological group and $N$ is a normal subgroup then the quotient map $G\to G/N$ is an open map. If $N$ is compact then $G\to G/N$ is also a closed map.
 \end{theorem}
 
 \begin{proof}
 	Let $U$ be open in $G$ and $\pi: G\to G/N$ be the canonical quotient map. The image $\pi(U)$ is open, by definition, if $\pi^{-1}(\pi(U))$ is open. Note $\pi^{-1}(\pi(U))=\cup_{n\in N}Un$ is open since it is union of open sets.
+
+	Now let $N$ be compact and $C$ be closed in $G$. Then $\pi^{-1}(\pi(C))=\cap_{n\in N}Cn=CN$. We want to show $CN$ is closed. Now let $g\notin CN$ then $C^{-1}g\cap N=\emptyset$. If we can find an open neighbourhood $U$ of $e$ such that $C^{-1}g \cap NU=\emptyset$, which just means $gU^{-1}\cap CN=\emptyset$, then $gU^{-1}$ is an open neighbourhood of $g$ disjoint from $CN$ and so $CN$ is closed. So our task is to find such a $U$. Note that $C^{-1}g$ is closed. Write $A=C^{-1}g$ be closed and $B=N$ be compact with $A\cap B=\emptyset$. Due to the closeness of $A$, for each $x_i\in B$ we can find an open neighbourhood $V_i$ of $e$ such that $x_iV_i\cap A=\emptyset$. Moreover, we can assume $V_i=V_i^{-1}$ and $V_iV_i= V_i$ by Theorem \ref{26.9}. Since $B$ is covered by $V_i$, by the compactness of $B$, we can find $x_1V_1,\dots,x_nV_n$ such that $B\subset \cup_{i=1}^n x_iV_i$. Let $V=\cap_{i=1}^n V_i$, then $V$ is open and $V_iV=V_i$ since $V\subset V_i$ and $V_iV_i=V_i$. We then have $BV \subset (\cup_{i=1}^n x_iV_i)V= \cup_{i=1}^n x_iV_iV = \cup_{i=1}^n x_iV_i$ and hence $BV$ is disjoint from $C$ and we are done.
 \end{proof}
 
 \begin{corollary}
@@ -2895,6 +2894,12 @@ It is true more generally that in a Hausdorff topological group every locally co
 \begin{theorem}
 	Let $G$ be a Hausdorff topological group and $N$ be a closed normal subgroup. Then $G$ is compact if and only if $N$ and $G/N$ are compact.
 \end{theorem}
+
+\begin{proof}
+	Since closed subspaces are continuous images of compact spaces are compact, if $G$ is compact, then $N$ and $G/N$ is compact.
+
+	Conversely, assume $N$ and $G/N$ are compact. Since $N$ is compact, the canonical projection $G\to G/N$ has compact fibers and by Theorem \ref{26.14} the projection map is a closed map. A continuous function between topological spaces that is a closed map and has compact fibers is a proper map, which means its inverse images of compact sets are compact.
+\end{proof}
 
 \section{Profinite Groups}
 
@@ -2932,13 +2937,87 @@ The inverse limit is unique in the following sense.
 \begin{proposition}
 	Let $(X_i,\phi_{ij})$ be an inverse system indexed by $I$.
 	\begin{enumerate}
-		\item 
+		\item If $(X,\phi_i)$ and $(Y,\psi_i)$ are inverse limits of the inverse system, then there is an isomorphism $\pi: X\to Y$ such that $\psi_i=\pi\phi_i$ for each $i$.
+		\item Write $C=\prod_{i\in I} X_i$ and let $\pi_i$ be the canonical project from $C$ onto the $i$-th coordinate. Define $$X=\{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c) \mbox{ for all }i,j \mbox{ with }j\geq i\}$$ and $\phi_o=\pi_i|_X$ for each $i$. Then $(X,\psi_i)$ is an inverse limit of  $(X_i,\phi_{ij})$.
+		\item If  $(X_i,\phi_{ij})$ is an inverse system of topological groups, then $X$ is a topological group and the maps $\psi_i$ are continuous homomorphisms.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	(1): The proof is similar to that of tensor product.
+
+
+	(2) and (3): We regard $C$ with the product topology and $X$ with the subspace topology. Then the map $\phi_i$ is certainly continuous and the definitions of $(X,\phi_i)$ ensures $\phi_{ij}\phi_j=\phi_i$ whenever $i\leq j$.
+
+
+	Now suppose $(Y,\psi_i)$ is a compatible family. We want to show there is a unique map $\psi:Y\to X$ such that $\phi_i\psi=\psi_i$. Let $\tilde{\psi}$ be the map from $Y$ to $C$ taking $y$ to $(\psi_i(y))$. Thus $\pi_i\tilde{\psi}=\psi_i$ and $\tilde{\psi}$ is continuous since the projection to each coordinate is continuous. If $i\leq j$, then $$\pi_i\tilde{\psi}=\psi_i=\psi_{ij}\psi_j=\psi_{ij}\pi_j\tilde{\psi_j}$$ and it follows that $\tilde{\psi}$ maps $Y$ to $X$. Now define $\psi: Y\to X$ by $\psi(y)=\tilde{\psi}(y)$. Thus $\psi$ is continuous. It is a routine to check all the properties.
+\end{proof}
+
+With the existence and uniqueness of the inverse limit, it can be denoted as $\varprojlim(X_i,\phi_{ij})$ or just $\varprojlim X_i$. It will sometimes be convenient to work with the particular inverse limit constructed above and we denote it by $s\varprojlim X_i$.
+
+\begin{proposition}
+	Let $(X_i,\phi_{ij})$ be an inverse system indexed by $I$ and write $X=\varprojlim X_i$.
+	\begin{enumerate}
+		\item If each $X_i$ is Hausdorff, then so is $X$.
+		\item If each $X_i$ is totally disconnected, then so is $X$.
+		\item If each $X_i$ is Hausdorff and compact, then so is $X$.
+		\item If each $X_i$ is Hausdorff, then $X$ is closed in the product space $C=\prod_{i\in I}X_i$.
+		\item If each $X_i$ is Hausdorff, compact and nonempty, then so is $X$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	It suffices to prove these results for $s\varprojlim X_i$. (1), (2) and (3) follows from the fact the product space and the subspace inherit those properties. 
+
+	(4): Note that if $Y$ is Hausdorff, then the diagonal $\Delta\subset Y\times Y$ is closed. If $f,g: X\to Y$ are two continue maps then $\{x\in X: f(x)=g(x)\} =(f\times g)^{-1}(\Delta)$ is closed. Since $$s\varprojlim X_i= \cap_{j> i} \{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c)\}$$ where each $X_i$ is Hausdorff and $\psi_ij$ and $\pi_i,\pi_j$ are continuous, then $s\varprojlim X_i$ being an intersection of closed sets is closed.
+
+	(5): For $i<j$, the set $D_{ij}=\{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c)\}$ is closed. Since $C$ is compact, if $s\varprojlim X_i=\emptyset$, then $\cap_{r=1}^n D_{i_rj_r}=\emptyset$ for some integer $n$ and elements $i_r,j_r\in I$, otherwise, it will violate the finite intersection property. Since $I$ is directed, we can find $k\in I$ such that $j_r\leq k$ for all $j_r$. Choose $x_k\in X_k$, define $x_l=\phi_{lk}(x_k)$ for $l\leq k$, and define $x_l$ arbitrarily for other $l$. Clearly, the element $(x_i)$ is an element in $\cap_{r=1}^n D_{i_rj_r}=\emptyset$ and hence it cannot be empty.
+\end{proof}
+
+\begin{proposition}
+	Let $X=\varprojlim X_i$ be an inverse limit of an inverse system $(X_i,\phi_{ij})$ where each $X_i$ is nonempty, compact and Hausdorff. Then we have 
+	\begin{enumerate}
+		\item $\phi_i(X)=\cap_{i\leq j}\phi_{ij}(X_j)$.
+		\item The sets $\phi_i^{-1}(U)$ with $i\in I$ and $U$ open in $X_i$ form a basis fot the topology on $X$.
+		\item If $Y\subset X$ satisfies $\phi_i(Y)=X_i$ for each $i$, then $Y$ is dense in $X$.
+		\item If $\theta:Y\to X$, then $\theta$ is continuous if and only if each $\phi_i\theta$ is continuous.
+		\item If $f:X\to A$ is a continuous map to a discrete space $A$, then $f$ factors through $X_i$ for some $i$ in the sense that $g:X_i\to A$ with $f=g\phi_i$.
 	\end{enumerate}
 \end{proposition}
 
+\begin{proof}
+	Again, it suffices to prove the statement for $s\varprojlim X_i$ and $\phi_i=\pi_i|_X$. \begin{enumerate}
+		\item We have $\phi_i(X)=\phi_{ij}\phi_j(X)\subset \phi_{ij}(X_j)$ for all $i\leq j$ and therefore $\phi_i(X)\subset \cap_{i\leq j}\phi_{ij}(X_j)$.  Now let us fix $i$, fix $a\in \cap_{i\leq j}\phi_{ij}(X_j)$ and for $i\leq j$ set $Y_j=\{y\in X_j: \phi_{ij}(y)=a\}$. Thus $Y_j$ being the inverse image of a closed set is closed in $X_j$ and hence is compact. If $i\leq j\leq k$ and $y_k\in Y_k$, then $\phi_{ij}\phi_{jk}(y_k)=\phi_{ik}(y_k)=a$ and so $\phi_{jk}(y_k)\in Y_j$. Therefore, $Y_j$ with $ j\geq i$ is an inverse system of nonempty compact Hausdorff spaces and so there is an element $b\in s\varprojlim_{j\geq i} Y_j$. And we have $\phi_{jk}(b_k)=b_j$ for $i\leq j\leq k$ and $b_i=a$ for the coordinates of $b$. Now if $j\in I$ and $i\nleq l$, then we can find $j\in I$ such that $i\leq j$ and $l\leq j$ and define $b_l=\phi_{lj}(b_j)$. $b_l$ is well-defined in the sense that if there is another $j'\in I$ with $i\leq j'$ and $j\leq j'$, then we can find $k\in I$ such that $j,j'\leq k$ and then $b_l=\phi_{lk}(b_k)=\phi_{lj}\phi_{jk}(b_k)=\phi_{lj'}\phi_{j'k}(b_k)$. And hence we have find an element $b=(b_j)_{j\in I}\in s\varprojlim X_i$ with $\phi_i(b)=a$.
+		\item The basis of $X$ can be pulled from $C$ and is of the form $$P=X\cap (\cap_{r=1}^n\pi_{i_r}^{-1}(U_j)) $$ for some $i_r\in I$ and $U_r$ is open in $X_{i_r}$. The result will follow if we can prove that for all $a\in P$ there is a set $\phi_k^{-1}(U)$ with $U$ open in $X_k$ such that $a\in \phi_k^{-1}(U)\subset P$. Write $a=(a_i)$. Choose $k\in I$ such that $k\geq i_r$ for all $i_r$. The set $\phi_{i_rk}^{-1}(U_r)$ is open in $X_k$ since $\phi_{i_rk}$ is continuous. Write $U=\cap_{r=1}^n \phi_{i_rk}^{-1}(U_r)$. This is an open neighbourhood of $a_k$ in $X_k$ and so $\phi_k^{-1}(U)$ is an open neighbourhood of $a$ in $X$. Moreover, if $b=(b_i)\in \phi_k^{-1}(U)$ then $b_k\in U$ and so that $b_{i_r}=\phi_{i_r k}(b_k)\in U_r$. It follows that $\phi^{-1}_k(U)\subset P$.
+		\item For each $i\in I$ and each nonempty open set $U$ in $_i$ we clearly have $\phi_i(Y)\cap U=X_i\cap U\not= \emptyset$ and hence $Y\cap \phi_i^{-1}(U)\not=\emptyset$. It follows from (2) that $Y$ is dense in $X$.
+		\item If $\theta$ is continuous, then $\phi_i\theta$ is continuous. Conversely, if each $\phi_i\theta$ is continuous, then for each $i$ and each open set $U$ in $X_i$, the set $\theta^{-1}\phi_i^{-1}(U)=(\phi_i\theta)^{-1}(U)$ is open. It follows from (2) that $\theta$ is continuous.
+		\item The image $\im(f)$ is compact and discrete and so finite. For each $a\in \im(f)$ the set $Y_a=f^{-1}(a)$ is compact and open and so it is, by the compactness, a finite union of basis element $Y_a=\cup_{j\in J} \phi_j^{-1}(U_j)$ with $J$ finite subset of $I$ and $U_j$ open in $X_j$. Choose $k\in I$ such that $j\leq k$ for all $j\in J$. We have $\phi^{-1}_j(U_j)=\phi^{-1}_k(\phi_{jk}^{-1}(U_j))$ for each $j$ and so for each $a\in \im(f)$ we can write $Y_a=\phi_k^{-1}(V_a)$ where $V_a$ is open in $X_k$. Write $D=X_k\setminus (\cup_{a\in \im(f)}V_a)$. Then $D\cap \phi_k(X)=\emptyset$. By (1), we have $D\cap(\cap_{k\leq l} \phi_{kl}(X_l))=\emptyset$. Since $X_k$ is compact and $D$ and each $\phi_{kl}(X_l)$ are closed, we can find $l_1,l_2,\dots,l_s$ such that $D\cap \phi_{kl_1}(X_{l_1})\cap \dots\cap \phi_{kl_s}(X_{l_s})$ by the finite intersection property. Choose $t\in I$ such that $t\geq l_i$ for each $l_i$. For $k\leq l\leq t$, we have $\phi_{kt}(X_t)=\phi_{kl}(\phi_{lt}(X_t))\subset \phi_{kl}(X_l)$, and we can conclude that $D\cap \phi_{kt}(X_t)=\emptyset$ and $\phi_{kt}(X_t)\subset \cap_{a\in \im(f)}V_a$. Write $W_a=\phi_{kt}^{-1}(V_a)$ for each $a\in \im(f)$ then $W_{a_1}\cap W_{a_1}$ of $a_1\not= a_2$. Let $x\in X_t$. Then $\phi_{kt}(x)\in V_a$ for some $a$ and then $x\in \phi_{kt}^{-1}(V_a)=W_a$. Therefore, $X_t=\cup_{a\in \im(f)} W_a$ and each set $W_a$ is also closed. It follows that the map $g:X_i\to A$ which takes $W_a$ to $a$ for each $a\in \im(f)$ is continuous and $f=g\phi_t$ as required.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Let $X$ be a compact Hausdorff totally disconnected space. Then $X$ is the inverse limit of its quotient spaces.
+\end{theorem}
+
+\begin{proof}
+	Let $I$ be the set of all partitions of $X$ into finitely many closed open subsets. For each $i\in I$, let $X_i$ be the corresponding quotient space (whose elements are closed and open subsets of the partition $i$) adn let $q_i: X\to X_i$ be the quotient map. Thus the sets $X_i$ are precisely the quotient space of $X$ which are discrete in the quotient space.
+
+
+	We write $i\leq j$ if and only if there is a map $q_{ij}: X_j\to X_i$ satisfying $q_{ij}q_j=q_i$. The mao $q_{ij}$ is then uniquely determined because $q_j$ is surjective. Clearly, $I$ is a partially ordered set. And it is directed: if $$i=\{U_r: 1\leq r\leq m\},\quad j=\{V_s: 1\leq s\leq n\}$$ are elements of $I$, then $$k=\{U_r\cap V_s: 1\leq r\leq m, 1\leq s\leq n\}$$ is an element in $I$ and $i,j\leq k$. It follows that $(X_i,q_{ij})$ is an inverse system and that $(X,q_i)$ is a compatible family. Let $Y=\varprojlim X_i$ and $\phi_i$ be the canonical map. The universal property of inverse limit gives us a continuous map $\mu: X\to Y$ such that $\phi_i \mu=q_i$. If $x_1,x_2\in X$ such that $\mu(x_1)=\mu(x_2)$, then $q_i(x_1)=q_i(x_2)$ for each $i$, so that no closed and open set contains just one of $x_1,x_2$ and since $X$ is totally disconnected, we must have $x_1=x_2$. Therefore, $\mu$ is injective. Since $\phi_i(\mu(X))=q_i(X)=X_i$, it follows from the theorem above that $\mu(X)$ is dense in $Y$. Since $\mu$ is continuous and $X$ is compact and $Y$ is Hausdorff, $\mu(X)$ is also closed and $\mu(X)=Y$ and $\mu$ is surjective. Since $\mu$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, $\mu$ is a homeomorphism by the lemma below. 
+\end{proof}
+
+\begin{remark}
+	$(\sqrt{2},\sqrt{3})\cap \qq$ is a closed open set of $\qq$. Consider the above theorem to $\qq/\zz$
+\end{remark}
+
+\begin{lemma}
+	If $\mu: X\to Y$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, then $\mu$ is a homeomorphism.
+\end{lemma}
+
+\begin{proof}
+	It is easily seen that $\mu$ is a closed map. A bijective map is open if and only if it is closed. A bijective continuous map is a homeomorphism if and only if it is open.
+\end{proof}
 
 \chapter*{Week 12}
-\setcounter{chapter}{11}
+\setcounter{chapter}{12}
 
 \section{Infinite Galois Extensions}
 

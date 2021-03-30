@@ -2720,7 +2720,7 @@ We need some preliminaries before going into infinite Galois extension.
 \end{example}
 
 \begin{lemma}
-	For every $g\in G$, the left multiplication $l_g: G\to G, x\to gx$ is a homeomorphism. If $U$ is an open (resp. closed) subset, then the coset $gU$ is also open (resp. closed) for any $g\in G$.
+	For every $g\in G$, the left multiplication $l_g: G\to G, x\mapsto gx$ is a homeomorphism. If $U$ is an open (resp. closed) subset, then the coset $gU$ is also open (resp. closed) for any $g\in G$.
 \end{lemma}
 
 \begin{proof}
@@ -2768,7 +2768,7 @@ Indeed, the key topological feature of a topological group $G$ is its \emph{homo
 
 	To prove $\overline{H}$ is a subgroup we show that $\overline{H}~\overline{H}\subset \overline{H}$ and $\overline{H}^{-1}=\overline{H}$.
 
-	Since $H$ is a subgroup, $HH\subset H\subset \overline{H}$. Thus for each $h\in H$, $hH\subset \overline{H}$, so $H\subset h^{-1}\overline{H}$, which is closed since $\overline{H}$ is closed. And so $\overline{H}\subset \overline{H}$ for all $h\in H$ and then we have $H\overline{H}\subset \overline{H}$. And similarly, $\overline{H}H\subset \overline{H}$.
+	Since $H$ is a subgroup, $HH\subset H\subset \overline{H}$. Thus for each $h\in H$, $hH\subset \overline{H}$, so $H\subset h^{-1}\overline{H}$, which is closed since $\overline{H}$ is closed. And so $\overline{H}\subset h^{-1}\overline{H}$ for all $h\in H$ and then we have $H\overline{H}\subset \overline{H}$. And similarly, $\overline{H}H\subset \overline{H}$.
 
 	To get $\overline{H}~\overline{H}\subset \overline{H}$, pick $y\in \overline{H}$ and so $Hy\subset \overline{H}$. Then $H\subset \overline{H}y^{-1}$, which is closed, and so $\overline{H}\subset \overline{H}y^{-1}$. Therefore, $\overline{H}y\subset \overline{H}$ for all $y\in \overline{H}$ and so $\overline{H}~\overline{H}\subset \overline{H}$.
 
@@ -2880,7 +2880,7 @@ It is true more generally that in a Hausdorff topological group every locally co
 	With same assumption as the theorem above, $G/N$ endowed with the quotient topology is a topological group.
 \end{corollary}
 \begin{proof}
-	We take the short way by showing that $\tilde{m}: G/N \times G/N, (xN,yN)\mapsto xy^{-1}N$ is continuous. Let $U\subset G/N$ be a nonempty and open subset. By the definition of quotient map, $\pi^{-1}(U)$ is empty. Since $U$ is nonempty, $uv^{-1}N\in U$ for some $u,v\in G$ and then $uv^{-1}\in\pi^{-1}(U)$. Hence we can find open neighbourhoods $C,D$ of $u$ and $v$ respectively, such that $m(C\times D)\subset \pi^{-1}(U)$. Since $\pi$ is an open map, $\pi(C)=CN$ and $\pi(D)=DN$ are open neighbourhoods of $uN$ and $vN$ such that $\tilde{CN\times DN}\subset U$.
+	We take the short way by showing that $\tilde{m}: G/N \times G/N, (xN,yN)\mapsto xy^{-1}N$ is continuous. Let $U\subset G/N$ be a nonempty and open subset. By the definition of quotient map, $\pi^{-1}(U)$ is nonempty and open. Since $U$ is nonempty, $uv^{-1}N\in U$ for some $u,v\in G$ and then $uv^{-1}\in\pi^{-1}(U)$. Hence we can find open neighbourhoods $C,D$ of $u$ and $v$ respectively, such that $m(C\times D)\subset \pi^{-1}(U)$. Since $\pi$ is an open map, $\pi(C)=CN$ and $\pi(D)=DN$ are open neighbourhoods of $uN$ and $vN$ such that $\tilde{CN\times DN}\subset U$.
 \end{proof}
 
 \begin{theorem}
@@ -2901,7 +2901,7 @@ It is true more generally that in a Hausdorff topological group every locally co
 	Conversely, assume $N$ and $G/N$ are compact. Since $N$ is compact, the canonical projection $G\to G/N$ has compact fibers and by Theorem \ref{26.14} the projection map is a closed map. A continuous function between topological spaces that is a closed map and has compact fibers is a proper map, which means its inverse images of compact sets are compact.
 \end{proof}
 
-\section{Profinite Groups}
+\section{Inverse Limits}
 
 \begin{definition}
 	A \emph{directed set} is a partially ordered set $I$ such that for any $i,j\in I$ we can find $k\in I$ such that $i\leq k$ and $j\leq k$.
@@ -3015,6 +3015,8 @@ With the existence and uniqueness of the inverse limit, it can be denoted as $\v
 \begin{proof}
 	It is easily seen that $\mu$ is a closed map. A bijective map is open if and only if it is closed. A bijective continuous map is a homeomorphism if and only if it is open.
 \end{proof}
+
+\section{Profinite Groups}
 
 \chapter*{Week 12}
 \setcounter{chapter}{12}

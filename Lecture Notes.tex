@@ -7,6 +7,7 @@
 \usepackage{times}
 \usepackage{graphicx}
 \usepackage{mathtools}
+\usepackage{stmaryrd }
 \usepackage[all]{xy}
 \usepackage[margin=0.8in,footskip=0.25in]{geometry}
 \usepackage[colorlinks=true,
@@ -2732,7 +2733,7 @@ We need some preliminaries before going into infinite Galois extension.
 
 Before we dig into the properties of topological groups, we see they have quite nice properties fitting one's intuitions quite well. For example, we have the following.
 
-\begin{proposition}
+\begin{proposition}\label{11.26.4}
 	Let $G$ be a topological group, and let $H$ be a subgroup.
 	\begin{enumerate}
 		\item If $H$ contains a nonempty open subset, then $H$ is open.
@@ -2812,7 +2813,15 @@ group isomorphism (that is, the inverse map is automatically a homomorphism), in
 
 Since a continuous bijection from a compact space to a Hausdorff space is closed, when we are dealing with compact Hausdorff topological groups, the subtlety above does not occur: a bijective continuous homomorphism $G \to H$ from a compact topological group to a Hausdorff topological group is a homeomorphism and thus is an isomorphism of topological groups.
 
-\begin{theorem}\label{26.9}
+\begin{lemma}\label{26.9}
+	If $\mu: X\to Y$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, then $\mu$ is a homeomorphism.
+\end{lemma}
+
+\begin{proof}
+	It is easily seen that $\mu$ is a closed map. A bijective map is open if and only if it is closed. A bijective continuous map is a homeomorphism if and only if it is open.
+\end{proof}
+
+\begin{theorem}\label{26.10}
 	Let $G$ be a topological group with identity $e$.
 	\begin{enumerate}
 		\item If $\mathcal{N}$ is a neighborhood of $e$, then we can find a symmetric open neighborhood $U$ of $e$ such that $UU^{-1}\subset \mathcal{N}$ and $U=U^{-1}$.
@@ -2836,7 +2845,7 @@ Since a continuous bijection from a compact space to a Hausdorff space is closed
 	If $f:G\to H$ is a continuous group homomorphism of topological groups and $H$ is Hausdorff, then $\ker(f)$ is a closed normal subgroup of $G$.
 \end{corollary}
 
-\begin{corollary}
+\begin{corollary}\label{26.12}
 	Let $G$ be a topological group and $N$ a normal subgroup. The $G/N$ with the quotient topology is discrete if and only if $N$ is open and $G/N$ is Hausdorff if and only if $N$ is closed.
 \end{corollary}
 
@@ -2873,7 +2882,7 @@ It is true more generally that in a Hausdorff topological group every locally co
 \begin{proof}
 	Let $U$ be open in $G$ and $\pi: G\to G/N$ be the canonical quotient map. The image $\pi(U)$ is open, by definition, if $\pi^{-1}(\pi(U))$ is open. Note $\pi^{-1}(\pi(U))=\cup_{n\in N}Un$ is open since it is union of open sets.
 
-	Now let $N$ be compact and $C$ be closed in $G$. Then $\pi^{-1}(\pi(C))=\cap_{n\in N}Cn=CN$. We want to show $CN$ is closed. Now let $g\notin CN$ then $C^{-1}g\cap N=\emptyset$. If we can find an open neighbourhood $U$ of $e$ such that $C^{-1}g \cap NU=\emptyset$, which just means $gU^{-1}\cap CN=\emptyset$, then $gU^{-1}$ is an open neighbourhood of $g$ disjoint from $CN$ and so $CN$ is closed. So our task is to find such a $U$. Note that $C^{-1}g$ is closed. Write $A=C^{-1}g$ be closed and $B=N$ be compact with $A\cap B=\emptyset$. Due to the closeness of $A$, for each $x_i\in B$ we can find an open neighbourhood $V_i$ of $e$ such that $x_iV_i\cap A=\emptyset$. Moreover, we can assume $V_i=V_i^{-1}$ and $V_iV_i= V_i$ by Theorem \ref{26.9}. Since $B$ is covered by $V_i$, by the compactness of $B$, we can find $x_1V_1,\dots,x_nV_n$ such that $B\subset \cup_{i=1}^n x_iV_i$. Let $V=\cap_{i=1}^n V_i$, then $V$ is open and $V_iV=V_i$ since $V\subset V_i$ and $V_iV_i=V_i$. We then have $BV \subset (\cup_{i=1}^n x_iV_i)V= \cup_{i=1}^n x_iV_iV = \cup_{i=1}^n x_iV_i$ and hence $BV$ is disjoint from $C$ and we are done.
+	Now let $N$ be compact and $C$ be closed in $G$. Then $\pi^{-1}(\pi(C))=\cap_{n\in N}Cn=CN$. We want to show $CN$ is closed. Now let $g\notin CN$ then $C^{-1}g\cap N=\emptyset$. If we can find an open neighbourhood $U$ of $e$ such that $C^{-1}g \cap NU=\emptyset$, which just means $gU^{-1}\cap CN=\emptyset$, then $gU^{-1}$ is an open neighbourhood of $g$ disjoint from $CN$ and so $CN$ is closed. So our task is to find such a $U$. Note that $C^{-1}g$ is closed. Write $A=C^{-1}g$ be closed and $B=N$ be compact with $A\cap B=\emptyset$. Due to the closeness of $A$, for each $x_i\in B$ we can find an open neighbourhood $V_i$ of $e$ such that $x_iV_i\cap A=\emptyset$. Moreover, we can assume $V_i=V_i^{-1}$ and $V_iV_i= V_i$ by Theorem \ref{26.10}. Since $B$ is covered by $V_i$, by the compactness of $B$, we can find $x_1V_1,\dots,x_nV_n$ such that $B\subset \cup_{i=1}^n x_iV_i$. Let $V=\cap_{i=1}^n V_i$, then $V$ is open and $V_iV=V_i$ since $V\subset V_i$ and $V_iV_i=V_i$. We then have $BV \subset (\cup_{i=1}^n x_iV_i)V= \cup_{i=1}^n x_iV_iV = \cup_{i=1}^n x_iV_i$ and hence $BV$ is disjoint from $C$ and we are done.
 \end{proof}
 
 \begin{corollary}
@@ -2901,7 +2910,7 @@ It is true more generally that in a Hausdorff topological group every locally co
 	Conversely, assume $N$ and $G/N$ are compact. Since $N$ is compact, the canonical projection $G\to G/N$ has compact fibers and by Theorem \ref{26.14} the projection map is a closed map. A continuous function between topological spaces that is a closed map and has compact fibers is a proper map, which means its inverse images of compact sets are compact.
 \end{proof}
 
-\section{Inverse Limits}
+\section{Profinite Groups}
 
 \begin{definition}
 	A \emph{directed set} is a partially ordered set $I$ such that for any $i,j\in I$ we can find $k\in I$ such that $i\leq k$ and $j\leq k$.
@@ -2954,7 +2963,7 @@ The inverse limit is unique in the following sense.
 
 With the existence and uniqueness of the inverse limit, it can be denoted as $\varprojlim(X_i,\phi_{ij})$ or just $\varprojlim X_i$. It will sometimes be convenient to work with the particular inverse limit constructed above and we denote it by $s\varprojlim X_i$.
 
-\begin{proposition}
+\begin{proposition}\label{27.6}
 	Let $(X_i,\phi_{ij})$ be an inverse system indexed by $I$ and write $X=\varprojlim X_i$.
 	\begin{enumerate}
 		\item If each $X_i$ is Hausdorff, then so is $X$.
@@ -2965,15 +2974,15 @@ With the existence and uniqueness of the inverse limit, it can be denoted as $\v
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	It suffices to prove these results for $s\varprojlim X_i$. (1), (2) and (3) follows from the fact the product space and the subspace inherit those properties. 
+	It suffices to prove these results for $s\varprojlim X_i$. (1), (2) and (3) follows from the fact the product space and the subspace inherit those properties.
 
 	(4): Note that if $Y$ is Hausdorff, then the diagonal $\Delta\subset Y\times Y$ is closed. If $f,g: X\to Y$ are two continue maps then $\{x\in X: f(x)=g(x)\} =(f\times g)^{-1}(\Delta)$ is closed. Since $$s\varprojlim X_i= \cap_{j> i} \{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c)\}$$ where each $X_i$ is Hausdorff and $\psi_ij$ and $\pi_i,\pi_j$ are continuous, then $s\varprojlim X_i$ being an intersection of closed sets is closed.
 
 	(5): For $i<j$, the set $D_{ij}=\{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c)\}$ is closed. Since $C$ is compact, if $s\varprojlim X_i=\emptyset$, then $\cap_{r=1}^n D_{i_rj_r}=\emptyset$ for some integer $n$ and elements $i_r,j_r\in I$, otherwise, it will violate the finite intersection property. Since $I$ is directed, we can find $k\in I$ such that $j_r\leq k$ for all $j_r$. Choose $x_k\in X_k$, define $x_l=\phi_{lk}(x_k)$ for $l\leq k$, and define $x_l$ arbitrarily for other $l$. Clearly, the element $(x_i)$ is an element in $\cap_{r=1}^n D_{i_rj_r}=\emptyset$ and hence it cannot be empty.
 \end{proof}
 
-\begin{proposition}
-	Let $X=\varprojlim X_i$ be an inverse limit of an inverse system $(X_i,\phi_{ij})$ where each $X_i$ is nonempty, compact and Hausdorff. Then we have 
+\begin{proposition}\label{27.7}
+	Let $X=\varprojlim X_i$ be an inverse limit of an inverse system $(X_i,\phi_{ij})$ where each $X_i$ is nonempty, compact and Hausdorff. Then we have
 	\begin{enumerate}
 		\item $\phi_i(X)=\cap_{i\leq j}\phi_{ij}(X_j)$.
 		\item The sets $\phi_i^{-1}(U)$ with $i\in I$ and $U$ open in $X_i$ form a basis fot the topology on $X$.
@@ -2993,35 +3002,226 @@ With the existence and uniqueness of the inverse limit, it can be denoted as $\v
 	\end{enumerate}
 \end{proof}
 
-\begin{theorem}
-	Let $X$ be a compact Hausdorff totally disconnected space. Then $X$ is the inverse limit of its quotient spaces.
-\end{theorem}
+\begin{proposition}\label{27.8}
+	Let $X$ be a compact Hausdorff totally disconnected space. Then $X$ is the inverse limit of its discrete quotient spaces.
+\end{proposition}
+
+\begin{remark}
+	As the quotient space of a compact space is also compact, discrete implies finiteness.
+\end{remark}
 
 \begin{proof}
 	Let $I$ be the set of all partitions of $X$ into finitely many closed open subsets. For each $i\in I$, let $X_i$ be the corresponding quotient space (whose elements are closed and open subsets of the partition $i$) adn let $q_i: X\to X_i$ be the quotient map. Thus the sets $X_i$ are precisely the quotient space of $X$ which are discrete in the quotient space.
 
 
-	We write $i\leq j$ if and only if there is a map $q_{ij}: X_j\to X_i$ satisfying $q_{ij}q_j=q_i$. The mao $q_{ij}$ is then uniquely determined because $q_j$ is surjective. Clearly, $I$ is a partially ordered set. And it is directed: if $$i=\{U_r: 1\leq r\leq m\},\quad j=\{V_s: 1\leq s\leq n\}$$ are elements of $I$, then $$k=\{U_r\cap V_s: 1\leq r\leq m, 1\leq s\leq n\}$$ is an element in $I$ and $i,j\leq k$. It follows that $(X_i,q_{ij})$ is an inverse system and that $(X,q_i)$ is a compatible family. Let $Y=\varprojlim X_i$ and $\phi_i$ be the canonical map. The universal property of inverse limit gives us a continuous map $\mu: X\to Y$ such that $\phi_i \mu=q_i$. If $x_1,x_2\in X$ such that $\mu(x_1)=\mu(x_2)$, then $q_i(x_1)=q_i(x_2)$ for each $i$, so that no closed and open set contains just one of $x_1,x_2$ and since $X$ is totally disconnected, we must have $x_1=x_2$. Therefore, $\mu$ is injective. Since $\phi_i(\mu(X))=q_i(X)=X_i$, it follows from the theorem above that $\mu(X)$ is dense in $Y$. Since $\mu$ is continuous and $X$ is compact and $Y$ is Hausdorff, $\mu(X)$ is also closed and $\mu(X)=Y$ and $\mu$ is surjective. Since $\mu$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, $\mu$ is a homeomorphism by the lemma below. 
+	We write $i\leq j$ if and only if there is a map $q_{ij}: X_j\to X_i$ satisfying $q_{ij}q_j=q_i$. The mao $q_{ij}$ is then uniquely determined because $q_j$ is surjective. Clearly, $I$ is a partially ordered set. And it is directed: if $$i=\{U_r: 1\leq r\leq m\},\quad j=\{V_s: 1\leq s\leq n\}$$ are elements of $I$, then $$k=\{U_r\cap V_s: 1\leq r\leq m, 1\leq s\leq n\}$$ is an element in $I$ and $i,j\leq k$. It follows that $(X_i,q_{ij})$ is an inverse system and that $(X,q_i)$ is a compatible family. Let $Y=\varprojlim X_i$ and $\phi_i$ be the canonical map. The universal property of inverse limit gives us a continuous map $\mu: X\to Y$ such that $\phi_i \mu=q_i$. If $x_1,x_2\in X$ such that $\mu(x_1)=\mu(x_2)$, then $q_i(x_1)=q_i(x_2)$ for each $i$, so that no closed and open set contains just one of $x_1,x_2$ and since $X$ is totally disconnected, we must have $x_1=x_2$. Therefore, $\mu$ is injective. Since $\phi_i(\mu(X))=q_i(X)=X_i$, it follows from the theorem above that $\mu(X)$ is dense in $Y$. Since $\mu$ is continuous and $X$ is compact and $Y$ is Hausdorff, $\mu(X)$ is also closed and $\mu(X)=Y$ and $\mu$ is surjective. Since $\mu$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, $\mu$ is a homeomorphism by Lemma \ref{26.9}.
 \end{proof}
 
-\begin{remark}
-	$(\sqrt{2},\sqrt{3})\cap \qq$ is a closed open set of $\qq$. Consider the above theorem to $\qq/\zz$
-\end{remark}
+% \begin{remark}
+% 	$(\sqrt{2},\sqrt{3})\cap \qq$ is a closed open set of $\qq$. Consider the above theorem to $\qq/\zz$
+% \end{remark}
 
-\begin{lemma}
-	If $\mu: X\to Y$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, then $\mu$ is a homeomorphism.
+Let $\mathcal{C}$ be a class of finite groups. We can a group $F$ a $\mathcal{C}$-group if $F\in \mathcal{C}$ and we call $G$ a pro-$\mathcal{C}$ group if it an inverse limit of $\mathcal{C}$ groups. We say $\mathcal{C}$ is $\emph{closed}$ for subgroups (resp. quotients, direct product and etc) if every subgroup (resp. quotient, direct product and etc) of a $\mathcal{C}$-group is a $\mathcal{C}$-group.
+
+Some importance classes are the class of all finite groups, the class of finite $p$-groups and the class of all finite cyclic groups. Similarly, we have the profinite (topological) spaces. We are now able to ``classify'' profinite spaces and profinite groups.
+
+\begin{lemma}\label{6.2.10}
+	Let $X$ be a compact Hausdorff space and $x\in X$ a point. Then the connected component of $x$ is the intersection of all clopen sets containing $x$.
 \end{lemma}
 
 \begin{proof}
-	It is easily seen that $\mu$ is a closed map. A bijective map is open if and only if it is closed. A bijective continuous map is a homeomorphism if and only if it is open.
+	Let $U=\cap_{i\in I}U_i$ where each $U_i$ is a clopen set containing $x$. Write $C$ the connected component containing $x$. Then $C\subset U_i$ as otherwise $C$ cannot be connected, and therefore $C\subset U$. If we can prove that $U$ is connected we will have $C=U$ as by definition the connected component of a point is the maximal connected set containing that point. Assume $U=V\cup U$, where $V$ and $W$ are disjoint closed sets. We will show either $V$ or $W$ is empty. As $X$ is compact and Hausdorff, it is $T_4$ and normal. Therefore, we can find disjoint open subsets $V'$ and $W'$ containing $V$ and $W$ respectively. Since $C\subset U$, we must have $(X\setminus(V'\cup W')) \cap (\cap_{i\in I}U_i)=\emptyset$, which is to say $(V'\cup W')\cup(\cup_{i\in I} X\setminus U_i)=X$. By the compactness of $X$, there is finite index set $I'\subset I$ such that  $(V'\cup W')\cup(\cup_{i\in I'} X\setminus U_i)=X$, which is to say $(X\setminus(V'\cup W')) \cap (\cap_{i\in I'}U_i)=\emptyset$. Let $A=\cap_{i\in I'}U_i$ and note that $A$ is then a clopen neighbourhood of $x$ since the index set $I'$ is finite. Thus $x\in (A\cap V')\cup(A\cap W')=A$. Say, without loss of generality, $x\in A\cap V'$. We know that $A\cap V'$ is open, and it is also closed as $A\cap V'=(X\setminus A\cap W')\cap A$. Therefore $U\subset A\cap V'\subset V'$. Then $U\cap W\subset U\cap W'=\emptyset$ and thus $W=\emptyset$. Therefore we conclude $U$ is connected and that $C=U$.
 \end{proof}
 
-\section{Profinite Groups}
+\begin{definition}
+	A space $X$ is \emph{zero-dimensional} if each point $x\in X$ has a neighbourhood system consisting of clopen sets. Equivalently, $X$ is 0-dimensional if and only if for each point $x\in X$ and a closed set $A$ not containing $x$, there is a clopen set containing $A$ and not intersecting $A$. 
+\end{definition}
+
+\begin{theorem}\label{6.2.12}
+	Let $X$ be a topological space. Then the following conditions are equivalent:
+	\begin{enumerate}
+		\item $X$ is a profinite space;
+		\item $X$ is compact, Hausdorff and totally disconnected;
+		\item $X$ is compact, Hausdorff and zero-dimensional.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	The equivalence of (1) and (2) are shown in Proposition \ref{27.6}  and Proposition \ref{27.8}. 
+
+	$(2)\Longrightarrow (3)$: We want to show for any open set $U\in X$, there is a clopen set $C$ such that $x\in C\subset U$ for all $x\in U$. Now let $U$ be an arbitrary nonempty open set and $x\in U$. Let $C=\cap_{t\in T}C_t$ be the intersection of all clopen neighbourhoods of $x$. By Lemma \ref{6.2.10}, it follows that $C=\{x\}$ since $X$ is totally disconnected. As $X\setminus U$ is closed and disjoint from $C$, it follows by the compactness of $X$ that there exists finite subset $T'\subset T$ such that $(X\setminus U)\cap (\cap_{t\in T'}C_t)=\emptyset$ by the finite intersection properties and $(X\setminus U)\cap C=\emptyset$. Thus $\cap_{t\in T'}C_t$ is a clopen set containing $x$ also contained in $U$.
+
+
+	$(3)\Longrightarrow (2)$: A zero-dimensional Hausdorff space is clearly totally disconnected from the definitions directly.
+\end{proof}
+
+Let $G$ be a topological group. We write $H\leq G$ to mean $H$ is a closed subgroup of $G$ and $N\ll G$ to mean $N$ is an open normal subgroup of $G$. We call a family of normal subgroups of $G$ a \emph{filter base} if for all $K_1, K_2\in I$ there is a subgroup $K_3\in I$ such that $K_3\subset K_1\cap K_2$.
+
+We have two technical results.
+
+\begin{theorem}
+	Let $(G,\phi_i)$ be an inverse limit of an inverse system $(G_i,\phi_{ij})$ of compact Hausdorff topological groups and let $L\ll G$. Then $\ker(\phi_i)\leq L$ for some $i$. Consequently, $G/L$ is isomorphic to a quotient group of a subgroup of some $G_i$ and if in addition each map $\phi_i$ is surjective then $G/L$ is isomorphic to a quotient of some $G_i$.
+\end{theorem}
+
+\begin{proof}
+	Since $L$ is open and contains $1$, we have $\phi_i^{-1}(U)\subset L$ for some $i$ and open set $U$ of $G_i$ containing $1$ by Proposition \ref{27.7} as $\phi_i^{-1}(U)$ form a basis. Therefore, $\ker(\phi_i)\leq L$ for that $i$ and we have $G/L\cong (G/\ker(\phi_i))/(L/\ker(\phi_i))$ and so since $G/\ker(\phi_i) \cong \im(\phi_i)$, it follows that $G/L$ is isomorphic to a quotient group of some $G_i$.
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be a topological group and $I$ be a filter base of closed normal subgroups. For $K,L\in I$, define $K\preceq L$ if and only if $L\leq K$. Thus $I$ is a directed with respect to $\preceq$ and define $q_{KL}: G/L\to G/K$ for $K\preceq L$. This makes $G/K$ into an inverse system. Let $\tilde{G}=\varprojlim G/K$. There is a continuous homomorphism $\theta: G\to \tilde{G}$ with kernel $\cap_{K\in I} K$. If $G$ is compact, then $\theta$ is surjective; if $G$ is compact and $\cap_{K\in I}K=\{1\}$, then $\theta$ is an isomorphism of topological groups.
+\end{theorem}
+
+\begin{proof}
+	The proof of Proposition \ref{27.7} implies $(G/K,q_{LK})$ is an inverse system directed by $I$. We take $\tilde{G}=s\varprojlim G/K$. It is easy to see that the image of $\tilde{\theta}: G\to \prod_{K\in I} G/K, g\to (gK)_{K\in I}$ lies in $\tilde{G}$. Define $\theta$ to be the induce map $\theta: G\to \tilde{G}, g \mapsto \tilde{\theta}(g)$. Since the product of $\tilde{\theta}$ with the projection maps are quotient maps and so continuous, it follows that $\tilde{\theta}$ and $\theta$ are continuous. Note $g\in \ker(\theta)$ if and only if $gK=K$ for each $K$ and so $\ker(\theta)=\cap_{K\in I} K$. For each $K\in I$, we have $\phi_K(\theta(G))=G/K$ and so by Proposition \ref{27.7}, $\im(\theta)$ is dense in $\tilde{G}$.
+
+
+	By Corollary \ref{26.12}, each group $G/K$ is Hausdorff. Now suppose $G$ is compact. Then $\theta(G)$ is compact hence closed as $\tilde{G}$ is Hausdorff by Proposition \ref{27.6}. Since $\theta(G)$ is also dense, $\theta(G)=\tilde{G}$. If in addition $\cap_{K\in I}K=\{1\}$, then $\theta$ is a continuous bijection. Since $G$ is compact and $\tilde{G}$ is Hausdorff, $\theta$ is a homeomorphism by Lemma \ref{26.9}.
+\end{proof}
+
+\begin{lemma}
+	Let $G=\varprojlim G_i$ be a profinite group, and let $\phi_i: G\to G_i$ be the canonical projection. Then $\mathcal{S}=\{\ker(\phi_i): \phi: G\to G_i\}$ forms a fundamental system of neighbourhoods of the identity in $G$.
+\end{lemma}
+
+\begin{proof}
+	Form Proposition \ref{27.7} (2) we know that $G$ has a basis of the form $$\{\phi_i^{-1}(U): U \mbox{ open in } G_i \mbox{ for some }i \}.$$
+	But $G_i$ are finite sets with discrete topology and so say $U=\{g_1,\dots,g_n\}$ then $\phi_i^{-1}(U)$ is just a union of translations of $\ker(\phi_i)$, which are all open. So it is sufficient to say $\mathcal{S}$ is a basis.
+
+
+	If you are not happy, here is a more detail copy-and-paste. Let $\mathcal{C}$ be the collection of elements of the form $$(\prod_{i\not= i_0,\dots,i_n}G_i)\times \{1\}_{i_0}\times \dots\times \{1\}_{i_n}$$ where $i_0,\dots,i_n\in I$ are arbitrary and $i_0\geq i_1,\dots,i_n$. We will now prove that this is a fundamental system of neighbourhoods around 1 in $X=\prod_{i\in I}G_i$. Let $V\subset X$ be an open neighbourhood of 1. Then $V$ contains an open set of the form $(\prod_{i\not= j_1,\dots,j_n}G_i)\times U_{j_1}\times \dots\times U_{j_n}$. Now let $U=(\prod_{i\not= j_0,\dots,j_n}G_i)\times \{1\}_{j_0}\times \dots\times \{1\}_{j_n}$ with $j_0\geq j_1,\dots,j_n$. Then $U\subset V$ and $U\in \mathcal{C}$. Thus $\mathcal{C}$ is a fundamental system of open neighbourhoods of 1. Now we let $\mathcal{D}=\{G\cap C: C\in\mathcal{C}\}$. Then $\mathcal{D}$ is a fundamental system of neighbourhoods around 1 of $G$ with the subspace topology. We further note that elements in $\mathcal{D}$ has the form
+	 $$G\cap(\prod_{i\not= i_0} G_i \times \{1\}_{i_0})$$
+	as $$G\cap((\prod_{i\not= i_0,\dots,i_n}G_i)\times \{1\}_{i_0}\times \dots\times \{1\}_{i_n}) = G\cap(\prod_{i\not= i_0} G_i \times \{1\}_{i_0})=\ker(\phi_i).$$
+\end{proof}
+
+
+\begin{lemma}
+	Let $G$ be a compact topological group and $H$ be a open normal subgroup. Then the normal core of $H$, defined as $\mbox{core}(H)=\cap_{g\in G}gHg^{-1}$, is an open subgroup.
+\end{lemma}
+
+\begin{proof}
+	By Proposition \ref{11.26.4}, $H$ is also closed and of finite index. The number of conjugacy class of $H$ is $[G:N(H)]$, where $N(H)\supset H$ is the normalizer of $H$, hence is finite. Hence $\mbox{core}(H)$ is a finite intersection of open sets and hence open. 
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be a topological group. Then the followings are equivalent:
+	\begin{enumerate}
+		\item $G$ is a profinite group.
+		\item $G$ is compact, Hausdorff and totally disconnected.
+		\item $G$ is compact, Hausdorff and the identity element 1 admits a fundamental system $\mathcal{S}$ of open subgroups $U$ satisfying $\cap_{U\in \mathcal{S}}=\{1\}$ and $U\ll G$ with $G/U$ finite.
+		\item The identity element 1 of $G$ admits a fundamental system $\mathcal{S}$ of open subgroups $U$ satisfying $\cap_{U\in \mathcal{S}}=\{1\}$ and $U\ll G$ with $G/U$ finite, and $G=\varprojlim_{U\in \mathcal{S}} G/U$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+	You can extend this theorem to pro-$\mathcal{C}$ groups where $\mathcal{C}$ shall be assumed to be closed under subgroups and direct products (and quotients if needed).
+\end{remark}
+
+\begin{proof}
+	$(1)\Longrightarrow (2)$ follows directly from Theorem \ref{6.2.12}.
+
+
+	$(2)\Longrightarrow (3)$: By Theorem \ref{6.2.12} we know that $G$ admits a basis $\mathcal{C}$ consisting of clopen sets. Therefore, we have a fundamental system of clopen sets around each point and especially 1. Denote the fundamental system of 1 by $\mathcal{V}$. By Lemma \ref{6.2.10}, as $G$ is totally disconnected, $\cap_{V\in\mathcal{V}}=\{1\}$. If we can show that each $V\in\mathcal{V}$ contains a open normal subgroups $N\ll G$, then the collection of all these open normal subgroups will form the desired fundamental system. Let $V\in\mathcal{V}$ be arbitrary. Since $G$ is compact, $V$ is also compact since it is closed and therefore $VV$ is closed and compact as proved in Theorem \ref{26.14}. Set $F=(G\setminus V)\cap V^2$. Then $F$ is closed and compact. Let $x\in V$ then $x\in G\setminus F$. By the continuity of multiplication and as $G\setminus F$ is open, there exists open neighbourhoods $V_x,S_x\subset V$ of $x$ and $1$ respectively such that $V_xS_x\in G\setminus V$ (say $S_x$ is a symmetric neighbourhoods of $1$ then $V_x=xS_x$ and $xS_xS_x=V_xV_x=V_xS_x$ is disjoint from $G\setminus V$). Since $V_x$ form an open cover of $V$ and $V$ is compact, there is a finite subcover $V_{x_1},\dots,V_{x_n}$. Let $S_{x_1},\dots,S_{x_n}$ be the respect neighbourhoods of 1 and let $S=\cap_{i=1,\dots,n}S_{x_i}$ and $W=S\cap S^{-1}$. Then $W$ is a symmetric neighbourhood of 1 and $W\subset V$. Let $x\in VW$, then $x\in V_{x_j}S$ for some $x\in$
+\end{proof}
+
+
+
+% \begin{theorem}
+% 	Let $\mathcal{C}$ be a class of finite groups closed under subgroups and direct products, and let $G$ be a topological group. Then the following are equivalent:
+% 	\begin{enumerate}
+% 		\item $G$ is a pro-$\mathcal{C}$ group;
+% 		\item $G$ is isomorphic to a closed subgroup of a cartesian product of $\mathcal{C}$-groups;
+% 		\item $G$ is compact and $\cap_{N\ll G, G/N\in \mathcal{C}}(N)=\{1\}$;
+% 		\item $G$ is compact and totally disconnected, and for every $L\ll G$ there is a subgroup $N\ll G$ with $N\leq L$ and $G/N\in \mathcal{C}$;
+% 		\item If in addition $\mathcal{C}$ is closed for quotients, $G$ is compact and totally disconnected, and $G/L\in \mathcal{C}$ for every $L\ll G$.
+% 	\end{enumerate}
+% \end{theorem}
+
+% \begin{proof}
+	
+% \end{proof}
+
+% \begin{corollary}
+% 	Let $G$ be a topological group. The following are equivalent:
+% 	\begin{enumerate}
+% 		\item $G$ is profinite;
+% 		\item $G$ is isomorphic to a closed subgroup of a cartesian product of finite groups;
+% 		\item $G$ is compact and $\cap_{N\ll G}N=\{1\}$;
+% 		\item $G$ is compact and totally disconnected.
+% 	\end{enumerate}
+% \end{corollary}
+
+% \begin{theorem}
+% 	\begin{enumerate}
+% 		\item Let $G$ be a profinite group. If $I$ is a filter base of closed normal subgroups of $G$ such that $\cap_{N\in I}N=1$ then $G\cong \varprojlim G/N$. Moreover, $H\cong \varprojlim H/(H\cap N)$ for each closed subgroup $H$ and $G/K\cong \varprojlim G/KN$ for each closed normal subgroup $K$.
+% 		\item If $\mathcal{C}$ is a class of finite groups closed under subgroups and direct product, then closed subgroups, cartesian products and inverse limits of pro-$\mathcal{C}$-groups are pro-$\mathcal{C}$ groups. If in addition $\mathcal{C}$ is closed under quotients, then quotient groups of pro-$\mathcal{C}$ groups by closed normal subgroups are pro-$\mathcal{C}$ groups.
+% 	\end{enumerate}
+% \end{theorem}
+
+% \begin{theorem}
+% 	Let $f:G\to A$ be a map from a profinite group to discrete space. Then $f$ is continuous if and only if there is an open normal subgroup $N$ such that $f$ factors through $G/N$.
+% \end{theorem}
 
 \chapter*{Week 12}
 \setcounter{chapter}{12}
 
 \section{Infinite Galois Extensions}
+
+Recall that we have defined normal and Galois extensions for finite field extensions. We now extend to a possibly infinite ones.
+
+\begin{definition}
+	An algebraic extension $L/K$ is called \emph{normal} if it satisfies one of the following conditions:
+	\begin{enumerate}
+		\item $L$ is a splitting field of a family of polynomials in $K[x]$;
+		\item Every irreducible polynomial in $K[x]$ that admits a root in $L$ splits completely over $L$ into linear factors;
+		\item Every $K$-map $L\to \overline{L}$, where $\overline{L}=\overline{K}$ is the algebraic closure, is an automorphism of $L$ in the sense that the image is also $L$.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{definition}
+	An algebraic extension $L/K$ is called \emph{Galois} if it is normal and separable. Then $\gal(L/K)=\Aut(L/K)$ is called the \emph{Galois group} of the extension $L/K$. 
+\end{definition}
+
+Note that it is equivalent to say that for each irreducible polynomial $f\in K[x]$ either has no root in $L$ or has $\deg(f)$ distinct roots in $L$.
+
+Recall we have the fundamental theorem of Galois theory when it is a finite extension.
+
+\begin{theorem}[Fundamental Theorem of Galois Theory]
+	Let $L/K$ be a finite extension with Galois group $G=\gal(L/K)$. Then thr maps 
+	\begin{align*}
+		\{\mbox{subgroups of } G\} & \xrightleftharpoons[\Phi]{\Psi} \{\mbox{intermediate fields of } L/K\}\\
+		H &\longmapsto L^H,\\
+		\gal(L/E) &\longmapsfrom E,
+	\end{align*}
+	that assign to a subgroup $H\subset G$ the fixed filed $L^H$, resp. to an intermediate field $E$ of $L/K$ the Galois group of the Galois extension $L/E$, are bijective, inclusion reversing and mutually inverse.
+
+
+	The fixed field $L^H$ is normal and therefore Galois over $K$ if and only if $H$ is a normal subgroup of $G$. If this is the case, the surjective group homomorphism
+	\[G\to \gal(L^H/K), \sigma\mapsto \sigma|_{L^H},\]
+	admits $H$ as its kernel and hence induces an isomorphism $G/H\cong \gal(L^H/K)$.
+\end{theorem}
+
+Surely, we want to generalize this theorem to infinite Galois extensions and follow \hyperlink{http://uu.diva-portal.org/smash/get/diva2:1374695/FULLTEXT01.pdf}{Lindell's notes}.
+
+% Let $K/k$ be a Galois extension and write for convenience that 
+% \[\mathcal{F}=\{L: L \mbox{ is a subfield of }K \mbox{ such that } L/k \mbox{ is a finite Galois extension}\}\]
+% and $$\mathcal{N}=\{\gal(K/L): L\in \mathcal{F}\}.$$ In particular, the topology on $\gal(K/k)$ is so defined that $\mathcal{N}$ is a base of open neighbourhoods of $1$.
+
+% \begin{theorem}
+% 	$\gal(K/k)$ is the inverse limit of the finite groups $\gal(L/k)$ with $L\in \mathcal{F}$. In particular, $\gal(K/k)$ is a profinite group.
+% \end{theorem}
+
+% \begin{proof}
+	
+% \end{proof}
+
+% \begin{theorem}
+% 	Let $K=\cap_{i\in I}K_i$, where each $K_i$ is a finite Galois extension of $k$. Suppose that for all $i,j$ there is an index $m\in I$ such that $K_i\subset K_m$ and $K_j\subset K_m$. Then $\gal(K_i/k)$ is an inverse system, and $\gal(K/k)$ is isomorphic to $\varprojlim \gal(K_i/K)$. Moreover, $\gal(K_i/k)$ is a bases of open neighbourhoods of $1$ in $\gal(K/k)$. 
+% \end{theorem}
+
+
+% \begin{proposition}
+% 	Let $M$ be an intermediate field of a Galois extension $K/k$. The topology of $\gal(K/M)$ is induced by the topology of $\gal(K/k)$, and $\gal(K/M)$ is a closed subgroup.
+% \end{proposition}
 
 
 % \section{The Transcendence of \texorpdfstring{$\pi$}~ and \emph{e}}

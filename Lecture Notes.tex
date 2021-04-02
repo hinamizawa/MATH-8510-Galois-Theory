@@ -407,7 +407,7 @@ As you might guess, Zorn's lemma is inevitable in such kind proof. The problem i
 One can imagine looking at the "set" of all algebraic extensions of $F$. This collection of fields is partially ordered under inclusion, and linearly ordered chains in the collection have least upper bounds (their union). If this were a set of fields, then it would follow form Zorn's Lemma that there is a maximal element, call it $\overline{F}$. This would be an algebraic extension of $F$: it would have no proper algebraic extension, and hence it would have to be algebraically closed. This is the algebraic closure of $F$. The problem with this argument is that the collection of algebraic extensions of $F$ is too large to be a set, and hence one cannot apply Zorn's Lemma.
 
 \begin{lemma}\label{ac4}
-	Let $E/F$ be a field extension. If $\alpha_1,\cdots,\alpha_n \in E$ are algebraic over $F$, then $F(\alpha_1,\cdots,\alpha_n)/F$  is a finite extension.
+	Let $E/F$ be a field extension. If $\alpha_1,\cdots,\alpha_n \in E$ are algebraic over $F$, then $F(\alpha_1,\cdots,\alpha_n)$  is a finite extension over $F$.
 \end{lemma}
 
 \begin{proof}
@@ -1146,7 +1146,7 @@ It is always true, when $E/F$ is a finite Galois extension, and $F \subset  K \s
 
 \begin{example}
 	Let $E = \QQ(\sqrt{2},\sqrt{3})$. Then $E$ is the splitting field over $\QQ$ of the polynomial $(x^2- 2)(x^2 - 3)$, and hence is a Galois extension. As we've seen before, $[\QQ(\sqrt{2}):\QQ] = 2$. This confirms the plausible statement that $[E : \QQ] = 4$. So there are four automorphisms of $E$ fixing $\QQ$, and they are defined by what they do to $\sqrt{2}$ and $\sqrt{3}$. If $\sigma\in \Gal(E/\QQ)$, then $\sigma(\sqrt{2})=\pm \sqrt{2}$ and $\sigma(\sqrt{3})=\pm \sqrt{3}$. So we see precisely what the four automorphisms are. Indeed, $\Gal(E/\QQ) \cong \ZZ/2\ZZ \times \ZZ/2\ZZ$, by the isomorphism $(a, b) \mapsto \sigma_{a,b}$ defined by $$\sigma_{a,b}(\sqrt{2})=(-1)^a \sqrt{2}\mbox{ and }\sigma_{a,b}(\sqrt{3})=(-1)^b \sqrt{3}.$$
-
+	
 	The group $\Gal(E/\QQ)$ has three distinct subgroups:
 	$$H_1=\{id, \sigma_{1,0}\}, H_2=\{id,\sigma_{0,1}\}, H_3=\{id, \sigma_{1,1}\}.$$
 	We see that each of the fields $E^{H_1}, E^{H_2}, E^{H_3}$ are degree 2 extensions of $\QQ$. Since $\sigma_{1,0}(\sqrt{3})=\sqrt{3}, \sigma_{0,1}(\sqrt{2})=\sqrt{2}$ and $\sigma_{1,1}(\sqrt{6})=\sqrt{6}$, we see that $$E^{H_1} = \QQ(\sqrt{3}), E^{H_2}=\QQ(\sqrt{2}), E^{H_3}=\QQ(\sqrt{6}).$$
@@ -2565,7 +2565,7 @@ We need some lemmas to prove this theorem.
 	For the other direction, we proceed by the number of terms in the composition series of $\gal(E/F)$. If the length is 0, then $\gal(E/F)$ is trivial and so we are done.
 	Now suppose the statement is true when the length of the composition series is $k-1$ and let
 	\[\gal(E/F)=G_0\supset G_1\supset \dots\supset G_k=\{1\}\] be the composition series of $\gal(E/F)$. The field $K=E^{G_1}$ is then a Galois extension of $F$, and the composition series of $\gal(E/K)$ is \[\gal(E/K)=G_1\supset \dots\supset G_k=\{1\}.\]
-	By induction hypothesis, $E$ is contained in an extension by radicals, say, $K(a_1,\dots,a_s)$. If $K$ is contained in an extension of $F$ by radicals, say, $F(b_1,\dots,b_m)$, then it is easily seen that $E\subset F(b_1,\dots,b_m,a_1,\dots,a_s)$, namely, $E$ is contained in an extension of $F$ by radicals. So it suffices to show that $K$ is contained in an extension of $F$ by radicals. By the definition of solvability, \[\gal(K/F)\cong \gal(E/F)/\gal(E/K) = G_0/G_1\]
+	By induction hypothesis, $E$ is contained in an extension by radicals, say $K(a_1,\dots,a_s)$. If $K$ is contained in an extension of $F$ by radicals, say $F(b_1,\dots,b_m)$, then it is easily seen that $E\subset F(b_1,\dots,b_m,a_1,\dots,a_s)$, namely, $E$ is contained in an extension of $F$ by radicals. So it suffices to show that $K$ is contained in an extension of $F$ by radicals. By the definition of solvability, \[\gal(K/F)\cong \gal(E/F)/\gal(E/K) = G_0/G_1\]
 	is a simple abelian group and hence is a cyclic abelian group of prime order $p$. Let $\zeta\in \overline{F}$ be a primitive $p$-th root. Clearly, $F(\zeta)$ is an extension of $F$ by radicals. Now apply Natural Irrationality Theorem, $K(\zeta)=KF(\zeta)$ is a Galois extension of $F(\zeta)$ and \[\gal(K(\zeta)/F(\zeta))\cong \gal(K/F)\cong \zz/p\zz.\] Since $F(\zeta)$ contains a primitive $p$-th root of unity, we see from Theorem \ref{cyclicgal1} that $K(\zeta)=F(\zeta, \sqrt[n]{a})$ for some $a\in F(\zeta)$, that is, $K$ is contained in an extension of $F$ by radicals. Hence so is $E$.
 \end{proof}
 
@@ -2947,8 +2947,8 @@ The inverse limit is unique in the following sense.
 	Let $(X_i,\phi_{ij})$ be an inverse system indexed by $I$.
 	\begin{enumerate}
 		\item If $(X,\phi_i)$ and $(Y,\psi_i)$ are inverse limits of the inverse system, then there is an isomorphism $\pi: X\to Y$ such that $\psi_i=\pi\phi_i$ for each $i$.
-		\item Write $C=\prod_{i\in I} X_i$ and let $\pi_i$ be the canonical project from $C$ onto the $i$-th coordinate. Define $$X=\{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c) \mbox{ for all }i,j \mbox{ with }j\geq i\}$$ and $\phi_o=\pi_i|_X$ for each $i$. Then $(X,\psi_i)$ is an inverse limit of  $(X_i,\phi_{ij})$.
-		\item If  $(X_i,\phi_{ij})$ is an inverse system of topological groups, then $X$ is a topological group and the maps $\psi_i$ are continuous homomorphisms.
+		\item Write $C=\prod_{i\in I} X_i$ and let $\pi_i$ be the canonical project from $C$ onto the $i$-th coordinate. Define $$X=\{c\in C: \phi_{ij}\pi_j(c)=\pi_i(c) \mbox{ for all }i,j \mbox{ with }j\geq i\}$$ and $\phi_i=\pi_i|_X$ for each $i$. Then $(X,\phi_i)$ is an inverse limit of  $(X_i,\phi_{ij})$.
+		\item If  $(X_i,\phi_{ij})$ is an inverse system of topological groups, then $X$ is a topological group and the maps $\phi_i$ are continuous homomorphisms.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -2961,7 +2961,7 @@ The inverse limit is unique in the following sense.
 	Now suppose $(Y,\psi_i)$ is a compatible family. We want to show there is a unique map $\psi:Y\to X$ such that $\phi_i\psi=\psi_i$. Let $\tilde{\psi}$ be the map from $Y$ to $C$ taking $y$ to $(\psi_i(y))$. Thus $\pi_i\tilde{\psi}=\psi_i$ and $\tilde{\psi}$ is continuous since the projection to each coordinate is continuous. If $i\leq j$, then $$\pi_i\tilde{\psi}=\psi_i=\psi_{ij}\psi_j=\psi_{ij}\pi_j\tilde{\psi_j}$$ and it follows that $\tilde{\psi}$ maps $Y$ to $X$. Now define $\psi: Y\to X$ by $\psi(y)=\tilde{\psi}(y)$. Thus $\psi$ is continuous. It is a routine to check all the properties.
 \end{proof}
 
-With the existence and uniqueness of the inverse limit, it can be denoted as $\varprojlim(X_i,\phi_{ij})$ or just $\varprojlim X_i$. It will sometimes be convenient to work with the particular inverse limit constructed above and we denote it by $s\varprojlim X_i$.
+With the existence and uniqueness of the inverse limit, it can be denoted as $\varprojlim(X_i,\phi_{ij})_{i\in I}$ or just $\varprojlim X_i$. It will sometimes be convenient to work with the particular inverse limit constructed above and we denote it by $s\varprojlim X_i$.
 
 \begin{proposition}\label{27.6}
 	Let $(X_i,\phi_{ij})$ be an inverse system indexed by $I$ and write $X=\varprojlim X_i$.
@@ -2995,10 +2995,10 @@ With the existence and uniqueness of the inverse limit, it can be denoted as $\v
 \begin{proof}
 	Again, it suffices to prove the statement for $s\varprojlim X_i$ and $\phi_i=\pi_i|_X$. \begin{enumerate}
 		\item We have $\phi_i(X)=\phi_{ij}\phi_j(X)\subset \phi_{ij}(X_j)$ for all $i\leq j$ and therefore $\phi_i(X)\subset \cap_{i\leq j}\phi_{ij}(X_j)$.  Now let us fix $i$, fix $a\in \cap_{i\leq j}\phi_{ij}(X_j)$ and for $i\leq j$ set $Y_j=\{y\in X_j: \phi_{ij}(y)=a\}$. Thus $Y_j$ being the inverse image of a closed set is closed in $X_j$ and hence is compact. If $i\leq j\leq k$ and $y_k\in Y_k$, then $\phi_{ij}\phi_{jk}(y_k)=\phi_{ik}(y_k)=a$ and so $\phi_{jk}(y_k)\in Y_j$. Therefore, $Y_j$ with $ j\geq i$ is an inverse system of nonempty compact Hausdorff spaces and so there is an element $b\in s\varprojlim_{j\geq i} Y_j$. And we have $\phi_{jk}(b_k)=b_j$ for $i\leq j\leq k$ and $b_i=a$ for the coordinates of $b$. Now if $j\in I$ and $i\nleq l$, then we can find $j\in I$ such that $i\leq j$ and $l\leq j$ and define $b_l=\phi_{lj}(b_j)$. $b_l$ is well-defined in the sense that if there is another $j'\in I$ with $i\leq j'$ and $j\leq j'$, then we can find $k\in I$ such that $j,j'\leq k$ and then $b_l=\phi_{lk}(b_k)=\phi_{lj}\phi_{jk}(b_k)=\phi_{lj'}\phi_{j'k}(b_k)$. And hence we have find an element $b=(b_j)_{j\in I}\in s\varprojlim X_i$ with $\phi_i(b)=a$.
-		\item The basis of $X$ can be pulled from $C$ and is of the form $$P=X\cap (\cap_{r=1}^n\pi_{i_r}^{-1}(U_j)) $$ for some $i_r\in I$ and $U_r$ is open in $X_{i_r}$. The result will follow if we can prove that for all $a\in P$ there is a set $\phi_k^{-1}(U)$ with $U$ open in $X_k$ such that $a\in \phi_k^{-1}(U)\subset P$. Write $a=(a_i)$. Choose $k\in I$ such that $k\geq i_r$ for all $i_r$. The set $\phi_{i_rk}^{-1}(U_r)$ is open in $X_k$ since $\phi_{i_rk}$ is continuous. Write $U=\cap_{r=1}^n \phi_{i_rk}^{-1}(U_r)$. This is an open neighbourhood of $a_k$ in $X_k$ and so $\phi_k^{-1}(U)$ is an open neighbourhood of $a$ in $X$. Moreover, if $b=(b_i)\in \phi_k^{-1}(U)$ then $b_k\in U$ and so that $b_{i_r}=\phi_{i_r k}(b_k)\in U_r$. It follows that $\phi^{-1}_k(U)\subset P$.
-		\item For each $i\in I$ and each nonempty open set $U$ in $_i$ we clearly have $\phi_i(Y)\cap U=X_i\cap U\not= \emptyset$ and hence $Y\cap \phi_i^{-1}(U)\not=\emptyset$. It follows from (2) that $Y$ is dense in $X$.
-		\item If $\theta$ is continuous, then $\phi_i\theta$ is continuous. Conversely, if each $\phi_i\theta$ is continuous, then for each $i$ and each open set $U$ in $X_i$, the set $\theta^{-1}\phi_i^{-1}(U)=(\phi_i\theta)^{-1}(U)$ is open. It follows from (2) that $\theta$ is continuous.
-		\item The image $\im(f)$ is compact and discrete and so finite. For each $a\in \im(f)$ the set $Y_a=f^{-1}(a)$ is compact and open and so it is, by the compactness, a finite union of basis element $Y_a=\cup_{j\in J} \phi_j^{-1}(U_j)$ with $J$ finite subset of $I$ and $U_j$ open in $X_j$. Choose $k\in I$ such that $j\leq k$ for all $j\in J$. We have $\phi^{-1}_j(U_j)=\phi^{-1}_k(\phi_{jk}^{-1}(U_j))$ for each $j$ and so for each $a\in \im(f)$ we can write $Y_a=\phi_k^{-1}(V_a)$ where $V_a$ is open in $X_k$. Write $D=X_k\setminus (\cup_{a\in \im(f)}V_a)$. Then $D\cap \phi_k(X)=\emptyset$. By (1), we have $D\cap(\cap_{k\leq l} \phi_{kl}(X_l))=\emptyset$. Since $X_k$ is compact and $D$ and each $\phi_{kl}(X_l)$ are closed, we can find $l_1,l_2,\dots,l_s$ such that $D\cap \phi_{kl_1}(X_{l_1})\cap \dots\cap \phi_{kl_s}(X_{l_s})$ by the finite intersection property. Choose $t\in I$ such that $t\geq l_i$ for each $l_i$. For $k\leq l\leq t$, we have $\phi_{kt}(X_t)=\phi_{kl}(\phi_{lt}(X_t))\subset \phi_{kl}(X_l)$, and we can conclude that $D\cap \phi_{kt}(X_t)=\emptyset$ and $\phi_{kt}(X_t)\subset \cap_{a\in \im(f)}V_a$. Write $W_a=\phi_{kt}^{-1}(V_a)$ for each $a\in \im(f)$ then $W_{a_1}\cap W_{a_1}$ of $a_1\not= a_2$. Let $x\in X_t$. Then $\phi_{kt}(x)\in V_a$ for some $a$ and then $x\in \phi_{kt}^{-1}(V_a)=W_a$. Therefore, $X_t=\cup_{a\in \im(f)} W_a$ and each set $W_a$ is also closed. It follows that the map $g:X_i\to A$ which takes $W_a$ to $a$ for each $a\in \im(f)$ is continuous and $f=g\phi_t$ as required.
+		\item The basis of $X$ can be pulled from $C$ and is of the form $$P=X\cap (\cap_{r=1}^n\pi_{i_r}^{-1}(U_r))=X\cap(\prod_{i\not= i_1,\dots,i_n} X_i\times U_1\times \dots\times U_n ) $$ for some integer $n$ and $i_1,\dots,i_n \in I$ and $U_r$ is open in $X_{i_r}$. The result will follow if we can prove that for all $a\in P$ there is a set $\phi_k^{-1}(U)$ with $U$ open in $X_k$ such that $a\in \phi_k^{-1}(U)\subset P$. Write $a=(a_i)$. Choose $k\in I$ such that $k\geq i_r$ for all $i_r$. The set $\phi_{i_rk}^{-1}(U_r)$ is open in $X_k$ since $\phi_{i_rk}$ is continuous. Write $U=\cap_{r=1}^n \phi_{i_rk}^{-1}(U_r)$. This is an open neighbourhood of $a_k$ in $X_k$ and so $\phi_k^{-1}(U)$ is an open neighbourhood of $a$ in $X$. Moreover, if $b=(b_i)\in \phi_k^{-1}(U)$ then $b_k\in U$ and so that $b_{i_r}=\phi_{i_r k}(b_k)\in U_r$. It follows that $\phi^{-1}_k(U)\subset P$.
+		\item For each $i\in I$ and each nonempty open set $U$ in $X_i$ we clearly have $\phi_i(Y)\cap U=X_i\cap U\not= \emptyset$ and hence $Y\cap \phi_i^{-1}(U)\not=\emptyset$. It follows from (2) that $Y$ is dense in $X$.
+		\item If $\theta$ is continuous, then $\phi_i\theta$ is continuous. Conversely, if each $\phi_i\theta$ is continuous, then for each $i$ and each open set $U$ in $X_i$, the set $\theta^{-1}(\phi_i^{-1}(U))=(\phi_i\theta)^{-1}(U)$ is open. It follows from (2) that $\theta$ is continuous.
+		\item The image $\im(f)$ is compact and discrete and so finite. For each $a\in \im(f)$ the set $Y_a=f^{-1}(a)$ is compact and open and so it is, by the compactness, a finite union of basis element $Y_a=\cup_{j\in J} \phi_j^{-1}(U_j)$ with $J$ finite subset of $I$ and $U_j$ open in $X_j$. Choose $k\in I$ such that $j\leq k$ for all $j\in J$. We have $\phi^{-1}_j(U_j)=\phi^{-1}_k(\phi_{jk}^{-1}(U_j))$ for each $j$ and so for each $a\in \im(f)$ we can write $Y_a=\phi_k^{-1}(V_a)$ where $V_a$ is open in $X_k$. Write $D=X_k\setminus (\cup_{a\in \im(f)}V_a)$. Then $D\cap \phi_k(X)=\emptyset$. By (1), we have $D\cap(\cap_{k\leq l} \phi_{kl}(X_l))=\emptyset$. Since $X_k$ is compact and $D$ and each $\phi_{kl}(X_l)$ are closed, we can find $l_1,l_2,\dots,l_s$ such that $D\cap \phi_{kl_1}(X_{l_1})\cap \dots\cap \phi_{kl_s}(X_{l_s})=\emptyset$ by the finite intersection property. Choose $t\in I$ such that $t\geq l_i$ for each $l_i$. For $k\leq l\leq t$, we have $\phi_{kt}(X_t)=\phi_{kl}(\phi_{lt}(X_t))\subset \phi_{kl}(X_l)$, and we can conclude that $D\cap \phi_{kt}(X_t)=\emptyset$ and $\phi_{kt}(X_t)\subset \cap_{a\in \im(f)}V_a$. Write $W_a=\phi_{kt}^{-1}(V_a)$ for each $a\in \im(f)$ then $W_{a_1}\cap W_{a_1}$ of $a_1\not= a_2$. Let $x\in X_t$. Then $\phi_{kt}(x)\in V_a$ for some $a$ and then $x\in \phi_{kt}^{-1}(V_a)=W_a$. Therefore, $X_t=\cup_{a\in \im(f)} W_a$ and each set $W_a$ is also closed. It follows that the map $g:X_i\to A$ which takes $W_a$ to $a$ for each $a\in \im(f)$ is continuous and $f=g\phi_t$ as required.
 	\end{enumerate}
 \end{proof}
 
@@ -3007,23 +3007,21 @@ With the existence and uniqueness of the inverse limit, it can be denoted as $\v
 \end{proposition}
 
 \begin{remark}
-	As the quotient space of a compact space is also compact, discrete implies finiteness.
+	As the quotient space of a compact space is also compact, discreteness implies finiteness.
 \end{remark}
 
 \begin{proof}
-	Let $I$ be the set of all partitions of $X$ into finitely many closed open subsets. For each $i\in I$, let $X_i$ be the corresponding quotient space (whose elements are closed and open subsets of the partition $i$) adn let $q_i: X\to X_i$ be the quotient map. Thus the sets $X_i$ are precisely the quotient space of $X$ which are discrete in the quotient space.
+	Let $I$ be the set of all partitions of $X$ into finitely many clopen subsets. For each $i\in I$, let $X_i$ be the corresponding quotient space (whose elements are clopen subsets of the partition $i$) and let $q_i: X\to X_i$ be the quotient map. Thus the sets $X_i$ are precisely the quotient spaces of $X$ which are discrete.
 
 
-	We write $i\leq j$ if and only if there is a map $q_{ij}: X_j\to X_i$ satisfying $q_{ij}q_j=q_i$. The mao $q_{ij}$ is then uniquely determined because $q_j$ is surjective. Clearly, $I$ is a partially ordered set. And it is directed: if $$i=\{U_r: 1\leq r\leq m\},\quad j=\{V_s: 1\leq s\leq n\}$$ are elements of $I$, then $$k=\{U_r\cap V_s: 1\leq r\leq m, 1\leq s\leq n\}$$ is an element in $I$ and $i,j\leq k$. It follows that $(X_i,q_{ij})$ is an inverse system and that $(X,q_i)$ is a compatible family. Let $Y=\varprojlim X_i$ and $\phi_i$ be the canonical map. The universal property of inverse limit gives us a continuous map $\mu: X\to Y$ such that $\phi_i \mu=q_i$. If $x_1,x_2\in X$ such that $\mu(x_1)=\mu(x_2)$, then $q_i(x_1)=q_i(x_2)$ for each $i$, so that no closed and open set contains just one of $x_1,x_2$ and since $X$ is totally disconnected, we must have $x_1=x_2$. Therefore, $\mu$ is injective. Since $\phi_i(\mu(X))=q_i(X)=X_i$, it follows from the theorem above that $\mu(X)$ is dense in $Y$. Since $\mu$ is continuous and $X$ is compact and $Y$ is Hausdorff, $\mu(X)$ is also closed and $\mu(X)=Y$ and $\mu$ is surjective. Since $\mu$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, $\mu$ is a homeomorphism by Lemma \ref{26.9}.
+	We write $i\leq j$ if and only if there is a map $q_{ij}: X_j\to X_i$ satisfying $q_{ij}q_j=q_i$. The map $q_{ij}$ is then uniquely determined because $q_j$ is surjective. Clearly, $I$ is a partially ordered set by inclusion. It is also directed: if $$i=\{U_r: 1\leq r\leq m\},\quad j=\{V_s: 1\leq s\leq n\}$$ are elements of $I$, then $$k=\{U_r\cap V_s: 1\leq r\leq m, 1\leq s\leq n\}$$ is an element in $I$ and $i,j\leq k$. It follows that $(X_i,q_{ij})$ is an inverse system and that $(X,q_i)$ is a compatible family. Let $Y=\varprojlim X_i$ and $\phi_i$ be the canonical map. The universal property of inverse limit gives us a continuous map $\mu: X\to Y$ such that $\phi_i \mu=q_i$. If $x_1,x_2\in X$ such that $\mu(x_1)=\mu(x_2)$, then $q_i(x_1)=q_i(x_2)$ for each $i$, so that no clopen set contains just one of $x_1,x_2$ and since $X$ is totally disconnected, we must have $x_1=x_2$. Therefore, $\mu$ is injective. Since $\phi_i(\mu(X))=q_i(X)=X_i$, it follows from Proposition \ref{27.6} above that $\mu(X)$ is dense in $Y$. Since $\mu$ is continuous and $X$ is compact and $Y$ is Hausdorff, $\mu(X)$ is also closed and $\mu(X)=Y$ and $\mu$ is surjective. Since $\mu$ is a bijective continuous map with $X$ compact and $Y$ Hausdorff, $\mu$ is a homeomorphism by Lemma \ref{26.9}.
 \end{proof}
 
 % \begin{remark}
 % 	$(\sqrt{2},\sqrt{3})\cap \qq$ is a closed open set of $\qq$. Consider the above theorem to $\qq/\zz$
 % \end{remark}
 
-Let $\mathcal{C}$ be a class of finite groups. We can a group $F$ a $\mathcal{C}$-group if $F\in \mathcal{C}$ and we call $G$ a pro-$\mathcal{C}$ group if it an inverse limit of $\mathcal{C}$ groups. We say $\mathcal{C}$ is $\emph{closed}$ for subgroups (resp. quotients, direct product and etc) if every subgroup (resp. quotient, direct product and etc) of a $\mathcal{C}$-group is a $\mathcal{C}$-group.
-
-Some importance classes are the class of all finite groups, the class of finite $p$-groups and the class of all finite cyclic groups. Similarly, we have the profinite (topological) spaces. We are now able to ``classify'' profinite spaces and profinite groups.
+Let $\mathcal{C}$ be a class of finite groups. We can a group $F$ a $\mathcal{C}$-group if $F\in \mathcal{C}$ and we call $G$ a pro-$\mathcal{C}$ group if it an inverse limit of $\mathcal{C}$ groups. We say $\mathcal{C}$ is $\emph{closed}$ for subgroups (resp. quotients, direct product and etc) if every subgroup (resp. quotient, direct product and etc) of a $\mathcal{C}$-group is a $\mathcal{C}$-group. Some importance classes are the class of all finite groups, the class of finite $p$-groups and the class of all finite cyclic groups. Similarly, we have the profinite (topological) spaces. We are now able to ``classify'' profinite spaces and profinite groups.
 
 \begin{lemma}\label{6.2.10}
 	Let $X$ be a compact Hausdorff space and $x\in X$ a point. Then the connected component of $x$ is the intersection of all clopen sets containing $x$.
@@ -3055,20 +3053,20 @@ Some importance classes are the class of all finite groups, the class of finite 
 	$(3)\Longrightarrow (2)$: A zero-dimensional Hausdorff space is clearly totally disconnected from the definitions directly.
 \end{proof}
 
-Let $G$ be a topological group. We write $H\leq G$ to mean $H$ is a closed subgroup of $G$ and $N\ll G$ to mean $N$ is an open normal subgroup of $G$. We call a family of normal subgroups of $G$ a \emph{filter base} if for all $K_1, K_2\in I$ there is a subgroup $K_3\in I$ such that $K_3\subset K_1\cap K_2$.
+Let $G$ be a topological group. For the rest of this section, we write $H\leq G$ to mean $H$ is a closed subgroup of $G$ and $N\ll G$ to mean $N$ is an open normal subgroup of $G$. We call a family of normal subgroups of $G$ a \emph{filter base} if for all $K_1, K_2\in I$ there is a subgroup $K_3\in I$ such that $K_3\subset K_1\cap K_2$.
 
 We have two technical results.
 
-\begin{theorem}
+\begin{proposition}
 	Let $(G,\phi_i)$ be an inverse limit of an inverse system $(G_i,\phi_{ij})$ of compact Hausdorff topological groups and let $L\ll G$. Then $\ker(\phi_i)\leq L$ for some $i$. Consequently, $G/L$ is isomorphic to a quotient group of a subgroup of some $G_i$ and if in addition each map $\phi_i$ is surjective then $G/L$ is isomorphic to a quotient of some $G_i$.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-	Since $L$ is open and contains $1$, we have $\phi_i^{-1}(U)\subset L$ for some $i$ and open set $U$ of $G_i$ containing $1$ by Proposition \ref{27.7} as $\phi_i^{-1}(U)$ form a basis. Therefore, $\ker(\phi_i)\leq L$ for that $i$ and we have $G/L\cong (G/\ker(\phi_i))/(L/\ker(\phi_i))$ and so since $G/\ker(\phi_i) \cong \im(\phi_i)$, it follows that $G/L$ is isomorphic to a quotient group of some $G_i$.
+	Since $L$ is open and contains $1$, we have $\phi_i^{-1}(U)\subset L$ for some $i$ and some open subset $U$ of $G_i$ containing $1$ by Proposition \ref{27.7} as $\phi_i^{-1}(U)$ form a basis. Therefore, $\ker(\phi_i)\leq L$ for that $i$ and we have $G/L\cong (G/\ker(\phi_i))/(L/\ker(\phi_i))$ and so since $G/\ker(\phi_i) \cong \im(\phi_i)$, it follows that $G/L$ is isomorphic to a quotient group of some $G_i$.
 \end{proof}
 
 \begin{proposition}\label{11.27.13}
-	Let $G$ be a topological group and $I$ be a filter base of closed normal subgroups. For $K,L\in I$, define $K\leq L$ if and only if $L\subset K$. Thus $I$ is a directed with respect to $\preceq$ and define $q_{KL}: G/L\to G/K$ for $K\leq L$. This makes $G/K$ into an inverse system. Let $\tilde{G}=\varprojlim G/K$. There is a continuous homomorphism $\theta: G\to \tilde{G}$ with kernel $\cap_{K\in I} K$. If $G$ is compact, then $\theta$ is surjective; if $G$ is compact and $\cap_{K\in I}K=\{1\}$, then $\theta$ is an isomorphism of topological groups.
+	Let $G$ be a topological group and $I$ be a filter base of closed normal subgroups. For $K,L\in I$, define $K\leq L$ if and only if $L\subset K$. Thus $I$ is a directed with respect to $\leq$ and define $q_{KL}: G/L\to G/K$ for $K\leq L$. This makes $G/K$ into an inverse system. Let $\tilde{G}=\varprojlim G/K$. There is a continuous homomorphism $\theta: G\to \tilde{G}$ with kernel $\cap_{K\in I} K$. If $G$ is compact, then $\theta$ is surjective; if $G$ is compact and $\cap_{K\in I}K=\{1\}$, then $\theta$ is an isomorphism of topological groups.
 \end{proposition}
 
 \begin{proof}
@@ -3079,7 +3077,7 @@ We have two technical results.
 \end{proof}
 
 \begin{lemma}
-	Let $G=\varprojlim G_i$ be a profinite group, and let $\phi_i: G\to G_i$ be the canonical projection. Then $\mathcal{S}=\{\ker(\phi_i): \phi: G\to G_i\}$ forms a fundamental system of neighbourhoods of the identity in $G$.
+	Let $G=\varprojlim G_i$ be a profinite group, and let $\phi_i: G\to G_i$ be the canonical projection. Then $\mathcal{S}=\{\ker(\phi_i)| \phi_i: G\to G_i\}$ forms a fundamental system of neighbourhoods of the identity in $G$.
 \end{lemma}
 
 \begin{proof}

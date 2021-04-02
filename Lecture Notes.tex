@@ -3034,7 +3034,7 @@ Some importance classes are the class of all finite groups, the class of finite 
 \end{proof}
 
 \begin{definition}
-	A space $X$ is \emph{zero-dimensional} if each point $x\in X$ has a neighbourhood system consisting of clopen sets. Equivalently, $X$ is 0-dimensional if and only if for each point $x\in X$ and a closed set $A$ not containing $x$, there is a clopen set containing $A$ and not intersecting $A$. 
+	A space $X$ is \emph{zero-dimensional} if each point $x\in X$ has a neighbourhood system consisting of clopen sets. Equivalently, $X$ is 0-dimensional if and only if for each point $x\in X$ and a closed set $A$ not containing $x$, there is a clopen set containing $A$ and not intersecting $A$.
 \end{definition}
 
 \begin{theorem}\label{6.2.12}
@@ -3047,7 +3047,7 @@ Some importance classes are the class of all finite groups, the class of finite 
 \end{theorem}
 
 \begin{proof}
-	The equivalence of (1) and (2) are shown in Proposition \ref{27.6}  and Proposition \ref{27.8}. 
+	The equivalence of (1) and (2) are shown in Proposition \ref{27.6}  and Proposition \ref{27.8}.
 
 	$(2)\Longrightarrow (3)$: We want to show for any open set $U\in X$, there is a clopen set $C$ such that $x\in C\subset U$ for all $x\in U$. Now let $U$ be an arbitrary nonempty open set and $x\in U$. Let $C=\cap_{t\in T}C_t$ be the intersection of all clopen neighbourhoods of $x$. By Lemma \ref{6.2.10}, it follows that $C=\{x\}$ since $X$ is totally disconnected. As $X\setminus U$ is closed and disjoint from $C$, it follows by the compactness of $X$ that there exists finite subset $T'\subset T$ such that $(X\setminus U)\cap (\cap_{t\in T'}C_t)=\emptyset$ by the finite intersection properties and $(X\setminus U)\cap C=\emptyset$. Thus $\cap_{t\in T'}C_t$ is a clopen set containing $x$ also contained in $U$.
 
@@ -3067,9 +3067,9 @@ We have two technical results.
 	Since $L$ is open and contains $1$, we have $\phi_i^{-1}(U)\subset L$ for some $i$ and open set $U$ of $G_i$ containing $1$ by Proposition \ref{27.7} as $\phi_i^{-1}(U)$ form a basis. Therefore, $\ker(\phi_i)\leq L$ for that $i$ and we have $G/L\cong (G/\ker(\phi_i))/(L/\ker(\phi_i))$ and so since $G/\ker(\phi_i) \cong \im(\phi_i)$, it follows that $G/L$ is isomorphic to a quotient group of some $G_i$.
 \end{proof}
 
-\begin{theorem}
-	Let $G$ be a topological group and $I$ be a filter base of closed normal subgroups. For $K,L\in I$, define $K\preceq L$ if and only if $L\leq K$. Thus $I$ is a directed with respect to $\preceq$ and define $q_{KL}: G/L\to G/K$ for $K\preceq L$. This makes $G/K$ into an inverse system. Let $\tilde{G}=\varprojlim G/K$. There is a continuous homomorphism $\theta: G\to \tilde{G}$ with kernel $\cap_{K\in I} K$. If $G$ is compact, then $\theta$ is surjective; if $G$ is compact and $\cap_{K\in I}K=\{1\}$, then $\theta$ is an isomorphism of topological groups.
-\end{theorem}
+\begin{proposition}\label{11.27.13}
+	Let $G$ be a topological group and $I$ be a filter base of closed normal subgroups. For $K,L\in I$, define $K\leq L$ if and only if $L\subset K$. Thus $I$ is a directed with respect to $\preceq$ and define $q_{KL}: G/L\to G/K$ for $K\leq L$. This makes $G/K$ into an inverse system. Let $\tilde{G}=\varprojlim G/K$. There is a continuous homomorphism $\theta: G\to \tilde{G}$ with kernel $\cap_{K\in I} K$. If $G$ is compact, then $\theta$ is surjective; if $G$ is compact and $\cap_{K\in I}K=\{1\}$, then $\theta$ is an isomorphism of topological groups.
+\end{proposition}
 
 \begin{proof}
 	The proof of Proposition \ref{27.7} implies $(G/K,q_{LK})$ is an inverse system directed by $I$. We take $\tilde{G}=s\varprojlim G/K$. It is easy to see that the image of $\tilde{\theta}: G\to \prod_{K\in I} G/K, g\to (gK)_{K\in I}$ lies in $\tilde{G}$. Define $\theta$ to be the induce map $\theta: G\to \tilde{G}, g \mapsto \tilde{\theta}(g)$. Since the product of $\tilde{\theta}$ with the projection maps are quotient maps and so continuous, it follows that $\tilde{\theta}$ and $\theta$ are continuous. Note $g\in \ker(\theta)$ if and only if $gK=K$ for each $K$ and so $\ker(\theta)=\cap_{K\in I} K$. For each $K\in I$, we have $\phi_K(\theta(G))=G/K$ and so by Proposition \ref{27.7}, $\im(\theta)$ is dense in $\tilde{G}$.
@@ -3088,7 +3088,7 @@ We have two technical results.
 
 
 	If you are not happy, here is a more detail copy-and-paste. Let $\mathcal{C}$ be the collection of elements of the form $$(\prod_{i\not= i_0,\dots,i_n}G_i)\times \{1\}_{i_0}\times \dots\times \{1\}_{i_n}$$ where $i_0,\dots,i_n\in I$ are arbitrary and $i_0\geq i_1,\dots,i_n$. We will now prove that this is a fundamental system of neighbourhoods around 1 in $X=\prod_{i\in I}G_i$. Let $V\subset X$ be an open neighbourhood of 1. Then $V$ contains an open set of the form $(\prod_{i\not= j_1,\dots,j_n}G_i)\times U_{j_1}\times \dots\times U_{j_n}$. Now let $U=(\prod_{i\not= j_0,\dots,j_n}G_i)\times \{1\}_{j_0}\times \dots\times \{1\}_{j_n}$ with $j_0\geq j_1,\dots,j_n$. Then $U\subset V$ and $U\in \mathcal{C}$. Thus $\mathcal{C}$ is a fundamental system of open neighbourhoods of 1. Now we let $\mathcal{D}=\{G\cap C: C\in\mathcal{C}\}$. Then $\mathcal{D}$ is a fundamental system of neighbourhoods around 1 of $G$ with the subspace topology. We further note that elements in $\mathcal{D}$ has the form
-	 $$G\cap(\prod_{i\not= i_0} G_i \times \{1\}_{i_0})$$
+	$$G\cap(\prod_{i\not= i_0} G_i \times \{1\}_{i_0})$$
 	as $$G\cap((\prod_{i\not= i_0,\dots,i_n}G_i)\times \{1\}_{i_0}\times \dots\times \{1\}_{i_n}) = G\cap(\prod_{i\not= i_0} G_i \times \{1\}_{i_0})=\ker(\phi_i).$$
 \end{proof}
 
@@ -3098,7 +3098,7 @@ We have two technical results.
 \end{lemma}
 
 \begin{proof}
-	By Proposition \ref{11.26.4}, $H$ is also closed and of finite index. The number of conjugacy class of $H$ is $[G:N(H)]$, where $N(H)\supset H$ is the normalizer of $H$, hence is finite. Hence $\mbox{core}(H)$ is a finite intersection of open sets and hence open. 
+	By Proposition \ref{11.26.4}, $H$ is also closed and of finite index. The number of conjugacy class of $H$ is $[G:N(H)]$, where $N(H)\supset H$ is the normalizer of $H$, hence is finite. Hence $\mbox{core}(H)$ is a finite intersection of open sets and hence open.
 \end{proof}
 
 \begin{theorem}
@@ -3119,7 +3119,13 @@ We have two technical results.
 	$(1)\Longrightarrow (2)$ follows directly from Theorem \ref{6.2.12}.
 
 
-	$(2)\Longrightarrow (3)$: By Theorem \ref{6.2.12} we know that $G$ admits a basis $\mathcal{C}$ consisting of clopen sets. Therefore, we have a fundamental system of clopen sets around each point and especially 1. Denote the fundamental system of 1 by $\mathcal{V}$. By Lemma \ref{6.2.10}, as $G$ is totally disconnected, $\cap_{V\in\mathcal{V}}=\{1\}$. If we can show that each $V\in\mathcal{V}$ contains a open normal subgroups $N\ll G$, then the collection of all these open normal subgroups will form the desired fundamental system. Let $V\in\mathcal{V}$ be arbitrary. Since $G$ is compact, $V$ is also compact since it is closed and therefore $VV$ is closed and compact as proved in Theorem \ref{26.14}. Set $F=(G\setminus V)\cap V^2$. Then $F$ is closed and compact. Let $x\in V$ then $x\in G\setminus F$. By the continuity of multiplication and as $G\setminus F$ is open, there exists open neighbourhoods $V_x,S_x\subset V$ of $x$ and $1$ respectively such that $V_xS_x\in G\setminus V$ (say $S_x$ is a symmetric neighbourhoods of $1$ then $V_x=xS_x$ and $xS_xS_x=V_xV_x=V_xS_x$ is disjoint from $G\setminus V$). Since $V_x$ form an open cover of $V$ and $V$ is compact, there is a finite subcover $V_{x_1},\dots,V_{x_n}$. Let $S_{x_1},\dots,S_{x_n}$ be the respect neighbourhoods of 1 and let $S=\cap_{i=1,\dots,n}S_{x_i}$ and $W=S\cap S^{-1}$. Then $W$ is a symmetric neighbourhood of 1 and $W\subset V$. Let $x\in VW$, then $x\in V_{x_j}S$ for some $x\in$
+	$(2)\Longrightarrow (3)$: By Theorem \ref{6.2.12} we know that $G$ admits a basis $\mathcal{C}$ consisting of clopen sets. Therefore, we have a fundamental system of clopen sets around each point and especially 1. Denote the fundamental system of 1 by $\mathcal{V}$. By Lemma \ref{6.2.10}, as $G$ is totally disconnected, $\cap_{V\in\mathcal{V}}=\{1\}$. If we can show that each $V\in\mathcal{V}$ contains a open normal subgroups $N\ll G$, then the collection of all these open normal subgroups will form the desired fundamental system. Let $V\in\mathcal{V}$ be arbitrary. Since $G$ is compact, $V$ is also compact since it is closed and therefore $VV$ is closed and compact as proved in Theorem \ref{26.14}. Now for each $x\in V$, we can find open neighbourhood $U_x$ of $x$ such that $U_x\subset V$ as $V$ is open and a symmetric open neighbourhood $V_x$ such that $V_x\subset U_x, V_x=V_x^{-1}$ and that $V_xV_x\subset U_x$. Since $V$ is compact and covered by $V_x$, we can find $x_1,\dots,x_n$ such that $V=\cap_{i=1}^n V_{x_i}= \cap_{i=1}^n U_{x_i}$. Let $S_{x_i}=x_i^{-1}V_{x_i}$ be a open neighbourhood of 1. Write $S=\cap_{i=1}^n S_{x_i}$ and $W=S\cap S^{-1}$. Then $W$ is a symetric open neighbourhood of 1. Then we have $$VW\subset VS =(\cup_{i=1}^n V_{x_i})(\cap_{i=1}^n S_{x_i})\subset \cup_{i=1}^n V_{x_i}V_{x_i} \subset \cup_{i=1}^n U_{x_i} = V $$ and the reverse inclusion is also true since $1\in W$. In short, we have $VW=V$ and inducttively $VW^n = V$ for all positive integer $n$. Since $V$ contains 1, we have $W^n\subset V$ and hence $R=\cap_{n\in \NN}W^n \subset V$ is an open subgroup since $W$ is open and symmetric. By the lemma above, the normal core $\mbox{core}(R)$ is an open normal subgroup of finite index and is contained in $V$. Clearly, $G/\mbox{core}(R)$ is finite.
+
+
+	$(3)\Longrightarrow (4)$: This is Proposition \ref{11.27.13} by noting that the fundamental system derscribe in (3) is a filter base. 
+
+
+	$(4)\Longrightarrow (1)$: This is just the definition of profinite group.
 \end{proof}
 
 
@@ -3136,7 +3142,7 @@ We have two technical results.
 % \end{theorem}
 
 % \begin{proof}
-	
+
 % \end{proof}
 
 % \begin{corollary}
@@ -3178,7 +3184,7 @@ Recall that we have defined normal and Galois extensions for finite field extens
 
 
 \begin{definition}
-	An algebraic extension $L/K$ is called \emph{Galois} if it is normal and separable. Then $\gal(L/K)=\Aut(L/K)$ is called the \emph{Galois group} of the extension $L/K$. 
+	An algebraic extension $L/K$ is called \emph{Galois} if it is normal and separable. Then $\gal(L/K)=\Aut(L/K)$ is called the \emph{Galois group} of the extension $L/K$.
 \end{definition}
 
 Note that it is equivalent to say that for each irreducible polynomial $f\in K[x]$ either has no root in $L$ or has $\deg(f)$ distinct roots in $L$.
@@ -3186,11 +3192,11 @@ Note that it is equivalent to say that for each irreducible polynomial $f\in K[x
 Recall we have the fundamental theorem of Galois theory when it is a finite extension.
 
 \begin{theorem}[Fundamental Theorem of Galois Theory]
-	Let $L/K$ be a finite extension with Galois group $G=\gal(L/K)$. Then thr maps 
+	Let $L/K$ be a finite extension with Galois group $G=\gal(L/K)$. Then thr maps
 	\begin{align*}
-		\{\mbox{subgroups of } G\} & \xrightleftharpoons[\Phi]{\Psi} \{\mbox{intermediate fields of } L/K\}\\
-		H &\longmapsto L^H,\\
-		\gal(L/E) &\longmapsfrom E,
+		\{\mbox{subgroups of } G\} & \xrightleftharpoons[\Phi]{\Psi} \{\mbox{intermediate fields of } L/K\} \\
+		H                          & \longmapsto L^H,                                                       \\
+		\gal(L/E)                  & \longmapsfrom E,
 	\end{align*}
 	that assign to a subgroup $H\subset G$ the fixed filed $L^H$, resp. to an intermediate field $E$ of $L/K$ the Galois group of the Galois extension $L/E$, are bijective, inclusion reversing and mutually inverse.
 
@@ -3211,7 +3217,7 @@ Surely, we want to generalize this theorem to infinite Galois extensions and fol
 % \end{theorem}
 
 % \begin{proof}
-	
+
 % \end{proof}
 
 % \begin{theorem}

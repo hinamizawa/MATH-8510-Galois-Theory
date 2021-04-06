@@ -3092,7 +3092,7 @@ We have two technical results.
 
 
 \begin{lemma}
-	Let $G$ be a compact topological group and $H$ be a open normal subgroup. Then the normal core of $H$, defined as $\mbox{core}(H)=\cap_{g\in G}gHg^{-1}$, is an open subgroup.
+	Let $G$ be a compact topological group and $H$ be a open subgroup. Then the normal core of $H$, defined as $\mbox{core}(H)=\cap_{g\in G}gHg^{-1}$, is an open subgroup.
 \end{lemma}
 
 \begin{proof}
@@ -3117,7 +3117,7 @@ We have two technical results.
 	$(1)\Longrightarrow (2)$ follows directly from Theorem \ref{6.2.12}.
 
 
-	$(2)\Longrightarrow (3)$: By Theorem \ref{6.2.12} we know that $G$ admits a basis $\mathcal{C}$ consisting of clopen sets. Therefore, we have a fundamental system of clopen sets around each point and especially 1. Denote the fundamental system of 1 by $\mathcal{V}$. By Lemma \ref{6.2.10}, as $G$ is totally disconnected, $\cap_{V\in\mathcal{V}}=\{1\}$. If we can show that each $V\in\mathcal{V}$ contains a open normal subgroups $N\ll G$, then the collection of all these open normal subgroups will form the desired fundamental system. Let $V\in\mathcal{V}$ be arbitrary. Since $G$ is compact, $V$ is also compact since it is closed and therefore $VV$ is closed and compact as proved in Theorem \ref{26.14}. Now for each $x\in V$, we can find open neighbourhood $U_x$ of $x$ such that $U_x\subset V$ as $V$ is open and a symmetric open neighbourhood $V_x$ such that $V_x\subset U_x, V_x=V_x^{-1}$ and that $V_xV_x\subset U_x$. Since $V$ is compact and covered by $V_x$, we can find $x_1,\dots,x_n$ such that $V=\cap_{i=1}^n V_{x_i}= \cap_{i=1}^n U_{x_i}$. Let $S_{x_i}=x_i^{-1}V_{x_i}$ be a open neighbourhood of 1. Write $S=\cap_{i=1}^n S_{x_i}$ and $W=S\cap S^{-1}$. Then $W$ is a symetric open neighbourhood of 1. Then we have $$VW\subset VS =(\cup_{i=1}^n V_{x_i})(\cap_{i=1}^n S_{x_i})\subset \cup_{i=1}^n V_{x_i}V_{x_i} \subset \cup_{i=1}^n U_{x_i} = V $$ and the reverse inclusion is also true since $1\in W$. In short, we have $VW=V$ and inducttively $VW^n = V$ for all positive integer $n$. Since $V$ contains 1, we have $W^n\subset V$ and hence $R=\cap_{n\in \NN}W^n \subset V$ is an open subgroup since $W$ is open and symmetric. By the lemma above, the normal core $\mbox{core}(R)$ is an open normal subgroup of finite index and is contained in $V$. Clearly, $G/\mbox{core}(R)$ is finite.
+	$(2)\Longrightarrow (3)$: By Theorem \ref{6.2.12} we know that $G$ admits a basis $\mathcal{C}$ consisting of clopen sets. Therefore, we have a fundamental system of clopen sets around each point and especially 1. Denote the fundamental system of 1 by $\mathcal{V}$. By Lemma \ref{6.2.10}, as $G$ is totally disconnected, $\cap_{V\in\mathcal{V}} V=\{1\}$. If we can show that each $V\in\mathcal{V}$ contains a open normal subgroups $N\ll G$, then the collection of all these open normal subgroups will form the desired fundamental system. Let $V\in\mathcal{V}$ be arbitrary. Now for each $x\in V$, we can find open neighbourhood $U_x$ of $x$ such that $U_x\subset V$ as $V$ is open and a symmetric open neighbourhood $V_x$ such that $V_x\subset U_x, V_x=V_x^{-1}$ and that $V_xV_x\subset U_x$. Since $V$ is compact and covered by $V_x$, we can find $x_1,\dots,x_n$ such that $V=\cup_{i=1}^n V_{x_i}= \cup_{i=1}^n U_{x_i}$. Let $S_{x_i}=x_i^{-1}V_{x_i}$ be a open neighbourhood of 1. Write $S=\cap_{i=1}^n S_{x_i}$ and $W=S\cap S^{-1}$. Then $W$ is a symetric open neighbourhood of 1. Then we have $$VW\subset VS =(\cup_{i=1}^n V_{x_i})(\cap_{i=1}^n S_{x_i})\subset \cup_{i=1}^n V_{x_i}V_{x_i} \subset \cup_{i=1}^n U_{x_i} = V $$ and the reverse inclusion is also true since $1\in W$. In short, we have $VW=V$ and inducttively $VW^n = V$ for all positive integer $n$. Since $V$ contains 1, we have $W^n\subset V$ and hence $R=\cup_{n\in \NN}W^n \subset V$ is an open subgroup since $W$ is open and symmetric. By the lemma above, the normal core $\mbox{core}(R)$ is an open normal subgroup of finite index and is contained in $V$. Clearly, $G/\mbox{core}(R)$ is finite.
 
 
 	$(3)\Longrightarrow (4)$: This is Proposition \ref{11.27.13} by noting that the fundamental system derscribed in (3) is a filter base. 
@@ -3190,7 +3190,7 @@ Note that it is equivalent to say that for each irreducible polynomial $f\in K[x
 Recall we have the fundamental theorem of Galois theory when it is a finite extension.
 
 \begin{theorem}[Fundamental Theorem of Galois Theory]
-	Let $L/K$ be a finite extension with Galois group $G=\gal(L/K)$. Then thr maps
+	Let $L/K$ be a finite extension with Galois group $G=\gal(L/K)$. Then the maps
 	\begin{align*}
 		\{\mbox{subgroups of } G\} & \xrightleftharpoons[\Phi]{\Psi} \{\mbox{intermediate fields of } L/K\} \\
 		H                          & \longmapsto L^H,                                                       \\
@@ -3204,7 +3204,7 @@ Recall we have the fundamental theorem of Galois theory when it is a finite exte
 	admits $H$ as its kernel and hence induces an isomorphism $G/H\cong \gal(L^H/K)$.
 \end{theorem}
 
-Surely, we want to generalize this theorem to infinite Galois extensions and follow \hyperlink{http://uu.diva-portal.org/smash/get/diva2:1374695/FULLTEXT01.pdf}{Lindell's notes}.
+Surely, we want to generalize this theorem to infinite Galois extensions and follow Bosch's book.
 
 % Let $K/k$ be a Galois extension and write for convenience that 
 % \[\mathcal{F}=\{L: L \mbox{ is a subfield of }K \mbox{ such that } L/k \mbox{ is a finite Galois extension}\}\]
